@@ -324,7 +324,12 @@ ul { list-style: none; }
     position: relative;
     text-align: center;
     z-index: 5;
-    padding: 120px 0 80px;
+    padding: 80px 0 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
 .hero__badge {
@@ -338,7 +343,7 @@ ul { list-style: none; }
     font-weight: 500;
     padding: 8px 24px;
     border-radius: 50px;
-    margin-bottom: 32px;
+    margin-bottom: 20px;
     backdrop-filter: blur(10px);
     letter-spacing: 0.5px;
 }
@@ -351,7 +356,7 @@ ul { list-style: none; }
 .hero__title {
     font-family: 'Poppins', sans-serif;
     color: var(--blanco);
-    margin-bottom: 16px;
+    margin-bottom: 10px;
 }
 
 .hero__title-line {
@@ -373,7 +378,7 @@ ul { list-style: none; }
     font-size: 1.2rem;
     color: rgba(255,255,255,0.7);
     font-weight: 300;
-    margin-bottom: 40px;
+    margin-bottom: 24px;
     letter-spacing: 1px;
     font-style: italic;
 }
@@ -383,7 +388,7 @@ ul { list-style: none; }
     justify-content: center;
     gap: 32px;
     flex-wrap: wrap;
-    margin-bottom: 48px;
+    margin-bottom: 28px;
 }
 
 .hero__info-item {
@@ -406,7 +411,7 @@ ul { list-style: none; }
     justify-content: center;
     align-items: center;
     gap: 12px;
-    margin-bottom: 48px;
+    margin-bottom: 28px;
 }
 
 .countdown__item {
