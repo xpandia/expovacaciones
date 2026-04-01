@@ -8,14 +8,43 @@ document.addEventListener('DOMContentLoaded', () => {
     const slides = document.querySelectorAll('.hero__slide');
     let currentSlide = 0;
 
+    // Start zoom on first slide immediately
+    requestAnimationFrame(() => {
+        slides[0].classList.add('hero__slide--zooming');
+    });
+
     function nextSlide() {
-        slides[currentSlide].classList.remove('hero__slide--active');
+        const prev = slides[currentSlide];
         currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.add('hero__slide--active');
+        const next = slides[currentSlide];
+
+        // Reset zoom on next slide before showing it
+        next.style.transition = 'none';
+        next.classList.remove('hero__slide--zooming');
+
+        // Force reflow so the reset takes effect
+        void next.offsetWidth;
+
+        // Restore transition and show
+        next.style.transition = '';
+        next.classList.add('hero__slide--active');
+
+        // Start zooming the new slide
+        requestAnimationFrame(() => {
+            next.classList.add('hero__slide--zooming');
+        });
+
+        // Fade out previous after crossfade begins
+        prev.classList.remove('hero__slide--active');
+
+        // Remove zoom from prev after it fades out
+        setTimeout(() => {
+            prev.classList.remove('hero__slide--zooming');
+        }, 2200);
     }
 
     if (slides.length > 1) {
-        setInterval(nextSlide, 6000);
+        setInterval(nextSlide, 7000);
     }
 
     // --- HEADER SCROLL ---

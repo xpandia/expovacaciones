@@ -262,12 +262,13 @@ ul { list-style: none; }
 
 .hero__slide {
     position: absolute;
-    inset: -20px;
+    inset: -40px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     opacity: 0;
-    transition: opacity 2s ease-in-out;
+    transform: scale(1);
+    transition: opacity 2s ease-in-out, transform 8s ease-in-out;
     will-change: opacity, transform;
 }
 
@@ -275,35 +276,20 @@ ul { list-style: none; }
     opacity: 1;
 }
 
-/* 4 different Ken Burns animations for variety */
-.hero__slide:nth-child(1) {
-    animation: kenburns1 8s ease-in-out infinite;
-}
-.hero__slide:nth-child(2) {
-    animation: kenburns2 8s ease-in-out infinite;
-}
-.hero__slide:nth-child(3) {
-    animation: kenburns3 8s ease-in-out infinite;
-}
-.hero__slide:nth-child(4) {
-    animation: kenburns4 8s ease-in-out infinite;
+.hero__slide--zooming {
+    transform: scale(1.12) translate(-1%, -0.5%);
 }
 
-@keyframes kenburns1 {
-    0%   { transform: scale(1) translate(0, 0); }
-    100% { transform: scale(1.15) translate(-2%, -1%); }
+.hero__slide:nth-child(2).hero__slide--zooming {
+    transform: scale(1.1) translate(1%, 0.5%);
 }
-@keyframes kenburns2 {
-    0%   { transform: scale(1.15) translate(-2%, 0); }
-    100% { transform: scale(1) translate(2%, 1%); }
+
+.hero__slide:nth-child(3).hero__slide--zooming {
+    transform: scale(1.12) translate(-0.5%, 1%);
 }
-@keyframes kenburns3 {
-    0%   { transform: scale(1) translate(2%, 1%); }
-    100% { transform: scale(1.12) translate(-1%, -2%); }
-}
-@keyframes kenburns4 {
-    0%   { transform: scale(1.12) translate(1%, -1%); }
-    100% { transform: scale(1) translate(0, 0); }
+
+.hero__slide:nth-child(4).hero__slide--zooming {
+    transform: scale(1.1) translate(0.5%, -0.5%);
 }
 
 /* Animated gradient overlay */
