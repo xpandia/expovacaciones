@@ -4,6 +4,20 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // --- HERO KEN BURNS SLIDESHOW ---
+    const slides = document.querySelectorAll('.hero__slide');
+    let currentSlide = 0;
+
+    function nextSlide() {
+        slides[currentSlide].classList.remove('hero__slide--active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('hero__slide--active');
+    }
+
+    if (slides.length > 1) {
+        setInterval(nextSlide, 6000);
+    }
+
     // --- HEADER SCROLL ---
     const header = document.getElementById('header');
     const handleScroll = () => {
