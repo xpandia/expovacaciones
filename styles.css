@@ -655,6 +655,136 @@ ul { list-style: none; }
 }
 
 /* ============================================
+   ZONES (MACROZONAS)
+   ============================================ */
+.zones {
+    padding: 100px 0;
+    background: var(--blanco);
+}
+
+.zones__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.zone {
+    background: var(--offwhite);
+    border-radius: var(--radius-lg);
+    padding: 40px 32px;
+    text-align: center;
+    transition: var(--transition);
+    border: 2px solid transparent;
+    position: relative;
+}
+
+.zone:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(44, 61, 107, 0.08);
+}
+
+.zone--featured {
+    background: var(--azul);
+    color: var(--blanco);
+}
+
+.zone--featured:hover {
+    border-color: var(--magenta);
+}
+
+.zone__number {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: rgba(44, 61, 107, 0.06);
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.zone--featured .zone__number {
+    color: rgba(255, 255, 255, 0.1);
+}
+
+.zone__icon {
+    width: 72px;
+    height: 72px;
+    background: rgba(44, 61, 107, 0.08);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: var(--azul);
+}
+
+.zone--featured .zone__icon {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--amarillo);
+}
+
+.zone__title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--azul);
+    margin-bottom: 12px;
+}
+
+.zone--featured .zone__title {
+    color: var(--blanco);
+}
+
+.zone__desc {
+    font-size: 0.92rem;
+    color: var(--gris-light);
+    line-height: 1.7;
+}
+
+.zone--featured .zone__desc {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+/* ============================================
+   SUSTAINABILITY
+   ============================================ */
+.sustainability {
+    padding: 48px 0;
+    background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+}
+
+.sustainability__inner {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.sustainability__icon {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    background: rgba(46, 125, 50, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2e7d32;
+}
+
+.sustainability__text h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #2e7d32;
+    margin-bottom: 8px;
+}
+
+.sustainability__text p {
+    font-size: 0.95rem;
+    color: var(--gris);
+    line-height: 1.7;
+}
+
+/* ============================================
    EXHIBITORS
    ============================================ */
 .exhibitors {
@@ -1116,6 +1246,15 @@ ul { list-style: none; }
 @media (max-width: 1024px) {
     .features__grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .zones__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sustainability__inner {
+        flex-direction: column;
+        text-align: center;
     }
 
     .exhibitors__layout {
