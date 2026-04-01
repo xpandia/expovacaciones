@@ -4,6 +4,7 @@
    ============================================ */
 
 :root {
+    /* Brand */
     --azul: #2c3d6b;
     --azul-dark: #1e2d52;
     --azul-light: #3a5090;
@@ -13,13 +14,25 @@
     --amarillo-dark: #c99d12;
     --gris: #545453;
     --gris-light: #8a8a89;
+    /* Wellness palette */
+    --teal: #0891b2;
+    --teal-dark: #0e7490;
+    --teal-light: #67e8f9;
+    --sand: #fef3e2;
+    --sand-dark: #fde8c8;
+    --ocean: #164e63;
+    --ocean-light: #1e6e82;
+    --seafoam: #ecfeff;
+    --coral: #f97066;
+    --palm: #15803d;
+    /* Base */
     --blanco: #ffffff;
-    --offwhite: #f8f9fc;
-    --negro: #1a1a2e;
-    --radius: 12px;
-    --radius-lg: 20px;
-    --shadow: 0 4px 30px rgba(44, 61, 107, 0.08);
-    --shadow-lg: 0 20px 60px rgba(44, 61, 107, 0.12);
+    --offwhite: #fafcfd;
+    --negro: #0c1821;
+    --radius: 16px;
+    --radius-lg: 24px;
+    --shadow: 0 4px 30px rgba(8, 145, 178, 0.06);
+    --shadow-lg: 0 20px 60px rgba(8, 145, 178, 0.1);
     --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -154,7 +167,7 @@ ul { list-style: none; }
 }
 
 .header--scrolled .logo-accent {
-    color: var(--magenta);
+    color: var(--teal);
 }
 
 .logo-text--footer {
@@ -191,8 +204,8 @@ ul { list-style: none; }
 }
 
 .header--scrolled .nav-link:hover {
-    color: var(--azul);
-    background: rgba(44, 61, 107, 0.06);
+    color: var(--teal-dark);
+    background: rgba(8, 145, 178, 0.06);
 }
 
 .nav-link--cta {
@@ -207,14 +220,14 @@ ul { list-style: none; }
 }
 
 .header__logo-img {
-    height: 52px;
+    height: 64px;
     width: auto;
     transition: var(--transition);
     filter: brightness(0) invert(1);
 }
 
 .header--scrolled .header__logo-img {
-    height: 44px;
+    height: 52px;
     filter: none;
 }
 
@@ -294,20 +307,20 @@ ul { list-style: none; }
     transform: scale(1.1) translate(0.5%, -0.5%);
 }
 
-/* Animated gradient overlay */
+/* Animated gradient overlay - Wellness/Ocean */
 .hero__gradient-overlay {
     position: absolute;
     inset: 0;
     z-index: 2;
     background: linear-gradient(
         135deg,
-        rgba(44, 61, 107, 0.85) 0%,
-        rgba(30, 45, 82, 0.7) 30%,
-        rgba(249, 22, 126, 0.3) 60%,
-        rgba(234, 184, 24, 0.2) 100%
+        rgba(22, 78, 99, 0.88) 0%,
+        rgba(8, 145, 178, 0.55) 30%,
+        rgba(249, 22, 126, 0.2) 60%,
+        rgba(234, 184, 24, 0.15) 100%
     );
     background-size: 300% 300%;
-    animation: gradientShift 12s ease-in-out infinite;
+    animation: gradientShift 15s ease-in-out infinite;
 }
 
 @keyframes gradientShift {
@@ -349,7 +362,7 @@ ul { list-style: none; }
 }
 
 .hero__anato-logo {
-    height: 28px;
+    height: 40px;
     width: auto;
 }
 
@@ -368,7 +381,7 @@ ul { list-style: none; }
 }
 
 .hero__title-city {
-    background: linear-gradient(135deg, var(--amarillo), var(--magenta));
+    background: linear-gradient(135deg, var(--teal-light), var(--amarillo), var(--magenta));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -515,7 +528,7 @@ ul { list-style: none; }
 .stat__number {
     font-size: 2.8rem;
     font-weight: 800;
-    color: var(--azul);
+    color: var(--ocean);
     line-height: 1;
     font-variant-numeric: tabular-nums;
 }
@@ -523,7 +536,7 @@ ul { list-style: none; }
 .stat__suffix {
     font-size: 2rem;
     font-weight: 700;
-    color: var(--magenta);
+    color: var(--teal);
 }
 
 .stat__label {
@@ -531,6 +544,38 @@ ul { list-style: none; }
     color: var(--gris-light);
     margin-top: 8px;
     font-weight: 500;
+}
+
+/* ============================================
+   WAVE DIVIDERS
+   ============================================ */
+.wave-divider {
+    line-height: 0;
+    margin-top: -1px;
+}
+
+.wave-divider svg {
+    width: 100%;
+    height: 60px;
+    display: block;
+}
+
+.wave-divider--sand {
+    color: var(--sand);
+    background: var(--blanco);
+}
+
+.wave-divider--ocean {
+    color: var(--ocean);
+    background: var(--blanco);
+}
+
+.wave-divider--white {
+    color: var(--blanco);
+}
+
+.wave-divider--seafoam {
+    color: var(--seafoam);
 }
 
 /* ============================================
@@ -548,18 +593,18 @@ ul { list-style: none; }
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: var(--magenta);
+    color: var(--teal);
     margin-bottom: 16px;
 }
 
 .section-header--light .section-header__tag {
-    color: var(--amarillo);
+    color: var(--teal-light);
 }
 
 .section-header__title {
     font-size: clamp(1.8rem, 4vw, 2.6rem);
     font-weight: 800;
-    color: var(--azul);
+    color: var(--ocean);
     line-height: 1.2;
     letter-spacing: -0.5px;
 }
@@ -573,7 +618,8 @@ ul { list-style: none; }
    ============================================ */
 .about {
     padding: 100px 0;
-    background: var(--offwhite);
+    background: linear-gradient(180deg, var(--sand) 0%, var(--blanco) 100%);
+    position: relative;
 }
 
 .about__grid {
@@ -621,18 +667,18 @@ ul { list-style: none; }
     flex-shrink: 0;
     width: 56px;
     height: 56px;
-    background: linear-gradient(135deg, rgba(249,22,126,0.08), rgba(44,61,107,0.08));
+    background: linear-gradient(135deg, rgba(8,145,178,0.1), rgba(103,232,249,0.1));
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--magenta);
+    color: var(--teal);
 }
 
 .about__card h3 {
     font-size: 1.05rem;
     font-weight: 700;
-    color: var(--azul);
+    color: var(--ocean);
     margin-bottom: 6px;
 }
 
@@ -647,7 +693,7 @@ ul { list-style: none; }
    ============================================ */
 .features {
     padding: 100px 0;
-    background: linear-gradient(135deg, var(--azul) 0%, var(--azul-dark) 100%);
+    background: linear-gradient(135deg, var(--ocean) 0%, var(--teal-dark) 100%);
     position: relative;
 }
 
@@ -676,13 +722,13 @@ ul { list-style: none; }
 .feature__icon {
     width: 72px;
     height: 72px;
-    background: linear-gradient(135deg, var(--magenta), var(--amarillo));
+    background: linear-gradient(135deg, var(--teal-light), var(--amarillo));
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 24px;
-    color: var(--blanco);
+    color: var(--ocean);
 }
 
 .feature__title {
@@ -703,7 +749,7 @@ ul { list-style: none; }
    ============================================ */
 .zones {
     padding: 100px 0;
-    background: var(--blanco);
+    background: var(--seafoam);
 }
 
 .zones__grid {
@@ -729,18 +775,18 @@ ul { list-style: none; }
 }
 
 .zone--featured {
-    background: var(--azul);
+    background: linear-gradient(135deg, var(--ocean), var(--teal-dark));
     color: var(--blanco);
 }
 
 .zone--featured:hover {
-    border-color: var(--magenta);
+    border-color: var(--teal-light);
 }
 
 .zone__number {
     font-size: 3.5rem;
     font-weight: 900;
-    color: rgba(44, 61, 107, 0.06);
+    color: rgba(8, 145, 178, 0.08);
     line-height: 1;
     margin-bottom: 8px;
 }
@@ -752,24 +798,24 @@ ul { list-style: none; }
 .zone__icon {
     width: 72px;
     height: 72px;
-    background: rgba(44, 61, 107, 0.08);
+    background: rgba(8, 145, 178, 0.1);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 20px;
-    color: var(--azul);
+    color: var(--teal);
 }
 
 .zone--featured .zone__icon {
     background: rgba(255, 255, 255, 0.15);
-    color: var(--amarillo);
+    color: var(--teal-light);
 }
 
 .zone__title {
     font-size: 1.2rem;
     font-weight: 700;
-    color: var(--azul);
+    color: var(--ocean);
     margin-bottom: 12px;
 }
 
@@ -792,7 +838,7 @@ ul { list-style: none; }
    ============================================ */
 .gallery {
     padding: 100px 0;
-    background: var(--offwhite);
+    background: linear-gradient(180deg, var(--blanco) 0%, var(--sand) 100%);
 }
 
 .gallery__grid {
@@ -893,7 +939,7 @@ ul { list-style: none; }
    ============================================ */
 .exhibitors {
     padding: 100px 0;
-    background: var(--blanco);
+    background: var(--sand);
 }
 
 .exhibitors__layout {
@@ -907,7 +953,7 @@ ul { list-style: none; }
 .exhibitors__benefits h3 {
     font-size: 1.3rem;
     font-weight: 700;
-    color: var(--azul);
+    color: var(--ocean);
     margin-bottom: 24px;
 }
 
@@ -930,11 +976,11 @@ ul { list-style: none; }
 }
 
 .exhibitors__list li:hover {
-    background: rgba(249,22,126,0.05);
+    background: rgba(8,145,178,0.06);
 }
 
 .exhibitors__list li svg {
-    color: var(--magenta);
+    color: var(--teal);
     flex-shrink: 0;
 }
 
@@ -953,7 +999,7 @@ ul { list-style: none; }
 }
 
 .benefit-card:hover {
-    border-color: rgba(249,22,126,0.15);
+    border-color: rgba(8,145,178,0.2);
     transform: translateY(-4px);
     box-shadow: var(--shadow);
 }
@@ -961,7 +1007,7 @@ ul { list-style: none; }
 .benefit-card__number {
     font-size: 2rem;
     font-weight: 900;
-    color: rgba(44,61,107,0.1);
+    color: rgba(8,145,178,0.12);
     line-height: 1;
     margin-bottom: 12px;
 }
@@ -969,7 +1015,7 @@ ul { list-style: none; }
 .benefit-card h4 {
     font-size: 1rem;
     font-weight: 700;
-    color: var(--azul);
+    color: var(--ocean);
     margin-bottom: 8px;
 }
 
@@ -989,7 +1035,7 @@ ul { list-style: none; }
    ============================================ */
 .location {
     padding: 100px 0;
-    background: linear-gradient(135deg, var(--azul-dark) 0%, var(--azul) 100%);
+    background: linear-gradient(135deg, var(--ocean) 0%, var(--teal-dark) 100%);
 }
 
 .location__grid {
@@ -1052,12 +1098,12 @@ ul { list-style: none; }
     flex-shrink: 0;
     width: 48px;
     height: 48px;
-    background: rgba(234,184,24,0.15);
+    background: rgba(103,232,249,0.15);
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--amarillo);
+    color: var(--teal-light);
 }
 
 .location__option h4 {
@@ -1078,7 +1124,7 @@ ul { list-style: none; }
    ============================================ */
 .faq {
     padding: 100px 0;
-    background: var(--offwhite);
+    background: var(--sand);
 }
 
 .faq__list {
@@ -1109,13 +1155,13 @@ ul { list-style: none; }
     font-family: inherit;
     font-size: 1rem;
     font-weight: 600;
-    color: var(--azul);
+    color: var(--ocean);
     text-align: left;
     transition: var(--transition);
 }
 
 .faq__question:hover {
-    color: var(--magenta);
+    color: var(--teal);
 }
 
 .faq__question svg {
@@ -1126,7 +1172,7 @@ ul { list-style: none; }
 
 .faq__item.active .faq__question svg {
     transform: rotate(180deg);
-    color: var(--magenta);
+    color: var(--teal);
 }
 
 .faq__answer {
@@ -1147,7 +1193,7 @@ ul { list-style: none; }
    ============================================ */
 .contact {
     padding: 100px 0;
-    background: linear-gradient(135deg, var(--azul) 0%, var(--azul-dark) 100%);
+    background: linear-gradient(135deg, var(--ocean) 0%, #0b3040 100%);
 }
 
 .contact__grid {
@@ -1178,7 +1224,7 @@ ul { list-style: none; }
 
 .contact__detail svg {
     flex-shrink: 0;
-    color: var(--amarillo);
+    color: var(--teal-light);
     margin-top: 4px;
 }
 
@@ -1217,7 +1263,7 @@ ul { list-style: none; }
     display: block;
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--azul);
+    color: var(--ocean);
     margin-bottom: 6px;
 }
 
@@ -1239,9 +1285,9 @@ ul { list-style: none; }
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: var(--magenta);
+    border-color: var(--teal);
     background: var(--blanco);
-    box-shadow: 0 0 0 4px rgba(249,22,126,0.08);
+    box-shadow: 0 0 0 4px rgba(8,145,178,0.1);
 }
 
 .form-group textarea {
@@ -1262,7 +1308,7 @@ ul { list-style: none; }
    FOOTER
    ============================================ */
 .footer {
-    background: var(--negro);
+    background: #071a24;
     padding: 60px 0 0;
 }
 
