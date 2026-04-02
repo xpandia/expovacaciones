@@ -410,12 +410,12 @@ ul { list-style: none; }
     display: inline-flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
+    gap: 2px;
     color: white;
     font-size: 0.8rem;
     font-weight: 500;
-    padding: 16px 32px 12px;
-    margin-bottom: 28px;
+    padding: 0;
+    margin-bottom: 8px;
     letter-spacing: 2px;
     text-transform: uppercase;
     background: none;
@@ -427,8 +427,8 @@ ul { list-style: none; }
     font-weight: 700;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: var(--amarillo);
-    text-shadow: 0 0 20px rgba(255, 193, 7, 0.4);
+    color: white;
+    text-shadow: none;
 }
 
 .hero__anato-logo {
