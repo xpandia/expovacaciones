@@ -409,18 +409,23 @@ ul { list-style: none; }
 .hero__badge {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    color: rgba(255,255,255,0.85);
-    font-size: 0.85rem;
-    font-weight: 400;
-    padding: 0;
+    gap: 12px;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 10px 24px;
     margin-bottom: 28px;
     letter-spacing: 1px;
     text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 60px;
 }
 
 .hero__anato-logo {
-    height: 96px;
+    height: 120px;
     width: auto;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
 }
