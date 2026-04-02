@@ -470,16 +470,26 @@ ul { list-style: none; }
     font-weight: 900;
     line-height: 1.02;
     letter-spacing: -3px;
-    color: var(--blanco);
-    text-shadow: 0 4px 30px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.2);
-}
-
-.hero__title-city {
-    background: linear-gradient(135deg, var(--magenta), var(--amarillo));
+    background: linear-gradient(
+        90deg,
+        rgba(255,255,255,0.85) 0%,
+        rgba(255,255,255,1) 20%,
+        rgba(200,215,235,0.7) 40%,
+        rgba(255,255,255,1) 50%,
+        rgba(220,210,240,0.7) 60%,
+        rgba(255,255,255,1) 80%,
+        rgba(255,255,255,0.85) 100%
+    );
+    background-size: 200% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 4px 20px rgba(249, 22, 126, 0.3));
+    animation: metallic-shine 10s linear infinite;
+    filter: drop-shadow(0 4px 30px rgba(0,0,0,0.25)) drop-shadow(0 0 60px rgba(255,255,255,0.1));
+}
+
+.hero__title-city {
+    opacity: 1;
 }
 
 .hero__slogan {
@@ -536,18 +546,12 @@ ul { list-style: none; }
     }
 }
 
-@keyframes color-shift {
-    0%, 100% {
-        color: var(--blanco);
+@keyframes metallic-shine {
+    0% {
+        background-position: 200% 50%;
     }
-    25% {
-        color: var(--magenta);
-    }
-    50% {
-        color: var(--amarillo);
-    }
-    75% {
-        color: var(--azul-light);
+    100% {
+        background-position: -200% 50%;
     }
 }
 
