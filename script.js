@@ -107,13 +107,14 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateCountdown, 1000);
 
     // --- ANIMATED COUNTERS ---
-    const stats = document.querySelectorAll('.stat');
+    const stats = document.querySelectorAll('.stat-inline');
     let statsAnimated = false;
 
     function animateCounters() {
         if (statsAnimated) return;
 
-        const statsSection = document.querySelector('.stats');
+        const statsSection = document.querySelector('.stats-inline');
+        if (!statsSection) return;
         const rect = statsSection.getBoundingClientRect();
         if (rect.top > window.innerHeight * 0.8) return;
 
@@ -121,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         stats.forEach(stat => {
             const target = parseInt(stat.dataset.target, 10);
-            const numberEl = stat.querySelector('.stat__number');
+            const numberEl = stat.querySelector('.stat-inline__number');
             const duration = 2000;
             const start = performance.now();
 
@@ -142,25 +143,65 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', animateCounters, { passive: true });
     animateCounters();
 
-    // --- SCROLL REVEAL ---
+    // --- SCROLL REVEAL (Enhanced) ---
+    // Standard reveal (slide up)
     const revealElements = document.querySelectorAll(
-        '.about__card, .feature, .benefit-card, .location__option, .faq__item, .exhibitors__list li'
+        '.about__card, .benefit-card, .location__option, .faq__item, .exhibitors__list li'
     );
-
     revealElements.forEach(el => el.classList.add('reveal'));
 
+    // Section headers
+    document.querySelectorAll('.section-header').forEach(el => {
+        revealElements.length; // just to have it in scope
+        el.classList.add('section-header'); // already has class, observer will handle
+    });
+
+    // Features get alternating left/right animations
+    document.querySelectorAll('.feature').forEach((el, i) => {
+        el.classList.add(i % 2 === 0 ? 'reveal-left' : 'reveal-right');
+    });
+
+    // Stats inline gets stagger animation
+    const statsInline = document.querySelector('.stats-inline');
+    if (statsInline) statsInline.classList.add('stagger-children');
+
+    // Gallery items get scale animation
+    document.querySelectorAll('.gallery__item').forEach(el => {
+        el.classList.add('reveal-scale');
+    });
+
+    // Unified observer for all reveal types
+    const allRevealElements = document.querySelectorAll(
+        '.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-children, .section-header'
+    );
+
     const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
+        entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.classList.add('visible');
-                }, index * 80);
+                entry.target.classList.add('visible');
                 revealObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 
-    revealElements.forEach(el => revealObserver.observe(el));
+    allRevealElements.forEach(el => revealObserver.observe(el));
+
+    // --- PARALLAX on scroll ---
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                const scrollY = window.scrollY;
+                // Subtle parallax on hero slideshow
+                const slideshow = document.querySelector('.hero__slideshow');
+                if (slideshow && scrollY < window.innerHeight) {
+                    slideshow.style.transform = `translateY(${scrollY * 0.3}px)`;
+                }
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }, { passive: true });
 
     // --- FAQ ACCORDION ---
     document.querySelectorAll('.faq__question').forEach(button => {
@@ -185,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- FORM HANDLING ---
     const form = document.getElementById('contactForm');
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         const btn = form.querySelector('button[type="submit"]');
@@ -193,20 +234,43 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.textContent = 'Enviando...';
         btn.disabled = true;
 
-        // Simulate submission (replace with actual endpoint)
-        setTimeout(() => {
-            btn.textContent = 'Enviado';
-            btn.style.background = '#22c55e';
-            btn.style.borderColor = '#22c55e';
+        const data = {
+            nombre: form.nombre.value,
+            apellido: form.apellido.value,
+            empresa: form.empresa.value,
+            email: form.email.value,
+            telefono: form.telefono.value,
+            tipo: form.tipo.value,
+            mensaje: form.mensaje.value
+        };
 
-            setTimeout(() => {
-                btn.textContent = originalText;
-                btn.style.background = '';
-                btn.style.borderColor = '';
-                btn.disabled = false;
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            if (res.ok) {
+                btn.textContent = '¡Enviado!';
+                btn.style.background = '#22c55e';
+                btn.style.borderColor = '#22c55e';
                 form.reset();
-            }, 3000);
-        }, 1500);
+            } else {
+                throw new Error('Error en el envío');
+            }
+        } catch (err) {
+            btn.textContent = 'Error, intenta de nuevo';
+            btn.style.background = '#ef4444';
+            btn.style.borderColor = '#ef4444';
+        }
+
+        setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.background = '';
+            btn.style.borderColor = '';
+            btn.disabled = false;
+        }, 3000);
     });
 
     // --- ACTIVE NAV LINK ---

@@ -20,7 +20,10 @@
     <header class="header" id="header">
         <div class="container header__inner">
             <a href="#" class="header__logo">
-                <img src="assets/expovacaciones-logo.png" alt="Expovacaciones" class="header__logo-img">
+                <picture>
+                    <source srcset="assets/expovacaciones-logo.webp" type="image/webp">
+                    <img src="assets/expovacaciones-logo.png" alt="Expovacaciones" class="header__logo-img">
+                </picture>
             </a>
             <nav class="header__nav" id="nav">
                 <a href="#inicio" class="nav-link">Inicio</a>
@@ -41,16 +44,19 @@
     <!-- HERO -->
     <section class="hero" id="inicio">
         <div class="hero__slideshow">
-            <div class="hero__slide hero__slide--active" style="background-image: url('assets/photos/hero-wellness-1.jpg')"></div>
-            <div class="hero__slide" style="background-image: url('assets/photos/hero-wellness-5.jpg')"></div>
-            <div class="hero__slide" style="background-image: url('assets/photos/hero-wellness-4.jpg')"></div>
-            <div class="hero__slide" style="background-image: url('assets/photos/hero-wellness-3.jpg')"></div>
+            <div class="hero__slide hero__slide--active" style="background-image: url('assets/photos/hero-wellness-1.webp')"></div>
+            <div class="hero__slide" style="background-image: url('assets/photos/hero-wellness-5.webp')"></div>
+            <div class="hero__slide" style="background-image: url('assets/photos/hero-wellness-4.webp')"></div>
+            <div class="hero__slide" style="background-image: url('assets/photos/hero-wellness-3.webp')"></div>
         </div>
         <div class="hero__gradient-overlay"></div>
         <div class="hero__overlay"></div>
         <div class="container hero__content">
             <div class="hero__badge">
-                <img src="assets/anato-suroccidente-blanco.png" alt="ANATO Suroccidente" class="hero__anato-logo">
+                <picture>
+                    <source srcset="assets/anato-suroccidente-blanco.webp" type="image/webp">
+                    <img src="assets/anato-suroccidente-blanco.png" alt="ANATO Suroccidente" class="hero__anato-logo">
+                </picture>
                 <span>presenta</span>
             </div>
             <h1 class="hero__title">
@@ -103,35 +109,9 @@
         </div>
     </section>
 
-    <!-- STATS -->
-    <section class="stats">
-        <div class="container stats__grid">
-            <div class="stat" data-target="5000">
-                <span class="stat__number">0</span>
-                <span class="stat__suffix">+</span>
-                <p class="stat__label">Visitantes Esperados</p>
-            </div>
-            <div class="stat" data-target="80">
-                <span class="stat__number">0</span>
-                <span class="stat__suffix">+</span>
-                <p class="stat__label">Expositores</p>
-            </div>
-            <div class="stat" data-target="3">
-                <span class="stat__number">0</span>
-                <span class="stat__suffix"></span>
-                <p class="stat__label">Días de Feria</p>
-            </div>
-            <div class="stat" data-target="100">
-                <span class="stat__number">0</span>
-                <span class="stat__suffix">%</span>
-                <p class="stat__label">Entrada Gratuita</p>
-            </div>
-        </div>
-    </section>
-
     <!-- Wave divider -->
     <div class="wave-divider wave-divider--sand">
-        <svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,40 C360,100 1080,0 1440,60 L1440,100 L0,100 Z" fill="currentColor"/></svg>
+        <svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,0 C360,70 1080,0 1440,30 L1440,100 L0,100 Z" fill="currentColor"/></svg>
     </div>
 
     <!-- SOBRE EL EVENTO -->
@@ -140,6 +120,23 @@
             <div class="section-header">
                 <p class="section-header__tag">Sobre el Evento</p>
                 <h2 class="section-header__title">La Feria de Turismo más importante del Suroccidente Colombiano</h2>
+            </div>
+            <div class="stats-inline">
+                <div class="stat-inline" data-target="80">
+                    <span class="stat-inline__number">0</span>
+                    <span class="stat-inline__suffix">+</span>
+                    <p class="stat-inline__label">Expositores</p>
+                </div>
+                <div class="stat-inline" data-target="3">
+                    <span class="stat-inline__number">0</span>
+                    <span class="stat-inline__suffix"></span>
+                    <p class="stat-inline__label">Días de Feria</p>
+                </div>
+                <div class="stat-inline" data-target="100">
+                    <span class="stat-inline__number">0</span>
+                    <span class="stat-inline__suffix">%</span>
+                    <p class="stat-inline__label">Entrada Gratuita</p>
+                </div>
             </div>
             <div class="about__grid">
                 <div class="about__text">
@@ -176,7 +173,7 @@
 
     <!-- Wave divider -->
     <div class="wave-divider wave-divider--ocean">
-        <svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,60 C480,0 960,100 1440,40 L1440,100 L0,100 Z" fill="currentColor"/></svg>
+        <svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,0 C480,70 960,0 1440,30 L1440,100 L0,100 Z" fill="currentColor"/></svg>
     </div>
 
     <!-- QUÉ ENCONTRARÁS -->
@@ -218,6 +215,11 @@
             </div>
         </div>
     </section>
+
+    <!-- Wave divider -->
+    <div class="wave-divider wave-divider--seafoam">
+        <svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,40 C360,100 1080,0 1440,60 L1440,100 L0,100 Z" fill="currentColor"/></svg>
+    </div>
 
     <!-- MACROZONAS -->
     <section class="zones" id="zonas">
@@ -265,43 +267,79 @@
             <div class="gallery__grid">
                 <!-- Fila 1: Shows y cultura -->
                 <div class="gallery__item gallery__item--wide">
-                    <img src="assets/photos/show-tropicana.jpg" alt="Show en vivo con artista y arco Tropicana" loading="lazy">
+                    <picture>
+                        <source srcset="assets/photos/show-tropicana.webp" type="image/webp">
+                        <img src="assets/photos/show-tropicana.jpg" alt="Show en vivo con artista y arco Tropicana" loading="lazy">
+                    </picture>
                 </div>
                 <div class="gallery__item">
-                    <img src="assets/photos/escultura-cultural.jpg" alt="Escultura afrocolombiana vibrante" loading="lazy">
+                    <picture>
+                        <source srcset="assets/photos/escultura-cultural.webp" type="image/webp">
+                        <img src="assets/photos/escultura-cultural.jpg" alt="Escultura afrocolombiana vibrante" loading="lazy">
+                    </picture>
                 </div>
                 <div class="gallery__item">
-                    <img src="assets/photos/mascotas-inflables.jpg" alt="Mascotas inflables gigantes" loading="lazy">
+                    <picture>
+                        <source srcset="assets/photos/mascotas-inflables.webp" type="image/webp">
+                        <img src="assets/photos/mascotas-inflables.jpg" alt="Mascotas inflables gigantes" loading="lazy">
+                    </picture>
                 </div>
                 <!-- Fila 2: Stands comerciales -->
                 <div class="gallery__item">
-                    <img src="assets/photos/stand-viajes.jpg" alt="Stand Viajes El Corte Inglés" loading="lazy">
+                    <picture>
+                        <source srcset="assets/photos/stand-viajes.webp" type="image/webp">
+                        <img src="assets/photos/stand-viajes.jpg" alt="Stand Viajes El Corte Inglés" loading="lazy">
+                    </picture>
                 </div>
                 <div class="gallery__item gallery__item--wide">
-                    <img src="assets/photos/corredor-entrada.jpg" alt="Corredor de entrada Expovacaciones" loading="lazy">
+                    <picture>
+                        <source srcset="assets/photos/corredor-entrada.webp" type="image/webp">
+                        <img src="assets/photos/corredor-entrada.jpg" alt="Corredor de entrada Expovacaciones" loading="lazy">
+                    </picture>
                 </div>
                 <div class="gallery__item">
-                    <img src="assets/photos/stand-cvu.jpg" alt="Stand CVU atendiendo visitantes" loading="lazy">
+                    <picture>
+                        <source srcset="assets/photos/stand-cvu.webp" type="image/webp">
+                        <img src="assets/photos/stand-cvu.jpg" alt="Stand CVU atendiendo visitantes" loading="lazy">
+                    </picture>
                 </div>
                 <!-- Fila 3: Más stands y experiencias -->
                 <div class="gallery__item gallery__item--wide">
-                    <img src="assets/photos/plaza-llena.jpg" alt="Plaza llena de visitantes" loading="lazy">
+                    <picture>
+                        <source srcset="assets/photos/plaza-llena.webp" type="image/webp">
+                        <img src="assets/photos/plaza-llena.jpg" alt="Plaza llena de visitantes" loading="lazy">
+                    </picture>
                 </div>
                 <div class="gallery__item">
-                    <img src="assets/photos/stand-narino.jpg" alt="Stand de Nariño con productos regionales" loading="lazy">
+                    <picture>
+                        <source srcset="assets/photos/stand-narino.webp" type="image/webp">
+                        <img src="assets/photos/stand-narino.jpg" alt="Stand de Nariño con productos regionales" loading="lazy">
+                    </picture>
                 </div>
                 <div class="gallery__item">
-                    <img src="assets/photos/stand-yumbo.jpg" alt="Stand Alcaldía de Yumbo con artesanías" loading="lazy">
+                    <picture>
+                        <source srcset="assets/photos/stand-yumbo.webp" type="image/webp">
+                        <img src="assets/photos/stand-yumbo.jpg" alt="Stand Alcaldía de Yumbo con artesanías" loading="lazy">
+                    </picture>
                 </div>
                 <!-- Fila 4: Ambiente y cierre -->
                 <div class="gallery__item">
-                    <img src="assets/photos/stand-aviatur.jpg" alt="Stand de Aviatur" loading="lazy">
+                    <picture>
+                        <source srcset="assets/photos/stand-aviatur.webp" type="image/webp">
+                        <img src="assets/photos/stand-aviatur.jpg" alt="Stand de Aviatur" loading="lazy">
+                    </picture>
                 </div>
                 <div class="gallery__item">
-                    <img src="assets/photos/musica-vivo.jpg" alt="Música en vivo con saxofón" loading="lazy">
+                    <picture>
+                        <source srcset="assets/photos/musica-vivo.webp" type="image/webp">
+                        <img src="assets/photos/musica-vivo.jpg" alt="Música en vivo con saxofón" loading="lazy">
+                    </picture>
                 </div>
                 <div class="gallery__item gallery__item--wide">
-                    <img src="assets/photos/multitud-entrada.jpg" alt="Multitud en la entrada de Expovacaciones" loading="lazy">
+                    <picture>
+                        <source srcset="assets/photos/multitud-entrada.webp" type="image/webp">
+                        <img src="assets/photos/multitud-entrada.jpg" alt="Multitud en la entrada de Expovacaciones" loading="lazy">
+                    </picture>
                 </div>
             </div>
         </div>
@@ -602,7 +640,10 @@
         <div class="container">
             <div class="footer__top">
                 <div class="footer__brand">
-                    <img src="assets/expovacaciones-logo.png" alt="Expovacaciones" class="footer__logo-img">
+                    <picture>
+                        <source srcset="assets/expovacaciones-logo.webp" type="image/webp">
+                        <img src="assets/expovacaciones-logo.png" alt="Expovacaciones" class="footer__logo-img">
+                    </picture>
                     <p>Un lugar, millones de experiencias</p>
                     <div class="footer__anato">
                         <span>Una marca de</span>
