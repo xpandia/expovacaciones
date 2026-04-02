@@ -1,8 +1,12 @@
 // ============================================
 // EXPOVACACIONES CALI 2026 - Scripts
+// Premium 2026 Edition with enhanced animations
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    // --- REDUCED MOTION CHECK ---
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // --- HERO KEN BURNS SLIDESHOW ---
     const slides = document.querySelectorAll('.hero__slide');
@@ -49,11 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- HEADER SCROLL ---
     const header = document.getElementById('header');
-    const handleScroll = () => {
+    const handleHeaderScroll = () => {
         header.classList.toggle('header--scrolled', window.scrollY > 60);
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+    handleHeaderScroll();
 
     // --- MOBILE MENU ---
     const hamburger = document.getElementById('hamburger');
@@ -106,9 +110,17 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // --- ANIMATED COUNTERS ---
+    // --- ANIMATED COUNTERS (Enhanced with stagger) ---
     const stats = document.querySelectorAll('.stat-inline');
     let statsAnimated = false;
+
+    // Add stagger-ready class for entrance animation
+    if (!prefersReducedMotion) {
+        stats.forEach((stat, i) => {
+            stat.classList.add('stat-anim-ready');
+            stat.style.transitionDelay = `${i * 0.15}s`;
+        });
+    }
 
     function animateCounters() {
         if (statsAnimated) return;
@@ -120,23 +132,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
         statsAnimated = true;
 
-        stats.forEach(stat => {
+        stats.forEach((stat, index) => {
             const target = parseInt(stat.dataset.target, 10);
             const numberEl = stat.querySelector('.stat-inline__number');
             const duration = 2000;
-            const start = performance.now();
+            const delayMs = index * 150;
 
-            function step(timestamp) {
-                const progress = Math.min((timestamp - start) / duration, 1);
-                const eased = 1 - Math.pow(1 - progress, 3);
-                numberEl.textContent = Math.floor(eased * target).toLocaleString('es-CO');
+            // Trigger entrance animation
+            setTimeout(() => {
+                stat.classList.add('stat-visible');
+            }, delayMs);
 
-                if (progress < 1) {
-                    requestAnimationFrame(step);
+            // Start counter with delay offset per item
+            setTimeout(() => {
+                const start = performance.now();
+
+                function step(timestamp) {
+                    const progress = Math.min((timestamp - start) / duration, 1);
+                    // Ease-out cubic
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    numberEl.textContent = Math.floor(eased * target).toLocaleString('es-CO');
+
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    }
                 }
-            }
 
-            requestAnimationFrame(step);
+                requestAnimationFrame(step);
+            }, delayMs);
         });
     }
 
@@ -152,7 +175,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Section headers
     document.querySelectorAll('.section-header').forEach(el => {
-        revealElements.length; // just to have it in scope
         el.classList.add('section-header'); // already has class, observer will handle
     });
 
@@ -165,14 +187,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const statsInline = document.querySelector('.stats-inline');
     if (statsInline) statsInline.classList.add('stagger-children');
 
-    // Gallery items get scale animation
-    document.querySelectorAll('.gallery__item').forEach(el => {
-        el.classList.add('reveal-scale');
+    // Gallery items: clip-path reveal instead of simple scale
+    document.querySelectorAll('.gallery__item').forEach((el, i) => {
+        // Remove old reveal-scale if present
+        el.classList.remove('reveal-scale');
+        // Alternate between bottom and left reveal
+        el.classList.add('reveal-clip');
+        if (i % 3 === 1) {
+            el.classList.add('reveal-clip--left');
+        }
     });
 
     // Unified observer for all reveal types
     const allRevealElements = document.querySelectorAll(
-        '.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-children, .section-header'
+        '.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-clip, .stagger-children, .section-header'
     );
 
     const revealObserver = new IntersectionObserver((entries) => {
@@ -186,22 +214,177 @@ document.addEventListener('DOMContentLoaded', () => {
 
     allRevealElements.forEach(el => revealObserver.observe(el));
 
-    // --- PARALLAX on scroll ---
-    let ticking = false;
+    // --- PARALLAX ON SCROLL (Enhanced) ---
+    let parallaxTicking = false;
+
+    function updateParallax() {
+        if (prefersReducedMotion) return;
+
+        const scrollY = window.scrollY;
+
+        // Hero slideshow parallax
+        const slideshow = document.querySelector('.hero__slideshow');
+        if (slideshow && scrollY < window.innerHeight) {
+            slideshow.style.transform = `translateY(${scrollY * 0.3}px)`;
+        }
+
+        // Gallery section parallax
+        const gallerySection = document.querySelector('.gallery');
+        if (gallerySection) {
+            const galleryRect = gallerySection.getBoundingClientRect();
+            if (galleryRect.top < window.innerHeight && galleryRect.bottom > 0) {
+                const offset = (galleryRect.top - window.innerHeight) * -0.15;
+                gallerySection.style.backgroundPositionY = `${offset}px`;
+            }
+        }
+
+        // Sections with gradient backgrounds
+        document.querySelectorAll('.about, .benefits, .features').forEach(section => {
+            const rect = section.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                const offset = (rect.top - window.innerHeight) * -0.15;
+                section.style.backgroundPositionY = `${offset}px`;
+            }
+        });
+
+        parallaxTicking = false;
+    }
+
     window.addEventListener('scroll', () => {
-        if (!ticking) {
-            requestAnimationFrame(() => {
-                const scrollY = window.scrollY;
-                // Subtle parallax on hero slideshow
-                const slideshow = document.querySelector('.hero__slideshow');
-                if (slideshow && scrollY < window.innerHeight) {
-                    slideshow.style.transform = `translateY(${scrollY * 0.3}px)`;
-                }
-                ticking = false;
-            });
-            ticking = true;
+        if (!parallaxTicking) {
+            requestAnimationFrame(updateParallax);
+            parallaxTicking = true;
         }
     }, { passive: true });
+
+    // --- SCROLL PROGRESS BAR ---
+    const progressBar = document.createElement('div');
+    progressBar.classList.add('scroll-progress');
+    document.body.prepend(progressBar);
+
+    let progressTicking = false;
+
+    function updateScrollProgress() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progressBar.style.width = `${progress}%`;
+        progressTicking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!progressTicking) {
+            requestAnimationFrame(updateScrollProgress);
+            progressTicking = true;
+        }
+    }, { passive: true });
+
+    // --- MAGNETIC BUTTON EFFECT (Desktop Only) ---
+    if (!prefersReducedMotion && window.innerWidth > 768) {
+        document.querySelectorAll('.btn--primary').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                const deltaX = (e.clientX - centerX) / (rect.width / 2);
+                const deltaY = (e.clientY - centerY) / (rect.height / 2);
+
+                const maxOffset = 8;
+                const tx = deltaX * maxOffset;
+                const ty = deltaY * maxOffset;
+
+                btn.style.transform = `translate(${tx}px, ${ty}px)`;
+            });
+
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translate(0, 0)';
+            });
+        });
+    }
+
+    // --- HERO TEXT ANIMATION ON LOAD ---
+    function animateHeroEntrance() {
+        const heroContent = document.querySelector('.hero__content');
+        if (!heroContent) return;
+
+        // Map selectors to delays
+        const animSequence = [
+            { selector: '.hero__badge', delay: 300 },
+            { selector: '.hero__title-line:first-child', delay: 500 },
+            { selector: '.hero__title-line:last-child', delay: 700 },
+            { selector: '.hero__slogan', delay: 900 },
+            { selector: '.hero__info-item:nth-child(1)', delay: 1100 },
+            { selector: '.hero__info-item:nth-child(2)', delay: 1300 },
+            { selector: '.hero__info-item:nth-child(3)', delay: 1500 },
+            { selector: '.countdown', delay: 1700 },
+            { selector: '.hero__ctas', delay: 1900 },
+        ];
+
+        // Add hero-anim class to all elements first (hides them)
+        if (!prefersReducedMotion) {
+            animSequence.forEach(({ selector }) => {
+                const el = heroContent.querySelector(selector);
+                if (el) el.classList.add('hero-anim');
+            });
+        }
+
+        // Trigger each element with its delay
+        animSequence.forEach(({ selector, delay }) => {
+            const el = heroContent.querySelector(selector);
+            if (!el) return;
+
+            if (prefersReducedMotion) {
+                el.classList.add('hero-anim--visible');
+            } else {
+                setTimeout(() => {
+                    el.classList.add('hero-anim--visible');
+                }, delay);
+            }
+        });
+    }
+
+    animateHeroEntrance();
+
+    // --- WAVE DIVIDER MORPHING ---
+    function initWaveMorphing() {
+        if (prefersReducedMotion) return;
+
+        const wavePaths = document.querySelectorAll('.wave-divider svg path');
+        if (!wavePaths.length) return;
+
+        wavePaths.forEach(path => {
+            const originalD = path.getAttribute('d');
+            if (!originalD) return;
+
+            // Store original path
+            path.dataset.originalD = originalD;
+
+            // Create a subtle variation by adjusting numeric values slightly
+            function createVariation(d, offset) {
+                return d.replace(/(\d+\.?\d*)/g, (match, num) => {
+                    const val = parseFloat(num);
+                    // Only morph Y-axis values (larger numbers, typically > 10)
+                    if (val > 10 && val < 1000) {
+                        return (val + (Math.sin(val * 0.1) * offset)).toFixed(1);
+                    }
+                    return match;
+                });
+            }
+
+            let phase = 0;
+            const morphInterval = setInterval(() => {
+                phase += 1;
+                const offset = Math.sin(phase * 0.5) * 3;
+                const newD = createVariation(originalD, offset);
+                path.setAttribute('d', newD);
+            }, 3000);
+
+            // Store interval for cleanup if needed
+            path._morphInterval = morphInterval;
+        });
+    }
+
+    initWaveMorphing();
 
     // --- FAQ ACCORDION ---
     document.querySelectorAll('.faq__question').forEach(button => {
