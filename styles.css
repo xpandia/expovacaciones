@@ -434,6 +434,7 @@ ul { list-style: none; }
 .hero__anato-logo {
     height: 102px;
     width: auto;
+    transform: scaleX(1.2);
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
 }
 
