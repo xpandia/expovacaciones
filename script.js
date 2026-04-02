@@ -222,30 +222,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const scrollY = window.scrollY;
 
-        // Hero slideshow parallax
-        const slideshow = document.querySelector('.hero__slideshow');
-        if (slideshow && scrollY < window.innerHeight) {
-            slideshow.style.transform = `translateY(${scrollY * 0.3}px)`;
+        // Subtle parallax on hero content only (not slideshow background)
+        const heroContent = document.querySelector('.hero__content');
+        if (heroContent && scrollY < window.innerHeight) {
+            heroContent.style.transform = `translateY(${scrollY * 0.15}px)`;
+            heroContent.style.opacity = `${1 - scrollY / window.innerHeight * 0.6}`;
         }
-
-        // Gallery section parallax
-        const gallerySection = document.querySelector('.gallery');
-        if (gallerySection) {
-            const galleryRect = gallerySection.getBoundingClientRect();
-            if (galleryRect.top < window.innerHeight && galleryRect.bottom > 0) {
-                const offset = (galleryRect.top - window.innerHeight) * -0.15;
-                gallerySection.style.backgroundPositionY = `${offset}px`;
-            }
-        }
-
-        // Sections with gradient backgrounds
-        document.querySelectorAll('.about, .benefits, .features').forEach(section => {
-            const rect = section.getBoundingClientRect();
-            if (rect.top < window.innerHeight && rect.bottom > 0) {
-                const offset = (rect.top - window.innerHeight) * -0.15;
-                section.style.backgroundPositionY = `${offset}px`;
-            }
-        });
 
         parallaxTicking = false;
     }

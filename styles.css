@@ -420,10 +420,8 @@ ul { list-style: none; }
 }
 
 .hero__title-city {
-    background: linear-gradient(135deg, var(--teal-light), var(--amarillo), var(--magenta));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--blanco);
+    opacity: 0.9;
 }
 
 .hero__slogan {
