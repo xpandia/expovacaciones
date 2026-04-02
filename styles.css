@@ -258,19 +258,15 @@ ul { list-style: none; }
 }
 
 .header__logo-color {
-    display: none;
-}
-
-.header__logo-color .header__logo-img {
-    filter: none;
-}
-
-.header__logo-white {
     display: block;
 }
 
-.header__logo-white .header__logo-img {
-    filter: brightness(0) invert(1);
+.header__logo-color .header__logo-img {
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.7)) drop-shadow(0 0 20px rgba(255,255,255,0.4));
+}
+
+.header__logo-white {
+    display: none;
 }
 
 .header--scrolled .header__logo-img {
