@@ -476,11 +476,13 @@ ul { list-style: none; }
     background: linear-gradient(
         135deg,
         #ffffff 0%,
-        #eab818 20%,
-        #f9167e 40%,
-        #ffffff 55%,
-        #f9167e 70%,
-        #eab818 85%,
+        #eab818 12%,
+        #f9167e 25%,
+        #2c3d6b 38%,
+        #ffffff 50%,
+        #2c3d6b 62%,
+        #f9167e 75%,
+        #eab818 88%,
         #ffffff 100%
     );
     background-size: 300% 300%;
