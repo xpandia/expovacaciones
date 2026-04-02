@@ -47,9 +47,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 2200);
     }
 
-    if (slides.length > 1) {
-        setInterval(nextSlide, 7000);
+    // Slideshow with Page Visibility API — pause when tab is hidden
+    let slideshowInterval = null;
+
+    function startSlideshow() {
+        if (slideshowInterval || slides.length <= 1) return;
+        slideshowInterval = setInterval(nextSlide, 7000);
     }
+
+    function stopSlideshow() {
+        if (slideshowInterval) {
+            clearInterval(slideshowInterval);
+            slideshowInterval = null;
+        }
+    }
+
+    document.addEventListener('visibilitychange', () => {
+        document.hidden ? stopSlideshow() : startSlideshow();
+    });
+
+    startSlideshow();
 
     // --- HEADER SCROLL ---
     const header = document.getElementById('header');
@@ -124,12 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function animateCounters() {
         if (statsAnimated) return;
-
-        const statsSection = document.querySelector('.stats-inline');
-        if (!statsSection) return;
-        const rect = statsSection.getBoundingClientRect();
-        if (rect.top > window.innerHeight * 0.8) return;
-
         statsAnimated = true;
 
         stats.forEach((stat, index) => {
@@ -163,44 +174,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    window.addEventListener('scroll', animateCounters, { passive: true });
-    animateCounters();
+    // Use IntersectionObserver instead of scroll listener for counters
+    const statsSection = document.querySelector('.stats-inline');
+    if (statsSection) {
+        const statsObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                animateCounters();
+                statsObserver.disconnect();
+            }
+        }, { threshold: 0.2 });
+        statsObserver.observe(statsSection);
+    }
 
-    // --- SCROLL REVEAL (Enhanced) ---
-    // Standard reveal (slide up)
-    const revealElements = document.querySelectorAll(
-        '.about__card, .benefit-card, .location__option, .faq__item, .exhibitors__list li'
-    );
-    revealElements.forEach(el => el.classList.add('reveal'));
-
-    // Section headers
-    document.querySelectorAll('.section-header').forEach(el => {
-        el.classList.add('section-header'); // already has class, observer will handle
-    });
-
-    // Features get alternating left/right animations
-    document.querySelectorAll('.feature').forEach((el, i) => {
-        el.classList.add(i % 2 === 0 ? 'reveal-left' : 'reveal-right');
-    });
-
-    // Stats inline gets stagger animation
-    const statsInline = document.querySelector('.stats-inline');
-    if (statsInline) statsInline.classList.add('stagger-children');
-
-    // Gallery items: clip-path reveal instead of simple scale
-    document.querySelectorAll('.gallery__item').forEach((el, i) => {
-        // Remove old reveal-scale if present
-        el.classList.remove('reveal-scale');
-        // Alternate between bottom and left reveal
-        el.classList.add('reveal-clip');
-        if (i % 3 === 1) {
-            el.classList.add('reveal-clip--left');
-        }
-    });
-
-    // Unified observer for all reveal types
-    const allRevealElements = document.querySelectorAll(
-        '.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-clip, .stagger-children, .section-header'
+    // --- SCROLL REVEAL (CSS-driven, no class injection flash) ---
+    const animatedElements = document.querySelectorAll(
+        '.about__card, .benefit-card, .location__option, .faq__item, .exhibitors__list li, .feature, .gallery__item, .section-header'
     );
 
     const revealObserver = new IntersectionObserver((entries) => {
@@ -210,9 +198,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 revealObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-    allRevealElements.forEach(el => revealObserver.observe(el));
+    animatedElements.forEach(el => revealObserver.observe(el));
 
     // --- PARALLAX ON SCROLL (Enhanced) ---
     let parallaxTicking = false;
@@ -261,24 +249,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, { passive: true });
 
-    // --- MAGNETIC BUTTON EFFECT (Desktop Only) ---
+    // --- MAGNETIC BUTTON EFFECT (Desktop Only, throttled via rAF) ---
     if (!prefersReducedMotion && window.innerWidth > 768) {
         document.querySelectorAll('.btn--primary').forEach(btn => {
+            let magneticRaf = null;
+
             btn.addEventListener('mousemove', (e) => {
-                const rect = btn.getBoundingClientRect();
-                const centerX = rect.left + rect.width / 2;
-                const centerY = rect.top + rect.height / 2;
-                const deltaX = (e.clientX - centerX) / (rect.width / 2);
-                const deltaY = (e.clientY - centerY) / (rect.height / 2);
+                if (magneticRaf) return;
+                magneticRaf = requestAnimationFrame(() => {
+                    const rect = btn.getBoundingClientRect();
+                    const centerX = rect.left + rect.width / 2;
+                    const centerY = rect.top + rect.height / 2;
+                    const deltaX = (e.clientX - centerX) / (rect.width / 2);
+                    const deltaY = (e.clientY - centerY) / (rect.height / 2);
 
-                const maxOffset = 8;
-                const tx = deltaX * maxOffset;
-                const ty = deltaY * maxOffset;
-
-                btn.style.transform = `translate(${tx}px, ${ty}px)`;
+                    const maxOffset = 8;
+                    btn.style.transform = `translate(${deltaX * maxOffset}px, ${deltaY * maxOffset}px)`;
+                    magneticRaf = null;
+                });
             });
 
             btn.addEventListener('mouseleave', () => {
+                if (magneticRaf) { cancelAnimationFrame(magneticRaf); magneticRaf = null; }
                 btn.style.transform = 'translate(0, 0)';
             });
         });
@@ -291,15 +283,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Map selectors to delays
         const animSequence = [
-            { selector: '.hero__badge', delay: 300 },
-            { selector: '.hero__title-line:first-child', delay: 500 },
-            { selector: '.hero__title-line:last-child', delay: 700 },
-            { selector: '.hero__slogan', delay: 900 },
-            { selector: '.hero__info-item:nth-child(1)', delay: 1100 },
-            { selector: '.hero__info-item:nth-child(2)', delay: 1300 },
-            { selector: '.hero__info-item:nth-child(3)', delay: 1500 },
-            { selector: '.countdown', delay: 1700 },
-            { selector: '.hero__ctas', delay: 1900 },
+            { selector: '.hero__badge', delay: 100 },
+            { selector: '.hero__title-line:first-child', delay: 200 },
+            { selector: '.hero__title-line:last-child', delay: 350 },
+            { selector: '.hero__slogan', delay: 500 },
+            { selector: '.hero__info-item:nth-child(1)', delay: 600 },
+            { selector: '.hero__info-item:nth-child(2)', delay: 700 },
+            { selector: '.hero__info-item:nth-child(3)', delay: 800 },
+            { selector: '.countdown', delay: 900 },
+            { selector: '.hero__ctas', delay: 1000 },
         ];
 
         // Add hero-anim class to all elements first (hides them)
@@ -327,64 +319,82 @@ document.addEventListener('DOMContentLoaded', () => {
 
     animateHeroEntrance();
 
-    // --- WAVE DIVIDER MORPHING ---
+    // --- WAVE DIVIDER MORPHING (with visibility cleanup) ---
     function initWaveMorphing() {
         if (prefersReducedMotion) return;
 
-        const wavePaths = document.querySelectorAll('.wave-divider svg path');
-        if (!wavePaths.length) return;
+        const waveDividers = document.querySelectorAll('.wave-divider');
+        if (!waveDividers.length) return;
 
-        wavePaths.forEach(path => {
-            const originalD = path.getAttribute('d');
-            if (!originalD) return;
+        function createVariation(d, offset) {
+            return d.replace(/(\d+\.?\d*)/g, (match, num) => {
+                const val = parseFloat(num);
+                if (val > 10 && val < 1000) {
+                    return (val + (Math.sin(val * 0.1) * offset)).toFixed(1);
+                }
+                return match;
+            });
+        }
 
-            // Store original path
-            path.dataset.originalD = originalD;
+        waveDividers.forEach(divider => {
+            const paths = divider.querySelectorAll('svg path');
+            let intervals = [];
+            let phase = 0;
 
-            // Create a subtle variation by adjusting numeric values slightly
-            function createVariation(d, offset) {
-                return d.replace(/(\d+\.?\d*)/g, (match, num) => {
-                    const val = parseFloat(num);
-                    // Only morph Y-axis values (larger numbers, typically > 10)
-                    if (val > 10 && val < 1000) {
-                        return (val + (Math.sin(val * 0.1) * offset)).toFixed(1);
-                    }
-                    return match;
+            function startMorphing() {
+                if (intervals.length) return;
+                paths.forEach(path => {
+                    const originalD = path.dataset.originalD || path.getAttribute('d');
+                    if (!originalD) return;
+                    path.dataset.originalD = originalD;
+
+                    const id = setInterval(() => {
+                        phase += 1;
+                        const offset = Math.sin(phase * 0.5) * 3;
+                        path.setAttribute('d', createVariation(originalD, offset));
+                    }, 3000);
+                    intervals.push(id);
                 });
             }
 
-            let phase = 0;
-            const morphInterval = setInterval(() => {
-                phase += 1;
-                const offset = Math.sin(phase * 0.5) * 3;
-                const newD = createVariation(originalD, offset);
-                path.setAttribute('d', newD);
-            }, 3000);
+            function stopMorphing() {
+                intervals.forEach(id => clearInterval(id));
+                intervals = [];
+            }
 
-            // Store interval for cleanup if needed
-            path._morphInterval = morphInterval;
+            // Only morph when visible in viewport
+            const waveObserver = new IntersectionObserver((entries) => {
+                entries[0].isIntersecting ? startMorphing() : stopMorphing();
+            }, { rootMargin: '100px' });
+
+            waveObserver.observe(divider);
         });
     }
 
     initWaveMorphing();
 
-    // --- FAQ ACCORDION ---
+    // --- FAQ ACCORDION (cached references) ---
+    const faqItems = document.querySelectorAll('.faq__item');
+    let currentOpenFaq = null;
+
     document.querySelectorAll('.faq__question').forEach(button => {
         button.addEventListener('click', () => {
             const item = button.parentElement;
             const answer = item.querySelector('.faq__answer');
-            const isOpen = item.classList.contains('active');
+            const isOpen = item === currentOpenFaq;
 
-            // Close all
-            document.querySelectorAll('.faq__item.active').forEach(openItem => {
-                openItem.classList.remove('active');
-                openItem.querySelector('.faq__answer').style.maxHeight = null;
-            });
+            // Close current open item
+            if (currentOpenFaq) {
+                currentOpenFaq.classList.remove('active');
+                currentOpenFaq.querySelector('.faq__answer').style.maxHeight = null;
+                currentOpenFaq = null;
+            }
 
             // Open clicked (if it was closed)
             if (!isOpen) {
                 item.classList.add('active');
                 answer.style.maxHeight = answer.scrollHeight + 'px';
+                currentOpenFaq = item;
             }
         });
     });
@@ -410,11 +420,17 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000);
+
             const res = await fetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
+                body: JSON.stringify(data),
+                signal: controller.signal
             });
+
+            clearTimeout(timeoutId);
 
             if (res.ok) {
                 btn.textContent = '¡Enviado!';

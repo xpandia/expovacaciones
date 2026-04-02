@@ -11,8 +11,10 @@
     <meta property="og:url" content="https://expovacaciones.co">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@800&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="assets/photos/hero-wellness-1.webp" type="image/webp">
     <link rel="stylesheet" href="styles.css">
+    <script>document.documentElement.classList.add('js-ready');</script>
 </head>
 <body>
 
@@ -33,7 +35,7 @@
                 <a href="#inicio" class="nav-link">Inicio</a>
                 <a href="#sobre" class="nav-link">El Evento</a>
                 <a href="#beneficios" class="nav-link">Beneficios</a>
-                <a href="#zonas" class="nav-link">Zonas</a>
+                <a href="#zonas" class="nav-link">Experiencias</a>
                 <a href="#expositores" class="nav-link">Expositores</a>
                 <a href="#como-llegar" class="nav-link">Cómo Llegar</a>
                 <a href="#faq" class="nav-link">FAQ</a>
@@ -113,11 +115,6 @@
         </div>
     </section>
 
-    <!-- Wave: Hero → About -->
-    <div class="wave-divider wave-divider--hero-to-about">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,64 C360,120 720,0 1080,64 C1260,96 1380,80 1440,64 L1440,120 L0,120Z" fill="currentColor"/></svg>
-    </div>
-
     <!-- SOBRE EL EVENTO -->
     <section class="about" id="sobre">
         <div class="container">
@@ -151,28 +148,29 @@
                 <div class="about__cards">
                     <div class="about__card">
                         <div class="about__card-emoji">👨‍👩‍👧‍👦</div>
-                        <h3>Para Todos</h3>
-                        <p>Público general, familias, viajeros frecuentes y profesionales del sector turístico.</p>
+                        <div class="about__card-content">
+                            <h3>Para Todos</h3>
+                            <p>Público general, familias, viajeros frecuentes y profesionales del sector turístico.</p>
+                        </div>
                     </div>
                     <div class="about__card">
                         <div class="about__card-emoji">🏝️</div>
-                        <h3>Destinos de Ensueño</h3>
-                        <p>Explora destinos nacionales e internacionales de la mano de los mejores operadores turísticos del país.</p>
+                        <div class="about__card-content">
+                            <h3>Destinos de Ensueño</h3>
+                            <p>Explora destinos nacionales e internacionales de la mano de los mejores operadores turísticos del país.</p>
+                        </div>
                     </div>
                     <div class="about__card">
                         <div class="about__card-emoji">✨</div>
-                        <h3>Experiencia Completa</h3>
-                        <p>Activaciones comerciales, entretenimiento cultural, charlas inspiradoras y experiencias que te conectan con el turismo responsable.</p>
+                        <div class="about__card-content">
+                            <h3>Experiencia Completa</h3>
+                            <p>Activaciones comerciales, entretenimiento cultural, charlas inspiradoras y experiencias que te conectan con el turismo responsable.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Wave: About → Features -->
-    <div class="wave-divider wave-divider--about-to-feat">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,40 C240,100 480,0 720,60 C960,120 1200,20 1440,80 L1440,120 L0,120Z" fill="currentColor"/></svg>
-    </div>
 
     <!-- QUÉ ENCONTRARÁS -->
     <section class="features" id="beneficios">
@@ -206,36 +204,31 @@
         </div>
     </section>
 
-    <!-- Wave: Features → Zones -->
-    <div class="wave-divider wave-divider--feat-to-zones">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,80 C320,20 640,100 960,40 C1120,10 1320,60 1440,30 L1440,120 L0,120Z" fill="currentColor"/></svg>
-    </div>
-
-    <!-- MACROZONAS -->
+    <!-- EXPERIENCIAS -->
     <section class="zones" id="zonas">
         <div class="container">
             <div class="section-header">
-                <p class="section-header__tag">Áreas del Evento</p>
-                <h2 class="section-header__title">Tres macrozonas diseñadas para una experiencia completa</h2>
+                <p class="section-header__tag">Experiencias que vas a vivir</p>
+                <h2 class="section-header__title">Tres razones para no perdértelo</h2>
             </div>
             <div class="zones__grid">
                 <div class="zone">
                     <div class="zone__number">01</div>
-                    <div class="zone__emoji">🚪</div>
-                    <h3 class="zone__title">Ingreso y Recepción</h3>
-                    <p class="zone__desc">Zona de bienvenida, control y orientación del público con experiencias tecnológicas desde el primer momento.</p>
+                    <div class="zone__emoji">🏝️</div>
+                    <h3 class="zone__title">Vive el Caribe sin salir de la ciudad</h3>
+                    <p class="zone__desc">Activaciones inmersivas, muestras gastronómicas, música en vivo y la energía tropical que solo Expovacaciones puede traerte.</p>
                 </div>
                 <div class="zone zone--featured">
                     <div class="zone__number">02</div>
-                    <div class="zone__emoji">🛍️</div>
-                    <h3 class="zone__title">Exhibición Comercial</h3>
-                    <p class="zone__desc">Espacio principal con expositores y marcas participantes en categorías de aventura, cultura, gastronomía, naturaleza y bienestar.</p>
+                    <div class="zone__emoji">✈️</div>
+                    <h3 class="zone__title">Descubre tu próximo viaje soñado</h3>
+                    <p class="zone__desc">Agencias, hoteles, aerolíneas y operadores turísticos reunidos en un solo lugar con ofertas exclusivas para que planees tu escape perfecto.</p>
                 </div>
                 <div class="zone">
                     <div class="zone__number">03</div>
-                    <div class="zone__emoji">🎤</div>
-                    <h3 class="zone__title">Charlas y Activaciones</h3>
-                    <p class="zone__desc">Experiencias en vivo, formación, presentaciones de destinos, shows culturales y actividades temáticas inspiradoras.</p>
+                    <div class="zone__emoji">🌊</div>
+                    <h3 class="zone__title">Atrévete a algo nuevo</h3>
+                    <p class="zone__desc">Turismo wellness, destinos emergentes, retiros de bienestar y experiencias que te conectan con la naturaleza y contigo mismo.</p>
                 </div>
             </div>
         </div>
@@ -243,17 +236,12 @@
 
     <!-- Beach Banner entre Zones y Gallery -->
     <section class="beach-banner">
-        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80" alt="Playa caribeña" class="beach-banner__img">
+        <img src="https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=1920&q=80" alt="Playa caribeña con agua turquesa" class="beach-banner__img" loading="lazy" width="1920" height="1080">
         <div class="beach-banner__overlay"></div>
         <div class="beach-banner__content">
             <p class="beach-banner__text">Descubre el Caribe, vive experiencias que transforman</p>
         </div>
     </section>
-
-    <!-- Wave: Banner → Gallery -->
-    <div class="wave-divider wave-divider--banner-to-gallery">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,64 C360,120 720,0 1080,64 C1260,96 1380,80 1440,64 L1440,120 L0,120Z" fill="currentColor"/></svg>
-    </div>
 
     <!-- GALERÍA EDICIÓN ANTERIOR -->
     <section class="gallery" id="galeria">
@@ -267,86 +255,81 @@
                 <div class="gallery__item gallery__item--wide">
                     <picture>
                         <source srcset="assets/photos/show-tropicana.webp" type="image/webp">
-                        <img src="assets/photos/show-tropicana.jpg" alt="Show en vivo con artista y arco Tropicana" loading="lazy">
+                        <img src="assets/photos/show-tropicana.jpg" alt="Show en vivo con artista y arco Tropicana" loading="lazy" decoding="async" width="1600" height="1200">
                     </picture>
                 </div>
                 <div class="gallery__item">
                     <picture>
                         <source srcset="assets/photos/escultura-cultural.webp" type="image/webp">
-                        <img src="assets/photos/escultura-cultural.jpg" alt="Escultura afrocolombiana vibrante" loading="lazy">
+                        <img src="assets/photos/escultura-cultural.jpg" alt="Escultura afrocolombiana vibrante" loading="lazy" decoding="async" width="1600" height="2133">
                     </picture>
                 </div>
                 <div class="gallery__item">
                     <picture>
                         <source srcset="assets/photos/mascotas-inflables.webp" type="image/webp">
-                        <img src="assets/photos/mascotas-inflables.jpg" alt="Mascotas inflables gigantes" loading="lazy">
+                        <img src="assets/photos/mascotas-inflables.jpg" alt="Mascotas inflables gigantes" loading="lazy" decoding="async" width="1600" height="2133">
                     </picture>
                 </div>
                 <!-- Fila 2: Stands comerciales -->
                 <div class="gallery__item">
                     <picture>
                         <source srcset="assets/photos/stand-viajes.webp" type="image/webp">
-                        <img src="assets/photos/stand-viajes.jpg" alt="Stand Viajes El Corte Inglés" loading="lazy">
+                        <img src="assets/photos/stand-viajes.jpg" alt="Stand Viajes El Corte Inglés" loading="lazy" decoding="async" width="1200" height="900">
                     </picture>
                 </div>
                 <div class="gallery__item gallery__item--wide">
                     <picture>
                         <source srcset="assets/photos/corredor-entrada.webp" type="image/webp">
-                        <img src="assets/photos/corredor-entrada.jpg" alt="Corredor de entrada Expovacaciones" loading="lazy">
+                        <img src="assets/photos/corredor-entrada.jpg" alt="Corredor de entrada Expovacaciones" loading="lazy" decoding="async" width="1200" height="900">
                     </picture>
                 </div>
                 <div class="gallery__item">
                     <picture>
                         <source srcset="assets/photos/stand-cvu.webp" type="image/webp">
-                        <img src="assets/photos/stand-cvu.jpg" alt="Stand CVU atendiendo visitantes" loading="lazy">
+                        <img src="assets/photos/stand-cvu.jpg" alt="Stand CVU atendiendo visitantes" loading="lazy" decoding="async" width="1200" height="900">
                     </picture>
                 </div>
                 <!-- Fila 3: Más stands y experiencias -->
                 <div class="gallery__item gallery__item--wide">
                     <picture>
                         <source srcset="assets/photos/plaza-llena.webp" type="image/webp">
-                        <img src="assets/photos/plaza-llena.jpg" alt="Plaza llena de visitantes" loading="lazy">
+                        <img src="assets/photos/plaza-llena.jpg" alt="Plaza llena de visitantes" loading="lazy" decoding="async" width="1600" height="1200">
                     </picture>
                 </div>
                 <div class="gallery__item">
                     <picture>
                         <source srcset="assets/photos/stand-narino.webp" type="image/webp">
-                        <img src="assets/photos/stand-narino.jpg" alt="Stand de Nariño con productos regionales" loading="lazy">
+                        <img src="assets/photos/stand-narino.jpg" alt="Stand de Nariño con productos regionales" loading="lazy" decoding="async" width="1200" height="900">
                     </picture>
                 </div>
                 <div class="gallery__item">
                     <picture>
                         <source srcset="assets/photos/stand-yumbo.webp" type="image/webp">
-                        <img src="assets/photos/stand-yumbo.jpg" alt="Stand Alcaldía de Yumbo con artesanías" loading="lazy">
+                        <img src="assets/photos/stand-yumbo.jpg" alt="Stand Alcaldía de Yumbo con artesanías" loading="lazy" decoding="async" width="1200" height="900">
                     </picture>
                 </div>
                 <!-- Fila 4: Ambiente y cierre -->
                 <div class="gallery__item">
                     <picture>
                         <source srcset="assets/photos/stand-aviatur.webp" type="image/webp">
-                        <img src="assets/photos/stand-aviatur.jpg" alt="Stand de Aviatur" loading="lazy">
+                        <img src="assets/photos/stand-aviatur.jpg" alt="Stand de Aviatur" loading="lazy" decoding="async" width="1200" height="900">
                     </picture>
                 </div>
                 <div class="gallery__item">
                     <picture>
                         <source srcset="assets/photos/musica-vivo.webp" type="image/webp">
-                        <img src="assets/photos/musica-vivo.jpg" alt="Música en vivo con saxofón" loading="lazy">
+                        <img src="assets/photos/musica-vivo.jpg" alt="Música en vivo con saxofón" loading="lazy" decoding="async" width="1600" height="2133">
                     </picture>
                 </div>
                 <div class="gallery__item gallery__item--wide">
                     <picture>
                         <source srcset="assets/photos/multitud-entrada.webp" type="image/webp">
-                        <img src="assets/photos/multitud-entrada.jpg" alt="Multitud en la entrada de Expovacaciones" loading="lazy">
+                        <img src="assets/photos/multitud-entrada.jpg" alt="Multitud en la entrada de Expovacaciones" loading="lazy" decoding="async" width="1600" height="2133">
                     </picture>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Wave: Gallery → Sustainability -->
-    <div class="wave-divider wave-divider--gallery-to-sust">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,40 C240,100 480,0 720,60 C960,120 1200,20 1440,80 L1440,120 L0,120Z" fill="currentColor"/></svg>
-    </div>
 
     <!-- SOSTENIBILIDAD -->
     <section class="sustainability">
@@ -358,11 +341,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Wave: Sustainability → Exhibitors -->
-    <div class="wave-divider wave-divider--sust-to-exhib">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,80 C320,20 640,100 960,40 C1120,10 1320,60 1440,30 L1440,120 L0,120Z" fill="currentColor"/></svg>
-    </div>
 
     <!-- BENEFICIOS EXPOSITORES -->
     <section class="exhibitors" id="expositores">
@@ -433,11 +411,6 @@
         </div>
     </section>
 
-    <!-- Wave: Exhibitors → Location -->
-    <div class="wave-divider wave-divider--exhib-to-loc">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,64 C360,120 720,0 1080,64 C1260,96 1380,80 1440,64 L1440,120 L0,120Z" fill="currentColor"/></svg>
-    </div>
-
     <!-- CÓMO LLEGAR -->
     <section class="location" id="como-llegar">
         <div class="container">
@@ -448,7 +421,7 @@
             <div class="location__grid">
                 <div class="location__map">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1991.2!2d-76.5303!3d3.4716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e30a9a3967e6a1d%3A0x3f4c6b3c9e28e5a!2sCentro%20Comercial%20Chipichape!5e0!3m2!1ses!2sco!4v1700000000000"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d995.6!2d-76.5303!3d3.4716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e30a9a3967e6a1d%3A0x3f4c6b3c9e28e5a!2sCentro%20Comercial%20Chipichape!5e0!3m2!1ses!2sco!4v1700000000000"
                         width="100%"
                         height="100%"
                         style="border:0; border-radius: 16px;"
@@ -493,17 +466,12 @@
 
     <!-- Wellness Banner entre Location y FAQ -->
     <section class="beach-banner beach-banner--wellness">
-        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1920&q=80" alt="Wellness spa experiencia" class="beach-banner__img">
+        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1920&q=80" alt="Wellness spa experiencia" class="beach-banner__img" loading="lazy" width="1920" height="1080">
         <div class="beach-banner__overlay"></div>
         <div class="beach-banner__content">
             <p class="beach-banner__text">Bienestar, calma y conexión interior</p>
         </div>
     </section>
-
-    <!-- Wave: Banner → FAQ -->
-    <div class="wave-divider wave-divider--banner-to-faq">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,40 C240,100 480,0 720,60 C960,120 1200,20 1440,80 L1440,120 L0,120Z" fill="currentColor"/></svg>
-    </div>
 
     <!-- FAQ -->
     <section class="faq" id="faq">
@@ -570,11 +538,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Wave: FAQ → Contact -->
-    <div class="wave-divider wave-divider--faq-to-contact">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,80 C320,20 640,100 960,40 C1120,10 1320,60 1440,30 L1440,120 L0,120Z" fill="currentColor"/></svg>
-    </div>
 
     <!-- CONTACTO / FORMULARIO -->
     <section class="contact" id="contacto">
@@ -665,13 +628,13 @@
             <div class="footer__top">
                 <div class="footer__brand">
                     <picture>
-                        <source srcset="assets/expovacaciones-logo-blanco.webp" type="image/webp">
-                        <img src="assets/expovacaciones-logo-blanco.png" alt="Expovacaciones" class="footer__logo-img">
+                        <source srcset="assets/expovacaciones-logo.webp" type="image/webp">
+                        <img src="assets/expovacaciones-logo.png" alt="Expovacaciones" class="footer__logo-img" loading="lazy">
                     </picture>
                     <p>Un lugar, millones de experiencias</p>
                     <div class="footer__anato">
                         <span>Una marca de</span>
-                        <img src="assets/anato-suroccidente.png" alt="ANATO Suroccidente" class="footer__anato-logo">
+                        <img src="assets/anato-suroccidente.png" alt="ANATO Suroccidente" class="footer__anato-logo" loading="lazy">
                     </div>
                 </div>
                 <div class="footer__links">
