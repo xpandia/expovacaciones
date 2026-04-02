@@ -370,10 +370,10 @@ ul { list-style: none; }
     z-index: 2;
     background: linear-gradient(
         180deg,
-        rgba(2, 62, 74, 0.5) 0%,
-        rgba(0, 180, 216, 0.2) 30%,
-        rgba(255, 140, 66, 0.1) 60%,
-        rgba(2, 62, 74, 0.55) 100%
+        rgba(2, 62, 74, 0.35) 0%,
+        rgba(0, 180, 216, 0.12) 30%,
+        rgba(255, 140, 66, 0.06) 60%,
+        rgba(2, 62, 74, 0.4) 100%
     );
     background-size: 300% 300%;
     animation: gradientShift 15s ease-in-out infinite;
@@ -902,6 +902,48 @@ ul { list-style: none; }
 }
 
 /* ============================================
+   QUOTE BREAK
+   ============================================ */
+.quote-break {
+    padding: 100px 0;
+    background: var(--sand);
+    text-align: center;
+}
+
+.quote-break__text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--azul);
+    line-height: 1.4;
+    max-width: 700px;
+    margin: 0 auto 24px;
+    position: relative;
+}
+
+.quote-break__text::before {
+    content: '"';
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 6rem;
+    color: var(--teal);
+    opacity: 0.15;
+    font-family: 'Playfair Display', serif;
+    line-height: 1;
+}
+
+.quote-break__author {
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--gris-light);
+}
+
+/* ============================================
    IMMERSIVE BREAK (Full-bleed image sections)
    ============================================ */
 .immersive-break {
@@ -922,6 +964,7 @@ ul { list-style: none; }
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    transition: transform 0.3s ease-out;
 }
 
 .immersive-break__overlay {
@@ -1231,8 +1274,8 @@ ul { list-style: none; }
 }
 
 .gallery__item:hover img {
-    transform: scale(1.08);
-    filter: contrast(1.12) saturate(1.4) brightness(1.12);
+    transform: scale(1.06);
+    filter: contrast(1.08) saturate(1.35) brightness(1.1);
 }
 
 .gallery__item--wide {
@@ -1373,44 +1416,94 @@ ul { list-style: none; }
 }
 
 /* ============================================
-   SUSTAINABILITY
+   SUSTAINABILITY (Immersive)
    ============================================ */
-.sustainability {
-    padding: 48px 0;
-    background: var(--seafoam);
+.sustainability-immersive {
+    padding: 120px 0;
+    background: linear-gradient(135deg, var(--seafoam) 0%, #f0fdf9 50%, var(--sand) 100%);
     position: relative;
 }
 
-.sustainability__inner {
-    display: flex;
+.sustainability-immersive__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
     align-items: center;
-    gap: 24px;
-    max-width: 900px;
-    margin: 0 auto;
-    background: #f1f8e9;
-    border-radius: var(--radius-lg);
-    padding: 32px 36px;
-    border: 1px solid rgba(46, 125, 50, 0.12);
-    box-shadow: 0 4px 20px rgba(46,125,50,0.06), 0 8px 40px rgba(0,0,0,0.04);
 }
 
-.sustainability__emoji {
-    flex-shrink: 0;
-    font-size: 3rem;
-    animation: emojiFloat 3s ease-in-out infinite;
-}
-
-.sustainability__text h3 {
-    font-size: 1.15rem;
+.sustainability-immersive__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
     font-weight: 700;
-    color: #2e7d32;
-    margin-bottom: 8px;
+    color: var(--azul);
+    line-height: 1.15;
+    margin-bottom: 24px;
 }
 
-.sustainability__text p {
-    font-size: 0.95rem;
+.sustainability-immersive__text {
+    font-size: 1.05rem;
     color: var(--gris);
-    line-height: 1.7;
+    line-height: 1.8;
+}
+
+.sustainability-immersive__visual {
+    text-align: center;
+}
+
+.sustainability-immersive__icon {
+    font-size: 5rem;
+    margin-bottom: 32px;
+}
+
+.sustainability-immersive__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.sustainability-immersive__stat {
+    background: rgba(255,255,255,0.8);
+    border-radius: var(--radius-lg);
+    padding: 24px 16px;
+    box-shadow: var(--shadow);
+    border: 0.5px solid rgba(0,0,0,0.04);
+}
+
+.sustainability-immersive__stat span {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--palm);
+    margin-bottom: 4px;
+}
+
+.sustainability-immersive__stat p {
+    font-size: 0.78rem;
+    color: var(--gris-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    .sustainability-immersive__grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        text-align: center;
+    }
+    .sustainability-immersive__stats {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .sustainability-immersive {
+        padding: 80px 0;
+    }
+    .sustainability-immersive__stats {
+        grid-template-columns: 1fr;
+        max-width: 240px;
+        margin: 0 auto;
+    }
 }
 
 /* ============================================
