@@ -221,23 +221,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- DREAM DESTINATIONS DRAG SCROLL ---
-    const scrollContainer = document.querySelector('.dream-destinations__scroll');
-    if (scrollContainer) {
-        let isDown = false, startX, scrollLeft;
-        scrollContainer.addEventListener('mousedown', (e) => {
-            isDown = true;
-            startX = e.pageX - scrollContainer.offsetLeft;
-            scrollLeft = scrollContainer.scrollLeft;
-        });
-        scrollContainer.addEventListener('mouseleave', () => { isDown = false; });
-        scrollContainer.addEventListener('mouseup', () => { isDown = false; });
-        scrollContainer.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - scrollContainer.offsetLeft;
-            scrollContainer.scrollLeft = scrollLeft - (x - startX) * 1.5;
-        });
+    // --- DREAM DESTINATIONS INFINITE SCROLL ---
+    const dreamTrack = document.querySelector('.dream-destinations__track');
+    if (dreamTrack) {
+        // Duplicate all cards for seamless infinite loop
+        const cards = dreamTrack.innerHTML;
+        dreamTrack.innerHTML = cards + cards;
     }
 
     // --- SCROLL REVEAL (CSS-driven, no class injection flash) ---
