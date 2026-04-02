@@ -826,7 +826,7 @@ ul { list-style: none; }
    ABOUT
    ============================================ */
 .about {
-    padding: 100px 0 120px;
+    padding: 160px 0 120px;
     background: var(--blanco);
     position: relative;
     overflow: hidden;
