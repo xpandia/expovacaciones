@@ -262,7 +262,7 @@ ul { list-style: none; }
 }
 
 .header__logo-color .header__logo-img {
-    filter: brightness(0) invert(1);
+    filter: none;
 }
 
 .header__logo-white {
