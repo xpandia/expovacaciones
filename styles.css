@@ -494,26 +494,25 @@ ul { list-style: none; }
 
 .hero__slogan {
     font-size: 1.25rem;
-    font-weight: 400;
+    font-weight: 300;
     margin-bottom: 24px;
     letter-spacing: 1px;
     font-style: italic;
     background: linear-gradient(
         90deg,
-        var(--blanco) 0%,
-        var(--blanco) 35%,
-        var(--amarillo) 45%,
-        rgba(255,255,255,1) 50%,
-        var(--amarillo) 55%,
-        var(--blanco) 65%,
-        var(--blanco) 100%
+        rgba(255,255,255,0.9) 0%,
+        var(--teal-light) 15%,
+        var(--amarillo) 30%,
+        rgba(255,255,255,0.9) 45%,
+        var(--teal-light) 60%,
+        var(--amarillo) 75%,
+        rgba(255,255,255,0.9) 100%
     );
     background-size: 300% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: shimmer 4s ease-in-out infinite;
-    filter: drop-shadow(0 0 12px rgba(234, 184, 24, 0.3));
+    animation: water-flow 4s ease-in-out infinite;
 }
 
 @keyframes water-flow {
