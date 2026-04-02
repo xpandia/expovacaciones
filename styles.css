@@ -261,12 +261,20 @@ ul { list-style: none; }
     display: block;
 }
 
+.header__logo-color .header__logo-img {
+    filter: brightness(0) invert(1);
+}
+
 .header__logo-white {
     display: none;
 }
 
 .header--scrolled .header__logo-img {
     height: 64px;
+}
+
+.header--scrolled .header__logo-color .header__logo-img {
+    filter: none;
 }
 
 .header--scrolled .header__logo-white {
@@ -402,21 +410,19 @@ ul { list-style: none; }
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    color: rgba(255,255,255,0.95);
+    color: rgba(255,255,255,0.85);
     font-size: 0.85rem;
-    font-weight: 500;
-    padding: 6px 16px;
+    font-weight: 400;
+    padding: 0;
     margin-bottom: 28px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 50px;
-    color: var(--azul-oscuro);
 }
 
 .hero__anato-logo {
-    height: 32px;
+    height: 48px;
     width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
 }
 
 .hero__title {
