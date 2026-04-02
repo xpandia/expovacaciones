@@ -510,6 +510,15 @@ ul { list-style: none; }
     text-shadow: 0 2px 12px rgba(0,0,0,0.3);
 }
 
+.hero__sub {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+}
+
 @keyframes water-flow {
     0% {
         background-position: 0% 50%;
@@ -791,7 +800,7 @@ ul { list-style: none; }
    ============================================ */
 .about {
     padding: 80px 0 120px;
-    background: var(--sand);
+    background: linear-gradient(180deg, var(--sand) 0%, #fff5e9 100%);
     position: relative;
     overflow: hidden;
 }
@@ -902,6 +911,39 @@ ul { list-style: none; }
 }
 
 /* ============================================
+   DESTINATION TICKER (Infinite scroll marquee)
+   ============================================ */
+.destination-ticker {
+    background: var(--tropics);
+    padding: 16px 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.destination-ticker__track {
+    display: flex;
+    gap: 0;
+    animation: tickerScroll 30s linear infinite;
+    white-space: nowrap;
+    width: max-content;
+}
+
+.destination-ticker__track span {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(255,255,255,0.6);
+    padding: 0 16px;
+    letter-spacing: 0.5px;
+}
+
+@keyframes tickerScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* ============================================
    QUOTE BREAK
    ============================================ */
 .quote-break {
@@ -941,6 +983,121 @@ ul { list-style: none; }
     text-transform: uppercase;
     letter-spacing: 3px;
     color: var(--gris-light);
+}
+
+/* ============================================
+   DREAM DESTINATIONS (Horizontal scroll)
+   ============================================ */
+.dream-destinations {
+    padding: 120px 0;
+    background: var(--blanco);
+    overflow: hidden;
+}
+
+.dream-destinations__scroll {
+    display: flex;
+    gap: 24px;
+    padding: 0 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    cursor: grab;
+}
+
+.dream-destinations__scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.dream-destinations__scroll:active {
+    cursor: grabbing;
+}
+
+.dream-destinations__card {
+    flex: 0 0 340px;
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    height: 480px;
+    scroll-snap-align: start;
+    transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.dream-destinations__card:first-child {
+    margin-left: calc((100vw - 1200px) / 2);
+}
+
+.dream-destinations__card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.dream-destinations__card:hover img {
+    transform: scale(1.05);
+}
+
+.dream-destinations__card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.05) 50%, transparent 100%);
+    pointer-events: none;
+}
+
+.dream-destinations__label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 28px;
+    z-index: 2;
+}
+
+.dream-destinations__label h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--blanco);
+    margin-bottom: 4px;
+}
+
+.dream-destinations__label p {
+    font-size: 0.82rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.65);
+}
+
+@media (max-width: 1200px) {
+    .dream-destinations__card:first-child {
+        margin-left: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .dream-destinations {
+        padding: 80px 0;
+    }
+    .dream-destinations__card {
+        flex: 0 0 280px;
+        height: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dream-destinations {
+        padding: 60px 0;
+    }
+    .dream-destinations__card {
+        flex: 0 0 260px;
+        height: 360px;
+    }
+    .dream-destinations__card:first-child {
+        margin-left: 16px;
+    }
 }
 
 /* ============================================
@@ -1097,7 +1254,7 @@ ul { list-style: none; }
    ============================================ */
 .zones {
     padding: 120px 0;
-    background: var(--blanco);
+    background: linear-gradient(180deg, var(--blanco) 0%, var(--sand) 100%);
     position: relative;
     overflow: hidden;
 }
