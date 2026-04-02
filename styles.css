@@ -826,7 +826,7 @@ ul { list-style: none; }
    ABOUT
    ============================================ */
 .about {
-    padding: 160px 0 120px;
+    padding: 100px 0 120px;
     background: var(--blanco);
     position: relative;
     overflow: hidden;
@@ -1304,15 +1304,13 @@ ul { list-style: none; }
 }
 
 .zone {
-    background: rgba(255,255,255,0.72);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background: linear-gradient(135deg, #e0f4f8 0%, #b8e6f0 100%);
     color: var(--negro);
     border-radius: var(--radius-lg);
     padding: 48px 36px;
     text-align: center;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    border: 0.5px solid rgba(0,0,0,0.06);
+    border: none;
     position: relative;
     box-shadow: var(--shadow);
 }
@@ -1323,22 +1321,21 @@ ul { list-style: none; }
 }
 
 .zone--featured {
-    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+    background: linear-gradient(135deg, #7acce0 0%, #3ba8c4 100%);
     color: #fff;
-    border: none;
 }
 
 .zone--featured:hover {
-    background: linear-gradient(135deg, var(--teal-dark) 0%, #065a6e 100%);
+    background: linear-gradient(135deg, #5cbdd5 0%, #2d96b5 100%);
 }
 
 .zone:last-child {
-    background: linear-gradient(135deg, var(--teal-light) 0%, var(--teal) 100%);
+    background: linear-gradient(135deg, #1a7fa3 0%, #0c5a78 100%);
     color: #fff;
 }
 
 .zone:last-child:hover {
-    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+    background: linear-gradient(135deg, #157092 0%, #094d68 100%);
 }
 
 .zone__number {
@@ -1349,8 +1346,9 @@ ul { list-style: none; }
     margin-bottom: 8px;
 }
 
-.zone--featured .zone__number {
-    color: rgba(255, 255, 255, 0.1);
+.zone--featured .zone__number,
+.zone:last-child .zone__number {
+    color: rgba(255, 255, 255, 0.12);
 }
 
 .zone__emoji {
@@ -1369,7 +1367,8 @@ ul { list-style: none; }
     margin-bottom: 12px;
 }
 
-.zone--featured .zone__title {
+.zone--featured .zone__title,
+.zone:last-child .zone__title {
     color: var(--blanco);
 }
 
@@ -1379,8 +1378,9 @@ ul { list-style: none; }
     line-height: 1.7;
 }
 
-.zone--featured .zone__desc {
-    color: rgba(255, 255, 255, 0.65);
+.zone--featured .zone__desc,
+.zone:last-child .zone__desc {
+    color: rgba(255, 255, 255, 0.75);
 }
 
 /* ============================================
