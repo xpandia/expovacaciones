@@ -252,21 +252,21 @@ ul { list-style: none; }
 }
 
 .header__logo-img {
-    height: 64px;
+    height: 90px;
     width: auto;
     transition: var(--transition);
 }
 
 .header__logo-color {
-    display: none;
-}
-
-.header__logo-white {
     display: block;
 }
 
+.header__logo-white {
+    display: none;
+}
+
 .header--scrolled .header__logo-img {
-    height: 52px;
+    height: 64px;
 }
 
 .header--scrolled .header__logo-white {
@@ -412,9 +412,10 @@ ul { list-style: none; }
 }
 
 .hero__anato-logo {
-    height: 36px;
+    height: 40px;
     width: auto;
-    opacity: 0.9;
+    opacity: 1;
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
 }
 
 .hero__title {
