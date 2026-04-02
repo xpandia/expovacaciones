@@ -402,20 +402,21 @@ ul { list-style: none; }
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    color: rgba(255,255,255,0.85);
+    color: rgba(255,255,255,0.95);
     font-size: 0.85rem;
-    font-weight: 400;
-    padding: 0;
+    font-weight: 500;
+    padding: 6px 16px;
     margin-bottom: 28px;
     letter-spacing: 1px;
     text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50px;
+    color: var(--azul-oscuro);
 }
 
 .hero__anato-logo {
-    height: 40px;
+    height: 32px;
     width: auto;
-    opacity: 1;
-    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
 }
 
 .hero__title {
