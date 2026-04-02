@@ -470,24 +470,8 @@ ul { list-style: none; }
     font-weight: 900;
     line-height: 1.02;
     letter-spacing: -3px;
-    background: linear-gradient(
-        90deg,
-        rgba(255,255,255,0.95) 0%,
-        var(--magenta) 12%,
-        var(--amarillo) 25%,
-        rgba(255,255,255,0.95) 38%,
-        var(--azul-light) 50%,
-        var(--magenta) 62%,
-        var(--amarillo) 75%,
-        rgba(255,255,255,0.95) 88%,
-        var(--azul-light) 100%
-    );
-    background-size: 400% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: water-flow 16s ease-in-out infinite;
-    filter: drop-shadow(0 4px 30px rgba(0,0,0,0.3));
+    color: var(--blanco);
+    text-shadow: 0 4px 30px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.2);
 }
 
 .hero__title-city {
@@ -496,12 +480,26 @@ ul { list-style: none; }
 
 .hero__slogan {
     font-size: 1.25rem;
-    font-weight: 300;
+    font-weight: 400;
     margin-bottom: 24px;
     letter-spacing: 1px;
     font-style: italic;
-    color: var(--blanco);
-    animation: glow-pulse 3s ease-in-out infinite;
+    background: linear-gradient(
+        90deg,
+        var(--blanco) 0%,
+        var(--blanco) 35%,
+        var(--amarillo) 45%,
+        rgba(255,255,255,1) 50%,
+        var(--amarillo) 55%,
+        var(--blanco) 65%,
+        var(--blanco) 100%
+    );
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 12px rgba(234, 184, 24, 0.3));
 }
 
 @keyframes water-flow {
