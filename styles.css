@@ -408,20 +408,21 @@ ul { list-style: none; }
 
 .hero__badge {
     display: inline-flex;
+    flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 6px;
     color: white;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 500;
-    padding: 10px 24px;
+    padding: 16px 32px 12px;
     margin-bottom: 28px;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 60px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 16px;
 }
 
 .hero__anato-logo {
