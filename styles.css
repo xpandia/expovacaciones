@@ -450,19 +450,21 @@ ul { list-style: none; }
     letter-spacing: -3px;
     background: linear-gradient(
         90deg,
-        rgba(255,255,255,0.9) 0%,
-        var(--teal-light) 15%,
-        var(--amarillo) 30%,
-        rgba(255,255,255,0.9) 45%,
-        var(--teal-light) 60%,
+        rgba(255,255,255,0.95) 0%,
+        var(--magenta) 12%,
+        var(--amarillo) 25%,
+        rgba(255,255,255,0.95) 38%,
+        var(--azul-light) 50%,
+        var(--magenta) 62%,
         var(--amarillo) 75%,
-        rgba(255,255,255,0.9) 100%
+        rgba(255,255,255,0.95) 88%,
+        var(--azul-light) 100%
     );
-    background-size: 300% 100%;
+    background-size: 400% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: water-flow 4s ease-in-out infinite;
+    animation: water-flow 8s ease-in-out infinite;
     filter: drop-shadow(0 4px 30px rgba(0,0,0,0.3));
 }
 
