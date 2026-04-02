@@ -863,6 +863,19 @@ ul { list-style: none; }
     background: rgba(255,255,255,0.95);
 }
 
+.about__card--petfriendly {
+    background: linear-gradient(135deg, rgba(255,140,66,0.08), rgba(255,107,107,0.06));
+    border-color: rgba(255,140,66,0.2);
+}
+
+.about__card--petfriendly:hover {
+    border-color: rgba(255,140,66,0.35);
+}
+
+.about__card--petfriendly .about__card-emoji {
+    background: linear-gradient(135deg, rgba(255,140,66,0.15), rgba(255,107,107,0.1));
+}
+
 .about__card-emoji {
     flex-shrink: 0;
     width: 52px;
