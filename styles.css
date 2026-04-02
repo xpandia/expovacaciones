@@ -432,16 +432,14 @@ ul { list-style: none; }
 }
 
 .hero__anato-logo {
-    height: 96px;
+    height: 58px;
     width: auto;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
 }
 
 .hero__title {
     font-family: 'Poppins', sans-serif;
-    color: var(--blanco);
     margin-bottom: 10px;
-    text-shadow: 0 4px 30px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.2);
 }
 
 .hero__title-line {
@@ -450,10 +448,25 @@ ul { list-style: none; }
     font-weight: 900;
     line-height: 1.02;
     letter-spacing: -3px;
+    background: linear-gradient(
+        90deg,
+        var(--blanco) 0%,
+        var(--magenta) 15%,
+        var(--amarillo) 30%,
+        var(--blanco) 45%,
+        var(--azul-light) 60%,
+        var(--magenta) 75%,
+        var(--blanco) 100%
+    );
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: water-flow 4s ease-in-out infinite;
+    filter: drop-shadow(0 4px 30px rgba(0,0,0,0.3));
 }
 
 .hero__title-city {
-    color: var(--blanco);
     opacity: 0.9;
 }
 
