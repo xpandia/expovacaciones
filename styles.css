@@ -714,7 +714,8 @@ ul { list-style: none; }
     justify-content: center;
 }
 
-.beach-banner__img {
+.beach-banner__img,
+.beach-banner__video {
     position: absolute;
     inset: 0;
     width: 100%;

@@ -186,6 +186,21 @@ document.addEventListener('DOMContentLoaded', () => {
         statsObserver.observe(statsSection);
     }
 
+    // --- LAZY VIDEO LOADING (only play when near viewport) ---
+    document.querySelectorAll('.beach-banner__video').forEach(video => {
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (video.preload === 'none') video.preload = 'auto';
+                    video.play().catch(() => {});
+                } else {
+                    video.pause();
+                }
+            });
+        }, { rootMargin: '200px' });
+        videoObserver.observe(video);
+    });
+
     // --- SCROLL REVEAL (CSS-driven, no class injection flash) ---
     const animatedElements = document.querySelectorAll(
         '.about__card, .benefit-card, .location__option, .faq__item, .exhibitors__list li, .feature, .gallery__item, .section-header'
