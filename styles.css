@@ -510,21 +510,8 @@ ul { list-style: none; }
     margin-bottom: 24px;
     letter-spacing: 1px;
     font-style: italic;
-    background: linear-gradient(
-        90deg,
-        rgba(255,255,255,0.9) 0%,
-        var(--teal-light) 15%,
-        var(--amarillo) 30%,
-        rgba(255,255,255,0.9) 45%,
-        var(--teal-light) 60%,
-        var(--amarillo) 75%,
-        rgba(255,255,255,0.9) 100%
-    );
-    background-size: 300% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: water-flow 4s ease-in-out infinite;
+    color: var(--blanco);
+    text-shadow: 0 2px 12px rgba(0,0,0,0.3);
 }
 
 @keyframes water-flow {
