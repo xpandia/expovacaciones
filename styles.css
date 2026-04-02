@@ -733,17 +733,15 @@ ul { list-style: none; }
 }
 
 /* Color = sección destino (abajo). Background = sección origen (arriba) */
-.wave-divider--hero-to-about    { background: transparent; color: var(--sand); }
+.wave-divider--hero-to-about    { background: var(--negro); color: var(--sand); }
 .wave-divider--about-to-feat    { background: var(--sand); color: var(--ocean); }
-.wave-divider--feat-to-zones    { background: var(--ocean); color: var(--blanco); }
-.wave-divider--zones-to-banner  { background: var(--blanco); color: transparent; }
-.wave-divider--banner-to-gallery { background: transparent; color: var(--sand); }
+.wave-divider--feat-to-zones    { background: var(--azul-dark); color: var(--blanco); }
+.wave-divider--banner-to-gallery { background: var(--sand-dark); color: var(--sand); }
 .wave-divider--gallery-to-sust  { background: var(--sand); color: var(--seafoam); }
 .wave-divider--sust-to-exhib    { background: var(--seafoam); color: var(--ocean); }
-.wave-divider--exhib-to-loc     { background: var(--ocean); color: var(--blanco); }
-.wave-divider--loc-to-banner    { background: var(--blanco); color: transparent; }
-.wave-divider--banner-to-faq    { background: transparent; color: var(--sand); }
-.wave-divider--faq-to-contact   { background: var(--sand); color: var(--ocean); }
+.wave-divider--exhib-to-loc     { background: var(--azul-dark); color: var(--blanco); }
+.wave-divider--banner-to-faq    { background: var(--sand-dark); color: var(--sand); }
+.wave-divider--faq-to-contact   { background: var(--sand); color: var(--azul); }
 
 .wave-divider--flip {
     transform: scaleX(-1);
