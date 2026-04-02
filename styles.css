@@ -418,11 +418,17 @@ ul { list-style: none; }
     margin-bottom: 28px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 16px;
+    background: none;
+    border: none;
+}
+
+.hero__presenta {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--amarillo);
+    text-shadow: 0 0 20px rgba(255, 193, 7, 0.4);
 }
 
 .hero__anato-logo {
@@ -457,10 +463,33 @@ ul { list-style: none; }
     margin-bottom: 24px;
     letter-spacing: 1px;
     font-style: italic;
-    background: linear-gradient(135deg, rgba(255,255,255,0.9), var(--teal-light), var(--amarillo));
+    background: linear-gradient(
+        90deg,
+        rgba(255,255,255,0.9) 0%,
+        var(--teal-light) 15%,
+        var(--amarillo) 30%,
+        rgba(255,255,255,0.9) 45%,
+        var(--teal-light) 60%,
+        var(--amarillo) 75%,
+        rgba(255,255,255,0.9) 100%
+    );
+    background-size: 300% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: water-flow 4s ease-in-out infinite;
+}
+
+@keyframes water-flow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .hero__info {
