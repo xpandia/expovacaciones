@@ -258,7 +258,7 @@ ul { list-style: none; }
 }
 
 .header__logo-color {
-    display: block;
+    display: none;
 }
 
 .header__logo-color .header__logo-img {
@@ -266,7 +266,11 @@ ul { list-style: none; }
 }
 
 .header__logo-white {
-    display: none;
+    display: block;
+}
+
+.header__logo-white .header__logo-img {
+    filter: brightness(0) invert(1);
 }
 
 .header--scrolled .header__logo-img {
@@ -284,6 +288,8 @@ ul { list-style: none; }
 .header--scrolled .header__logo-color {
     display: block;
 }
+
+/* Responsive: hamburger menu also white by default */
 
 .header__hamburger {
     display: none;
@@ -462,6 +468,7 @@ ul { list-style: none; }
 .hero__title {
     font-family: 'Poppins', sans-serif;
     margin-bottom: 10px;
+    text-transform: uppercase;
 }
 
 .hero__title-line {
