@@ -253,7 +253,7 @@ ul { list-style: none; }
     height: 64px;
     width: auto;
     transition: var(--transition);
-    filter: brightness(0) invert(1) drop-shadow(0 1px 3px rgba(0,0,0,0.3));
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.5)) drop-shadow(0 2px 4px rgba(0,0,0,0.3));
 }
 
 .header--scrolled .header__logo-img {
