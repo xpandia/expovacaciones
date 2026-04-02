@@ -1185,6 +1185,105 @@ ul { list-style: none; }
 }
 
 /* ============================================
+   VIDEO SHOWCASE
+   ============================================ */
+.video-showcase {
+    padding: 100px 0;
+    background: var(--blanco);
+    position: relative;
+}
+
+.video-showcase__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.video-showcase__player {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    aspect-ratio: 9 / 14;
+    background: var(--negro);
+    cursor: pointer;
+}
+
+.video-showcase__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.video-showcase__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 2;
+}
+
+.video-showcase__play:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.video-showcase__play.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.video-showcase__player::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.3) 0%, transparent 40%);
+    pointer-events: none;
+    border-radius: var(--radius-lg);
+}
+
+.video-showcase__title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--azul);
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+.video-showcase__desc {
+    font-size: 0.95rem;
+    color: var(--gris);
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .video-showcase__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .video-showcase {
+        padding: 60px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-showcase__grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .video-showcase {
+        padding: 48px 0;
+    }
+}
+
+/* ============================================
    SUSTAINABILITY
    ============================================ */
 .sustainability {

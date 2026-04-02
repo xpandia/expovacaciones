@@ -186,19 +186,39 @@ document.addEventListener('DOMContentLoaded', () => {
         statsObserver.observe(statsSection);
     }
 
-    // --- LAZY VIDEO LOADING (only play when near viewport) ---
-    document.querySelectorAll('.beach-banner__video').forEach(video => {
+    // --- VIDEO SHOWCASE (play/pause with button, lazy load) ---
+    document.querySelectorAll('.video-showcase__player').forEach(player => {
+        const video = player.querySelector('.video-showcase__video');
+        const playBtn = player.querySelector('.video-showcase__play');
+
+        // Lazy load when near viewport
         const videoObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    if (video.preload === 'none') video.preload = 'auto';
-                    video.play().catch(() => {});
-                } else {
-                    video.pause();
-                }
-            });
-        }, { rootMargin: '200px' });
-        videoObserver.observe(video);
+            if (entries[0].isIntersecting) {
+                if (video.preload === 'none') video.preload = 'auto';
+                videoObserver.disconnect();
+            }
+        }, { rootMargin: '300px' });
+        videoObserver.observe(player);
+
+        // Pause when out of viewport
+        const pauseObserver = new IntersectionObserver((entries) => {
+            if (!entries[0].isIntersecting && !video.paused) {
+                video.pause();
+                playBtn.classList.remove('hidden');
+            }
+        });
+        pauseObserver.observe(player);
+
+        // Toggle play/pause on click
+        player.addEventListener('click', () => {
+            if (video.paused) {
+                video.play().catch(() => {});
+                playBtn.classList.add('hidden');
+            } else {
+                video.pause();
+                playBtn.classList.remove('hidden');
+            }
+        });
     });
 
     // --- SCROLL REVEAL (CSS-driven, no class injection flash) ---
