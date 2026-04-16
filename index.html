@@ -9,12 +9,48 @@
     <meta property="og:description" content="Un lugar, millones de experiencias. Feria de turismo del 22 al 24 de mayo en C.C. Chipichape, Cali.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://expovacaciones.co">
+    <meta property="og:image" content="https://expovacaciones.co/assets/photos/hero-beach-1.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Expovacaciones Cali 2026">
+    <meta name="twitter:description" content="Un lugar, millones de experiencias. Feria de turismo del 22 al 24 de mayo en C.C. Chipichape, Cali.">
+    <meta name="twitter:image" content="https://expovacaciones.co/assets/photos/hero-beach-1.webp">
+    <link rel="canonical" href="https://expovacaciones.co">
+    <link rel="icon" type="image/png" href="assets/expovacaciones-logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
-    <link rel="preload" as="image" href="assets/photos/hero-wellness-1.webp" type="image/webp">
+    <link rel="preload" as="image" href="assets/photos/hero-beach-1.webp" type="image/webp">
     <link rel="stylesheet" href="styles.css">
     <script>document.documentElement.classList.add('js-ready');</script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Expovacaciones Cali 2026",
+        "description": "Feria de turismo en Cali, Colombia. Entrada gratuita. Una marca de ANATO Suroccidente.",
+        "startDate": "2026-05-22T09:00:00-05:00",
+        "endDate": "2026-05-24T20:00:00-05:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+            "@type": "Place",
+            "name": "Centro Comercial Chipichape - Plazoleta Central",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Cali",
+                "addressRegion": "Valle del Cauca",
+                "addressCountry": "CO"
+            }
+        },
+        "organizer": {
+            "@type": "Organization",
+            "name": "ANATO Suroccidente",
+            "url": "https://expovacaciones.co"
+        },
+        "isAccessibleForFree": true,
+        "image": "https://expovacaciones.co/assets/photos/hero-beach-1.webp"
+    }
+    </script>
 </head>
 <body>
 
@@ -34,8 +70,8 @@
             <nav class="header__nav" id="nav">
                 <a href="#inicio" class="nav-link">Inicio</a>
                 <a href="#sobre" class="nav-link">El Evento</a>
-                <a href="#beneficios" class="nav-link">Beneficios</a>
-                <a href="#zonas" class="nav-link">Experiencias</a>
+                <a href="#destinos" class="nav-link">Destinos</a>
+                <a href="#valle" class="nav-link">Valle del Cauca</a>
                 <a href="#expositores" class="nav-link">Expositores</a>
                 <a href="#como-llegar" class="nav-link">Cómo Llegar</a>
                 <a href="#faq" class="nav-link">FAQ</a>
@@ -62,7 +98,7 @@
                 <span class="hero__title-line">Expovacaciones</span>
                 <span class="hero__title-line hero__title-city">Cali 2026</span>
             </h1>
-            <p class="hero__slogan">Un lugar, millones de experiencias</p>
+            <p class="hero__slogan">Aquí empiezan las vacaciones</p>
             <div class="hero__info">
                 <div class="hero__info-item">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -74,7 +110,7 @@
                 </div>
                 <div class="hero__info-item">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                    <span>9:00 AM - 8:00 PM</span>
+                    <span>10:00 AM - 7:00 PM</span>
                 </div>
             </div>
             <div class="hero__countdown" id="countdown">
@@ -116,7 +152,7 @@
     </section>
 
     <!-- DESTINATION TICKER -->
-    <div class="destination-ticker">
+    <div class="destination-ticker" role="marquee" aria-label="Destinos destacados">
         <div class="destination-ticker__track">
             <span>San Andrés</span><span>·</span>
             <span>Cartagena</span><span>·</span>
@@ -145,130 +181,205 @@
         </div>
     </div>
 
-    <!-- QUÉ ENCONTRARÁS -->
-    <section class="features" id="beneficios">
-        <div class="container">
-            <div class="section-header section-header--light">
-                <p class="section-header__tag">Tu experiencia</p>
-                <h2 class="section-header__title">Lo que te espera</h2>
+    <!-- EL EVENTO -->
+    <section class="evento" id="sobre">
+        <!-- Hero de sección -->
+        <div class="evento__hero">
+            <div class="evento__hero-bg" style="background-image: url('assets/photos/destino-aguas-turquesa.webp')"></div>
+            <div class="evento__hero-overlay"></div>
+            <div class="container evento__hero-content">
+                <p class="evento__eyebrow">22 — 24 de Mayo, 2026 · C.C. Chipichape, Cali</p>
+                <h2 class="evento__hero-title">Tres días donde<br><em>las vacaciones te encuentran</em></h2>
+                <p class="evento__hero-desc">La feria turística más importante del occidente colombiano. Organizada por ANATO Suroccidente.</p>
             </div>
-            <div class="features__grid">
-                <div class="feature" style="--feature-bg: url('https://images.unsplash.com/photo-1540555700478-4be289fbec6d?w=800&q=80')">
-                    <div class="feature__bg"></div>
-                    <div class="feature__content">
-                        <div class="feature__emoji">🧘‍♀️</div>
-                        <h3 class="feature__title">Turismo Bienestar</h3>
-                        <p class="feature__desc">Retiros wellness, experiencias de relajación y las nuevas tendencias para viajar con propósito.</p>
+        </div>
+
+        <!-- Stats tipo boarding pass -->
+        <div class="evento__stats">
+            <div class="container">
+                <div class="evento__stats-grid">
+                    <div class="evento__stat-card">
+                        <div class="evento__stat-icon">✈️</div>
+                        <span class="evento__stat-number" data-target="80">0</span>
+                        <span class="evento__stat-suffix">+</span>
+                        <p class="evento__stat-label">Expositores te esperan</p>
+                    </div>
+                    <div class="evento__stat-card evento__stat-card--accent">
+                        <div class="evento__stat-icon">🌴</div>
+                        <span class="evento__stat-number" data-target="3">0</span>
+                        <span class="evento__stat-suffix">días</span>
+                        <p class="evento__stat-label">De pura feria tropical</p>
+                    </div>
+                    <div class="evento__stat-card">
+                        <div class="evento__stat-icon">🎉</div>
+                        <span class="evento__stat-number" data-target="100">0</span>
+                        <span class="evento__stat-suffix">%</span>
+                        <p class="evento__stat-label">Entrada gratuita</p>
                     </div>
                 </div>
-                <div class="feature" style="--feature-bg: url('https://images.unsplash.com/photo-1488085061387-422e29b40080?w=800&q=80')">
-                    <div class="feature__bg"></div>
-                    <div class="feature__content">
-                        <div class="feature__emoji">🤝</div>
-                        <h3 class="feature__title">Asesoría Directa</h3>
-                        <p class="feature__desc">Conecta cara a cara con agencias y operadores turísticos que te guiarán en tu próximo viaje.</p>
+            </div>
+        </div>
+
+        <!-- Experiencias - Cards visuales grandes -->
+        <div class="evento__experiencias">
+            <div class="container">
+                <div class="evento__exp-grid">
+                    <div class="evento__exp-card evento__exp-card--large">
+                        <img src="assets/photos/destino-retiros-wellness.webp" alt="Para todos - Familias disfrutando en aguas turquesas" loading="lazy">
+                        <div class="evento__exp-overlay"></div>
+                        <div class="evento__exp-content">
+                            <span class="evento__exp-tag">Para todos</span>
+                            <h3>Familias, parejas, viajeros solo y profesionales del turismo</h3>
+                            <p>El plan perfecto existe y está aquí. Ven con quien quieras.</p>
+                        </div>
+                    </div>
+                    <div class="evento__exp-card">
+                        <img src="assets/photos/destino-playas-cristal.webp" alt="Destinos de ensueño" loading="lazy">
+                        <div class="evento__exp-overlay"></div>
+                        <div class="evento__exp-content">
+                            <span class="evento__exp-tag">Destinos de Ensueño</span>
+                            <h3>Del Caribe colombiano a las playas de México y RD</h3>
+                            <p>Paquetes exclusivos con los mejores operadores.</p>
+                        </div>
+                    </div>
+                    <div class="evento__exp-card">
+                        <img src="assets/photos/destino-costa-salvaje.webp" alt="Pet Friendly - Playa para todos" loading="lazy">
+                        <div class="evento__exp-overlay"></div>
+                        <div class="evento__exp-content">
+                            <span class="evento__exp-tag">🐾 Pet Friendly</span>
+                            <h3>Tu mejor amigo también merece vacaciones</h3>
+                            <p>Hoteles 100% pet-friendly y vuelos que aceptan mascotas.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="feature" style="--feature-bg: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80')">
-                    <div class="feature__bg"></div>
-                    <div class="feature__content">
-                        <div class="feature__emoji">🎁</div>
-                        <h3 class="feature__title">Ofertas Exclusivas</h3>
-                        <p class="feature__desc">Promociones, descuentos y paquetes de viaje disponibles solo durante los tres días de feria.</p>
+            </div>
+        </div>
+
+        <!-- Razones para venir - con fotos -->
+        <div class="evento__razones">
+            <div class="container">
+                <h2 class="evento__razones-title">Tres razones para <em>no pensarlo más</em></h2>
+                <div class="evento__razones-grid">
+                    <div class="evento__razon">
+                        <div class="evento__razon-img">
+                            <img src="assets/photos/destino-san-andres.webp" alt="Vive el Caribe - San Andrés aguas turquesas" loading="lazy">
+                        </div>
+                        <div class="evento__razon-content">
+                            <span class="evento__razon-num">01</span>
+                            <h3>Vive el Caribe sin salir de la ciudad</h3>
+                            <p>Activaciones inmersivas, muestras gastronómicas, música en vivo y la energía tropical que solo Expovacaciones puede traerte.</p>
+                        </div>
+                    </div>
+                    <div class="evento__razon">
+                        <div class="evento__razon-img">
+                            <img src="assets/photos/destino-cancun.webp" alt="Planea tu escape - Playa de Cancún con resorts" loading="lazy">
+                        </div>
+                        <div class="evento__razon-content">
+                            <span class="evento__razon-num">02</span>
+                            <h3>Planea tu escape perfecto</h3>
+                            <p>Agencias, hoteles, aerolíneas y operadores turísticos reunidos con ofertas exclusivas para que reserves tu próximo viaje.</p>
+                        </div>
+                    </div>
+                    <div class="evento__razon">
+                        <div class="evento__razon-img">
+                            <img src="assets/photos/destino-tayrona.webp" alt="Atrévete a algo nuevo - Playa del Tayrona con palmeras" loading="lazy">
+                        </div>
+                        <div class="evento__razon-content">
+                            <span class="evento__razon-num">03</span>
+                            <h3>Atrévete a algo nuevo</h3>
+                            <p>Turismo wellness, destinos emergentes, retiros de bienestar y experiencias que te conectan con la naturaleza.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="feature" style="--feature-bg: url('https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&q=80')">
-                    <div class="feature__bg"></div>
-                    <div class="feature__content">
-                        <div class="feature__emoji">🎶</div>
-                        <h3 class="feature__title">Experiencias en Vivo</h3>
-                        <p class="feature__desc">Shows culturales, muestras gastronómicas y activaciones que te transportan al destino.</p>
-                    </div>
+                <div class="evento__cta">
+                    <a href="#contacto" class="btn btn--primary btn--large">Quiero estar ahí</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- DREAM DESTINATIONS -->
-    <section class="dream-destinations">
+    <!-- DESTINOS -->
+    <section class="dream-destinations" id="destinos">
         <div class="container">
             <div class="section-header">
                 <p class="section-header__tag">Destinos</p>
-                <h2 class="section-header__title">Cierra los ojos e imagina</h2>
+                <h2 class="section-header__title">Descubre el viaje a tu manera</h2>
+                <p class="section-header__subtitle">Todos estos destinos te esperan en un solo lugar. Asesórate con expertos y reserva el viaje que mereces.</p>
+                <div class="destination-highlights destination-highlights--icons">
+                    <div class="destination-highlight--icon">
+                        <div class="destination-highlight__circle" style="background: #1a8a4a;">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v-2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/><path d="M3 21c0-2 1-4 3-5"/><path d="M21 12l-3 6M18 18l3 6"/></svg>
+                        </div>
+                        <span>Destinos de<br>Playa</span>
+                    </div>
+                    <div class="destination-highlight--icon">
+                        <div class="destination-highlight__circle" style="background: #f9167e;">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a4 4 0 00-8 0v2"/><path d="M12 12v3"/></svg>
+                        </div>
+                        <span>Paquetes<br>Turísticos</span>
+                    </div>
+                    <div class="destination-highlight--icon">
+                        <div class="destination-highlight__circle" style="background: #2c3d6b;">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                        </div>
+                        <span>Destinos Nacionales<br>e Internacionales</span>
+                    </div>
+                    <div class="destination-highlight--icon">
+                        <div class="destination-highlight__circle" style="background: #1a8a4a;">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 22c4-4 8-7.5 8-12a8 8 0 10-16 0c0 4.5 4 8 8 12z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                        </div>
+                        <span>Turismo de<br>Naturaleza</span>
+                    </div>
+                    <div class="destination-highlight--icon">
+                        <div class="destination-highlight__circle" style="background: #eab818;">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                        </div>
+                        <span>Zona de<br>Experiencias</span>
+                    </div>
+                    <div class="destination-highlight--icon">
+                        <div class="destination-highlight__circle" style="background: #f9167e;">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 10h20"/><path d="M7 4v16"/></svg>
+                        </div>
+                        <span>Asesoría de<br>Visados</span>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="dream-destinations__scroll">
             <div class="dream-destinations__track">
-                <div class="dream-destinations__card">
-                    <img src="https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=600&q=80" alt="Playa cristalina" loading="lazy" decoding="async">
-                    <div class="dream-destinations__label">
-                        <h3>Playas de Cristal</h3>
-                        <p>Caribe colombiano</p>
-                    </div>
-                </div>
-                <div class="dream-destinations__card">
-                    <img src="https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=600&q=80" alt="Montaña tropical" loading="lazy" decoding="async">
-                    <div class="dream-destinations__label">
-                        <h3>Selva y Montaña</h3>
-                        <p>Eje Cafetero</p>
-                    </div>
-                </div>
-                <div class="dream-destinations__card">
-                    <img src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=600&q=80" alt="Atardecer en la playa" loading="lazy" decoding="async">
-                    <div class="dream-destinations__label">
-                        <h3>Atardeceres de Oro</h3>
-                        <p>Pacífico colombiano</p>
-                    </div>
-                </div>
-                <div class="dream-destinations__card">
-                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80" alt="Agua turquesa" loading="lazy" decoding="async">
-                    <div class="dream-destinations__label">
-                        <h3>Aguas Turquesa</h3>
-                        <p>San Andrés y Providencia</p>
-                    </div>
-                </div>
-                <div class="dream-destinations__card">
-                    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600&q=80" alt="Paisaje de ensueño" loading="lazy" decoding="async">
-                    <div class="dream-destinations__label">
-                        <h3>Retiros Wellness</h3>
-                        <p>Valle del Cauca</p>
-                    </div>
-                </div>
-                <div class="dream-destinations__card">
-                    <img src="https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?w=600&q=80" alt="Playa caribeña con palmeras" loading="lazy" decoding="async">
-                    <div class="dream-destinations__label">
-                        <h3>Palmeras y Arena</h3>
-                        <p>Isla Barú</p>
-                    </div>
-                </div>
-                <div class="dream-destinations__card">
-                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" alt="Playa paradisíaca" loading="lazy" decoding="async">
-                    <div class="dream-destinations__label">
-                        <h3>Paraíso Escondido</h3>
-                        <p>Islas del Rosario</p>
-                    </div>
-                </div>
-                <div class="dream-destinations__card">
-                    <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&q=80" alt="Playa tropical" loading="lazy" decoding="async">
-                    <div class="dream-destinations__label">
-                        <h3>Costa Salvaje</h3>
-                        <p>Capurganá</p>
-                    </div>
-                </div>
-                <div class="dream-destinations__card">
-                    <img src="https://images.unsplash.com/photo-1471922694854-ff1b63b20054?w=600&q=80" alt="Agua cristalina del Caribe" loading="lazy" decoding="async">
-                    <div class="dream-destinations__label">
-                        <h3>Mar de Siete Colores</h3>
-                        <p>San Andrés</p>
-                    </div>
-                </div>
-                <div class="dream-destinations__card">
-                    <img src="https://images.unsplash.com/photo-1520454974749-611b7248ffdb?w=600&q=80" alt="Playa con manglar" loading="lazy" decoding="async">
-                    <div class="dream-destinations__label">
-                        <h3>Manglares y Coral</h3>
-                        <p>Isla Mucura</p>
-                    </div>
-                </div>
+                <!-- Mexico -->
+                <div class="dream-destinations__card"><img src="assets/photos/destino-cancun.webp" alt="Cancún" loading="lazy"><div class="dream-destinations__label"><h3>Cancún</h3><p>Quintana Roo, México</p></div></div>
+                <div class="dream-destinations__card"><img src="assets/photos/destino-riviera-maya.webp" alt="Riviera Maya" loading="lazy"><div class="dream-destinations__label"><h3>Riviera Maya</h3><p>Quintana Roo, México</p></div></div>
+                <div class="dream-destinations__card"><img src="assets/photos/destino-tulum.webp" alt="Tulum" loading="lazy"><div class="dream-destinations__label"><h3>Tulum</h3><p>Quintana Roo, México</p></div></div>
+                <div class="dream-destinations__card"><img src="assets/photos/destino-los-cabos.webp" alt="Los Cabos" loading="lazy"><div class="dream-destinations__label"><h3>Los Cabos</h3><p>Baja California, México</p></div></div>
+                <!-- República Dominicana -->
+                <div class="dream-destinations__card"><img src="assets/photos/destino-punta-cana.webp" alt="Punta Cana" loading="lazy"><div class="dream-destinations__label"><h3>Punta Cana</h3><p>República Dominicana</p></div></div>
+                <div class="dream-destinations__card"><img src="assets/photos/destino-samana.webp" alt="Samaná" loading="lazy"><div class="dream-destinations__label"><h3>Samaná</h3><p>República Dominicana</p></div></div>
+                <div class="dream-destinations__card"><img src="assets/photos/destino-bayahibe.webp" alt="Bayahibe" loading="lazy"><div class="dream-destinations__label"><h3>Bayahibe</h3><p>República Dominicana</p></div></div>
+                <!-- Costa Rica -->
+                <div class="dream-destinations__card"><img src="assets/photos/destino-guanacaste.webp" alt="Guanacaste" loading="lazy"><div class="dream-destinations__label"><h3>Guanacaste</h3><p>Costa Rica</p></div></div>
+                <div class="dream-destinations__card"><img src="assets/photos/destino-manuel-antonio.webp" alt="Manuel Antonio" loading="lazy"><div class="dream-destinations__label"><h3>Manuel Antonio</h3><p>Costa Rica</p></div></div>
+                <!-- Colombia -->
+                <div class="dream-destinations__card"><img src="assets/photos/destino-san-andres.webp" alt="San Andrés" loading="lazy"><div class="dream-destinations__label"><h3>San Andrés</h3><p>Colombia</p></div></div>
+                <div class="dream-destinations__card"><img src="assets/photos/destino-cartagena.webp" alt="Cartagena" loading="lazy"><div class="dream-destinations__label"><h3>Cartagena</h3><p>Colombia</p></div></div>
+                <div class="dream-destinations__card"><img src="assets/photos/destino-tayrona.webp" alt="Parque Tayrona" loading="lazy"><div class="dream-destinations__label"><h3>Tayrona</h3><p>Santa Marta, Colombia</p></div></div>
+                <div class="dream-destinations__card"><img src="assets/photos/destino-nuqui.webp" alt="Nuquí" loading="lazy"><div class="dream-destinations__label"><h3>Nuquí</h3><p>Chocó, Colombia</p></div></div>
+                <div class="dream-destinations__card"><img src="assets/photos/destino-baru.webp" alt="Barú" loading="lazy"><div class="dream-destinations__label"><h3>Barú</h3><p>Bolívar, Colombia</p></div></div>
+                <!-- Duplicado para scroll infinito -->
+                <div class="dream-destinations__card"><img src="assets/photos/destino-cancun.webp" alt="Cancún" loading="lazy"><div class="dream-destinations__label"><h3>Cancún</h3><p>Quintana Roo, México</p></div></div>
+                <div class="dream-destinations__card"><img src="assets/photos/destino-riviera-maya.webp" alt="Riviera Maya" loading="lazy"><div class="dream-destinations__label"><h3>Riviera Maya</h3><p>Quintana Roo, México</p></div></div>
+                <div class="dream-destinations__card"><img src="assets/photos/destino-tulum.webp" alt="Tulum" loading="lazy"><div class="dream-destinations__label"><h3>Tulum</h3><p>Quintana Roo, México</p></div></div>
+                <div class="dream-destinations__card"><img src="assets/photos/destino-los-cabos.webp" alt="Los Cabos" loading="lazy"><div class="dream-destinations__label"><h3>Los Cabos</h3><p>Baja California, México</p></div></div>
+                <div class="dream-destinations__card"><img src="assets/photos/destino-punta-cana.webp" alt="Punta Cana" loading="lazy"><div class="dream-destinations__label"><h3>Punta Cana</h3><p>República Dominicana</p></div></div>
+                <div class="dream-destinations__card"><img src="assets/photos/destino-samana.webp" alt="Samaná" loading="lazy"><div class="dream-destinations__label"><h3>Samaná</h3><p>República Dominicana</p></div></div>
+                <div class="dream-destinations__card"><img src="assets/photos/destino-bayahibe.webp" alt="Bayahibe" loading="lazy"><div class="dream-destinations__label"><h3>Bayahibe</h3><p>República Dominicana</p></div></div>
+                <div class="dream-destinations__card"><img src="assets/photos/destino-guanacaste.webp" alt="Guanacaste" loading="lazy"><div class="dream-destinations__label"><h3>Guanacaste</h3><p>Costa Rica</p></div></div>
+                <div class="dream-destinations__card"><img src="assets/photos/destino-manuel-antonio.webp" alt="Manuel Antonio" loading="lazy"><div class="dream-destinations__label"><h3>Manuel Antonio</h3><p>Costa Rica</p></div></div>
+                <div class="dream-destinations__card"><img src="assets/photos/destino-san-andres.webp" alt="San Andrés" loading="lazy"><div class="dream-destinations__label"><h3>San Andrés</h3><p>Colombia</p></div></div>
+                <div class="dream-destinations__card"><img src="assets/photos/destino-cartagena.webp" alt="Cartagena" loading="lazy"><div class="dream-destinations__label"><h3>Cartagena</h3><p>Colombia</p></div></div>
+                <div class="dream-destinations__card"><img src="assets/photos/destino-tayrona.webp" alt="Parque Tayrona" loading="lazy"><div class="dream-destinations__label"><h3>Tayrona</h3><p>Santa Marta, Colombia</p></div></div>
+                <div class="dream-destinations__card"><img src="assets/photos/destino-nuqui.webp" alt="Nuquí" loading="lazy"><div class="dream-destinations__label"><h3>Nuquí</h3><p>Chocó, Colombia</p></div></div>
+                <div class="dream-destinations__card"><img src="assets/photos/destino-baru.webp" alt="Barú" loading="lazy"><div class="dream-destinations__label"><h3>Barú</h3><p>Bolívar, Colombia</p></div></div>
             </div>
         </div>
     </section>
@@ -280,7 +391,7 @@
                 <p class="section-header__tag">Descubre Colombia</p>
                 <h2 class="section-header__title">Déjate llevar</h2>
             </div>
-            <div class="video-showcase__grid">
+            <div class="video-showcase__grid scroll-stagger">
                 <div class="video-showcase__item">
                     <div class="video-showcase__player">
                         <video class="video-showcase__video" loop playsinline poster="assets/videos/expo-video-1-poster.jpg" preload="none">
@@ -309,31 +420,77 @@
         </div>
     </section>
 
-    <!-- EXPERIENCIAS -->
-    <section class="zones" id="zonas">
+    <!-- VALLE DEL CAUCA -->
+    <section class="valle" id="valle">
         <div class="container">
             <div class="section-header">
-                <p class="section-header__tag">Razones para venir</p>
-                <h2 class="section-header__title">Tres días que no olvidarás</h2>
+                <p class="section-header__tag">Anfitrión</p>
+                <h2 class="section-header__title">Explora el Valle del Cauca con experiencias diseñadas para ti</h2>
+                <p class="section-header__subtitle">Cali y el Valle del Cauca te reciben con los brazos abiertos. Naturaleza, sabor, ritmo y aventura en la capital mundial de la salsa.</p>
             </div>
-            <div class="zones__grid">
-                <div class="zone">
-                    <div class="zone__number">01</div>
-                    <div class="zone__emoji">🏝️</div>
-                    <h3 class="zone__title">Vive el Caribe sin salir de la ciudad</h3>
-                    <p class="zone__desc">Activaciones inmersivas, muestras gastronómicas, música en vivo y la energía tropical que solo Expovacaciones puede traerte.</p>
+            <div class="valle__grid scroll-stagger">
+                <div class="valle__card">
+                    <img src="assets/photos/cali-salsa.webp" alt="Delirio y bailarinas de salsa caleña" loading="lazy">
+                    <div class="valle__card-content">
+                        <h3>Cali, Capital de la Salsa</h3>
+                        <p>Rumba, cultura y la energía inigualable de la Sucursal del Cielo.</p>
+                    </div>
                 </div>
-                <div class="zone zone--featured">
-                    <div class="zone__number">02</div>
-                    <div class="zone__emoji">✈️</div>
-                    <h3 class="zone__title">Planea tu escape perfecto</h3>
-                    <p class="zone__desc">Agencias, hoteles, aerolíneas y operadores turísticos reunidos con ofertas exclusivas para que reserves tu próximo viaje.</p>
+                <div class="valle__card">
+                    <img src="assets/photos/valle-palmas-cera.webp" alt="Palmas de cera del Valle del Cauca" loading="lazy">
+                    <div class="valle__card-content">
+                        <h3>Palmas de Cera</h3>
+                        <p>El árbol nacional de Colombia en los bosques nublados del Valle.</p>
+                    </div>
                 </div>
-                <div class="zone">
-                    <div class="zone__number">03</div>
-                    <div class="zone__emoji">🌊</div>
-                    <h3 class="zone__title">Atrévete a algo nuevo</h3>
-                    <p class="zone__desc">Turismo wellness, destinos emergentes, retiros de bienestar y experiencias que te conectan con la naturaleza.</p>
+                <div class="valle__card">
+                    <img src="assets/photos/valle-cascadas.webp" alt="Cascadas naturales del Valle del Cauca" loading="lazy">
+                    <div class="valle__card-content">
+                        <h3>Naturaleza Viva</h3>
+                        <p>Farallones, cascadas y piscinas naturales entre montañas verdes.</p>
+                    </div>
+                </div>
+                <div class="valle__card">
+                    <img src="assets/photos/cali-san-antonio.webp" alt="Barrio San Antonio en Cali" loading="lazy">
+                    <div class="valle__card-content">
+                        <h3>Cali Patrimonial</h3>
+                        <p>Barrio San Antonio, iglesias coloniales y la historia viva de la ciudad.</p>
+                    </div>
+                </div>
+                <div class="valle__card">
+                    <img src="assets/photos/valle-parapente.webp" alt="Parapente en Roldanillo, Valle del Cauca" loading="lazy">
+                    <div class="valle__card-content">
+                        <h3>Aventura y Adrenalina</h3>
+                        <p>Roldanillo, capital mundial del parapente. Vuela sobre el Valle del Cauca.</p>
+                    </div>
+                </div>
+                <div class="valle__card">
+                    <img src="assets/photos/pacifico-ballena-salto.webp" alt="Avistamiento de ballenas jorobadas en el Pacífico" loading="lazy">
+                    <div class="valle__card-content">
+                        <h3>Pacífico Colombiano</h3>
+                        <p>Ballenas jorobadas, playas salvajes y biodiversidad única en Buenaventura.</p>
+                    </div>
+                </div>
+                <div class="valle__card">
+                    <img src="assets/photos/valle-currulao.webp" alt="Tambores y cultura afrocolombiana" loading="lazy">
+                    <div class="valle__card-content">
+                        <h3>Cultura Afro</h3>
+                        <p>Currulao, tambores y la herencia viva del Pacífico colombiano.</p>
+                    </div>
+                </div>
+                <div class="valle__card">
+                    <img src="assets/photos/cali-delirio.webp" alt="Show de Delirio en Cali" loading="lazy">
+                    <div class="valle__card-content">
+                        <h3>Cali de Noche</h3>
+                        <p>Delirio, rumba y shows únicos en la capital mundial de la salsa.</p>
+                    </div>
+                </div>
+                <div class="valle__card">
+                    <img src="assets/photos/valle-piscina-natural.webp" alt="Piscina natural de aguas turquesa" loading="lazy">
+                    <div class="valle__card-content">
+                        <h3>Paraíso Natural</h3>
+                        <p>Piscinas de aguas cristalinas, ríos y selva tropical escondida.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -341,11 +498,11 @@
 
     <!-- IMMERSIVE BREAK -->
     <section class="immersive-break immersive-break--tall">
-        <div class="immersive-break__image" style="background-image: url('https://images.unsplash.com/photo-1505881502353-a1986add3762?w=1920&q=80')"></div>
-        <div class="immersive-break__overlay"></div>
+        <div class="immersive-break__image" style="background-image: url('assets/photos/pacifico-atardecer.webp')"></div>
+        <div class="immersive-break__overlay" style="background: linear-gradient(180deg, rgba(10,22,40,0.1) 0%, rgba(10,22,40,0.05) 40%, rgba(10,22,40,0.3) 100%);"></div>
         <div class="immersive-break__content">
-            <p class="immersive-break__eyebrow">22 — 24 de Mayo, 2026</p>
-            <h2 class="immersive-break__title">Descubre tu próximo destino soñado</h2>
+            <h2 class="immersive-break__title">Escápate a la playa</h2>
+            <p class="immersive-break__subtitle">Nuevos destinos · Las mejores ofertas · Más experiencias</p>
         </div>
     </section>
 
@@ -354,9 +511,9 @@
         <div class="container">
             <div class="section-header">
                 <p class="section-header__tag">Edición Anterior</p>
-                <h2 class="section-header__title">Momentos que inspiran</h2>
+                <h2 class="section-header__title">Momentos de Expovacaciones</h2>
             </div>
-            <div class="gallery__grid">
+            <div class="gallery__grid scroll-stagger">
                 <div class="gallery__item gallery__item--wide">
                     <picture>
                         <source srcset="assets/photos/show-tropicana.webp" type="image/webp">
@@ -433,65 +590,49 @@
         </div>
     </section>
 
-    <!-- SOBRE EL EVENTO -->
-    <section class="about" id="sobre">
+    <!-- BRANDING SHOWCASE: Piezas del evento -->
+    <section class="branding-showcase">
         <div class="container">
             <div class="section-header">
-                <p class="section-header__tag">El Evento</p>
-                <h2 class="section-header__title">Donde el turismo cobra vida</h2>
+                <p class="section-header__tag">El Evento en Vivo</p>
+                <h2 class="section-header__title">Así se vive Expovacaciones</h2>
             </div>
-            <div class="stats-inline">
-                <div class="stat-inline" data-target="80">
-                    <span class="stat-inline__number">0</span>
-                    <span class="stat-inline__suffix">+</span>
-                    <p class="stat-inline__label">Expositores</p>
+            <div class="branding-showcase__grid scroll-stagger">
+                <div class="branding-showcase__item branding-showcase__item--wide">
+                    <picture>
+                        <source srcset="assets/photos/branding-portico-entrada.webp" type="image/webp">
+                        <img src="assets/photos/branding-portico-entrada.jpg" alt="Pórtico de entrada de Expovacaciones" loading="lazy" decoding="async">
+                    </picture>
                 </div>
-                <div class="stat-inline" data-target="3">
-                    <span class="stat-inline__number">0</span>
-                    <span class="stat-inline__suffix"></span>
-                    <p class="stat-inline__label">Días de Feria</p>
+                <div class="branding-showcase__item">
+                    <picture>
+                        <source srcset="assets/photos/branding-totem-playa.webp" type="image/webp">
+                        <img src="assets/photos/branding-totem-playa.jpg" alt="Tótem temático de playa" loading="lazy" decoding="async">
+                    </picture>
                 </div>
-                <div class="stat-inline" data-target="100">
-                    <span class="stat-inline__number">0</span>
-                    <span class="stat-inline__suffix">%</span>
-                    <p class="stat-inline__label">Entrada Gratuita</p>
+                <div class="branding-showcase__item">
+                    <picture>
+                        <source srcset="assets/photos/branding-punto-info.webp" type="image/webp">
+                        <img src="assets/photos/branding-punto-info.jpg" alt="Punto de información del evento" loading="lazy" decoding="async">
+                    </picture>
                 </div>
-            </div>
-            <div class="about__grid">
-                <div class="about__text">
-                    <p><strong>Expovacaciones Cali 2026</strong> es la feria turística más importante del occidente colombiano. Descubre la magia de las playas, experiencias de turismo bienestar y las nuevas tendencias para viajar con propósito.</p>
-                    <p>Organizada por <strong>ANATO Suroccidente</strong>, conectamos al público con agencias de viajes, hoteles, aerolíneas y operadores turísticos en un espacio donde la energía, la naturaleza y la calma son protagonistas.</p>
-                    <a href="#contacto" class="btn btn--primary">Quiero recibir información</a>
+                <div class="branding-showcase__item">
+                    <picture>
+                        <source srcset="assets/photos/branding-totem-ofertas.webp" type="image/webp">
+                        <img src="assets/photos/branding-totem-ofertas.jpg" alt="Tótem de ofertas Expovacaciones" loading="lazy" decoding="async">
+                    </picture>
                 </div>
-                <div class="about__cards">
-                    <div class="about__card">
-                        <div class="about__card-emoji">👨‍👩‍👧‍👦</div>
-                        <div class="about__card-content">
-                            <h3>Para Todos</h3>
-                            <p>Familias, viajeros frecuentes y profesionales del turismo.</p>
-                        </div>
-                    </div>
-                    <div class="about__card">
-                        <div class="about__card-emoji">🏝️</div>
-                        <div class="about__card-content">
-                            <h3>Destinos de Ensueño</h3>
-                            <p>Destinos nacionales e internacionales con los mejores operadores.</p>
-                        </div>
-                    </div>
-                    <div class="about__card">
-                        <div class="about__card-emoji">✨</div>
-                        <div class="about__card-content">
-                            <h3>Experiencia Completa</h3>
-                            <p>Activaciones, entretenimiento, charlas y turismo responsable.</p>
-                        </div>
-                    </div>
-                    <div class="about__card about__card--petfriendly">
-                        <div class="about__card-emoji">🐾</div>
-                        <div class="about__card-content">
-                            <h3>Pet Friendly</h3>
-                            <p>Ven con tu mascota. El evento y Chipichape son pet friendly.</p>
-                        </div>
-                    </div>
+                <div class="branding-showcase__item">
+                    <picture>
+                        <source srcset="assets/photos/branding-totem.webp" type="image/webp">
+                        <img src="assets/photos/branding-totem.jpg" alt="Tótem de señalización" loading="lazy" decoding="async">
+                    </picture>
+                </div>
+                <div class="branding-showcase__item branding-showcase__item--wide">
+                    <picture>
+                        <source srcset="assets/photos/branding-portico-logo.webp" type="image/webp">
+                        <img src="assets/photos/branding-portico-logo.jpg" alt="Logo Expovacaciones en el pórtico del evento" loading="lazy" decoding="async">
+                    </picture>
                 </div>
             </div>
         </div>
@@ -500,7 +641,7 @@
     <!-- SOSTENIBILIDAD -->
     <section class="sustainability-immersive">
         <div class="container">
-            <div class="sustainability-immersive__grid">
+            <div class="sustainability-immersive__grid scroll-fade-up">
                 <div class="sustainability-immersive__content">
                     <p class="section-header__tag" style="text-align:left;">Turismo Consciente</p>
                     <h2 class="sustainability-immersive__title">Viaja con propósito</h2>
@@ -534,7 +675,7 @@
                 <p class="section-header__tag">No te pierdas nada</p>
                 <h2 class="section-header__title">Recibe promociones y novedades</h2>
             </div>
-            <div class="contact__grid">
+            <div class="contact__grid scroll-fade-up">
                 <div class="contact__info">
                     <p class="contact__desc">Sé el primero en conocer las promociones exclusivas, descuentos en paquetes de viaje y toda la programación de Expovacaciones Cali 2026.</p>
                     <div class="contact__details">
@@ -559,6 +700,10 @@
                                 <p>C.C. Chipichape, Plazoleta Central, Cali</p>
                             </div>
                         </div>
+                    </div>
+                    <div class="contact__anato-badge">
+                        <img src="assets/anato-suroccidente.png" alt="ANATO Suroccidente">
+                        <span>Una marca de ANATO Suroccidente</span>
                     </div>
                 </div>
                 <form class="contact__form" id="contactForm">
@@ -599,6 +744,14 @@
                             <option value="todo">Todo lo anterior</option>
                         </select>
                     </div>
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="politicas" name="politicas" required>
+                        <label for="politicas">Acepto la <a href="#" target="_blank">política de tratamiento de datos personales</a> de ANATO Suroccidente. *</label>
+                    </div>
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="promociones" name="promociones" checked>
+                        <label for="promociones">Deseo recibir promociones, boletines y novedades de Expovacaciones.</label>
+                    </div>
                     <button type="submit" class="btn btn--primary btn--large btn--full">Quiero recibir información</button>
                 </form>
             </div>
@@ -612,7 +765,7 @@
                 <p class="section-header__tag">Ubicación</p>
                 <h2 class="section-header__title">Te esperamos aquí</h2>
             </div>
-            <div class="location__grid">
+            <div class="location__grid scroll-fade-up">
                 <div class="location__map">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d995.6!2d-76.5303!3d3.4716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e30a9a3967e6a1d%3A0x3f4c6b3c9e28e5a!2sCentro%20Comercial%20Chipichape!5e0!3m2!1ses!2sco!4v1700000000000"
@@ -665,7 +818,7 @@
                 <p class="section-header__tag">Para Expositores</p>
                 <h2 class="section-header__title">Sé parte de la experiencia</h2>
             </div>
-            <div class="exhibitors__layout">
+            <div class="exhibitors__layout scroll-stagger">
                 <div class="exhibitors__who">
                     <h3>¿Quiénes pueden participar?</h3>
                     <ul class="exhibitors__list">
@@ -703,6 +856,19 @@
                     </div>
                 </div>
             </div>
+            <div class="exhibitors__renders">
+                <h3>Así vivirás la experiencia</h3>
+                <div class="exhibitors__renders-grid">
+                    <div class="exhibitors__render-item">
+                        <img src="assets/photos/branding-carpa.webp" alt="Render de la carpa principal Expovacaciones" loading="lazy">
+                        <p>Carpa Principal</p>
+                    </div>
+                    <div class="exhibitors__render-item">
+                        <img src="assets/photos/branding-carpa-render.webp" alt="Render del montaje de stands" loading="lazy">
+                        <p>Zona de Stands</p>
+                    </div>
+                </div>
+            </div>
             <div class="exhibitors__cta">
                 <a href="#contacto" class="btn btn--primary btn--large">Reserva tu Espacio como Expositor</a>
             </div>
@@ -716,58 +882,58 @@
                 <p class="section-header__tag">Preguntas Frecuentes</p>
                 <h2 class="section-header__title">Resolvemos tus dudas</h2>
             </div>
-            <div class="faq__list">
+            <div class="faq__list scroll-stagger">
                 <div class="faq__item">
-                    <button class="faq__question">
+                    <button class="faq__question" aria-expanded="false" aria-controls="faq-1">
                         <span>¿Qué es Expovacaciones Cali?</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
-                    <div class="faq__answer">
+                    <div class="faq__answer" id="faq-1" role="region">
                         <p>Es una feria especializada en turismo que reúne a empresas del sector para ofrecer información, promociones y alternativas de viaje. Una marca de ANATO Suroccidente.</p>
                     </div>
                 </div>
                 <div class="faq__item">
-                    <button class="faq__question">
+                    <button class="faq__question" aria-expanded="false" aria-controls="faq-2">
                         <span>¿Cuándo y dónde se realiza?</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
-                    <div class="faq__answer">
-                        <p>Del 22 al 24 de mayo de 2026 en el Centro Comercial Chipichape, Plazoleta Central, Cali. Horario de 9:00 AM a 8:00 PM.</p>
+                    <div class="faq__answer" id="faq-2" role="region">
+                        <p>Del 22 al 24 de mayo de 2026 en el Centro Comercial Chipichape, Plazoleta Central, Cali. Horario de 10:00 AM a 7:00 PM los tres días.</p>
                     </div>
                 </div>
                 <div class="faq__item">
-                    <button class="faq__question">
+                    <button class="faq__question" aria-expanded="false" aria-controls="faq-3">
                         <span>¿La entrada tiene algún costo?</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
-                    <div class="faq__answer">
+                    <div class="faq__answer" id="faq-3" role="region">
                         <p>No. El ingreso es totalmente gratuito para todo el público.</p>
                     </div>
                 </div>
                 <div class="faq__item">
-                    <button class="faq__question">
+                    <button class="faq__question" aria-expanded="false" aria-controls="faq-4">
                         <span>¿Quiénes pueden asistir?</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
-                    <div class="faq__answer">
+                    <div class="faq__answer" id="faq-4" role="region">
                         <p>Público en general, familias, viajeros frecuentes y profesionales del sector turístico.</p>
                     </div>
                 </div>
                 <div class="faq__item">
-                    <button class="faq__question">
+                    <button class="faq__question" aria-expanded="false" aria-controls="faq-5">
                         <span>¿Cómo puedo participar como expositor?</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
-                    <div class="faq__answer">
+                    <div class="faq__answer" id="faq-5" role="region">
                         <p>Llena el formulario de contacto o comunícate al 314 790 8555 o 310 324 6116.</p>
                     </div>
                 </div>
                 <div class="faq__item">
-                    <button class="faq__question">
+                    <button class="faq__question" aria-expanded="false" aria-controls="faq-6">
                         <span>¿Cómo llego al Centro Comercial Chipichape?</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
-                    <div class="faq__answer">
+                    <div class="faq__answer" id="faq-6" role="region">
                         <p>En vehículo particular, transporte público MIO, taxi o apps de transporte con acceso directo por las entradas del centro comercial.</p>
                     </div>
                 </div>
@@ -780,11 +946,17 @@
         <div class="immersive-break__image" style="background-image: url('assets/photos/cta-beach.webp')"></div>
         <div class="immersive-break__overlay"></div>
         <div class="immersive-break__content">
-            <p class="immersive-break__eyebrow">Entrada gratuita</p>
-            <h2 class="immersive-break__title">¿Listo para tu próxima aventura?</h2>
+            <p class="immersive-break__eyebrow">Entrada gratuita · 22 al 24 de Mayo</p>
+            <h2 class="immersive-break__title">Escápate a la playa</h2>
+            <p class="immersive-break__subtitle">Nuevos destinos · Las mejores ofertas · Más experiencias</p>
             <a href="#contacto" class="btn btn--primary" style="margin-top: 32px;">Quiero estar ahí</a>
         </div>
     </section>
+
+    <!-- WHATSAPP WIDGET -->
+    <a href="https://wa.me/573147908555?text=Hola%2C%20quiero%20información%20sobre%20Expovacaciones%20Cali%202026" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chatea con nosotros por WhatsApp">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
 
     <!-- FOOTER -->
     <footer class="footer">
@@ -796,16 +968,37 @@
                         <img src="assets/expovacaciones-logo.png" alt="Expovacaciones" class="footer__logo-img" loading="lazy">
                     </picture>
                     <p>Un lugar, millones de experiencias</p>
-                    <div class="footer__anato">
-                        <span>Una marca de</span>
-                        <img src="assets/anato-suroccidente.png" alt="ANATO Suroccidente" class="footer__anato-logo" loading="lazy">
+                    <div class="footer__institutional">
+                        <span>Organiza</span>
+                        <div class="footer__institutional-logos">
+                            <img src="assets/anato-suroccidente.png" alt="ANATO Suroccidente" class="footer__inst-logo" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="footer__institutional footer__institutional--support">
+                        <span>Con el apoyo de</span>
+                        <div class="footer__institutional-logos">
+                            <img src="assets/fontur-logo.svg" alt="Fontur Colombia" class="footer__inst-logo" loading="lazy" onerror="this.style.display='none'">
+                            <img src="assets/mincit-logo.svg" alt="Ministerio de Comercio, Industria y Turismo" class="footer__inst-logo" loading="lazy" onerror="this.style.display='none'">
+                            <img src="assets/marca-pais-logo.svg" alt="Colombia, el país de la belleza" class="footer__inst-logo" loading="lazy" onerror="this.style.display='none'">
+                        </div>
+                    </div>
+                    <div class="footer__social">
+                        <a href="https://www.instagram.com/expovacacionescali/" target="_blank" rel="noopener" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        </a>
+                        <a href="https://www.tiktok.com/@expovacacionescali" target="_blank" rel="noopener" aria-label="TikTok">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V9.48a8.18 8.18 0 004.76 1.52V7.56a4.84 4.84 0 01-1-.87z"/></svg>
+                        </a>
+                        <a href="https://www.facebook.com/expovacacionescali" target="_blank" rel="noopener" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
                     </div>
                 </div>
                 <div class="footer__links">
                     <h4>Navegación</h4>
                     <a href="#inicio">Inicio</a>
                     <a href="#sobre">El Evento</a>
-                    <a href="#beneficios">Beneficios</a>
+                    <a href="#destinos">Destinos</a>
                     <a href="#expositores">Expositores</a>
                 </div>
                 <div class="footer__links">

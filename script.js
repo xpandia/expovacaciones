@@ -186,6 +186,43 @@ document.addEventListener('DOMContentLoaded', () => {
         statsObserver.observe(statsSection);
     }
 
+    // --- ANIMATED COUNTERS (Evento Section) ---
+    const eventoStats = document.querySelectorAll('.evento__stat-number[data-target]');
+    let eventoStatsAnimated = false;
+
+    function animateEventoCounters() {
+        if (eventoStatsAnimated) return;
+        eventoStatsAnimated = true;
+
+        eventoStats.forEach((numberEl, index) => {
+            const target = parseInt(numberEl.dataset.target, 10);
+            const duration = 2000;
+            const delayMs = index * 200;
+
+            setTimeout(() => {
+                const start = performance.now();
+                function step(timestamp) {
+                    const progress = Math.min((timestamp - start) / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    numberEl.textContent = Math.floor(eased * target).toLocaleString('es-CO');
+                    if (progress < 1) requestAnimationFrame(step);
+                }
+                requestAnimationFrame(step);
+            }, delayMs);
+        });
+    }
+
+    const eventoStatsSection = document.querySelector('.evento__stats');
+    if (eventoStatsSection) {
+        const eventoStatsObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                animateEventoCounters();
+                eventoStatsObserver.disconnect();
+            }
+        }, { threshold: 0.2 });
+        eventoStatsObserver.observe(eventoStatsSection);
+    }
+
     // --- VIDEO SHOWCASE (play/pause with button, lazy load) ---
     document.querySelectorAll('.video-showcase__player').forEach(player => {
         const video = player.querySelector('.video-showcase__video');
@@ -222,16 +259,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- DREAM DESTINATIONS INFINITE SCROLL ---
-    const dreamTrack = document.querySelector('.dream-destinations__track');
-    if (dreamTrack) {
-        // Duplicate all cards for seamless infinite loop
-        const cards = dreamTrack.innerHTML;
-        dreamTrack.innerHTML = cards + cards;
-    }
+    // Cards are duplicated in HTML for seamless CSS animation
 
     // --- SCROLL REVEAL (CSS-driven, no class injection flash) ---
     const animatedElements = document.querySelectorAll(
-        '.about__card, .benefit-card, .location__option, .faq__item, .exhibitors__list li, .feature, .gallery__item, .section-header'
+        '.benefit-card, .location__option, .faq__item, .exhibitors__list li, .gallery__item, .section-header, .scroll-slide-left, .scroll-slide-right, .scroll-scale-blur, .scroll-clip-reveal, .scroll-fade-up, .scroll-stagger, .stagger-children, .video-showcase__item, .immersive-break--tall, .evento__exp-card, .evento__razon, .evento__stat-card'
     );
 
     const revealObserver = new IntersectionObserver((entries) => {
@@ -241,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 revealObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
 
     animatedElements.forEach(el => revealObserver.observe(el));
 
@@ -259,6 +291,17 @@ document.addEventListener('DOMContentLoaded', () => {
             heroContent.style.transform = `translateY(${scrollY * 0.15}px)`;
             heroContent.style.opacity = `${1 - scrollY / window.innerHeight * 0.6}`;
         }
+
+        // Parallax on immersive break images
+        document.querySelectorAll('.immersive-break__image').forEach(img => {
+            const section = img.closest('.immersive-break');
+            if (!section) return;
+            const rect = section.getBoundingClientRect();
+            if (rect.bottom > 0 && rect.top < window.innerHeight) {
+                const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+                img.style.transform = `scale(1.1) translateY(${(progress - 0.5) * -40}px)`;
+            }
+        });
 
         parallaxTicking = false;
     }
@@ -362,60 +405,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     animateHeroEntrance();
 
-    // --- WAVE DIVIDER MORPHING (with visibility cleanup) ---
-    function initWaveMorphing() {
-        if (prefersReducedMotion) return;
-
-        const waveDividers = document.querySelectorAll('.wave-divider');
-        if (!waveDividers.length) return;
-
-        function createVariation(d, offset) {
-            return d.replace(/(\d+\.?\d*)/g, (match, num) => {
-                const val = parseFloat(num);
-                if (val > 10 && val < 1000) {
-                    return (val + (Math.sin(val * 0.1) * offset)).toFixed(1);
-                }
-                return match;
-            });
-        }
-
-        waveDividers.forEach(divider => {
-            const paths = divider.querySelectorAll('svg path');
-            let intervals = [];
-            let phase = 0;
-
-            function startMorphing() {
-                if (intervals.length) return;
-                paths.forEach(path => {
-                    const originalD = path.dataset.originalD || path.getAttribute('d');
-                    if (!originalD) return;
-                    path.dataset.originalD = originalD;
-
-                    const id = setInterval(() => {
-                        phase += 1;
-                        const offset = Math.sin(phase * 0.5) * 3;
-                        path.setAttribute('d', createVariation(originalD, offset));
-                    }, 3000);
-                    intervals.push(id);
-                });
-            }
-
-            function stopMorphing() {
-                intervals.forEach(id => clearInterval(id));
-                intervals = [];
-            }
-
-            // Only morph when visible in viewport
-            const waveObserver = new IntersectionObserver((entries) => {
-                entries[0].isIntersecting ? startMorphing() : stopMorphing();
-            }, { rootMargin: '100px' });
-
-            waveObserver.observe(divider);
-        });
-    }
-
-    initWaveMorphing();
-
     // --- FAQ ACCORDION (cached references) ---
     const faqItems = document.querySelectorAll('.faq__item');
     let currentOpenFaq = null;
@@ -429,6 +418,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Close current open item
             if (currentOpenFaq) {
                 currentOpenFaq.classList.remove('active');
+                currentOpenFaq.querySelector('.faq__question').setAttribute('aria-expanded', 'false');
                 currentOpenFaq.querySelector('.faq__answer').style.maxHeight = null;
                 currentOpenFaq = null;
             }
@@ -436,6 +426,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Open clicked (if it was closed)
             if (!isOpen) {
                 item.classList.add('active');
+                button.setAttribute('aria-expanded', 'true');
                 answer.style.maxHeight = answer.scrollHeight + 'px';
                 currentOpenFaq = item;
             }
@@ -455,11 +446,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = {
             nombre: form.nombre.value,
             apellido: form.apellido.value,
-            empresa: form.empresa.value,
             email: form.email.value,
             telefono: form.telefono.value,
-            tipo: form.tipo.value,
-            mensaje: form.mensaje.value
+            ciudad: form.ciudad.value,
+            interes: form.interes.value,
+            acepta_politicas: form.politicas.checked,
+            acepta_promociones: form.promociones.checked
         };
 
         try {
