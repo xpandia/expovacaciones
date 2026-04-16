@@ -268,7 +268,7 @@ ul { list-style: none; }
 }
 
 .header__logo-img {
-    height: 112px;
+    height: 64px;
     width: auto;
     transition: var(--transition);
 }
@@ -286,7 +286,7 @@ ul { list-style: none; }
 }
 
 .header--scrolled .header__logo-img {
-    height: 96px;
+    height: 52px;
 }
 
 .header--scrolled .header__logo-color .header__logo-img {
@@ -3245,7 +3245,7 @@ ul { list-style: none; }
     }
 
     .header__logo-img {
-        height: 72px;
+        height: 48px;
     }
 
     .hero__info-item {
