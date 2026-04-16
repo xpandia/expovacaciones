@@ -952,6 +952,19 @@ ul { list-style: none; }
     color: #fff;
 }
 
+.evento__stat-card--highlight {
+    background: var(--brand-amarillo);
+    color: #1a1a1a;
+}
+
+.evento__stat-card--highlight .evento__stat-title {
+    color: #1a1a1a;
+}
+
+.evento__stat-card--highlight .evento__stat-label {
+    color: rgba(26,26,26,0.75);
+}
+
 .evento__stat-icon {
     font-size: 2rem;
     margin-bottom: 12px;
@@ -963,6 +976,15 @@ ul { list-style: none; }
     color: var(--brand-verde);
     line-height: 1;
     display: inline;
+}
+
+.evento__stat-title {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--brand-verde);
+    letter-spacing: -0.01em;
 }
 
 .evento__stat-suffix {
@@ -1192,6 +1214,9 @@ ul { list-style: none; }
     .evento__stat-suffix {
         font-size: 1.1rem;
     }
+    .evento__stat-title {
+        font-size: 1.15rem;
+    }
     .evento__exp-grid {
         grid-template-columns: 1fr;
     }
@@ -1229,6 +1254,9 @@ ul { list-style: none; }
     }
     .evento__stat-number {
         font-size: 1.8rem;
+    }
+    .evento__stat-title {
+        font-size: 0.95rem;
     }
     .evento__stat-icon {
         font-size: 1.5rem;
