@@ -787,4 +787,70 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.3, rootMargin: '-80px 0px 0px 0px' });
 
     sections.forEach(section => navObserver.observe(section));
+
+    // --- CUSTOM CURSOR (desktop only) ---
+    const isDesktop = window.matchMedia('(hover: hover) and (min-width: 1025px)').matches;
+    if (isDesktop && !prefersReducedMotion) {
+        const cursor = document.createElement('div');
+        cursor.className = 'custom-cursor';
+        document.body.appendChild(cursor);
+
+        let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+        let curX = mouseX, curY = mouseY;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        }, { passive: true });
+
+        function loop() {
+            curX += (mouseX - curX) * 0.22;
+            curY += (mouseY - curY) * 0.22;
+            cursor.style.transform = `translate3d(${curX}px, ${curY}px, 0) translate(-50%, -50%)`;
+            requestAnimationFrame(loop);
+        }
+        loop();
+
+        const hoverSel = 'a, button, input, textarea, select, [role="button"], .gallery__item, .faq__question, .valle__card, .evento__exp-card, .destination-highlight--icon, .video-showcase__player, .whatsapp-float';
+        document.querySelectorAll(hoverSel).forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+
+        document.addEventListener('mousedown', () => cursor.classList.add('click'));
+        document.addEventListener('mouseup', () => cursor.classList.remove('click'));
+
+        // Hide cursor when leaving window
+        document.addEventListener('mouseleave', () => cursor.style.opacity = '0');
+        document.addEventListener('mouseenter', () => cursor.style.opacity = '1');
+    }
+
+    // --- TILT 3D ON CARDS (desktop only) ---
+    if (isDesktop && !prefersReducedMotion) {
+        const tiltTargets = document.querySelectorAll('.valle__card, .exhibitors__render-item, .benefit-card, .evento__exp-card');
+        tiltTargets.forEach(card => {
+            card.classList.add('tilt-3d');
+            let tiltRaf = null;
+
+            card.addEventListener('mousemove', (e) => {
+                if (tiltRaf) return;
+                tiltRaf = requestAnimationFrame(() => {
+                    const rect = card.getBoundingClientRect();
+                    const x = (e.clientX - rect.left) / rect.width - 0.5;
+                    const y = (e.clientY - rect.top) / rect.height - 0.5;
+                    const rotY = x * 8;
+                    const rotX = y * -8;
+                    card.classList.add('tilting');
+                    card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-6px) scale(1.01)`;
+                    tiltRaf = null;
+                });
+            });
+
+            card.addEventListener('mouseleave', () => {
+                if (tiltRaf) { cancelAnimationFrame(tiltRaf); tiltRaf = null; }
+                card.classList.remove('tilting');
+                card.style.transform = '';
+            });
+        });
+    }
 });

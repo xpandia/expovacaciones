@@ -77,6 +77,56 @@ html {
     scroll-padding-top: 80px;
 }
 
+/* ===== Custom cursor (desktop only) ===== */
+.custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    mix-blend-mode: difference;
+    transition: width 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                height 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                background 0.2s ease,
+                border 0.2s ease;
+    will-change: transform;
+}
+
+.custom-cursor.hover {
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.custom-cursor.click {
+    width: 24px;
+    height: 24px;
+}
+
+@media (hover: none), (max-width: 1024px) {
+    .custom-cursor { display: none !important; }
+}
+
+/* ===== Tilt 3D on cards ===== */
+.tilt-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+}
+
+.tilt-3d.tilting {
+    transition: transform 0.08s linear;
+}
+
+@media (hover: none), (max-width: 1024px) {
+    .tilt-3d { transform-style: flat; }
+}
+
 /* Lenis smooth scroll */
 html.lenis, html.lenis body {
     height: auto;
