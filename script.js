@@ -543,6 +543,113 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.4 });
     document.querySelectorAll('section[id]').forEach(s => sectionObserver.observe(s));
 
+    // --- DESTINATION INTEREST (GA4) ---
+    document.querySelectorAll('.destination-highlight--icon').forEach(icon => {
+        icon.addEventListener('click', () => {
+            const label = icon.querySelector('span')?.textContent.replace(/\s+/g, ' ').trim() || 'unknown';
+            track('destination_interest_click', { destination_type: label });
+        });
+    });
+
+    // --- SOCIAL CLICK (GA4) ---
+    document.querySelectorAll('.footer__social a').forEach(a => {
+        a.addEventListener('click', () => {
+            const network = a.getAttribute('aria-label') || 'unknown';
+            track('social_click', { network: network.toLowerCase(), url: a.href });
+        });
+    });
+
+    // --- LOCATION OPTION CLICK (GA4) ---
+    document.querySelectorAll('.location__option').forEach(opt => {
+        opt.addEventListener('click', () => {
+            const title = opt.querySelector('h4')?.textContent.trim() || 'unknown';
+            track('location_option_click', { option: title });
+        });
+    });
+
+    // --- GALLERY CLICK (GA4) ---
+    document.querySelectorAll('.gallery__item').forEach((item, index) => {
+        item.addEventListener('click', () => {
+            const src = item.querySelector('img')?.src || '';
+            const name = src.split('/').pop().split('.')[0] || `item_${index + 1}`;
+            track('gallery_click', { gallery_item: name, gallery_index: index + 1 });
+        });
+    });
+
+    // --- FORM START / FIELD BLUR TRACKING (GA4) ---
+    let formStartTracked = false;
+    const formFieldsBlurTracked = new Set();
+    form.querySelectorAll('input, select, textarea').forEach(field => {
+        field.addEventListener('focus', () => {
+            if (!formStartTracked) {
+                formStartTracked = true;
+                track('form_start', { form_name: 'contact' });
+            }
+        }, { once: false });
+
+        field.addEventListener('blur', () => {
+            if (formFieldsBlurTracked.has(field.name)) return;
+            const hasValue = field.type === 'checkbox' ? field.checked : field.value.trim().length > 0;
+            if (!hasValue) {
+                formFieldsBlurTracked.add(field.name);
+                track('form_field_abandon', { form_name: 'contact', field_name: field.name });
+            }
+        });
+    });
+
+    // --- WEB VITALS TRACKING (GA4) ---
+    try {
+        // LCP (Largest Contentful Paint)
+        new PerformanceObserver((list) => {
+            const entries = list.getEntries();
+            const last = entries[entries.length - 1];
+            if (last) {
+                track('web_vitals', {
+                    metric_name: 'LCP',
+                    metric_value: Math.round(last.renderTime || last.loadTime || last.startTime),
+                    metric_rating: last.startTime < 2500 ? 'good' : last.startTime < 4000 ? 'needs_improvement' : 'poor'
+                });
+            }
+        }).observe({ type: 'largest-contentful-paint', buffered: true });
+
+        // CLS (Cumulative Layout Shift)
+        let clsValue = 0;
+        new PerformanceObserver((list) => {
+            for (const entry of list.getEntries()) {
+                if (!entry.hadRecentInput) clsValue += entry.value;
+            }
+        }).observe({ type: 'layout-shift', buffered: true });
+
+        // Send CLS on page hide (final value)
+        const sendCls = () => {
+            if (clsValue > 0) {
+                track('web_vitals', {
+                    metric_name: 'CLS',
+                    metric_value: Math.round(clsValue * 1000) / 1000,
+                    metric_rating: clsValue < 0.1 ? 'good' : clsValue < 0.25 ? 'needs_improvement' : 'poor'
+                });
+                clsValue = 0;
+            }
+        };
+        addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') sendCls(); }, { once: true });
+        addEventListener('pagehide', sendCls, { once: true });
+
+        // INP (Interaction to Next Paint) via event timing
+        let maxInp = 0;
+        new PerformanceObserver((list) => {
+            for (const entry of list.getEntries()) {
+                if (entry.interactionId && entry.duration > maxInp) {
+                    maxInp = entry.duration;
+                    track('web_vitals', {
+                        metric_name: 'INP',
+                        metric_value: Math.round(maxInp),
+                        metric_rating: maxInp < 200 ? 'good' : maxInp < 500 ? 'needs_improvement' : 'poor'
+                    });
+                }
+            }
+        }).observe({ type: 'event', buffered: true, durationThreshold: 40 });
+    } catch (_) {}
+
     // --- CTA CLICK TRACKING (GA4) ---
     document.querySelectorAll('.btn--primary, .btn--outline, .nav-link--cta').forEach(btn => {
         btn.addEventListener('click', () => {
