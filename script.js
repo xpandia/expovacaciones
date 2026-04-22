@@ -88,13 +88,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const nav = document.getElementById('nav');
 
     hamburger.addEventListener('click', () => {
+        const willOpen = !nav.classList.contains('open');
         hamburger.classList.toggle('active');
         nav.classList.toggle('open');
         document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+        if (willOpen) track('menu_open', { device: 'mobile' });
     });
 
     nav.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', () => {
+            const target = link.getAttribute('href') || '';
+            const label = link.textContent.trim();
+            if (!link.classList.contains('nav-link--cta')) {
+                track('nav_link_click', { nav_label: label, nav_target: target });
+            }
             hamburger.classList.remove('active');
             nav.classList.remove('open');
             document.body.style.overflow = '';
@@ -423,7 +430,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const faqItems = document.querySelectorAll('.faq__item');
     let currentOpenFaq = null;
 
-    document.querySelectorAll('.faq__question').forEach(button => {
+    document.querySelectorAll('.faq__question').forEach((button, index) => {
         button.addEventListener('click', () => {
             const item = button.parentElement;
             const answer = item.querySelector('.faq__answer');
@@ -443,7 +450,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 button.setAttribute('aria-expanded', 'true');
                 answer.style.maxHeight = answer.scrollHeight + 'px';
                 currentOpenFaq = item;
+                const question = button.textContent.trim().replace(/\s+/g, ' ').slice(0, 80);
+                track('faq_open', { faq_index: index + 1, faq_question: question });
             }
+        });
+    });
+
+    // --- PHONE / EMAIL CLICK TRACKING (GA4) ---
+    document.querySelectorAll('a[href^="tel:"]').forEach(a => {
+        a.addEventListener('click', () => {
+            track('phone_click', { phone_number: a.getAttribute('href').replace('tel:', '') });
+        });
+    });
+    document.querySelectorAll('a[href^="mailto:"]').forEach(a => {
+        a.addEventListener('click', () => {
+            track('email_click', { email: a.getAttribute('href').replace('mailto:', '') });
         });
     });
 
@@ -509,6 +530,18 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.disabled = false;
         }, 3000);
     });
+
+    // --- SECTION VIEW TRACKING (GA4) ---
+    const sectionViewTracked = new Set();
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !sectionViewTracked.has(entry.target.id)) {
+                sectionViewTracked.add(entry.target.id);
+                track('section_view', { section_id: entry.target.id });
+            }
+        });
+    }, { threshold: 0.4 });
+    document.querySelectorAll('section[id]').forEach(s => sectionObserver.observe(s));
 
     // --- CTA CLICK TRACKING (GA4) ---
     document.querySelectorAll('.btn--primary, .btn--outline, .nav-link--cta').forEach(btn => {

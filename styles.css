@@ -3501,13 +3501,39 @@ ul { list-style: none; }
         line-height: 1.5;
     }
 
+    .evento__stats {
+        margin-top: -20px;
+        padding: 0 8px;
+    }
+
+    .evento__stats-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        max-width: 360px;
+    }
+
+    .evento__stat-card {
+        padding: 18px 20px;
+        text-align: center;
+    }
+
     .evento__stat-icon {
-        font-size: 1.5rem;
-        margin-bottom: 8px;
+        font-size: 1.75rem;
+        margin-bottom: 6px;
+    }
+
+    .evento__stat-number,
+    .evento__stat-title {
+        font-size: 1.6rem;
+    }
+
+    .evento__stat-suffix {
+        font-size: 1rem;
     }
 
     .evento__stat-label {
-        font-size: 0.78rem;
+        font-size: 0.82rem;
+        margin-top: 4px;
     }
 
     .evento__razones {
