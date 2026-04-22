@@ -5,6 +5,13 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // --- GA4 EVENT TRACKING ---
+    const track = (eventName, params = {}) => {
+        if (typeof gtag === 'function') {
+            try { gtag('event', eventName, params); } catch (_) {}
+        }
+    };
+
     // --- REDUCED MOTION CHECK ---
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -224,9 +231,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- VIDEO SHOWCASE (play/pause with button, lazy load) ---
-    document.querySelectorAll('.video-showcase__player').forEach(player => {
+    document.querySelectorAll('.video-showcase__player').forEach((player, index) => {
         const video = player.querySelector('.video-showcase__video');
         const playBtn = player.querySelector('.video-showcase__play');
+        const videoSrc = video?.querySelector('source')?.src || video?.src || '';
+        const videoName = videoSrc.split('/').pop().split('.')[0] || `video_${index + 1}`;
+        let videoPlayTracked = false;
 
         // Lazy load when near viewport
         const videoObserver = new IntersectionObserver((entries) => {
@@ -251,6 +261,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (video.paused) {
                 video.play().catch(() => {});
                 playBtn.classList.add('hidden');
+                if (!videoPlayTracked) {
+                    track('video_play', { video_name: videoName, video_index: index + 1 });
+                    videoPlayTracked = true;
+                }
             } else {
                 video.pause();
                 playBtn.classList.remove('hidden');
@@ -471,6 +485,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.textContent = '¡Enviado!';
                 btn.style.background = '#22c55e';
                 btn.style.borderColor = '#22c55e';
+                track('form_submit', {
+                    form_name: 'contact',
+                    status: 'success',
+                    ciudad: data.ciudad,
+                    interes: data.interes
+                });
                 form.reset();
             } else {
                 throw new Error('Error en el envío');
@@ -479,6 +499,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.textContent = 'Error, intenta de nuevo';
             btn.style.background = '#ef4444';
             btn.style.borderColor = '#ef4444';
+            track('form_submit', { form_name: 'contact', status: 'error' });
         }
 
         setTimeout(() => {
@@ -488,6 +509,53 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.disabled = false;
         }, 3000);
     });
+
+    // --- CTA CLICK TRACKING (GA4) ---
+    document.querySelectorAll('.btn--primary, .btn--outline, .nav-link--cta').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const label = btn.textContent.trim().slice(0, 60);
+            const section = btn.closest('section')?.id || (btn.closest('header') ? 'header' : 'unknown');
+            track('cta_click', {
+                cta_label: label,
+                cta_location: section
+            });
+        });
+    });
+
+    // --- WHATSAPP CLICK TRACKING (GA4) ---
+    const whatsappFloat = document.querySelector('.whatsapp-float');
+    if (whatsappFloat) {
+        whatsappFloat.addEventListener('click', () => {
+            track('whatsapp_click', { location: 'floating_widget' });
+        });
+    }
+
+    // --- SCROLL DEPTH TRACKING (GA4) ---
+    const scrollMilestones = [25, 50, 75, 100];
+    const scrollReached = new Set();
+    let scrollDepthTicking = false;
+
+    function checkScrollDepth() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (docHeight <= 0) { scrollDepthTicking = false; return; }
+        const percent = (scrollTop / docHeight) * 100;
+
+        scrollMilestones.forEach(m => {
+            if (percent >= m && !scrollReached.has(m)) {
+                scrollReached.add(m);
+                track('scroll_depth', { percent: m });
+            }
+        });
+        scrollDepthTicking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!scrollDepthTicking) {
+            requestAnimationFrame(checkScrollDepth);
+            scrollDepthTicking = true;
+        }
+    }, { passive: true });
 
     // --- ACTIVE NAV LINK ---
     const sections = document.querySelectorAll('section[id]');
