@@ -3113,6 +3113,19 @@ ul { list-style: none; }
         line-height: 1.08;
     }
 
+    .hero__slogan {
+        font-size: 1.4rem;
+        margin-bottom: 24px;
+    }
+
+    .hero__info-item {
+        font-size: 1rem;
+    }
+
+    .hero__info {
+        gap: 20px;
+    }
+
     .hero__brand {
         padding: 8px 16px;
         font-size: 0.72rem;
@@ -3462,6 +3475,239 @@ ul { list-style: none; }
     .destination-ticker__track span {
         font-size: 0.75rem;
         padding: 0 12px;
+    }
+
+    /* Evento section mobile fixes */
+    .evento__hero {
+        min-height: 300px;
+    }
+
+    .evento__hero-content {
+        padding-bottom: 32px;
+    }
+
+    .evento__eyebrow {
+        font-size: 0.7rem;
+    }
+
+    .evento__hero-title {
+        font-size: clamp(1.7rem, 7vw, 2.4rem);
+        line-height: 1.15;
+        margin-bottom: 12px;
+    }
+
+    .evento__hero-desc {
+        font-size: 0.92rem;
+        line-height: 1.5;
+    }
+
+    .evento__stat-icon {
+        font-size: 1.5rem;
+        margin-bottom: 8px;
+    }
+
+    .evento__stat-label {
+        font-size: 0.78rem;
+    }
+
+    .evento__razones {
+        padding: 48px 0 32px;
+    }
+
+    .evento__razones-title {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+        margin-bottom: 32px;
+    }
+
+    .evento__razon-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .evento__razon-content p {
+        font-size: 0.88rem;
+    }
+
+    .evento__razon-num {
+        font-size: 0.62rem;
+    }
+
+    .evento__razon-img {
+        height: 180px;
+    }
+
+    .evento__exp-card,
+    .evento__exp-card--large {
+        height: 240px;
+        min-height: 240px;
+    }
+
+    .evento__exp-content {
+        padding: 20px;
+    }
+
+    .evento__exp-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .evento__exp-content p {
+        font-size: 0.82rem;
+    }
+
+    /* Location mobile fixes */
+    .location__venue {
+        margin-bottom: 24px;
+    }
+
+    .location__venue h3 {
+        font-size: 1.15rem;
+    }
+
+    .location__venue p {
+        font-size: 0.88rem;
+    }
+
+    /* Hero countdown/slogan tighter */
+    .hero__countdown {
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+
+    .hero__info {
+        gap: 14px;
+        margin-bottom: 20px;
+    }
+
+    .hero__slogan {
+        margin-bottom: 20px;
+    }
+
+    /* Section headers spacing */
+    .section-header {
+        margin-bottom: 28px;
+    }
+
+    .section-header__title {
+        font-size: clamp(1.65rem, 6.5vw, 2.2rem);
+        letter-spacing: -0.02em;
+    }
+
+    /* Sustainability mobile */
+    .sustainability-immersive__text {
+        font-size: 0.95rem;
+        line-height: 1.65;
+    }
+
+    .sustainability-immersive__icon {
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+
+    /* FAQ mobile polish */
+    .faq__question {
+        padding: 14px 18px;
+        font-size: 0.88rem;
+        gap: 12px;
+    }
+
+    .faq__answer p {
+        padding: 0 18px 14px;
+        font-size: 0.85rem;
+    }
+
+    /* Video showcase title/desc */
+    .video-showcase__title {
+        font-size: 1.1rem;
+        margin-top: 16px;
+    }
+
+    /* Exhibitors tighter */
+    .exhibitors {
+        padding: 48px 0;
+    }
+
+    .exhibitors__renders-desc {
+        font-size: 0.85rem;
+    }
+}
+
+/* Very narrow phones (iPhone SE, small Android) */
+@media (max-width: 375px) {
+    .container {
+        padding: 0 14px;
+    }
+
+    .hero__title-line {
+        font-size: clamp(1.4rem, 6.5vw, 1.85rem);
+    }
+
+    .hero__slogan {
+        font-size: 1.1rem;
+    }
+
+    .hero__anato-logo {
+        height: 64px;
+    }
+
+    .hero__info-item {
+        font-size: 0.85rem;
+    }
+
+    .hero__info-item svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .countdown__item {
+        min-width: 48px;
+        padding: 8px 4px;
+    }
+
+    .countdown__number {
+        font-size: 1.2rem;
+    }
+
+    .countdown__label {
+        font-size: 0.58rem;
+        letter-spacing: 0.8px;
+    }
+
+    .countdown__separator {
+        font-size: 1.2rem;
+    }
+
+    .section-header__title {
+        font-size: clamp(1.45rem, 6vw, 1.9rem);
+    }
+
+    .destination-highlight--icon {
+        max-width: 76px;
+    }
+
+    .destination-highlight__circle {
+        width: 42px;
+        height: 42px;
+    }
+
+    .destination-highlight--icon span {
+        font-size: 0.62rem;
+    }
+
+    .evento__stat-number {
+        font-size: 1.5rem;
+    }
+
+    .evento__stat-title {
+        font-size: 0.85rem;
+    }
+
+    .btn {
+        padding: 11px 20px;
+        font-size: 0.85rem;
+    }
+
+    .btn--large {
+        padding: 13px 24px;
+        font-size: 0.9rem;
     }
 }
 
