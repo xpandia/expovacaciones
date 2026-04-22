@@ -788,6 +788,82 @@ document.addEventListener('DOMContentLoaded', () => {
 
     sections.forEach(section => navObserver.observe(section));
 
+    // --- HERO SPLIT TEXT LETTER REVEAL ---
+    if (!prefersReducedMotion) {
+        document.querySelectorAll('.hero__title-line').forEach((line, lineIdx) => {
+            const text = line.textContent;
+            line.textContent = '';
+            line.classList.add('split-ready');
+            // Override hero-anim parent hidden state; split controls its own reveal
+            line.style.opacity = '1';
+            line.style.transform = 'none';
+            line.style.filter = 'none';
+
+            const baseDelay = lineIdx === 0 ? 200 : 700;
+            [...text].forEach((char, i) => {
+                const span = document.createElement('span');
+                span.className = 'split-char' + (char === ' ' ? ' split-space' : '');
+                span.textContent = char === ' ' ? '\u00A0' : char;
+                span.style.transitionDelay = `${(baseDelay + i * 28) / 1000}s`;
+                line.appendChild(span);
+            });
+        });
+
+        // Trigger entrance immediately (delays handle stagger)
+        requestAnimationFrame(() => {
+            document.querySelectorAll('.split-char').forEach(c => c.classList.add('visible'));
+        });
+    }
+
+    // --- CLIP-PATH IMAGE REVEAL ON SCROLL ---
+    const clipTargets = document.querySelectorAll('.valle__card, .gallery__item, .exhibitors__render-item, .evento__razon-img, .evento__exp-card, .video-showcase__player');
+    clipTargets.forEach(el => el.classList.add('clip-reveal'));
+    const clipObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                clipObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    clipTargets.forEach(el => clipObserver.observe(el));
+
+    // --- HERO AMBIENT PARTICLES ---
+    const particlesContainer = document.getElementById('heroParticles');
+    if (particlesContainer && !prefersReducedMotion) {
+        const particleCount = window.innerWidth > 768 ? 18 : 10;
+        for (let i = 0; i < particleCount; i++) {
+            const p = document.createElement('div');
+            p.className = 'hero__parallax-particle';
+            p.style.left = `${Math.random() * 100}%`;
+            p.style.animationDuration = `${8 + Math.random() * 10}s`;
+            p.style.animationDelay = `${Math.random() * 10}s`;
+            p.style.opacity = `${0.4 + Math.random() * 0.5}`;
+            const size = 2 + Math.random() * 3;
+            p.style.width = `${size}px`;
+            p.style.height = `${size}px`;
+            particlesContainer.appendChild(p);
+        }
+    }
+
+    // --- HERO WAVES PARALLAX ON SCROLL ---
+    const heroWaves = document.querySelector('.hero__parallax-waves');
+    if (heroWaves && !prefersReducedMotion) {
+        let wavesTicking = false;
+        window.addEventListener('scroll', () => {
+            if (!wavesTicking) {
+                requestAnimationFrame(() => {
+                    const y = window.scrollY;
+                    if (y < window.innerHeight) {
+                        heroWaves.style.transform = `translateY(${y * 0.3}px)`;
+                    }
+                    wavesTicking = false;
+                });
+                wavesTicking = true;
+            }
+        }, { passive: true });
+    }
+
     // --- CUSTOM CURSOR (desktop only) ---
     const isDesktop = window.matchMedia('(hover: hover) and (min-width: 1025px)').matches;
     if (isDesktop && !prefersReducedMotion) {
