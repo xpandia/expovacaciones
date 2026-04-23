@@ -192,6 +192,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- COOKIE CONSENT BANNER ---
+    const cookieBanner = document.getElementById('cookieBanner');
+    const cookieAccept = document.getElementById('cookieAccept');
+    const cookieReject = document.getElementById('cookieReject');
+    const CONSENT_KEY = 'expovac_cookie_consent';
+
+    if (cookieBanner) {
+        const prevConsent = localStorage.getItem(CONSENT_KEY);
+        if (!prevConsent) {
+            setTimeout(() => cookieBanner.classList.add('visible'), 1500);
+        }
+
+        const applyConsent = (status) => {
+            localStorage.setItem(CONSENT_KEY, status);
+            cookieBanner.classList.remove('visible');
+            if (typeof gtag === 'function') {
+                gtag('consent', 'update', {
+                    'ad_storage': status === 'all' ? 'granted' : 'denied',
+                    'ad_user_data': status === 'all' ? 'granted' : 'denied',
+                    'ad_personalization': status === 'all' ? 'granted' : 'denied',
+                    'analytics_storage': status === 'all' ? 'granted' : 'denied'
+                });
+                track('cookie_consent', { status });
+            }
+        };
+
+        cookieAccept?.addEventListener('click', () => applyConsent('all'));
+        cookieReject?.addEventListener('click', () => applyConsent('essential'));
+    }
+
     // --- COUNTDOWN BANNER (top) ---
     const countdownBanner = document.getElementById('countdownBanner');
     const bannerDays = document.getElementById('bannerDays');

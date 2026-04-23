@@ -53,14 +53,36 @@
         "image": "https://expovacaciones.co/assets/photos/hero-beach-1.webp"
     }
     </script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FJ3HL3D5LX"></script>
+    <!-- Google tag (gtag.js) with Consent Mode v2 -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      // Default consent: denied (Colombia Ley 1581). Granted only after user accepts.
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied',
+        'functionality_storage': 'granted',
+        'security_storage': 'granted',
+        'wait_for_update': 500
+      });
+      // Restore previous consent if user chose before
+      try {
+        const prev = localStorage.getItem('expovac_cookie_consent');
+        if (prev === 'all') {
+          gtag('consent', 'update', {
+            'ad_storage': 'granted',
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted',
+            'analytics_storage': 'granted'
+          });
+        }
+      } catch(_) {}
       gtag('js', new Date());
-      gtag('config', 'G-FJ3HL3D5LX');
+      gtag('config', 'G-FJ3HL3D5LX', { 'anonymize_ip': true });
     </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FJ3HL3D5LX"></script>
 </head>
 <body>
 
@@ -1201,6 +1223,20 @@
             </div>
         </div>
     </footer>
+
+    <!-- COOKIE CONSENT BANNER -->
+    <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+        <div class="cookie-banner__inner">
+            <div class="cookie-banner__text">
+                <strong>Usamos cookies</strong>
+                <p>Utilizamos cookies propias y de terceros (Google Analytics) para analizar el tráfico y mejorar tu experiencia. Puedes aceptarlas o rechazarlas. <a href="privacidad.html">Más información</a>.</p>
+            </div>
+            <div class="cookie-banner__actions">
+                <button type="button" class="cookie-banner__btn cookie-banner__btn--reject" id="cookieReject">Rechazar</button>
+                <button type="button" class="cookie-banner__btn cookie-banner__btn--accept" id="cookieAccept">Aceptar todas</button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
