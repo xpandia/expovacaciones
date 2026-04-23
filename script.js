@@ -845,22 +845,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const storyDots = document.querySelectorAll('.stories__progress-dot');
     const stories = document.querySelectorAll('.story');
     if (stories.length > 0 && storyImages.length > 0) {
+        let activeStory = 0;
         const activateStory = (idx) => {
+            if (idx === activeStory) return;
+            activeStory = idx;
             stories.forEach((s, i) => s.classList.toggle('active', i === idx));
             storyImages.forEach((img, i) => img.classList.toggle('visible', i === idx));
             storyDots.forEach((d, i) => d.classList.toggle('active', i === idx));
         };
 
-        const storyObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const idx = parseInt(entry.target.dataset.story, 10);
-                    activateStory(idx);
+        let storyTicking = false;
+        function updateActiveStory() {
+            const viewportMid = window.innerHeight / 2;
+            let closest = 0;
+            let minDist = Infinity;
+            stories.forEach((s, i) => {
+                const rect = s.getBoundingClientRect();
+                const mid = rect.top + rect.height / 2;
+                const dist = Math.abs(mid - viewportMid);
+                if (dist < minDist) {
+                    minDist = dist;
+                    closest = i;
                 }
             });
-        }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+            activateStory(closest);
+            storyTicking = false;
+        }
 
-        stories.forEach(s => storyObserver.observe(s));
+        window.addEventListener('scroll', () => {
+            if (!storyTicking) {
+                requestAnimationFrame(updateActiveStory);
+                storyTicking = true;
+            }
+        }, { passive: true });
+
+        // Run once at load
+        updateActiveStory();
+
+        // Set first story active explicitly
+        stories[0].classList.add('active');
     }
 
     // --- HERO SPLIT TEXT LETTER REVEAL ---
