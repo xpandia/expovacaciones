@@ -559,23 +559,34 @@ html {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 80px;
-    align-items: start;
+    align-items: stretch;
+    min-height: 540px;
 }
 
 .stories__text {
+    position: relative;
+    min-height: 420px;
     display: flex;
-    flex-direction: column;
-    gap: 40vh;
-    padding: 20vh 0;
+    align-items: center;
 }
 
 .story {
-    opacity: 0.28;
-    transition: opacity 0.5s ease;
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .story.active {
     opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 .story__num {
@@ -611,12 +622,13 @@ html {
 
 .stories__visual {
     position: relative;
+    min-height: 540px;
 }
 
 .stories__sticky {
-    position: sticky;
-    top: 10vh;
-    height: 80vh;
+    position: relative;
+    height: 100%;
+    min-height: 540px;
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
@@ -659,12 +671,19 @@ html {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.45);
-    transition: all 0.4s ease;
+    background: rgba(255, 255, 255, 0.4);
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    cursor: pointer;
+    border: none;
+    padding: 0;
+}
+
+.stories__progress-dot:hover {
+    background: rgba(255, 255, 255, 0.7);
 }
 
 .stories__progress-dot.active {
-    width: 28px;
+    width: 32px;
     border-radius: 4px;
     background: #fff;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -676,33 +695,28 @@ html {
     }
 
     .stories__header {
-        margin-bottom: 48px;
+        margin-bottom: 40px;
     }
 
     .stories__grid {
         grid-template-columns: 1fr;
-        gap: 40px;
-    }
-
-    .stories__text {
-        order: 2;
-        gap: 48px;
-        padding: 0;
-    }
-
-    .story {
-        opacity: 1;
+        gap: 28px;
+        min-height: 0;
     }
 
     .stories__visual {
         order: 1;
-        height: auto;
+        min-height: 0;
     }
 
     .stories__sticky {
-        position: relative;
-        top: 0;
-        height: 360px;
+        min-height: 320px;
+        height: 320px;
+    }
+
+    .stories__text {
+        order: 2;
+        min-height: 260px;
     }
 }
 
@@ -712,7 +726,12 @@ html {
     }
 
     .stories__sticky {
-        height: 280px;
+        min-height: 240px;
+        height: 240px;
+    }
+
+    .stories__text {
+        min-height: 220px;
     }
 
     .story__title {

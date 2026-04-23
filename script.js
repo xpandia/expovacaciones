@@ -946,50 +946,69 @@ document.addEventListener('DOMContentLoaded', () => {
 
     sections.forEach(section => navObserver.observe(section));
 
-    // --- STICKY SCROLL STORYTELLING ---
+    // --- STORYTELLING CAROUSEL (auto-play + clickable dots) ---
     const storyImages = document.querySelectorAll('.stories__img');
     const storyDots = document.querySelectorAll('.stories__progress-dot');
     const stories = document.querySelectorAll('.story');
+    const storiesSection = document.querySelector('.stories');
+
     if (stories.length > 0 && storyImages.length > 0) {
         let activeStory = 0;
+        let storyInterval = null;
+        const AUTOPLAY_MS = 4500;
+
         const activateStory = (idx) => {
-            if (idx === activeStory) return;
             activeStory = idx;
             stories.forEach((s, i) => s.classList.toggle('active', i === idx));
             storyImages.forEach((img, i) => img.classList.toggle('visible', i === idx));
             storyDots.forEach((d, i) => d.classList.toggle('active', i === idx));
         };
 
-        let storyTicking = false;
-        function updateActiveStory() {
-            const viewportMid = window.innerHeight / 2;
-            let closest = 0;
-            let minDist = Infinity;
-            stories.forEach((s, i) => {
-                const rect = s.getBoundingClientRect();
-                const mid = rect.top + rect.height / 2;
-                const dist = Math.abs(mid - viewportMid);
-                if (dist < minDist) {
-                    minDist = dist;
-                    closest = i;
-                }
+        const nextStory = () => activateStory((activeStory + 1) % stories.length);
+
+        const startAutoplay = () => {
+            stopAutoplay();
+            if (!prefersReducedMotion) {
+                storyInterval = setInterval(nextStory, AUTOPLAY_MS);
+            }
+        };
+
+        const stopAutoplay = () => {
+            if (storyInterval) {
+                clearInterval(storyInterval);
+                storyInterval = null;
+            }
+        };
+
+        // Clickable dots
+        storyDots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                activateStory(i);
+                startAutoplay();
+                track('story_dot_click', { story_index: i });
             });
-            activateStory(closest);
-            storyTicking = false;
+        });
+
+        // Pause on hover (desktop)
+        if (storiesSection) {
+            storiesSection.addEventListener('mouseenter', stopAutoplay);
+            storiesSection.addEventListener('mouseleave', startAutoplay);
         }
 
-        window.addEventListener('scroll', () => {
-            if (!storyTicking) {
-                requestAnimationFrame(updateActiveStory);
-                storyTicking = true;
-            }
-        }, { passive: true });
+        // Play only when section is in viewport
+        if (storiesSection) {
+            const visibilityObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    startAutoplay();
+                } else {
+                    stopAutoplay();
+                }
+            }, { threshold: 0.3 });
+            visibilityObserver.observe(storiesSection);
+        }
 
-        // Run once at load
-        updateActiveStory();
-
-        // Set first story active explicitly
-        stories[0].classList.add('active');
+        // Initial state
+        activateStory(0);
     }
 
     // --- HERO SPLIT TEXT LETTER REVEAL ---
