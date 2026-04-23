@@ -2738,102 +2738,215 @@ ul { list-style: none; }
 }
 
 /* ============================================
-   VIDEO SHOWCASE
+   REELS (vertical video showcase)
    ============================================ */
-.video-showcase {
+.reels-section {
     padding: 120px 0;
-    background: linear-gradient(180deg, #F0F8F4 0%, #E6F2EC 50%, #DFF0E6 100%);
+    background: linear-gradient(180deg, #0a1628 0%, #0f2140 50%, #0a1628 100%);
     position: relative;
-}
-
-.video-showcase__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-}
-
-.video-showcase__player {
-    position: relative;
-    border-radius: var(--radius-lg);
     overflow: hidden;
-    background: var(--negro);
-    cursor: pointer;
-    box-shadow: var(--shadow-lg);
+    color: #fff;
 }
 
-.video-showcase__video {
-    width: 100%;
-    display: block;
-    border-radius: var(--radius-lg);
-    aspect-ratio: 16/9;
-}
-
-.video-showcase__play {
+.reels-section::before {
+    content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    transition: var(--transition);
+    top: -20%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(242, 140, 40, 0.12) 0%, transparent 65%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.reels-section::after {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(26, 138, 74, 0.12) 0%, transparent 65%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.reels-section .section-header__title {
+    color: #fff;
+}
+
+.reels-section .section-header__tag {
+    color: var(--brand-amarillo);
+}
+
+.reels-section .section-header__subtitle {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.reels {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    position: relative;
     z-index: 2;
 }
 
-.video-showcase__play:hover {
-    transform: translate(-50%, -50%) scale(1.1);
+.reel {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.video-showcase__play.hidden {
-    opacity: 0;
-    pointer-events: none;
+.reel__frame {
+    position: relative;
+    aspect-ratio: 9 / 16;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.4s ease;
 }
 
-.video-showcase__player::after {
-    content: '';
+.reel__frame:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+}
+
+.reel__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.reel__overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.3) 0%, transparent 40%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, transparent 30%, transparent 70%, rgba(0, 0, 0, 0.35) 100%);
     pointer-events: none;
-    border-radius: var(--radius-lg);
+    z-index: 1;
 }
 
-.video-showcase__title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
+.reel__sound {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 0.5px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    z-index: 3;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.reel__sound:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.08);
+}
+
+.reel__sound-icon--unmuted { display: none; }
+
+.reel__sound[data-muted="false"] .reel__sound-icon--muted { display: none; }
+.reel__sound[data-muted="false"] .reel__sound-icon--unmuted { display: block; }
+
+.reel__badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    background: rgba(255, 22, 22, 0.9);
+    color: #fff;
+    font-size: 0.62rem;
     font-weight: 700;
-    color: var(--azul);
-    margin-top: 24px;
-    margin-bottom: 8px;
+    letter-spacing: 0.12em;
+    border-radius: 100px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 3;
+    box-shadow: 0 2px 8px rgba(255, 22, 22, 0.3);
 }
 
-.video-showcase__desc {
-    font-size: 0.95rem;
-    color: var(--gris);
-    line-height: 1.7;
+.reel__badge svg {
+    animation: reelBadgePulse 1.5s ease-in-out infinite;
+}
+
+@keyframes reelBadgePulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+.reel__meta {
+    text-align: center;
+    padding: 0 8px;
+}
+
+.reel__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+}
+
+.reel__desc {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.5;
 }
 
 @media (max-width: 768px) {
-    .video-showcase__grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
+    .reels-section {
+        padding: 72px 0;
     }
-
-    .video-showcase {
-        padding: 60px 0;
+    .reels {
+        gap: 28px;
+    }
+    .reel {
+        width: 260px;
+    }
+    .reel__title {
+        font-size: 1.15rem;
     }
 }
 
 @media (max-width: 480px) {
-    .video-showcase__grid {
-        grid-template-columns: 1fr;
-        gap: 32px;
-        max-width: 400px;
-        margin: 0 auto;
+    .reels-section {
+        padding: 56px 0;
     }
-
-    .video-showcase {
-        padding: 48px 0;
+    .reels {
+        gap: 32px;
+    }
+    .reel {
+        width: 240px;
+    }
+    .reel__frame {
+        border-radius: 20px;
+    }
+    .reel__sound {
+        width: 36px;
+        height: 36px;
+        bottom: 12px;
+        right: 12px;
     }
 }
 

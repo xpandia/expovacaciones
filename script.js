@@ -312,44 +312,68 @@ document.addEventListener('DOMContentLoaded', () => {
         eventoStatsObserver.observe(eventoStatsSection);
     }
 
-    // --- VIDEO SHOWCASE (play/pause with button, lazy load) ---
-    document.querySelectorAll('.video-showcase__player').forEach((player, index) => {
-        const video = player.querySelector('.video-showcase__video');
-        const playBtn = player.querySelector('.video-showcase__play');
+    // --- REELS (auto-play muted, unmute on click, pause out of viewport) ---
+    const reels = document.querySelectorAll('.reel');
+    reels.forEach((reel, index) => {
+        const video = reel.querySelector('.reel__video');
+        const soundBtn = reel.querySelector('.reel__sound');
+        const frame = reel.querySelector('.reel__frame');
         const videoSrc = video?.querySelector('source')?.src || video?.src || '';
-        const videoName = videoSrc.split('/').pop().split('.')[0] || `video_${index + 1}`;
-        let videoPlayTracked = false;
+        const videoName = videoSrc.split('/').pop().split('.')[0] || `reel_${index + 1}`;
+        let reelPlayTracked = false;
+        if (!video) return;
 
-        // Lazy load when near viewport
-        const videoObserver = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-                if (video.preload === 'none') video.preload = 'auto';
-                videoObserver.disconnect();
-            }
-        }, { rootMargin: '300px' });
-        videoObserver.observe(player);
+        // Play/pause based on viewport visibility
+        const playObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    video.play().catch(() => {});
+                } else {
+                    video.pause();
+                }
+            });
+        }, { threshold: 0.35 });
+        playObserver.observe(reel);
 
-        // Pause when out of viewport
-        const pauseObserver = new IntersectionObserver((entries) => {
-            if (!entries[0].isIntersecting && !video.paused) {
-                video.pause();
-                playBtn.classList.remove('hidden');
+        // Toggle sound on button click (not propagate)
+        soundBtn?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isMuted = video.muted;
+            if (isMuted) {
+                // Mute all other reels
+                reels.forEach(other => {
+                    if (other !== reel) {
+                        const otherVideo = other.querySelector('.reel__video');
+                        const otherBtn = other.querySelector('.reel__sound');
+                        if (otherVideo) otherVideo.muted = true;
+                        if (otherBtn) otherBtn.setAttribute('data-muted', 'true');
+                    }
+                });
+                video.muted = false;
+                soundBtn.setAttribute('data-muted', 'false');
+                soundBtn.setAttribute('aria-label', 'Silenciar');
+            } else {
+                video.muted = true;
+                soundBtn.setAttribute('data-muted', 'true');
+                soundBtn.setAttribute('aria-label', 'Activar sonido');
             }
         });
-        pauseObserver.observe(player);
 
-        // Toggle play/pause on click
-        player.addEventListener('click', () => {
+        // Track first play
+        video.addEventListener('play', () => {
+            if (!reelPlayTracked) {
+                track('video_play', { video_name: videoName, video_index: index + 1, format: 'reel' });
+                reelPlayTracked = true;
+            }
+        }, { once: false });
+
+        // Click on frame (not sound btn) = toggle pause/play manually
+        frame?.addEventListener('click', (e) => {
+            if (e.target.closest('.reel__sound')) return;
             if (video.paused) {
                 video.play().catch(() => {});
-                playBtn.classList.add('hidden');
-                if (!videoPlayTracked) {
-                    track('video_play', { video_name: videoName, video_index: index + 1 });
-                    videoPlayTracked = true;
-                }
             } else {
                 video.pause();
-                playBtn.classList.remove('hidden');
             }
         });
     });
