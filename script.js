@@ -210,15 +210,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const minutesEl = document.getElementById('minutes');
     const secondsEl = document.getElementById('seconds');
 
+    const setWithFlip = (el, newVal) => {
+        if (!el || el.textContent === newVal) return;
+        el.classList.remove('flip-in');
+        void el.offsetWidth;
+        el.textContent = newVal;
+        el.classList.add('flip-in');
+    };
+
     function updateCountdown() {
         const now = Date.now();
         const diff = eventDate - now;
 
         if (diff <= 0) {
-            daysEl.textContent = '00';
-            hoursEl.textContent = '00';
-            minutesEl.textContent = '00';
-            secondsEl.textContent = '00';
+            setWithFlip(daysEl, '00');
+            setWithFlip(hoursEl, '00');
+            setWithFlip(minutesEl, '00');
+            setWithFlip(secondsEl, '00');
             return;
         }
 
@@ -227,10 +235,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-        daysEl.textContent = String(days).padStart(2, '0');
-        hoursEl.textContent = String(hours).padStart(2, '0');
-        minutesEl.textContent = String(minutes).padStart(2, '0');
-        secondsEl.textContent = String(seconds).padStart(2, '0');
+        setWithFlip(daysEl, String(days).padStart(2, '0'));
+        setWithFlip(hoursEl, String(hours).padStart(2, '0'));
+        setWithFlip(minutesEl, String(minutes).padStart(2, '0'));
+        setWithFlip(secondsEl, String(seconds).padStart(2, '0'));
 
         if (bannerDays) bannerDays.textContent = String(days);
     }
@@ -1098,6 +1106,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Initial state
         activateStory(0);
+    }
+
+    // --- TYPING ANIMATION (hero slogan) ---
+    const sloganEl = document.querySelector('.hero__slogan');
+    if (sloganEl && !prefersReducedMotion) {
+        const text = sloganEl.textContent;
+        sloganEl.textContent = '';
+        sloganEl.classList.add('typing');
+        const cursor = document.createElement('span');
+        cursor.className = 'typing-cursor';
+        cursor.textContent = '|';
+        sloganEl.appendChild(cursor);
+
+        let i = 0;
+        const typeChar = () => {
+            if (i < text.length) {
+                const node = document.createTextNode(text[i]);
+                sloganEl.insertBefore(node, cursor);
+                i++;
+                const delay = text[i - 1] === ' ' ? 40 : 55 + Math.random() * 30;
+                setTimeout(typeChar, delay);
+            } else {
+                setTimeout(() => cursor.classList.add('typing-cursor--done'), 2000);
+            }
+        };
+        setTimeout(typeChar, 1800);
     }
 
     // --- HERO SPLIT TEXT LETTER REVEAL ---
