@@ -354,8 +354,51 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- DREAM DESTINATIONS INFINITE SCROLL ---
-    // Cards are duplicated in HTML for seamless CSS animation
+    // --- DREAM DESTINATIONS CAROUSEL (manual arrows) ---
+    const dreamTrack = document.getElementById('dreamTrack');
+    const dreamPrev = document.getElementById('dreamPrev');
+    const dreamNext = document.getElementById('dreamNext');
+    if (dreamTrack && dreamPrev && dreamNext) {
+        const getCardStep = () => {
+            const firstCard = dreamTrack.querySelector('.dream-card');
+            if (!firstCard) return 280;
+            const style = getComputedStyle(dreamTrack);
+            const gap = parseInt(style.columnGap || style.gap || '24', 10);
+            return firstCard.offsetWidth + gap;
+        };
+
+        const updateArrowState = () => {
+            const maxScroll = dreamTrack.scrollWidth - dreamTrack.clientWidth;
+            const atStart = dreamTrack.scrollLeft <= 4;
+            const atEnd = dreamTrack.scrollLeft >= maxScroll - 4;
+            dreamPrev.setAttribute('aria-disabled', atStart);
+            dreamNext.setAttribute('aria-disabled', atEnd);
+        };
+
+        dreamPrev.addEventListener('click', () => {
+            dreamTrack.scrollBy({ left: -getCardStep() * 2, behavior: 'smooth' });
+            track('carousel_nav', { carousel: 'destinos', direction: 'prev' });
+        });
+
+        dreamNext.addEventListener('click', () => {
+            dreamTrack.scrollBy({ left: getCardStep() * 2, behavior: 'smooth' });
+            track('carousel_nav', { carousel: 'destinos', direction: 'next' });
+        });
+
+        let dreamArrowTicking = false;
+        dreamTrack.addEventListener('scroll', () => {
+            if (!dreamArrowTicking) {
+                requestAnimationFrame(() => {
+                    updateArrowState();
+                    dreamArrowTicking = false;
+                });
+                dreamArrowTicking = true;
+            }
+        }, { passive: true });
+
+        // Initial state
+        updateArrowState();
+    }
 
     // --- SCROLL REVEAL (CSS-driven, no class injection flash) ---
     const animatedElements = document.querySelectorAll(
