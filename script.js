@@ -183,6 +183,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- COUNTDOWN BANNER (top) ---
+    const countdownBanner = document.getElementById('countdownBanner');
+    const bannerDays = document.getElementById('bannerDays');
+    const bannerClose = document.getElementById('bannerClose');
+
+    // Restore hidden state from localStorage
+    if (localStorage.getItem('expovac_banner_hidden') === '1') {
+        document.body.classList.add('banner-hidden');
+    }
+
+    bannerClose?.addEventListener('click', () => {
+        document.body.classList.add('banner-hidden');
+        localStorage.setItem('expovac_banner_hidden', '1');
+        track('banner_close', { banner: 'countdown' });
+    });
+
+    countdownBanner?.querySelector('.countdown-banner__cta')?.addEventListener('click', () => {
+        track('cta_click', { cta_label: 'Reservar mi lugar', cta_location: 'countdown_banner' });
+    });
+
     // --- COUNTDOWN ---
     const eventDate = new Date('2026-05-22T09:00:00-05:00').getTime();
     const daysEl = document.getElementById('days');
@@ -211,6 +231,8 @@ document.addEventListener('DOMContentLoaded', () => {
         hoursEl.textContent = String(hours).padStart(2, '0');
         minutesEl.textContent = String(minutes).padStart(2, '0');
         secondsEl.textContent = String(seconds).padStart(2, '0');
+
+        if (bannerDays) bannerDays.textContent = String(days);
     }
 
     updateCountdown();

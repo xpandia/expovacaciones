@@ -767,6 +767,71 @@ html {
     z-index: 4;
 }
 
+/* Airplane animation in hero */
+.hero__airplane {
+    position: absolute;
+    top: 22%;
+    left: -180px;
+    z-index: 4;
+    pointer-events: none;
+    animation: airplaneFly 22s linear infinite;
+    animation-delay: 3s;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+}
+
+.hero__airplane-trail {
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    width: 260px;
+    height: 80px;
+    transform: translateY(-50%) translateX(30px);
+}
+
+.hero__airplane-icon {
+    color: #fff;
+    transform: rotate(30deg);
+    display: block;
+}
+
+@keyframes airplaneFly {
+    0% {
+        transform: translate(0, 0);
+        opacity: 0;
+    }
+    8% {
+        opacity: 0.85;
+    }
+    50% {
+        transform: translate(55vw, -50px);
+    }
+    92% {
+        opacity: 0.85;
+    }
+    100% {
+        transform: translate(calc(100vw + 260px), -110px);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero__airplane {
+        top: 14%;
+        animation-duration: 18s;
+    }
+    .hero__airplane-icon {
+        width: 28px;
+        height: 28px;
+    }
+    .hero__airplane-trail {
+        width: 180px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero__airplane { display: none; }
+}
+
 .hero__parallax-particle {
     position: absolute;
     top: 0;
@@ -927,6 +992,22 @@ ul { list-style: none; }
     font-weight: 600;
     box-shadow: 0 2px 8px rgba(26,138,74,0.3);
     animation: none;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.btn--primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.35) 50%, transparent 100%);
+    animation: btnShimmer 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .btn--primary:hover {
@@ -934,6 +1015,15 @@ ul { list-style: none; }
     background: var(--verde-dark);
     box-shadow: 0 6px 20px rgba(26,138,74,0.35);
     animation: none;
+}
+
+@keyframes btnShimmer {
+    0%, 20% { left: -100%; }
+    50%, 100% { left: 180%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn--primary::before { animation: none; }
 }
 
 .btn--primary:active {
@@ -962,6 +1052,155 @@ ul { list-style: none; }
 
 .btn--full {
     width: 100%;
+}
+
+/* ============================================
+   COUNTDOWN BANNER (top)
+   ============================================ */
+.countdown-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1002;
+    background: linear-gradient(90deg, var(--brand-naranja) 0%, #f04e2c 50%, var(--brand-magenta) 100%);
+    color: #fff;
+    transform: translateY(0);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+body.banner-hidden .countdown-banner {
+    transform: translateY(-100%);
+    pointer-events: none;
+}
+
+.countdown-banner__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 8px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+
+.countdown-banner__icon {
+    display: inline-flex;
+    align-items: center;
+    animation: bannerTick 1s ease-in-out infinite;
+}
+
+@keyframes bannerTick {
+    0%, 50%, 100% { transform: rotate(0); }
+    25% { transform: rotate(-8deg); }
+    75% { transform: rotate(8deg); }
+}
+
+.countdown-banner__text strong {
+    font-weight: 800;
+    font-size: 1rem;
+    margin: 0 3px;
+}
+
+.countdown-banner__date {
+    opacity: 0.85;
+    font-size: 0.78rem;
+}
+
+.countdown-banner__cta {
+    padding: 5px 14px;
+    background: rgba(255, 255, 255, 0.96);
+    color: var(--brand-magenta);
+    font-weight: 700;
+    font-size: 0.78rem;
+    border-radius: 100px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+}
+
+.countdown-banner__cta:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    color: var(--brand-magenta);
+}
+
+.countdown-banner__close {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.75);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    border-radius: 50%;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.countdown-banner__close:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .countdown-banner__inner {
+        padding: 7px 36px 7px 12px;
+        gap: 10px;
+        font-size: 0.78rem;
+    }
+    .countdown-banner__date {
+        display: none;
+    }
+    .countdown-banner__cta {
+        padding: 4px 12px;
+        font-size: 0.72rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .countdown-banner__inner {
+        padding: 6px 32px 6px 10px;
+        gap: 8px;
+        font-size: 0.74rem;
+        flex-wrap: nowrap;
+        overflow: hidden;
+    }
+    .countdown-banner__text {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .countdown-banner__cta {
+        padding: 3px 10px;
+        font-size: 0.68rem;
+        flex-shrink: 0;
+    }
+}
+
+/* Shift header down when banner visible */
+body:not(.banner-hidden) .header {
+    top: 38px;
+}
+
+@media (max-width: 768px) {
+    body:not(.banner-hidden) .header {
+        top: 34px;
+    }
+}
+
+@media (max-width: 480px) {
+    body:not(.banner-hidden) .header {
+        top: 32px;
+    }
 }
 
 /* ============================================
