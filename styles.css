@@ -789,6 +789,185 @@ html {
     z-index: 4;
 }
 
+/* Hero clouds */
+.hero__clouds {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 3;
+}
+
+.hero__cloud {
+    position: absolute;
+    width: 200px;
+    height: 80px;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+    will-change: transform;
+}
+
+.hero__cloud--1 {
+    top: 12%;
+    left: -220px;
+    width: 220px;
+    height: 88px;
+    animation: cloudDrift1 55s linear infinite;
+    opacity: 0.7;
+}
+
+.hero__cloud--2 {
+    top: 28%;
+    left: -180px;
+    width: 180px;
+    height: 72px;
+    animation: cloudDrift2 80s linear infinite;
+    animation-delay: -20s;
+    opacity: 0.5;
+}
+
+.hero__cloud--3 {
+    top: 18%;
+    left: -200px;
+    width: 200px;
+    height: 80px;
+    animation: cloudDrift3 70s linear infinite;
+    animation-delay: -45s;
+    opacity: 0.6;
+}
+
+@keyframes cloudDrift1 {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(100vw + 300px)); }
+}
+
+@keyframes cloudDrift2 {
+    from { transform: translateX(0) translateY(0); }
+    50% { transform: translateX(calc(50vw + 150px)) translateY(-8px); }
+    to { transform: translateX(calc(100vw + 250px)) translateY(0); }
+}
+
+@keyframes cloudDrift3 {
+    from { transform: translateX(0) translateY(0); }
+    50% { transform: translateX(calc(50vw + 150px)) translateY(6px); }
+    to { transform: translateX(calc(100vw + 280px)) translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .hero__cloud { opacity: 0.45 !important; }
+    .hero__cloud--1 { width: 160px; height: 64px; }
+    .hero__cloud--2 { width: 140px; height: 56px; }
+    .hero__cloud--3 { width: 150px; height: 60px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero__cloud { animation: none !important; display: none; }
+}
+
+/* Ambient airplanes in sections */
+.ambient-airplane {
+    position: absolute;
+    top: 12%;
+    left: -120px;
+    z-index: 1;
+    pointer-events: none;
+    color: rgba(0, 0, 0, 0.3);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+    animation: ambientAirplaneFly 28s linear infinite;
+}
+
+.ambient-airplane svg {
+    transform: rotate(30deg);
+    display: block;
+}
+
+.ambient-airplane--reverse {
+    left: auto;
+    right: -120px;
+    top: 18%;
+    animation: ambientAirplaneFlyReverse 32s linear infinite;
+    animation-delay: 5s;
+}
+
+.ambient-airplane--reverse svg {
+    transform: rotate(-150deg);
+}
+
+.ambient-airplane--small {
+    top: 22%;
+    left: -80px;
+    color: rgba(255, 255, 255, 0.75);
+    animation-duration: 36s;
+}
+
+@keyframes ambientAirplaneFly {
+    0% { transform: translate(0, 0); opacity: 0; }
+    10% { opacity: 0.8; }
+    50% { transform: translate(55vw, -30px); }
+    90% { opacity: 0.8; }
+    100% { transform: translate(calc(100vw + 200px), -60px); opacity: 0; }
+}
+
+@keyframes ambientAirplaneFlyReverse {
+    0% { transform: translate(0, 0); opacity: 0; }
+    10% { opacity: 0.7; }
+    50% { transform: translate(-55vw, -25px); }
+    90% { opacity: 0.7; }
+    100% { transform: translate(calc(-100vw - 200px), -50px); opacity: 0; }
+}
+
+@media (max-width: 768px) {
+    .ambient-airplane { animation-duration: 20s; }
+    .ambient-airplane svg { width: 22px; height: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ambient-airplane { display: none; }
+}
+
+/* Ambient clouds (dream-destinations) */
+.ambient-clouds {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.ambient-cloud {
+    position: absolute;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08));
+    will-change: transform;
+}
+
+.ambient-cloud--a {
+    top: 14%;
+    left: -200px;
+    width: 180px;
+    height: 72px;
+    animation: cloudDrift1 60s linear infinite;
+    opacity: 0.8;
+}
+
+.ambient-cloud--b {
+    top: 22%;
+    left: -160px;
+    width: 140px;
+    height: 56px;
+    animation: cloudDrift2 85s linear infinite;
+    animation-delay: -30s;
+    opacity: 0.65;
+}
+
+@media (max-width: 768px) {
+    .ambient-cloud { opacity: 0.5 !important; }
+    .ambient-cloud--a { width: 140px; height: 56px; }
+    .ambient-cloud--b { width: 110px; height: 44px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ambient-cloud { display: none; }
+}
+
 /* Airplane animation in hero */
 .hero__airplane {
     position: absolute;
