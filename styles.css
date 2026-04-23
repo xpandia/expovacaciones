@@ -2977,6 +2977,54 @@ body:not(.banner-hidden) .header {
 }
 
 /* ============================================
+   SECTION WAVE DIVIDERS (organic transitions)
+   ============================================ */
+.section-wave {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 70px;
+    pointer-events: none;
+    z-index: 2;
+    display: block;
+}
+
+.section-wave--top { top: 0; }
+.section-wave--bottom { bottom: 0; }
+
+@media (max-width: 768px) {
+    .section-wave { height: 50px; }
+}
+
+@media (max-width: 480px) {
+    .section-wave { height: 36px; }
+}
+
+/* Ensure sections with waves have room inside */
+.reels-section,
+.contact {
+    padding-top: calc(120px + 20px);
+    padding-bottom: calc(120px + 20px);
+}
+
+@media (max-width: 768px) {
+    .reels-section,
+    .contact {
+        padding-top: calc(72px + 20px);
+        padding-bottom: calc(72px + 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .reels-section,
+    .contact {
+        padding-top: calc(56px + 20px);
+        padding-bottom: calc(56px + 20px);
+    }
+}
+
+/* ============================================
    REELS (vertical video showcase)
    ============================================ */
 .reels-section {
