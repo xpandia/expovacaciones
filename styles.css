@@ -121,6 +121,222 @@ html {
     .clip-reveal { clip-path: none; }
 }
 
+/* ===== Stories: Sticky Scroll Storytelling ===== */
+.stories {
+    padding: 120px 0;
+    background: linear-gradient(180deg, #fcfaf5 0%, #f7f2e8 50%, #f2ede0 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.stories::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(242, 140, 40, 0.08) 0%, transparent 65%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.stories__header {
+    text-align: center;
+    margin-bottom: 80px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.stories__header .section-header__tag {
+    display: inline-block;
+}
+
+.stories__header .section-header__title em {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--brand-verde);
+}
+
+.stories__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+}
+
+.stories__text {
+    display: flex;
+    flex-direction: column;
+    gap: 40vh;
+    padding: 20vh 0;
+}
+
+.story {
+    opacity: 0.28;
+    transition: opacity 0.5s ease;
+}
+
+.story.active {
+    opacity: 1;
+}
+
+.story__num {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--brand-verde);
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 6px 14px;
+    background: rgba(26, 138, 74, 0.1);
+    border-radius: 980px;
+}
+
+.story__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+    font-weight: 700;
+    color: var(--negro);
+    line-height: 1.1;
+    margin-bottom: 18px;
+    letter-spacing: -0.02em;
+}
+
+.story__desc {
+    font-size: 1.08rem;
+    color: var(--gris);
+    line-height: 1.75;
+    max-width: 480px;
+}
+
+.stories__visual {
+    position: relative;
+    height: 100%;
+}
+
+.stories__sticky {
+    position: sticky;
+    top: 10vh;
+    height: 80vh;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.stories__img {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.stories__img.visible {
+    opacity: 1;
+}
+
+.stories__img picture,
+.stories__img img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.stories__img img {
+    object-fit: cover;
+}
+
+.stories__img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.25) 100%);
+    pointer-events: none;
+}
+
+.stories__progress {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 2;
+}
+
+.stories__progress-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.45);
+    transition: all 0.4s ease;
+}
+
+.stories__progress-dot.active {
+    width: 28px;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 1024px) {
+    .stories {
+        padding: 80px 0;
+    }
+
+    .stories__header {
+        margin-bottom: 48px;
+    }
+
+    .stories__grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .stories__text {
+        order: 2;
+        gap: 48px;
+        padding: 0;
+    }
+
+    .story {
+        opacity: 1;
+    }
+
+    .stories__visual {
+        order: 1;
+        height: auto;
+    }
+
+    .stories__sticky {
+        position: relative;
+        top: 0;
+        height: 360px;
+    }
+}
+
+@media (max-width: 480px) {
+    .stories {
+        padding: 48px 0;
+    }
+
+    .stories__sticky {
+        height: 280px;
+    }
+
+    .story__title {
+        font-size: 1.8rem;
+    }
+
+    .story__desc {
+        font-size: 0.95rem;
+    }
+}
+
 /* ===== Hero multi-layer parallax ===== */
 .hero__parallax-layer {
     position: absolute;
@@ -3972,17 +4188,92 @@ ul { list-style: none; }
    PREMIUM 2026 ANIMATIONS
    ============================================ */
 
-/* ---- Scroll Progress Bar ---- */
-.scroll-progress {
+/* ---- Scroll Progress (hidden, replaced by circular) ---- */
+.scroll-progress { display: none; }
+
+/* ---- Scroll Progress Circular + Scroll-to-top ---- */
+.scroll-ring {
     position: fixed;
-    top: 0;
-    left: 0;
-    height: 3px;
-    width: 0%;
-    background: var(--brand-verde);
-    z-index: 9999;
+    bottom: 28px;
+    left: 28px;
+    width: 56px;
+    height: 56px;
+    z-index: 999;
+    cursor: pointer;
+    opacity: 0;
+    transform: scale(0.85) translateY(12px);
+    transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
     pointer-events: none;
-    transition: none;
+    border: none;
+    padding: 0;
+    background: none;
+}
+
+.scroll-ring.visible {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    pointer-events: auto;
+}
+
+.scroll-ring__bg {
+    position: absolute;
+    inset: 0;
+    background: rgba(26, 138, 74, 0.92);
+    backdrop-filter: blur(12px) saturate(150%);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
+    border-radius: 50%;
+    box-shadow: 0 4px 20px rgba(26, 138, 74, 0.3);
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.scroll-ring:hover .scroll-ring__bg {
+    transform: scale(1.08);
+    background: rgba(26, 138, 74, 1);
+}
+
+.scroll-ring svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+    pointer-events: none;
+}
+
+.scroll-ring__track {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.15);
+    stroke-width: 2.5;
+}
+
+.scroll-ring__bar {
+    fill: none;
+    stroke: url(#scrollRingGrad);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-dasharray: 163.36;
+    stroke-dashoffset: 163.36;
+    transition: stroke-dashoffset 0.1s linear;
+}
+
+.scroll-ring__icon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    pointer-events: none;
+}
+
+@media (max-width: 480px) {
+    .scroll-ring {
+        bottom: 20px;
+        left: 20px;
+        width: 48px;
+        height: 48px;
+    }
 }
 
 /* ---- Gallery Clip-Path Reveal ---- */

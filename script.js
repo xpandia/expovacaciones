@@ -409,27 +409,57 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, { passive: true });
 
-    // --- SCROLL PROGRESS BAR ---
-    const progressBar = document.createElement('div');
-    progressBar.classList.add('scroll-progress');
-    document.body.prepend(progressBar);
+    // --- SCROLL PROGRESS CIRCULAR (scroll-to-top) ---
+    const scrollRing = document.createElement('button');
+    scrollRing.className = 'scroll-ring';
+    scrollRing.setAttribute('aria-label', 'Volver arriba');
+    scrollRing.innerHTML = `
+        <div class="scroll-ring__bg"></div>
+        <svg viewBox="0 0 56 56" aria-hidden="true">
+            <defs>
+                <linearGradient id="scrollRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#F28C28"/>
+                    <stop offset="50%" stop-color="#eab818"/>
+                    <stop offset="100%" stop-color="#f9167e"/>
+                </linearGradient>
+            </defs>
+            <circle class="scroll-ring__track" cx="28" cy="28" r="26"/>
+            <circle class="scroll-ring__bar" cx="28" cy="28" r="26"/>
+        </svg>
+        <span class="scroll-ring__icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+        </span>
+    `;
+    document.body.appendChild(scrollRing);
+
+    const ringBar = scrollRing.querySelector('.scroll-ring__bar');
+    const ringCircumference = 2 * Math.PI * 26;
+    ringBar.style.strokeDasharray = ringCircumference;
 
     let progressTicking = false;
-
     function updateScrollProgress() {
         const scrollTop = window.scrollY;
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-        progressBar.style.width = `${progress}%`;
+        const progress = docHeight > 0 ? scrollTop / docHeight : 0;
+        ringBar.style.strokeDashoffset = ringCircumference * (1 - progress);
+        scrollRing.classList.toggle('visible', scrollTop > 400);
         progressTicking = false;
     }
-
     window.addEventListener('scroll', () => {
         if (!progressTicking) {
             requestAnimationFrame(updateScrollProgress);
             progressTicking = true;
         }
     }, { passive: true });
+
+    scrollRing.addEventListener('click', () => {
+        if (window.lenis) {
+            window.lenis.scrollTo(0, { duration: 1.5 });
+        } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        track('scroll_to_top_click');
+    });
 
     // --- MAGNETIC BUTTON EFFECT (Desktop Only, throttled via rAF) ---
     if (!prefersReducedMotion && window.innerWidth > 768) {
@@ -587,6 +617,28 @@ document.addEventListener('DOMContentLoaded', () => {
                     ciudad: data.ciudad,
                     interes: data.interes
                 });
+                // Celebration confetti — brand colors
+                if (typeof confetti === 'function') {
+                    const brandColors = ['#1a8a4a', '#F28C28', '#eab818', '#f9167e', '#2c3d6b'];
+                    const end = Date.now() + 1500;
+                    (function frame() {
+                        confetti({
+                            particleCount: 4,
+                            angle: 60,
+                            spread: 55,
+                            origin: { x: 0, y: 0.85 },
+                            colors: brandColors
+                        });
+                        confetti({
+                            particleCount: 4,
+                            angle: 120,
+                            spread: 55,
+                            origin: { x: 1, y: 0.85 },
+                            colors: brandColors
+                        });
+                        if (Date.now() < end) requestAnimationFrame(frame);
+                    })();
+                }
                 form.reset();
             } else {
                 throw new Error('Error en el envío');
@@ -787,6 +839,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.3, rootMargin: '-80px 0px 0px 0px' });
 
     sections.forEach(section => navObserver.observe(section));
+
+    // --- STICKY SCROLL STORYTELLING ---
+    const storyImages = document.querySelectorAll('.stories__img');
+    const storyDots = document.querySelectorAll('.stories__progress-dot');
+    const stories = document.querySelectorAll('.story');
+    if (stories.length > 0 && storyImages.length > 0) {
+        const activateStory = (idx) => {
+            stories.forEach((s, i) => s.classList.toggle('active', i === idx));
+            storyImages.forEach((img, i) => img.classList.toggle('visible', i === idx));
+            storyDots.forEach((d, i) => d.classList.toggle('active', i === idx));
+        };
+
+        const storyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const idx = parseInt(entry.target.dataset.story, 10);
+                    activateStory(idx);
+                }
+            });
+        }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+
+        stories.forEach(s => storyObserver.observe(s));
+    }
 
     // --- HERO SPLIT TEXT LETTER REVEAL ---
     if (!prefersReducedMotion) {

@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="styles.css">
     <script>document.documentElement.classList.add('js-ready');</script>
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.1.13/bundled/lenis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer></script>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -309,6 +310,74 @@
                 </div>
                 <div class="evento__cta">
                     <a href="#contacto" class="btn btn--primary btn--large">Quiero estar ahí</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STORIES (sticky scroll storytelling) -->
+    <section class="stories" id="historia">
+        <div class="container">
+            <div class="stories__header">
+                <p class="section-header__tag">Tu viaje comienza aquí</p>
+                <h2 class="section-header__title">Una experiencia, <em>cuatro momentos</em></h2>
+            </div>
+            <div class="stories__grid">
+                <div class="stories__text">
+                    <article class="story" data-story="0">
+                        <span class="story__num">01</span>
+                        <h3 class="story__title">Sueña</h3>
+                        <p class="story__desc">Todo comienza con una imagen. Un destino que te llama, un sabor que quieres probar, un lugar donde desconectar. En Expovacaciones descubres destinos que no sabías que existían.</p>
+                    </article>
+                    <article class="story" data-story="1">
+                        <span class="story__num">02</span>
+                        <h3 class="story__title">Explora</h3>
+                        <p class="story__desc">80+ expositores, cientos de rutas, miles de posibilidades. Compara hoteles, tours, aerolíneas y paquetes cara a cara con quien los opera. Sin intermediarios ni sorpresas.</p>
+                    </article>
+                    <article class="story" data-story="2">
+                        <span class="story__num">03</span>
+                        <h3 class="story__title">Decide</h3>
+                        <p class="story__desc">Recibe asesoría experta, aprovecha ofertas exclusivas del evento y accede a planes de financiación. Aquí reservas con confianza y con el mejor precio de la temporada.</p>
+                    </article>
+                    <article class="story" data-story="3">
+                        <span class="story__num">04</span>
+                        <h3 class="story__title">Viaja</h3>
+                        <p class="story__desc">El mejor recuerdo de tus vacaciones empieza en mayo, en Chipichape. Tres días que se convierten en el viaje de tus sueños.</p>
+                    </article>
+                </div>
+                <div class="stories__visual" aria-hidden="true">
+                    <div class="stories__sticky">
+                        <div class="stories__img visible" data-index="0">
+                            <picture>
+                                <source srcset="assets/photos/destino-palmeras-arena.webp" type="image/webp">
+                                <img src="assets/photos/destino-palmeras-arena.webp" alt="" loading="lazy">
+                            </picture>
+                        </div>
+                        <div class="stories__img" data-index="1">
+                            <picture>
+                                <source srcset="assets/photos/destino-mar-colores.webp" type="image/webp">
+                                <img src="assets/photos/destino-mar-colores.webp" alt="" loading="lazy">
+                            </picture>
+                        </div>
+                        <div class="stories__img" data-index="2">
+                            <picture>
+                                <source srcset="assets/photos/destino-baru.webp" type="image/webp">
+                                <img src="assets/photos/destino-baru.webp" alt="" loading="lazy">
+                            </picture>
+                        </div>
+                        <div class="stories__img" data-index="3">
+                            <picture>
+                                <source srcset="assets/photos/destino-paraiso.webp" type="image/webp">
+                                <img src="assets/photos/destino-paraiso.webp" alt="" loading="lazy">
+                            </picture>
+                        </div>
+                        <div class="stories__progress">
+                            <span class="stories__progress-dot" data-dot="0"></span>
+                            <span class="stories__progress-dot" data-dot="1"></span>
+                            <span class="stories__progress-dot" data-dot="2"></span>
+                            <span class="stories__progress-dot" data-dot="3"></span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
