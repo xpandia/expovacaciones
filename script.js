@@ -1249,6 +1249,63 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: true });
     }
 
+    // --- HERO MOUSE PARALLAX (desktop) ---
+    const heroSection = document.querySelector('.hero');
+    const heroSlideshow = document.querySelector('.hero__slideshow');
+    if (heroSection && heroSlideshow && !prefersReducedMotion && window.matchMedia('(hover: hover) and (min-width: 1025px)').matches) {
+        let parallaxRaf = null;
+        heroSection.addEventListener('mousemove', (e) => {
+            if (parallaxRaf) return;
+            parallaxRaf = requestAnimationFrame(() => {
+                const rect = heroSection.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+                heroSlideshow.style.transform = `perspective(1200px) rotateY(${x * 2.5}deg) rotateX(${y * -2}deg) scale(1.02)`;
+                parallaxRaf = null;
+            });
+        });
+        heroSection.addEventListener('mouseleave', () => {
+            heroSlideshow.style.transform = '';
+        });
+    }
+
+    // --- PAPER PLANE CURSOR TRAIL (desktop only) ---
+    const isDesktopTrail = window.matchMedia('(hover: hover) and (min-width: 1025px)').matches;
+    if (isDesktopTrail && !prefersReducedMotion) {
+        const trailContainer = document.createElement('div');
+        trailContainer.className = 'plane-trail-container';
+        document.body.appendChild(trailContainer);
+
+        let lastPlaneTime = 0;
+        let lastX = 0, lastY = 0;
+        const PLANE_INTERVAL = 140; // ms between planes
+
+        const planeSvg = `<svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>`;
+
+        document.addEventListener('mousemove', (e) => {
+            const now = performance.now();
+            const dx = e.clientX - lastX;
+            const dy = e.clientY - lastY;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            if (now - lastPlaneTime < PLANE_INTERVAL || distance < 20) return;
+
+            lastPlaneTime = now;
+            lastX = e.clientX;
+            lastY = e.clientY;
+
+            const plane = document.createElement('div');
+            plane.className = 'plane-trail';
+            plane.innerHTML = planeSvg;
+            const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+            plane.style.left = `${e.clientX}px`;
+            plane.style.top = `${e.clientY}px`;
+            plane.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+            trailContainer.appendChild(plane);
+
+            setTimeout(() => plane.remove(), 900);
+        }, { passive: true });
+    }
+
     // --- CUSTOM CURSOR (desktop only) ---
     const isDesktop = window.matchMedia('(hover: hover) and (min-width: 1025px)').matches;
     if (isDesktop && !prefersReducedMotion) {
