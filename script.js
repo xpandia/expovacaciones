@@ -99,10 +99,19 @@ document.addEventListener('DOMContentLoaded', () => {
         slides[0].classList.add('hero__slide--zooming');
     });
 
+    const heroFlash = document.getElementById('heroFlash');
+
     function nextSlide() {
         const prev = slides[currentSlide];
         currentSlide = (currentSlide + 1) % slides.length;
         const next = slides[currentSlide];
+
+        // Cinematic flash on slide change
+        if (heroFlash && !prefersReducedMotion) {
+            heroFlash.classList.remove('flash-active');
+            void heroFlash.offsetWidth;
+            heroFlash.classList.add('flash-active');
+        }
 
         // Reset zoom on next slide before showing it
         next.style.transition = 'none';
