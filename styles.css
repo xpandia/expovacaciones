@@ -216,7 +216,6 @@ html {
 
 .stories__visual {
     position: relative;
-    height: 100%;
 }
 
 .stories__sticky {
@@ -226,28 +225,21 @@ html {
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    background: #0a1628;
 }
 
 .stories__img {
     position: absolute;
     inset: 0;
     opacity: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .stories__img.visible {
     opacity: 1;
-}
-
-.stories__img picture,
-.stories__img img {
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-
-.stories__img img {
-    object-fit: cover;
 }
 
 .stories__img::after {
