@@ -789,7 +789,7 @@ html {
     z-index: 4;
 }
 
-/* Hero clouds */
+/* Hero clouds — minimalist flat style matching airplane */
 .hero__clouds {
     position: absolute;
     inset: 0;
@@ -800,39 +800,37 @@ html {
 
 .hero__cloud {
     position: absolute;
-    width: 200px;
-    height: 80px;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+    filter: blur(0.5px) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08));
     will-change: transform;
 }
 
 .hero__cloud--1 {
-    top: 12%;
-    left: -220px;
-    width: 220px;
-    height: 88px;
-    animation: cloudDrift1 55s linear infinite;
-    opacity: 0.7;
+    top: 14%;
+    left: -180px;
+    width: 110px;
+    height: 26px;
+    animation: cloudDrift1 60s linear infinite;
+    opacity: 0.32;
 }
 
 .hero__cloud--2 {
-    top: 28%;
-    left: -180px;
-    width: 180px;
-    height: 72px;
+    top: 26%;
+    left: -150px;
+    width: 80px;
+    height: 20px;
     animation: cloudDrift2 80s linear infinite;
     animation-delay: -20s;
-    opacity: 0.5;
+    opacity: 0.22;
 }
 
 .hero__cloud--3 {
-    top: 18%;
+    top: 19%;
     left: -200px;
-    width: 200px;
-    height: 80px;
+    width: 140px;
+    height: 32px;
     animation: cloudDrift3 70s linear infinite;
     animation-delay: -45s;
-    opacity: 0.6;
+    opacity: 0.28;
 }
 
 @keyframes cloudDrift1 {
@@ -853,10 +851,9 @@ html {
 }
 
 @media (max-width: 768px) {
-    .hero__cloud { opacity: 0.45 !important; }
-    .hero__cloud--1 { width: 160px; height: 64px; }
-    .hero__cloud--2 { width: 140px; height: 56px; }
-    .hero__cloud--3 { width: 150px; height: 60px; }
+    .hero__cloud--1 { width: 80px; height: 20px; opacity: 0.22; }
+    .hero__cloud--2 { width: 60px; height: 16px; opacity: 0.18; }
+    .hero__cloud--3 { width: 100px; height: 24px; opacity: 0.22; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -935,33 +932,32 @@ html {
 
 .ambient-cloud {
     position: absolute;
-    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08));
+    filter: blur(0.5px) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.06));
     will-change: transform;
 }
 
 .ambient-cloud--a {
     top: 14%;
-    left: -200px;
-    width: 180px;
-    height: 72px;
-    animation: cloudDrift1 60s linear infinite;
-    opacity: 0.8;
+    left: -180px;
+    width: 100px;
+    height: 22px;
+    animation: cloudDrift1 75s linear infinite;
+    opacity: 0.45;
 }
 
 .ambient-cloud--b {
     top: 22%;
-    left: -160px;
-    width: 140px;
-    height: 56px;
-    animation: cloudDrift2 85s linear infinite;
+    left: -140px;
+    width: 75px;
+    height: 18px;
+    animation: cloudDrift2 95s linear infinite;
     animation-delay: -30s;
-    opacity: 0.65;
+    opacity: 0.35;
 }
 
 @media (max-width: 768px) {
-    .ambient-cloud { opacity: 0.5 !important; }
-    .ambient-cloud--a { width: 140px; height: 56px; }
-    .ambient-cloud--b { width: 110px; height: 44px; }
+    .ambient-cloud--a { width: 75px; height: 18px; opacity: 0.3; }
+    .ambient-cloud--b { width: 55px; height: 14px; opacity: 0.25; }
 }
 
 @media (prefers-reduced-motion: reduce) {
