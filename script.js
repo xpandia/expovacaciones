@@ -409,6 +409,42 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, { passive: true });
 
+    // --- STICKY CTA BAR (mobile) ---
+    const stickyCta = document.getElementById('stickyCta');
+    if (stickyCta && window.innerWidth < 1024) {
+        const contactSection = document.getElementById('contacto');
+        let stickyTicking = false;
+
+        function updateStickyCta() {
+            const scrolled = window.scrollY > 400;
+            let nearContact = false;
+            if (contactSection) {
+                const rect = contactSection.getBoundingClientRect();
+                // Hide when contact form visible in viewport
+                nearContact = rect.top < window.innerHeight * 0.8 && rect.bottom > 0;
+            }
+            const shouldShow = scrolled && !nearContact;
+            stickyCta.classList.toggle('visible', shouldShow);
+            document.body.classList.toggle('sticky-cta-active', shouldShow);
+            stickyTicking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!stickyTicking) {
+                requestAnimationFrame(updateStickyCta);
+                stickyTicking = true;
+            }
+        }, { passive: true });
+
+        // Track sticky CTA clicks
+        stickyCta.querySelector('.sticky-cta__primary').addEventListener('click', () => {
+            track('cta_click', { cta_label: 'Reserva tu espacio', cta_location: 'sticky_mobile_bar' });
+        });
+        stickyCta.querySelector('.sticky-cta__wa').addEventListener('click', () => {
+            track('whatsapp_click', { location: 'sticky_mobile_bar' });
+        });
+    }
+
     // --- SCROLL PROGRESS CIRCULAR (scroll-to-top) ---
     const scrollRing = document.createElement('button');
     scrollRing.className = 'scroll-ring';
@@ -694,14 +730,84 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- GALLERY CLICK (GA4) ---
-    document.querySelectorAll('.gallery__item').forEach((item, index) => {
+    // --- GALLERY CLICK + LIGHTBOX ---
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxCounter = document.getElementById('lightboxCounter');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+
+    const galleryItems = Array.from(document.querySelectorAll('.gallery__item'));
+    const gallerySources = galleryItems.map(item => {
+        const img = item.querySelector('img');
+        return {
+            src: img?.currentSrc || img?.src || '',
+            alt: img?.alt || ''
+        };
+    });
+
+    let currentLightboxIndex = 0;
+
+    const openLightbox = (index) => {
+        if (!lightbox || !gallerySources[index]) return;
+        currentLightboxIndex = index;
+        lightboxImage.src = gallerySources[index].src;
+        lightboxImage.alt = gallerySources[index].alt;
+        lightboxCounter.textContent = `${index + 1} / ${gallerySources.length}`;
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        if (window.lenis) window.lenis.stop();
+    };
+
+    const closeLightbox = () => {
+        if (!lightbox) return;
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (window.lenis) window.lenis.start();
+    };
+
+    const navLightbox = (dir) => {
+        const total = gallerySources.length;
+        const newIndex = (currentLightboxIndex + dir + total) % total;
+        openLightbox(newIndex);
+    };
+
+    galleryItems.forEach((item, index) => {
         item.addEventListener('click', () => {
-            const src = item.querySelector('img')?.src || '';
+            const src = gallerySources[index].src;
             const name = src.split('/').pop().split('.')[0] || `item_${index + 1}`;
             track('gallery_click', { gallery_item: name, gallery_index: index + 1 });
+            openLightbox(index);
         });
     });
+
+    if (lightbox) {
+        lightboxClose?.addEventListener('click', closeLightbox);
+        lightboxPrev?.addEventListener('click', () => navLightbox(-1));
+        lightboxNext?.addEventListener('click', () => navLightbox(1));
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('open')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') navLightbox(-1);
+            if (e.key === 'ArrowRight') navLightbox(1);
+        });
+
+        // Touch swipe
+        let touchStartX = 0;
+        lightbox.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+        }, { passive: true });
+        lightbox.addEventListener('touchend', (e) => {
+            const dx = e.changedTouches[0].clientX - touchStartX;
+            if (Math.abs(dx) > 50) navLightbox(dx > 0 ? -1 : 1);
+        }, { passive: true });
+    }
 
     // --- FORM START / FIELD BLUR TRACKING (GA4) ---
     let formStartTracked = false;
