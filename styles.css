@@ -2296,18 +2296,14 @@ body.banner-hidden .header { top: 0; }
     .hero__flash.flash-active { animation: none; }
 }
 
-/* Animated gradient overlay - Tropical (más luminoso, menos dark) */
+/* Animated gradient overlay - tropical con contraste a la izquierda */
 .hero__gradient-overlay {
     position: absolute;
     inset: 0;
     z-index: 2;
-    background: linear-gradient(
-        180deg,
-        rgba(10, 22, 40, 0.18) 0%,
-        rgba(10, 22, 40, 0.02) 30%,
-        rgba(10, 22, 40, 0.0) 50%,
-        rgba(10, 22, 40, 0.25) 100%
-    );
+    background:
+        linear-gradient(90deg, rgba(10, 22, 40, 0.55) 0%, rgba(10, 22, 40, 0.15) 55%, rgba(10, 22, 40, 0) 100%),
+        linear-gradient(180deg, rgba(10, 22, 40, 0.15) 0%, rgba(10, 22, 40, 0) 40%, rgba(10, 22, 40, 0.25) 100%);
     background-size: 100% 100%;
     animation: none;
 }
@@ -2383,7 +2379,7 @@ body.banner-hidden .header { top: 0; }
 .hero__content {
     position: relative;
     z-index: 5;
-    padding: 140px 0 60px;
+    padding: 140px 24px 60px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -2906,7 +2902,7 @@ body.banner-hidden .header { top: 0; }
 
 @media (max-width: 640px) {
     .hero__content {
-        padding: 120px 0 40px;
+        padding: 120px 20px 40px;
     }
     .hero__kicker {
         font-size: 0.68rem;
@@ -7848,7 +7844,7 @@ body.banner-hidden .header { top: 0; }
 /* ===== Ultra-pequeño (<375px) — iPhone SE ===== */
 @media (max-width: 375px) {
     .hero__content {
-        padding: 110px 0 30px;
+        padding: 110px 16px 30px;
     }
     .hero__title--mockup .hero__title-line {
         font-size: 1.55rem;
