@@ -4049,13 +4049,22 @@ body:not(.banner-hidden) .header {
    ============================================ */
 .script-accent {
     font-family: 'Caveat', 'Brush Script MT', cursive;
-    font-style: italic;
-    font-weight: 500;
-    color: var(--brand-verde-lima-dark, #8ba327);
-    font-size: 1.15em;
-    letter-spacing: 0.01em;
+    font-style: normal;
+    font-weight: 600;
+    color: #c89b1d;
+    font-size: 1.35em;
+    line-height: 0.95;
+    letter-spacing: 0.005em;
     display: inline-block;
-    transform: translateY(0.04em) rotate(-3deg);
+    transform: translateY(0.06em) rotate(-2deg);
+}
+
+.script-accent--light {
+    color: var(--brand-amarillo-bright, #f5d020);
+}
+
+.script-accent--green {
+    color: var(--brand-verde, #1a8a4a);
 }
 
 /* ============================================
