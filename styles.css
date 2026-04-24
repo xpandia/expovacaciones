@@ -2213,8 +2213,8 @@ body.banner-hidden .header { top: 0; }
 .hero__content--centered {
     text-align: left;
     align-items: flex-start;
-    max-width: 1180px;
-    margin: 0 auto;
+    max-width: 820px;
+    margin: 0;
 }
 
 .hero__kicker {
@@ -2256,19 +2256,36 @@ body.banner-hidden .header { top: 0; }
     margin: -6px 0 -8px;
     transform: rotate(-2deg);
     transform-origin: left center;
+    position: relative;
+}
+
+/* Subrayado ondulado amarillo bajo 'para tus vacaciones' */
+.hero__title-script--big::after {
+    content: '';
+    position: absolute;
+    left: 4%;
+    right: 4%;
+    bottom: 12%;
+    height: 8px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 8' preserveAspectRatio='none'><path d='M0,4 Q15,0 30,4 T60,4 T90,4 T120,4' stroke='%23e8d500' stroke-width='3' fill='none' stroke-linecap='round'/></svg>");
+    background-repeat: repeat-x;
+    background-size: 100px 8px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
+    pointer-events: none;
 }
 
 .hero__slogan {
-    font-family: 'Caveat', cursive;
-    font-style: normal;
-    color: rgba(255,255,255,0.96);
-    font-size: clamp(1.4rem, 2.4vw, 2.1rem);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    color: #ffffff;
+    font-size: clamp(1.1rem, 1.6vw, 1.35rem);
     font-weight: 500;
-    margin: 8px 0 36px;
-    text-shadow: 0 1px 12px rgba(0,0,0,0.4);
+    margin: 12px 0 32px;
+    text-shadow: 0 2px 14px rgba(0,0,0,0.5);
     letter-spacing: 0.005em;
     text-align: left;
-    padding-left: 8px;
+    padding-left: 4px;
+    opacity: 1;
 }
 
 .hero__info {
@@ -2446,8 +2463,9 @@ body.banner-hidden .header { top: 0; }
 }
 
 .hero__brand-pill img {
-    height: 22px;
+    height: 28px !important;
     width: auto;
+    display: block;
 }
 
 .hero__title-script {
