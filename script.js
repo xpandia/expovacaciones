@@ -47,49 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
         window.lenis = lenis;
     }
 
-    // --- WEATHER WIDGET (Cali en vivo) ---
-    (async () => {
-        const weatherEl = document.getElementById('heroWeather');
-        const tempEl = document.getElementById('heroWeatherTemp');
-        const iconEl = document.getElementById('heroWeatherIcon');
-        if (!weatherEl || !tempEl) return;
-
-        const iconMap = {
-            113: '☀️', 116: '⛅', 119: '☁️', 122: '☁️',
-            143: '🌫️', 176: '🌦️', 179: '🌨️', 182: '🌧️',
-            185: '🌧️', 200: '⛈️', 227: '❄️', 230: '❄️',
-            248: '🌫️', 260: '🌫️', 263: '🌦️', 266: '🌦️',
-            281: '🌧️', 284: '🌧️', 293: '🌦️', 296: '🌦️',
-            299: '🌧️', 302: '🌧️', 305: '🌧️', 308: '🌧️',
-            311: '🌧️', 314: '🌧️', 317: '🌧️', 320: '🌨️',
-            323: '🌨️', 326: '🌨️', 329: '❄️', 332: '❄️',
-            335: '❄️', 338: '❄️', 353: '🌦️', 356: '🌧️',
-            359: '🌧️', 362: '🌨️', 365: '🌨️', 368: '🌨️',
-            371: '❄️', 374: '🌨️', 377: '🌨️', 386: '⛈️',
-            389: '⛈️', 392: '⛈️', 395: '❄️'
-        };
-
-        try {
-            const res = await fetch('https://wttr.in/Cali,CO?format=j1', { cache: 'no-store' });
-            if (!res.ok) throw new Error();
-            const data = await res.json();
-            const current = data.current_condition?.[0];
-            if (!current) throw new Error();
-
-            const tempC = current.temp_C;
-            const weatherCode = parseInt(current.weatherCode, 10);
-            const icon = iconMap[weatherCode] || '☀️';
-
-            tempEl.textContent = `${tempC}°C`;
-            iconEl.textContent = icon;
-            requestAnimationFrame(() => weatherEl.classList.add('visible'));
-        } catch (_) {
-            // Fallback: show a static pleasant weather for Cali
-            tempEl.textContent = '26°C';
-            requestAnimationFrame(() => weatherEl.classList.add('visible'));
-        }
-    })();
-
     // --- HERO KEN BURNS SLIDESHOW ---
     const slides = document.querySelectorAll('.hero__slide');
     let currentSlide = 0;
