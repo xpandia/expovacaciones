@@ -5960,6 +5960,46 @@ body.banner-hidden .header { top: 0; }
     z-index: 2;
 }
 
+/* Golden retriever con gafas (mockup Turismo Consciente) */
+.conscious-hero__dog {
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 200px;
+    height: 260px;
+    border-radius: 55% 45% 50% 50% / 55% 45% 55% 45%;
+    overflow: hidden;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.25),
+                0 0 0 6px #ffffff,
+                0 0 0 8px rgba(245, 208, 32, 0.3);
+    z-index: 3;
+    transform: rotate(5deg);
+    background: #ffffff;
+}
+
+.conscious-hero__dog img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+@media (max-width: 900px) {
+    .conscious-hero__dog {
+        width: 140px;
+        height: 180px;
+        bottom: -20px;
+        right: -10px;
+    }
+}
+
+@media (max-width: 640px) {
+    .conscious-hero__dog {
+        width: 110px;
+        height: 140px;
+    }
+}
+
 /* ====== CONSCIOUS CARDS (3 cards) ====== */
 .conscious-cards {
     display: grid;
