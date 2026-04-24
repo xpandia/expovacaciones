@@ -3341,7 +3341,9 @@ body.banner-hidden .header { top: 0; }
 }
 
 .section-header__tag {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     font-size: 0.8rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -3352,6 +3354,30 @@ body.banner-hidden .header { top: 0; }
     background: none;
     border-radius: 0;
     font-family: 'Poppins', -apple-system, sans-serif;
+}
+
+.section-header__palm {
+    display: inline-flex;
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
+.section-header__palm svg {
+    width: 100%;
+    height: 100%;
+}
+
+.section-header__title {
+    position: relative;
+}
+
+.section-header__sparkle {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+    vertical-align: middle;
 }
 
 .section-header--light .section-header__tag {
