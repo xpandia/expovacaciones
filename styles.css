@@ -1837,7 +1837,7 @@ body:not(.banner-hidden) .header {
     left: 0;
     right: 0;
     z-index: 1001;
-    background: linear-gradient(90deg, #f5844a 0%, #ed527d 50%, #d946ef 100%);
+    background: linear-gradient(90deg, #f5844a 0%, #ed4a7d 100%);
     color: #ffffff;
     padding: 10px 0;
     transition: transform 0.35s ease;
@@ -1873,21 +1873,23 @@ body:not(.banner-hidden) .header {
 
 .announcement-bar__cta {
     background: #ffffff;
-    color: #ed527d;
-    font-weight: 700;
-    font-size: 0.88rem;
+    color: #ed4a7d;
+    font-weight: 800;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     padding: 8px 22px;
     border-radius: 999px;
     text-decoration: none;
     white-space: nowrap;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
 }
 
 .announcement-bar__cta:hover {
     transform: translateY(-1px);
-    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
-    color: #d946ef;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+    color: #d63968;
 }
 
 .announcement-bar__close {
@@ -1948,46 +1950,46 @@ body.banner-hidden .header { top: 0; }
 }
 
 .nav-link {
-    color: #1A1A1A;
-    font-size: 0.88rem;
+    color: #ffffff;
+    font-size: 0.95rem;
     font-weight: 600;
-    padding: 8px 14px;
+    padding: 8px 16px;
     border-radius: 50px;
     transition: var(--transition);
-    text-shadow: none;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.15);
 }
 
 .nav-link:hover {
-    color: var(--brand-azul);
-    background: rgba(0, 0, 0, 0.08);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .header--scrolled .nav-link {
-    color: #1A1A1A;
+    color: #ffffff;
 }
 
 .header--scrolled .nav-link:hover {
-    color: var(--brand-azul);
-    background: rgba(0, 0, 0, 0.08);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .nav-link--cta {
     background: #fff;
-    color: #1A1A1A !important;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    text-transform: none;
+    color: #1a3a22 !important;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     font-size: 0.82rem;
     border-radius: 980px;
-    padding: 9px 22px;
+    padding: 10px 26px;
     text-shadow: none;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
     border: 0.5px solid rgba(0, 0, 0, 0.04);
 }
 
 .nav-link--cta:hover {
     transform: scale(1.05) !important;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22) !important;
     background: #fff !important;
     color: var(--brand-verde) !important;
 }
@@ -2209,9 +2211,9 @@ body.banner-hidden .header { top: 0; }
 }
 
 .hero__content--centered {
-    text-align: center;
-    align-items: center;
-    max-width: 1080px;
+    text-align: left;
+    align-items: flex-start;
+    max-width: 1180px;
     margin: 0 auto;
 }
 
@@ -2228,7 +2230,7 @@ body.banner-hidden .header { top: 0; }
 .hero__title--mockup {
     margin-bottom: 18px;
     line-height: 0.98;
-    text-align: center;
+    text-align: left;
 }
 
 .hero__title--mockup .hero__title-line {
@@ -2242,35 +2244,39 @@ body.banner-hidden .header { top: 0; }
 }
 
 .hero__title-script--big {
-    display: block;
+    display: inline-block;
     font-family: 'Caveat', cursive;
     font-style: normal;
     font-weight: 700;
-    font-size: clamp(3.2rem, 9vw, 7rem);
-    color: #f5d020;
+    font-size: clamp(3.4rem, 9.5vw, 7.2rem);
+    color: #e8d500;
     line-height: 0.88;
     letter-spacing: -0.005em;
-    text-shadow: 0 3px 32px rgba(0,0,0,0.45);
-    margin: -4px 0 -4px;
+    text-shadow: 0 3px 32px rgba(0,0,0,0.45), 0 0 2px rgba(0,0,0,0.25);
+    margin: -6px 0 -8px;
+    transform: rotate(-2deg);
+    transform-origin: left center;
 }
 
 .hero__slogan {
     font-family: 'Caveat', cursive;
     font-style: normal;
     color: rgba(255,255,255,0.96);
-    font-size: clamp(1.4rem, 2.2vw, 2rem);
+    font-size: clamp(1.4rem, 2.4vw, 2.1rem);
     font-weight: 500;
-    margin-bottom: 40px;
+    margin: 8px 0 36px;
     text-shadow: 0 1px 12px rgba(0,0,0,0.4);
     letter-spacing: 0.005em;
+    text-align: left;
+    padding-left: 8px;
 }
 
 .hero__info {
     display: flex;
-    gap: 56px;
-    margin-bottom: 40px;
+    gap: 48px;
+    margin-bottom: 36px;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .hero__info-item {
@@ -2278,24 +2284,23 @@ body.banner-hidden .header { top: 0; }
     align-items: center;
     gap: 12px;
     color: #ffffff;
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     font-weight: 500;
     line-height: 1.25;
-    text-shadow: 0 1px 8px rgba(0,0,0,0.45);
+    text-shadow: 0 1px 6px rgba(0,0,0,0.4);
     text-align: left;
 }
 
 .hero__info-item svg {
-    width: 32px;
-    height: 32px;
+    width: 20px;
+    height: 20px;
     flex-shrink: 0;
-    stroke: #ffffff;
-    background: rgba(255,255,255,0.18);
+    stroke: #1a8a4a;
+    background: #ffffff;
     border-radius: 50%;
-    padding: 6px;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    padding: 9px;
     box-sizing: content-box;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
 }
 
 /* Countdown pill blanco grande — protagonista */
@@ -2304,13 +2309,13 @@ body.banner-hidden .header { top: 0; }
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-radius: 32px;
-    padding: 28px 48px;
+    padding: 24px 44px;
     display: inline-flex;
     align-items: center;
     gap: 36px;
-    margin: 0 auto 36px;
+    margin: 0 0 36px;
     box-shadow: 0 14px 40px rgba(0,0,0,0.22);
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .hero__countdown--pill .countdown__item {
@@ -2318,30 +2323,28 @@ body.banner-hidden .header { top: 0; }
     flex-direction: column;
     align-items: center;
     gap: 4px;
-    min-width: 68px;
+    min-width: 76px;
 }
 
 .hero__countdown--pill .countdown__number {
     font-family: 'Poppins', -apple-system, sans-serif;
-    font-size: 3rem;
+    font-size: 3.2rem;
     font-weight: 800;
-    color: #1a8a4a;
+    color: #6ba728;
     line-height: 1;
     letter-spacing: -0.03em;
 }
 
 .hero__countdown--pill .countdown__label {
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.22em;
-    color: #3d7d2d;
+    color: #6ba728;
     text-transform: uppercase;
 }
 
 .hero__countdown--pill .countdown__separator {
-    font-size: 1.4rem;
-    color: rgba(26, 138, 74, 0.25);
-    font-weight: 400;
+    display: none;
 }
 
 /* CTAs estilo mockup (QUIERO IR + Ver Video) */
@@ -2349,7 +2352,7 @@ body.banner-hidden .header { top: 0; }
     display: flex;
     gap: 20px;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     margin-bottom: 36px;
     flex-wrap: wrap;
 }
@@ -2439,7 +2442,7 @@ body.banner-hidden .header { top: 0; }
     font-size: 0.9rem;
     font-weight: 500;
     box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-    margin: 0 auto;
+    align-self: flex-start;
 }
 
 .hero__brand-pill img {
