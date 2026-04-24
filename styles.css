@@ -3953,94 +3953,564 @@ body:not(.banner-hidden) .header {
 }
 
 /* ============================================
-   SUSTAINABILITY (Immersive)
+   CONSCIOUS TRAVEL (Réplica fiel del mockup)
    ============================================ */
-.sustainability-immersive {
-    padding: 120px 0;
-    background: linear-gradient(180deg, #F2F7F0 0%, #E6F0E2 50%, #DAE8D4 100%);
+.conscious-travel {
+    padding: 100px 0 120px;
+    background: linear-gradient(180deg, #fefbf0 0%, #fff9e6 50%, #fefbf0 100%);
     position: relative;
+    overflow: hidden;
 }
 
-.sustainability-immersive__grid {
+.conscious-travel__container {
+    position: relative;
+    z-index: 2;
+}
+
+.conscious-travel__leaf {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.conscious-travel__leaf--tl {
+    top: -30px;
+    left: -30px;
+    width: 180px;
+    height: 180px;
+    transform: rotate(-10deg);
+}
+
+.conscious-travel__leaf--bl {
+    bottom: 40px;
+    left: -60px;
+    width: 220px;
+    height: 220px;
+    transform: rotate(12deg);
+}
+
+/* ====== CONSCIOUS HERO SPLIT ====== */
+.conscious-hero {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 60px;
     align-items: center;
+    margin-bottom: 72px;
 }
 
-.sustainability-immersive__title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 4vw, 2.8rem);
+.conscious-hero__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
     font-weight: 700;
-    color: var(--negro);
-    line-height: 1.1;
-    letter-spacing: -0.025em;
+    letter-spacing: 0.15em;
+    color: #c89b1d;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.conscious-hero__title {
+    font-family: 'Playfair Display', Georgia, serif;
+    margin-bottom: 28px;
+    line-height: 1;
+}
+
+.conscious-hero__title-line {
+    display: block;
+    font-size: clamp(2.4rem, 4.8vw, 3.8rem);
+    font-weight: 800;
+    color: #1a3a22;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+}
+
+.conscious-hero__script-wrap {
+    position: relative;
+    display: inline-block;
+    margin-top: 4px;
+}
+
+.conscious-hero__script {
+    font-family: 'Caveat', cursive;
+    font-style: normal;
+    font-weight: 700;
+    font-size: clamp(3.2rem, 7vw, 5.5rem);
+    color: #e8a317;
+    line-height: 0.9;
+    display: inline-block;
+    position: relative;
+    text-decoration: underline;
+    text-decoration-color: #f5d020;
+    text-decoration-thickness: 3px;
+    text-underline-offset: -0.12em;
+}
+
+.conscious-hero__sparkle {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+}
+
+.conscious-hero__sparkle--l {
+    top: 8px;
+    left: -30px;
+}
+
+.conscious-hero__sparkle--r {
+    top: 18px;
+    right: -30px;
+}
+
+.conscious-hero__text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #4a5240;
+    max-width: 520px;
     margin-bottom: 24px;
 }
 
-.sustainability-immersive__text {
-    font-size: 1.05rem;
-    color: var(--gris);
-    line-height: 1.8;
+.conscious-hero__text strong {
+    color: #3d7d2d;
+    font-weight: 600;
 }
 
-.sustainability-immersive__visual {
-    text-align: center;
+.conscious-hero__pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    background: #ffffff;
+    border: 1.5px solid #dfeecc;
+    border-radius: 999px;
+    padding: 14px 24px 14px 18px;
+    box-shadow: 0 4px 16px rgba(61, 125, 45, 0.08);
 }
 
-.sustainability-immersive__icon {
-    font-size: 4rem;
-    margin-bottom: 32px;
+.conscious-hero__pill-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #e8f3d8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.sustainability-immersive__stats {
+.conscious-hero__pill-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.conscious-hero__pill-title {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #1a3a22;
+    line-height: 1.3;
+}
+
+.conscious-hero__pill-link {
+    font-size: 0.92rem;
+    color: #3d7d2d;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: #a8c435;
+    text-underline-offset: 3px;
+    line-height: 1.3;
+}
+
+/* ====== CONSCIOUS HERO VISUAL (imagen con blob) ====== */
+.conscious-hero__visual {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    max-width: 520px;
+    margin-left: auto;
+}
+
+.conscious-hero__blob {
+    position: absolute;
+    inset: 0;
+    border-radius: 52% 48% 38% 62% / 44% 56% 44% 56%;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(45, 94, 26, 0.25);
+}
+
+.conscious-hero__blob img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.conscious-hero__palm {
+    position: absolute;
+    bottom: -20px;
+    left: -40px;
+    width: 120px;
+    height: 120px;
+    opacity: 0.85;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* ====== CONSCIOUS CARDS (3 cards) ====== */
+.conscious-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 24px;
+    margin-bottom: 56px;
 }
 
-.sustainability-immersive__stat {
-    background: rgba(255,255,255,0.8);
-    border-radius: var(--radius-lg);
-    padding: 24px 16px;
-    box-shadow: var(--shadow);
-    border: 0.5px solid rgba(0,0,0,0.04);
+.conscious-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 32px 28px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(61, 125, 45, 0.06);
+    border: 1px solid rgba(232, 163, 23, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.sustainability-immersive__stat span {
-    display: block;
-    font-size: 1.8rem;
+.conscious-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(61, 125, 45, 0.12);
+}
+
+.conscious-card__icon-wrap {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #fff6d4 0%, #fef3c7 100%);
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.conscious-card__icon {
+    width: 48px;
+    height: 48px;
+}
+
+.conscious-card__stat {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: #1a3a22;
+    line-height: 1;
+    margin-bottom: 6px;
+    letter-spacing: -0.02em;
+}
+
+.conscious-card__label {
+    font-size: 0.85rem;
     font-weight: 700;
-    color: var(--turquoise);
+    letter-spacing: 0.12em;
+    color: #3d7d2d;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+.conscious-card__label--top {
+    margin-top: 8px;
+    margin-bottom: 14px;
+}
+
+.conscious-card__desc {
+    font-size: 0.92rem;
+    color: #5a6250;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.conscious-card__line {
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #f5d020;
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+/* ====== PETFRIENDLY BANNER ====== */
+.petfriendly {
+    background: linear-gradient(180deg, #e8f3d8 0%, #dfeecc 100%);
+    border-radius: 28px;
+    padding: 28px 36px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 40px;
+    border: 1px solid rgba(61, 125, 45, 0.1);
+}
+
+.petfriendly__intro {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-right: 20px;
+    border-right: 1px solid rgba(61, 125, 45, 0.15);
+}
+
+.petfriendly__heart {
+    width: 72px;
+    height: 72px;
+    flex-shrink: 0;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 10px rgba(61, 125, 45, 0.15);
+}
+
+.petfriendly__heart svg {
+    width: 44px;
+    height: 44px;
+}
+
+.petfriendly__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #1a3a22;
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 6px;
+    line-height: 1.1;
     margin-bottom: 4px;
 }
 
-.sustainability-immersive__stat p {
-    font-size: 0.78rem;
-    color: var(--gris-light);
-    text-transform: uppercase;
-    letter-spacing: 1px;
+.petfriendly__script {
+    font-family: 'Caveat', cursive;
+    font-style: normal;
+    font-weight: 700;
+    color: #e8a317;
+    font-size: 2rem;
+    line-height: 0.9;
+}
+
+.petfriendly__hearts {
+    display: inline-flex;
+    gap: 2px;
+    align-items: center;
+}
+
+.petfriendly__hearts svg {
+    width: 14px;
+    height: 14px;
+}
+
+.petfriendly__sub {
+    font-size: 0.88rem;
+    color: #5a6250;
+    line-height: 1.4;
+}
+
+.petfriendly__features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.petfriendly__feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+}
+
+.petfriendly__feature svg {
+    width: 40px;
+    height: 40px;
+}
+
+.petfriendly__feature p {
+    font-size: 0.82rem;
+    color: #3d5230;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+/* ====== EVENT STATS BAR ====== */
+.event-stats-bar {
+    background: #ffffff;
+    border-radius: 999px;
+    padding: 20px 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.event-stats-bar__item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    justify-content: center;
+}
+
+.event-stats-bar__item svg {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+}
+
+.event-stats-bar__item div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.1;
+}
+
+.event-stats-bar__number {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #1a3a22;
+    letter-spacing: -0.01em;
+}
+
+.event-stats-bar__item p {
+    font-size: 0.85rem;
+    color: #5a6250;
+    font-weight: 500;
+    margin-top: 2px;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 1024px) {
+    .conscious-hero {
+        gap: 40px;
+    }
+    .conscious-hero__visual {
+        max-width: 420px;
+    }
+    .event-stats-bar {
+        padding: 16px 28px;
+        gap: 14px;
+    }
+    .event-stats-bar__number {
+        font-size: 1.35rem;
+    }
+    .event-stats-bar__item p {
+        font-size: 0.78rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .conscious-hero {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+    .conscious-hero__visual {
+        max-width: 480px;
+        margin: 0 auto;
+    }
+    .petfriendly {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 28px;
+    }
+    .petfriendly__intro {
+        border-right: none;
+        border-bottom: 1px solid rgba(61, 125, 45, 0.15);
+        padding-right: 0;
+        padding-bottom: 24px;
+        flex-direction: column;
+        text-align: center;
+        gap: 14px;
+    }
+    .petfriendly__title {
+        justify-content: center;
+    }
 }
 
 @media (max-width: 768px) {
-    .sustainability-immersive__grid {
-        grid-template-columns: 1fr;
-        gap: 48px;
-        text-align: center;
+    .conscious-travel {
+        padding: 80px 0 100px;
     }
-    .sustainability-immersive__stats {
-        grid-template-columns: repeat(3, 1fr);
+    .conscious-hero__script {
+        font-size: clamp(2.8rem, 14vw, 4rem);
+    }
+    .conscious-hero__sparkle--l,
+    .conscious-hero__sparkle--r {
+        width: 16px;
+        height: 16px;
+    }
+    .conscious-hero__sparkle--l { left: -22px; }
+    .conscious-hero__sparkle--r { right: -22px; }
+    .conscious-cards {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-bottom: 40px;
+    }
+    .conscious-card {
+        padding: 28px 24px;
+    }
+    .petfriendly__features {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px 16px;
+    }
+    .event-stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+        border-radius: 24px;
+        padding: 20px;
+        gap: 20px;
+    }
+    .event-stats-bar__item {
+        justify-content: flex-start;
+    }
+    .conscious-travel__leaf--tl {
+        width: 120px;
+        height: 120px;
+        top: -20px;
+        left: -20px;
+    }
+    .conscious-travel__leaf--bl {
+        width: 140px;
+        height: 140px;
+        bottom: 30px;
+        left: -40px;
     }
 }
 
 @media (max-width: 480px) {
-    .sustainability-immersive {
-        padding: 80px 0;
+    .conscious-travel {
+        padding: 64px 0 80px;
     }
-    .sustainability-immersive__stats {
+    .conscious-hero__title-line {
+        font-size: clamp(2rem, 9vw, 2.6rem);
+    }
+    .conscious-hero__pill {
+        padding: 12px 18px 12px 14px;
+    }
+    .conscious-hero__pill-title,
+    .conscious-hero__pill-link {
+        font-size: 0.82rem;
+    }
+    .petfriendly {
+        padding: 24px 20px;
+        border-radius: 20px;
+    }
+    .petfriendly__title {
+        font-size: 1rem;
+    }
+    .petfriendly__script {
+        font-size: 1.7rem;
+    }
+    .petfriendly__feature p {
+        font-size: 0.75rem;
+    }
+    .event-stats-bar {
         grid-template-columns: 1fr;
-        max-width: 240px;
-        margin: 0 auto;
+        gap: 16px;
+        padding: 20px 24px;
+        border-radius: 20px;
     }
 }
 
