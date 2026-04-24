@@ -4765,13 +4765,13 @@ body.banner-hidden .header { top: 0; }
 }
 
 .valle .section-header__title {
-    font-size: clamp(2.6rem, 6vw, 4rem);
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
     font-weight: 800;
-    color: var(--brand-azul);
+    color: #0d2a4a;
 }
 
 .valle .section-header__subtitle {
-    color: rgba(44, 61, 107, 0.7);
+    color: #4a5068;
     font-size: 1.2rem;
 }
 
@@ -5174,11 +5174,11 @@ body.banner-hidden .header { top: 0; }
    REELS (vertical video showcase)
    ============================================ */
 .reels-section {
-    padding: 120px 0;
-    background: linear-gradient(180deg, #0a1628 0%, #0f2140 50%, #0a1628 100%);
+    padding: 100px 0 120px;
+    background: linear-gradient(180deg, #fefbf0 0%, #fff7d9 50%, #fefbf0 100%);
     position: relative;
     overflow: hidden;
-    color: #fff;
+    color: #0d2a4a;
 }
 
 .reels-section::before {
@@ -5188,7 +5188,7 @@ body.banner-hidden .header { top: 0; }
     left: -10%;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(242, 140, 40, 0.12) 0%, transparent 65%);
+    background: radial-gradient(circle, rgba(245, 208, 32, 0.18) 0%, transparent 65%);
     border-radius: 50%;
     pointer-events: none;
 }
@@ -5206,15 +5206,23 @@ body.banner-hidden .header { top: 0; }
 }
 
 .reels-section .section-header__title {
-    color: #fff;
+    color: #0d2a4a;
 }
 
 .reels-section .section-header__tag {
-    color: var(--brand-amarillo);
+    color: #1a3a66;
 }
 
 .reels-section .section-header__subtitle {
-    color: rgba(255, 255, 255, 0.65);
+    color: #4a5068;
+}
+
+.reels-section .reel__title {
+    color: #0d2a4a;
+}
+
+.reels-section .reel__desc {
+    color: #4a5068;
 }
 
 .reels {
@@ -6113,8 +6121,8 @@ body.banner-hidden .header { top: 0; }
    EXHIBITORS
    ============================================ */
 .exhibitors {
-    padding: 120px 0;
-    background: linear-gradient(180deg, #0d4a2a 0%, #072e1a 100%);
+    padding: 100px 0 120px;
+    background: linear-gradient(180deg, #fefbf0 0%, #fff7d9 50%, #fefbf0 100%);
     position: relative;
     overflow: hidden;
 }
@@ -6123,9 +6131,50 @@ body.banner-hidden .header { top: 0; }
     content: '';
     position: absolute;
     inset: -50%;
-    background: radial-gradient(ellipse at 30% 70%, rgba(26,138,74,0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 70% 30%, rgba(234,184,24,0.1) 0%, transparent 50%);
+    background: radial-gradient(ellipse at 30% 70%, rgba(168, 196, 53, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 30%, rgba(245, 208, 32, 0.15) 0%, transparent 50%);
     pointer-events: none;
+}
+
+.exhibitors .section-header__title,
+.exhibitors .section-header--light .section-header__title {
+    color: #0d2a4a;
+}
+
+.exhibitors .section-header__tag,
+.exhibitors .section-header--light .section-header__tag {
+    color: #1a3a66;
+}
+
+.exhibitors__who h3,
+.exhibitors__benefits h3 {
+    color: #0d2a4a !important;
+}
+
+.exhibitors__list li {
+    color: #1a3a22 !important;
+}
+
+.exhibitors__list li svg {
+    color: #3d7d2d;
+}
+
+.benefit-card {
+    background: #ffffff !important;
+    border: 1px solid rgba(0,0,0,0.05) !important;
+    color: #1a3a22 !important;
+}
+
+.benefit-card h4 {
+    color: #0d2a4a !important;
+}
+
+.benefit-card p {
+    color: #4a5068 !important;
+}
+
+.benefit-card__number {
+    color: #c89b1d !important;
 }
 
 .exhibitors__layout {
@@ -6308,8 +6357,8 @@ body.banner-hidden .header { top: 0; }
    LOCATION
    ============================================ */
 .location {
-    padding: 120px 0;
-    background: linear-gradient(180deg, #E8F5ED 0%, #D8EDDF 100%);
+    padding: 100px 0 120px;
+    background: linear-gradient(180deg, #fefbf0 0%, #fff7d9 50%, #fefbf0 100%);
     position: relative;
     overflow: hidden;
 }
@@ -6321,9 +6370,17 @@ body.banner-hidden .header { top: 0; }
     right: -10%;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(245,166,35,0.05) 0%, transparent 65%);
+    background: radial-gradient(circle, rgba(245, 208, 32, 0.15) 0%, transparent 65%);
     border-radius: 50%;
     pointer-events: none;
+}
+
+.location .section-header__title {
+    color: #0d2a4a;
+}
+
+.location .section-header__tag {
+    color: #1a3a66;
 }
 
 .location__grid {
@@ -6512,7 +6569,19 @@ body.banner-hidden .header { top: 0; }
    ============================================ */
 .contact {
     padding: 120px 0;
-    background: linear-gradient(180deg, #0d4a2a 0%, #0a3d22 50%, #072e1a 100%);
+    background: linear-gradient(180deg, #fefbf0 0%, #fff7d9 50%, #fefbf0 100%);
+}
+
+.contact .section-header__title {
+    color: #0d2a4a;
+}
+
+.contact .section-header__tag {
+    color: #1a3a66;
+}
+
+.contact__desc {
+    color: #4a5068 !important;
 }
 
 .contact__grid {
