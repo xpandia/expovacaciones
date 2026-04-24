@@ -199,6 +199,44 @@ document.addEventListener('DOMContentLoaded', () => {
         track('cta_click', { cta_label: 'Quiero ir', cta_location: 'announcement_bar' });
     });
 
+    // --- VIDEO MODAL POP-UP ---
+    const videoModal = document.getElementById('videoModal');
+    const openVideoBtn = document.getElementById('openVideoModal');
+    const videoModalClose = document.getElementById('videoModalClose');
+    const videoModalX = document.getElementById('videoModalX');
+    const videoModalVideo = document.getElementById('videoModalVideo');
+
+    const openModal = () => {
+        if (!videoModal || !videoModalVideo) return;
+        videoModal.classList.add('is-open');
+        videoModal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('video-modal-open');
+        videoModalVideo.currentTime = 0;
+        videoModalVideo.play().catch(() => {});
+        track('video_modal_open', { location: 'hero_ver_video' });
+    };
+
+    const closeModal = () => {
+        if (!videoModal || !videoModalVideo) return;
+        videoModal.classList.remove('is-open');
+        videoModal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('video-modal-open');
+        videoModalVideo.pause();
+    };
+
+    openVideoBtn?.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal();
+    });
+    videoModalClose?.addEventListener('click', closeModal);
+    videoModalX?.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && videoModal?.classList.contains('is-open')) {
+            closeModal();
+        }
+    });
+
     // --- COUNTDOWN ---
     const eventDate = new Date('2026-05-22T09:00:00-05:00').getTime();
     const daysEl = document.getElementById('days');

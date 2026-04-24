@@ -217,6 +217,23 @@
     </div>
 
     <!-- STICKY MOBILE CTA BAR -->
+    <!-- VIDEO MODAL POP-UP -->
+    <div class="video-modal" id="videoModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
+        <button type="button" class="video-modal__backdrop" id="videoModalClose" aria-label="Cerrar video"></button>
+        <div class="video-modal__dialog">
+            <button type="button" class="video-modal__x" id="videoModalX" aria-label="Cerrar video">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+            </button>
+            <h3 id="videoModalTitle" class="sr-only">Video Expovacaciones Cali 2026</h3>
+            <div class="video-modal__frame">
+                <video class="video-modal__video" id="videoModalVideo" controls playsinline preload="metadata" poster="assets/videos/expo-video-2-poster.jpg">
+                    <source src="assets/videos/expo-video-2.mp4" type="video/mp4">
+                    Tu navegador no soporta video HTML5.
+                </video>
+            </div>
+        </div>
+    </div>
+
     <div class="sticky-cta" id="stickyCta" aria-hidden="true">
         <a href="#contacto" class="sticky-cta__primary">
             <span>Quiero ir</span>
@@ -383,12 +400,12 @@
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
                     </span>
                 </a>
-                <a href="#reels" class="btn-hero-secondary">
+                <button type="button" class="btn-hero-secondary" id="openVideoModal" aria-label="Ver video Expovacaciones">
                     <span class="btn-hero-secondary__icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
                     </span>
                     <span>Ver Video</span>
-                </a>
+                </button>
             </div>
 
             <div class="hero__brand-pill">
