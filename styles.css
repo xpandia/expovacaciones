@@ -2379,7 +2379,10 @@ body.banner-hidden .header { top: 0; }
 .hero__content {
     position: relative;
     z-index: 5;
-    padding: 140px 24px 60px;
+    padding-top: 160px;
+    padding-bottom: 60px;
+    padding-left: clamp(24px, 7vw, 110px);
+    padding-right: clamp(24px, 7vw, 110px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -2902,7 +2905,10 @@ body.banner-hidden .header { top: 0; }
 
 @media (max-width: 640px) {
     .hero__content {
-        padding: 120px 20px 40px;
+        padding-top: 130px;
+        padding-bottom: 40px;
+        padding-left: 28px;
+        padding-right: 28px;
     }
     .hero__kicker {
         font-size: 0.68rem;
@@ -7844,7 +7850,10 @@ body.banner-hidden .header { top: 0; }
 /* ===== Ultra-pequeño (<375px) — iPhone SE ===== */
 @media (max-width: 375px) {
     .hero__content {
-        padding: 110px 16px 30px;
+        padding-top: 120px;
+        padding-bottom: 30px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
     .hero__title--mockup .hero__title-line {
         font-size: 1.55rem;
