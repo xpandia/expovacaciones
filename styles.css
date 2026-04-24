@@ -4418,10 +4418,350 @@ body.banner-hidden .header { top: 0; }
    VALLE DEL CAUCA
    ============================================ */
 .valle {
-    padding: 120px 0;
-    background: linear-gradient(180deg, #EAF6FB 0%, #D6EEF5 50%, #C8E6EF 100%);
+    padding: 100px 0 120px;
+    background: linear-gradient(180deg, #fefbf0 0%, #fff7d9 55%, #fefbf0 100%);
     position: relative;
     overflow: hidden;
+}
+
+/* Palmeras decorativas */
+.valle__palms {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.valle__palm {
+    position: absolute;
+    width: 200px;
+    height: 260px;
+    filter: drop-shadow(0 8px 20px rgba(45, 94, 26, 0.2));
+}
+
+.valle__palm--left {
+    top: 50%;
+    left: -80px;
+    transform: translateY(-50%) rotate(-8deg);
+}
+
+.valle__palm--right {
+    top: 10%;
+    right: -70px;
+    transform: rotate(12deg);
+}
+
+/* Blobs decorativos (imágenes en formas orgánicas) */
+.valle__blobs {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.valle__blob {
+    position: absolute;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+}
+
+.valle__blob img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.valle__blob--left {
+    top: 12%;
+    left: 2%;
+    width: 280px;
+    height: 340px;
+    border-radius: 60% 40% 50% 50% / 55% 45% 55% 45%;
+    transform: rotate(-4deg);
+}
+
+.valle__blob--top-right {
+    top: 8%;
+    right: 3%;
+    width: 260px;
+    height: 320px;
+    border-radius: 55% 45% 45% 55% / 50% 55% 45% 50%;
+    transform: rotate(6deg);
+}
+
+.valle__blob--bottom-right {
+    bottom: 10%;
+    right: 4%;
+    width: 240px;
+    height: 280px;
+    border-radius: 50% 50% 55% 45% / 45% 55% 45% 55%;
+    transform: rotate(-5deg);
+}
+
+.valle__container {
+    position: relative;
+    z-index: 3;
+}
+
+/* Intro centrado */
+.valle__intro {
+    max-width: 780px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Eyebrow con icono palmera */
+.valle__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: #1a3a66;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+}
+
+.valle__eyebrow-icon {
+    display: inline-flex;
+    width: 28px;
+    height: 28px;
+}
+
+.valle__eyebrow-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Título */
+.valle__title {
+    position: relative;
+    font-family: 'Poppins', -apple-system, sans-serif;
+    font-size: clamp(2rem, 4.5vw, 3.4rem);
+    font-weight: 800;
+    color: #0d2a4a;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    display: inline-block;
+}
+
+.valle__title-line {
+    display: block;
+}
+
+.valle__title-script {
+    display: block;
+    font-family: 'Caveat', cursive;
+    font-style: normal;
+    font-weight: 700;
+    font-size: clamp(2.6rem, 6vw, 4.8rem);
+    color: #c89b1d;
+    line-height: 0.92;
+    letter-spacing: -0.005em;
+    margin-top: 4px;
+    position: relative;
+    text-decoration: underline;
+    text-decoration-color: #f5d020;
+    text-decoration-thickness: 4px;
+    text-underline-offset: -0.08em;
+}
+
+.valle__title-sparkle {
+    position: absolute;
+    display: inline-flex;
+    width: 28px;
+    height: 28px;
+    z-index: 1;
+}
+
+.valle__title-sparkle--l {
+    top: 30%;
+    left: -50px;
+}
+
+/* Descripción */
+.valle__desc {
+    font-size: 1.15rem;
+    color: #4a5068;
+    line-height: 1.55;
+    max-width: 620px;
+    margin: 0 auto 48px;
+}
+
+.valle__desc-accent {
+    font-family: 'Caveat', cursive;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #c89b1d;
+    text-decoration: underline;
+    text-decoration-color: #f5d020;
+    text-decoration-thickness: 3px;
+    text-underline-offset: -0.05em;
+    display: inline-block;
+    line-height: 1;
+    vertical-align: baseline;
+}
+
+/* 4 categorías iconos */
+.valle__categories {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    max-width: 720px;
+    margin: 0 auto 48px;
+}
+
+.valle__category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 16px 8px;
+    position: relative;
+}
+
+.valle__category:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: 24%;
+    height: 52%;
+    width: 1px;
+    background: rgba(26, 58, 34, 0.15);
+}
+
+.valle__category-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #fff6d4 0%, #fef3c7 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    box-shadow: 0 4px 14px rgba(200, 155, 29, 0.2);
+}
+
+.valle__category-icon svg {
+    width: 42px;
+    height: 42px;
+}
+
+.valle__category-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1a3a22;
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+}
+
+.valle__category-sub {
+    font-size: 0.85rem;
+    color: #5a6250;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+/* CTA grande pill lima-amarillo */
+.valle__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    background: linear-gradient(90deg, #a8c435 0%, #d4d524 50%, #f5d020 100%);
+    color: #1a3a22;
+    font-size: 1.05rem;
+    font-weight: 700;
+    padding: 18px 20px 18px 32px;
+    border-radius: 999px;
+    text-decoration: none;
+    box-shadow: 0 12px 30px rgba(61, 125, 45, 0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    max-width: 560px;
+    line-height: 1.25;
+    text-align: left;
+}
+
+.valle__cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px rgba(61, 125, 45, 0.45);
+}
+
+.valle__cta-text {
+    flex: 1;
+}
+
+.valle__cta-arrow {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #1a3a22;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.25s ease;
+}
+
+.valle__cta-arrow svg { width: 20px; height: 20px; }
+
+.valle__cta:hover .valle__cta-arrow {
+    transform: translateX(4px);
+}
+
+/* Subtitle del grid de cards */
+.section-header--subtle {
+    text-align: center;
+}
+
+@media (max-width: 1280px) {
+    .valle__blob--left { width: 220px; height: 280px; left: -40px; }
+    .valle__blob--top-right { width: 210px; height: 260px; right: -30px; }
+    .valle__blob--bottom-right { width: 200px; height: 240px; right: -30px; }
+}
+
+@media (max-width: 1024px) {
+    .valle__blobs, .valle__palms { display: none; }
+    .valle__title-sparkle { display: none; }
+}
+
+@media (max-width: 640px) {
+    .valle {
+        padding: 80px 0 100px;
+    }
+    .valle__categories {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px 12px;
+    }
+    .valle__category:not(:last-child)::after {
+        display: none;
+    }
+    .valle__category-icon {
+        width: 70px;
+        height: 70px;
+    }
+    .valle__category-icon svg {
+        width: 36px;
+        height: 36px;
+    }
+    .valle__cta {
+        font-size: 0.95rem;
+        padding: 14px 16px 14px 24px;
+    }
+    .valle__cta-arrow {
+        width: 38px;
+        height: 38px;
+    }
+    .valle__desc {
+        font-size: 1rem;
+    }
+    .valle__desc-accent {
+        font-size: 1.5rem;
+    }
 }
 
 .valle .section-header__title {

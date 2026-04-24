@@ -807,11 +807,120 @@
 
     <!-- VALLE DEL CAUCA -->
     <section class="valle" id="valle">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-header__tag">Anfitrión</p>
-                <h2 class="section-header__title">Explora el Valle del Cauca con experiencias <em class="script-accent">diseñadas para ti</em></h2>
-                <p class="section-header__subtitle">Cali y el Valle del Cauca te reciben con los brazos abiertos. Naturaleza, sabor, ritmo y aventura en la capital mundial de la salsa.</p>
+        <!-- Palmeras decorativas laterales -->
+        <div class="valle__palms" aria-hidden="true">
+            <svg class="valle__palm valle__palm--left" viewBox="0 0 200 260" fill="none">
+                <path d="M100 250 Q 95 160 85 60" stroke="#2d5e1a" stroke-width="5" stroke-linecap="round" fill="none"/>
+                <path d="M88 70 Q 40 55 5 20 Q 30 75 82 82 Z" fill="#3d7d2d"/>
+                <path d="M85 62 Q 55 12 15 4 Q 45 55 82 68 Z" fill="#4a8f35"/>
+                <path d="M88 58 Q 130 10 185 12 Q 135 55 90 66 Z" fill="#3d7d2d"/>
+                <path d="M90 72 Q 155 35 195 58 Q 145 78 92 76 Z" fill="#4a8f35"/>
+                <path d="M95 75 Q 80 20 65 0 Q 82 38 92 75 Z" fill="#5aa03d"/>
+            </svg>
+            <svg class="valle__palm valle__palm--right" viewBox="0 0 200 260" fill="none">
+                <path d="M100 250 Q 105 160 115 60" stroke="#2d5e1a" stroke-width="5" stroke-linecap="round" fill="none"/>
+                <path d="M112 70 Q 160 55 195 20 Q 170 75 118 82 Z" fill="#3d7d2d"/>
+                <path d="M115 62 Q 145 12 185 4 Q 155 55 118 68 Z" fill="#4a8f35"/>
+                <path d="M112 58 Q 70 10 15 12 Q 65 55 110 66 Z" fill="#3d7d2d"/>
+                <path d="M110 72 Q 45 35 5 58 Q 55 78 108 76 Z" fill="#4a8f35"/>
+                <path d="M105 75 Q 120 20 135 0 Q 118 38 108 75 Z" fill="#5aa03d"/>
+            </svg>
+        </div>
+        <!-- Blobs decorativos -->
+        <div class="valle__blobs" aria-hidden="true">
+            <div class="valle__blob valle__blob--left">
+                <img src="assets/photos/cali-nocturno-aereo.webp" alt="">
+            </div>
+            <div class="valle__blob valle__blob--top-right">
+                <img src="assets/photos/valle-naturaleza.webp" alt="">
+            </div>
+            <div class="valle__blob valle__blob--bottom-right">
+                <img src="assets/photos/valle-camino-tunel.webp" alt="">
+            </div>
+        </div>
+        <div class="container valle__container">
+            <div class="valle__intro">
+                <p class="valle__eyebrow">
+                    <span class="valle__eyebrow-icon" aria-hidden="true">
+                        <svg viewBox="0 0 32 32" fill="none">
+                            <path d="M16 28 L16 15 M16 15 Q 6 13 3 5 Q 12 7 16 14 M16 15 Q 26 13 29 5 Q 20 7 16 14 M16 15 Q 6 17 4 25 Q 13 22 16 16 M16 15 Q 26 17 28 25 Q 19 22 16 16" stroke="#3d7d2d" stroke-width="1.8" stroke-linecap="round" fill="#5aa03d" opacity="0.9"/>
+                        </svg>
+                    </span>
+                    ANFITRIÓN
+                </p>
+                <h2 class="valle__title">
+                    <span class="valle__title-sparkle valle__title-sparkle--l" aria-hidden="true">
+                        <svg viewBox="0 0 20 20" fill="none"><path d="M4 4 L7 7 M10 2 L10 7 M2 10 L7 10 M4 16 L7 13" stroke="#e8a317" stroke-width="2" stroke-linecap="round"/></svg>
+                    </span>
+                    <span class="valle__title-line">Explora el Valle del Cauca con</span>
+                    <span class="valle__title-script">experiencias diseñadas para ti</span>
+                </h2>
+                <p class="valle__desc">Cali y el Valle del Cauca te reciben con los brazos abiertos. Naturaleza, sabor, ritmo y aventura en la capital mundial de la <em class="valle__desc-accent">salsa</em>.</p>
+
+                <div class="valle__categories">
+                    <div class="valle__category">
+                        <div class="valle__category-icon">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="#1a3a22" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 38 L16 22 L24 30 L32 20 L44 38 Z" fill="#c89b1d" opacity="0.25"/>
+                                <path d="M4 38 L16 22 L24 30 L32 20 L44 38 Z"/>
+                                <circle cx="34" cy="14" r="3" fill="#f5d020" stroke="none"/>
+                            </svg>
+                        </div>
+                        <h4 class="valle__category-title">Naturaleza</h4>
+                        <p class="valle__category-sub">que inspira</p>
+                    </div>
+                    <div class="valle__category">
+                        <div class="valle__category-icon">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="#1a3a22" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="14" cy="36" r="5" fill="#c89b1d" opacity="0.25"/>
+                                <circle cx="14" cy="36" r="5"/>
+                                <circle cx="36" cy="32" r="5" fill="#c89b1d" opacity="0.25"/>
+                                <circle cx="36" cy="32" r="5"/>
+                                <path d="M19 36 L19 10 L41 6 L41 32"/>
+                                <path d="M19 18 L41 14"/>
+                            </svg>
+                        </div>
+                        <h4 class="valle__category-title">Cultura y ritmo</h4>
+                        <p class="valle__category-sub">que nos mueve</p>
+                    </div>
+                    <div class="valle__category">
+                        <div class="valle__category-icon">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="#1a3a22" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 6 L14 22 Q 14 26 18 26 L18 42" />
+                                <path d="M10 6 L10 16 M18 6 L18 16"/>
+                                <path d="M30 6 Q 26 14 26 22 Q 26 26 30 26 L30 42"/>
+                                <path d="M30 6 Q 34 14 34 22 Q 34 26 30 26"/>
+                            </svg>
+                        </div>
+                        <h4 class="valle__category-title">Sabores</h4>
+                        <p class="valle__category-sub">que enamoran</p>
+                    </div>
+                    <div class="valle__category">
+                        <div class="valle__category-icon">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="#1a3a22" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="6" y="14" width="36" height="26" rx="3" fill="#c89b1d" opacity="0.25"/>
+                                <rect x="6" y="14" width="36" height="26" rx="3"/>
+                                <path d="M16 14 L18 8 L30 8 L32 14"/>
+                                <circle cx="24" cy="27" r="7"/>
+                                <circle cx="24" cy="27" r="3" fill="#1a3a22" stroke="none"/>
+                                <circle cx="37" cy="20" r="1.5" fill="#1a3a22" stroke="none"/>
+                            </svg>
+                        </div>
+                        <h4 class="valle__category-title">Aventura</h4>
+                        <p class="valle__category-sub">que te conecta</p>
+                    </div>
+                </div>
+
+                <a href="#evento" class="valle__cta">
+                    <span class="valle__cta-text">Descubre todo lo que el Valle del Cauca tiene para ti</span>
+                    <span class="valle__cta-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+                    </span>
+                </a>
+            </div>
+
+            <div class="section-header section-header--subtle" style="margin-top: 80px;">
+                <h3 class="section-header__title" style="font-size: clamp(1.6rem, 3vw, 2.2rem);">Rincones que te esperan</h3>
             </div>
             <div class="valle__grid scroll-stagger">
                 <div class="valle__card">
