@@ -2472,12 +2472,12 @@ body.banner-hidden .header { top: 0; }
 }
 
 .hero__slogan {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-style: italic;
+    font-family: 'Caveat', cursive;
+    font-style: normal;
     color: #ffffff;
-    font-size: clamp(1.1rem, 1.6vw, 1.35rem);
-    font-weight: 500;
-    margin: 12px 0 32px;
+    font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+    font-weight: 600;
+    margin: 4px 0 32px;
     text-shadow: 0 2px 14px rgba(0,0,0,0.5);
     letter-spacing: 0.005em;
     text-align: left;
@@ -2644,7 +2644,7 @@ body.banner-hidden .header { top: 0; }
 
 .btn-hero-secondary__icon svg { width: 14px; height: 14px; margin-left: 2px; }
 
-/* Brand pill "Una marca de ANATO" */
+/* Brand pill "Una marca de ANATO" — centrado debajo como el mockup */
 .hero__brand-pill {
     display: inline-flex;
     align-items: center;
@@ -2656,7 +2656,8 @@ body.banner-hidden .header { top: 0; }
     font-size: 0.9rem;
     font-weight: 500;
     box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-    align-self: flex-start;
+    align-self: center;
+    margin-top: 16px;
 }
 
 .hero__brand-pill img {
@@ -4581,6 +4582,20 @@ body.banner-hidden .header { top: 0; }
     left: -50px;
 }
 
+.valle__title-sparkle--r {
+    top: 8%;
+    right: -40px;
+    width: 22px;
+    height: 22px;
+}
+
+.valle__title-sparkle--br {
+    bottom: -8px;
+    right: 15%;
+    width: 18px;
+    height: 18px;
+}
+
 /* Descripción */
 .valle__desc {
     font-size: 1.15rem;
@@ -5174,6 +5189,41 @@ body.banner-hidden .header { top: 0; }
     margin-bottom: 16px;
     display: inline-block;
     position: relative;
+}
+
+.gallery__title-sparkle {
+    position: absolute;
+    display: inline-flex;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.gallery__title-sparkle--tl {
+    top: 10%;
+    left: -36px;
+    width: 24px;
+    height: 24px;
+}
+
+.gallery__title-sparkle--tr {
+    top: 8%;
+    right: -36px;
+    width: 24px;
+    height: 24px;
+}
+
+.gallery__title-sparkle--bl {
+    bottom: 8%;
+    left: 4%;
+    width: 20px;
+    height: 20px;
+}
+
+.gallery__title-sparkle--br {
+    bottom: 8%;
+    right: 4%;
+    width: 20px;
+    height: 20px;
 }
 
 .gallery__title-line {
