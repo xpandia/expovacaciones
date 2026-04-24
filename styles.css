@@ -7695,3 +7695,182 @@ body.banner-hidden .header { top: 0; }
 /* ============================================
    SCROLL PROGRESS - Brand colors
    ============================================ */
+
+/* ============================================
+   RESPONSIVE POLISH — breakpoints intermedios
+   ============================================ */
+
+/* ===== Tablet landscape / laptop pequeña (1280px) ===== */
+@media (max-width: 1280px) {
+    .exhibitors-showcase__grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .gallery__grid {
+        grid-auto-rows: 260px;
+    }
+    .valle__grid {
+        gap: 20px;
+    }
+    .conscious-hero {
+        gap: 48px;
+    }
+}
+
+/* ===== Tablet (900px) — llenar gaps detectados ===== */
+@media (max-width: 900px) {
+    /* Conscious travel */
+    .conscious-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
+    .conscious-cards .conscious-card:nth-child(3) {
+        grid-column: 1 / -1;
+        max-width: 480px;
+        margin: 0 auto;
+    }
+    .conscious-travel {
+        padding: 80px 0 100px;
+    }
+
+    /* Evento benefits bar */
+    .evento__benefits-bar {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+        padding: 22px 24px;
+    }
+    .evento__cta-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    /* Valle */
+    .valle__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Testimonials — transición suave antes de 1-col */
+    .testimonials__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    /* Contact */
+    .contact__grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .contact__desc {
+        font-size: 1.1rem;
+    }
+
+    /* Location */
+    .location__grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    .location__map {
+        min-height: 360px;
+    }
+
+    /* FAQ */
+    .faq {
+        padding: 80px 0;
+    }
+
+    /* Reels responsive */
+    .reels-section__grid {
+        gap: 28px;
+    }
+
+    /* Gallery */
+    .gallery__grid {
+        grid-auto-rows: 220px;
+    }
+}
+
+/* ===== Ajustes en pantallas muy grandes (>1600px) ===== */
+@media (min-width: 1600px) {
+    .hero__content--centered {
+        max-width: 1040px;
+    }
+    .hero__title--mockup .hero__title-line {
+        font-size: 4.6rem;
+    }
+    .hero__title-script--big {
+        font-size: 6.4rem;
+    }
+}
+
+/* ===== Micro-ajustes mobile (<480px) ===== */
+@media (max-width: 480px) {
+    .conscious-cards {
+        grid-template-columns: 1fr;
+    }
+    .conscious-cards .conscious-card:nth-child(3) {
+        grid-column: auto;
+        max-width: none;
+    }
+    .evento__benefits-bar {
+        grid-template-columns: 1fr;
+    }
+    .testimonials__grid {
+        grid-template-columns: 1fr;
+    }
+    .hero__info-item {
+        font-size: 0.8rem;
+    }
+    .hero__brand-pill {
+        font-size: 0.78rem;
+        padding: 10px 18px;
+    }
+    .btn-hero-main {
+        font-size: 0.95rem;
+        padding: 14px 20px 14px 26px;
+        gap: 10px;
+    }
+    .btn-hero-main__arrow {
+        width: 38px;
+        height: 38px;
+    }
+    .btn-hero-secondary {
+        font-size: 0.9rem;
+        padding: 11px 20px 11px 12px;
+    }
+    .announcement-bar__inner {
+        padding: 0 14px;
+        gap: 8px;
+    }
+    .announcement-bar__text {
+        font-size: 0.72rem;
+    }
+}
+
+/* ===== Ultra-pequeño (<375px) — iPhone SE ===== */
+@media (max-width: 375px) {
+    .hero__content {
+        padding: 110px 0 30px;
+    }
+    .hero__title--mockup .hero__title-line {
+        font-size: 1.55rem;
+    }
+    .hero__title-script--big {
+        font-size: 2.2rem;
+    }
+    .hero__info {
+        gap: 14px;
+    }
+    .hero__countdown--pill {
+        padding: 12px 14px;
+        gap: 6px;
+    }
+    .hero__countdown--pill .countdown__number {
+        font-size: 1.5rem;
+    }
+    .hero__countdown--pill .countdown__item {
+        min-width: 42px;
+    }
+    .announcement-bar__cta {
+        padding: 5px 12px;
+        font-size: 0.7rem;
+    }
+}
