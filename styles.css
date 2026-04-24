@@ -2199,15 +2199,19 @@ body.banner-hidden .header { top: 0; }
 
 .hero__content {
     position: relative;
-    text-align: left;
     z-index: 5;
-    padding: 120px 0 60px;
+    padding: 140px 0 60px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     justify-content: center;
     height: 100%;
-    max-width: 860px;
+    width: 100%;
+}
+
+.hero__content--centered {
+    text-align: left;
+    align-items: flex-start;
+    max-width: 920px;
 }
 
 .hero__kicker {
@@ -2217,6 +2221,214 @@ body.banner-hidden .header { top: 0; }
     letter-spacing: 0.28em;
     text-transform: uppercase;
     margin-bottom: 20px;
+}
+
+/* ===== HERO MOCKUP STYLE (Todo lo que necesitas...) ===== */
+.hero__title--mockup {
+    margin-bottom: 14px;
+    line-height: 0.95;
+}
+
+.hero__title--mockup .hero__title-line {
+    font-size: clamp(2.4rem, 6.5vw, 5.2rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1;
+    color: #ffffff;
+    text-shadow: 0 3px 24px rgba(0,0,0,0.45);
+}
+
+.hero__title-script--big {
+    display: block;
+    font-family: 'Caveat', cursive;
+    font-style: normal;
+    font-weight: 700;
+    font-size: clamp(3rem, 8vw, 6.4rem);
+    color: #f5d020;
+    line-height: 0.9;
+    letter-spacing: -0.005em;
+    text-shadow: 0 3px 28px rgba(0,0,0,0.4);
+    margin: 0 0 2px;
+}
+
+.hero__slogan {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    color: rgba(255,255,255,0.95);
+    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+    font-weight: 400;
+    margin-bottom: 36px;
+    text-shadow: 0 1px 10px rgba(0,0,0,0.4);
+}
+
+.hero__info {
+    display: flex;
+    gap: 48px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+
+.hero__info-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.25;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+}
+
+.hero__info-item svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    stroke: #ffffff;
+}
+
+/* Countdown pill blanco grande */
+.hero__countdown--pill {
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 28px;
+    padding: 20px 36px;
+    display: inline-flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 32px;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+}
+
+.hero__countdown--pill .countdown__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    min-width: 56px;
+}
+
+.hero__countdown--pill .countdown__number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.3rem;
+    font-weight: 800;
+    color: #1a8a4a;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.hero__countdown--pill .countdown__label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: #3d7d2d;
+    text-transform: uppercase;
+}
+
+.hero__countdown--pill .countdown__separator {
+    font-size: 1.6rem;
+    color: rgba(26, 138, 74, 0.35);
+    font-weight: 400;
+}
+
+/* CTAs estilo mockup (QUIERO IR + Ver Video) */
+.hero__ctas--mockup {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+
+.btn-hero-main {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    background: linear-gradient(90deg, #a8c435 0%, #d4d524 50%, #f5d020 100%);
+    color: #1a3a22;
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    padding: 16px 24px 16px 34px;
+    border-radius: 999px;
+    text-decoration: none;
+    box-shadow: 0 10px 28px rgba(61, 125, 45, 0.4);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-hero-main:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 36px rgba(61, 125, 45, 0.5);
+}
+
+.btn-hero-main__arrow {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #1a3a22;
+    transition: transform 0.25s ease;
+}
+
+.btn-hero-main__arrow svg { width: 18px; height: 18px; }
+
+.btn-hero-main:hover .btn-hero-main__arrow {
+    transform: translateX(3px);
+}
+
+.btn-hero-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.96);
+    color: #1a3a22;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 12px 22px 12px 14px;
+    border-radius: 999px;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.btn-hero-secondary:hover {
+    transform: translateY(-2px);
+    background: #ffffff;
+}
+
+.btn-hero-secondary__icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid #1a3a22;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #1a3a22;
+}
+
+.btn-hero-secondary__icon svg { width: 12px; height: 12px; margin-left: 2px; }
+
+/* Brand pill "Una marca de ANATO" */
+.hero__brand-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.96);
+    padding: 10px 20px;
+    border-radius: 999px;
+    color: #1a3a22;
+    font-size: 0.8rem;
+    font-weight: 500;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+}
+
+.hero__brand-pill img {
+    height: 18px;
+    width: auto;
 }
 
 .hero__title-script {
@@ -2430,7 +2642,7 @@ body.banner-hidden .header { top: 0; }
 
 @media (max-width: 640px) {
     .hero__content {
-        padding: 100px 0 40px;
+        padding: 120px 0 40px;
     }
     .hero__kicker {
         font-size: 0.68rem;
@@ -2438,6 +2650,38 @@ body.banner-hidden .header { top: 0; }
     }
     .hero__title-script {
         font-size: clamp(2.4rem, 11vw, 4rem);
+    }
+    .hero__title--mockup .hero__title-line {
+        font-size: clamp(1.8rem, 7.5vw, 2.8rem);
+    }
+    .hero__title-script--big {
+        font-size: clamp(2.4rem, 12vw, 4rem);
+    }
+    .hero__slogan {
+        font-size: 1rem;
+        margin-bottom: 24px;
+    }
+    .hero__info {
+        gap: 20px;
+        flex-direction: column;
+        margin-bottom: 24px;
+    }
+    .hero__countdown--pill {
+        padding: 16px 22px;
+        gap: 14px;
+    }
+    .hero__countdown--pill .countdown__number {
+        font-size: 1.7rem;
+    }
+    .hero__countdown--pill .countdown__item {
+        min-width: 46px;
+    }
+    .hero__countdown--pill .countdown__label {
+        font-size: 0.6rem;
+    }
+    .btn-hero-main {
+        font-size: 1rem;
+        padding: 14px 18px 14px 28px;
     }
     .hero__lead {
         font-size: 0.95rem;
@@ -3053,7 +3297,90 @@ body.banner-hidden .header { top: 0; }
     max-width: 500px;
 }
 
-/* Stats - Boarding Pass style */
+/* ===== EVENTO ACTION HUB (CTAs + beneficios del hero original) ===== */
+.evento__action-hub {
+    padding: 48px 0 40px;
+    margin-top: -40px;
+    position: relative;
+    z-index: 3;
+}
+
+.evento__cta-grid {
+    display: grid;
+    grid-template-columns: minmax(260px, 1.2fr) 1fr 1fr 1fr;
+    gap: 14px;
+    max-width: 1200px;
+    margin: 0 auto 28px;
+}
+
+.evento__action-hub .hero-cta-mini--dark {
+    background: #ffffff;
+    color: #1a3a22;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    border: 1px solid rgba(0,0,0,0.04);
+}
+
+.evento__action-hub .hero-cta-mini--dark:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+.evento__benefits-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 20px 28px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    max-width: 1200px;
+    margin: 0 auto 36px;
+    border: 1px solid rgba(0,0,0,0.04);
+}
+
+.evento__tagline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-family: 'Caveat', cursive;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #c89b1d;
+    letter-spacing: 0.01em;
+    text-align: center;
+}
+
+.evento__tagline em {
+    font-style: normal;
+}
+
+.evento__tagline .hero__tagline-sparkle {
+    display: inline-flex;
+    width: 18px;
+    height: 18px;
+}
+
+@media (max-width: 1024px) {
+    .evento__cta-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .evento__cta-grid .hero-cta-primary {
+        grid-column: 1 / -1;
+    }
+    .evento__benefits-bar {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .evento__action-hub { padding: 40px 0; }
+    .evento__cta-grid { grid-template-columns: 1fr; }
+    .evento__benefits-bar { grid-template-columns: 1fr; gap: 14px; padding: 20px; }
+    .evento__tagline { font-size: 1.2rem; }
+}
+
+/* Stats - Boarding Pass style (legacy, mantenido para compat) */
 .evento__stats {
     padding: 0;
     margin-top: -40px;
