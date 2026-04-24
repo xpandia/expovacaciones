@@ -4467,15 +4467,19 @@ body.banner-hidden .header { top: 0; }
 }
 
 .valle__palm--left {
-    top: 50%;
+    bottom: 10%;
     left: -80px;
-    transform: translateY(-50%) rotate(-8deg);
+    width: 240px;
+    height: 300px;
+    transform: rotate(-12deg);
 }
 
 .valle__palm--right {
-    top: 10%;
-    right: -70px;
-    transform: rotate(12deg);
+    top: 6%;
+    right: -90px;
+    width: 260px;
+    height: 320px;
+    transform: rotate(18deg);
 }
 
 /* Blobs decorativos (imágenes en formas orgánicas) */
@@ -4525,6 +4529,23 @@ body.banner-hidden .header { top: 0; }
     transform: rotate(-5deg);
 }
 
+/* Blob decorativo amarillo/lima grande bottom-right (mockup Valle) */
+.valle__blob-solid {
+    position: absolute;
+    bottom: -60px;
+    right: -80px;
+    width: 280px;
+    height: 300px;
+    background: linear-gradient(135deg, #f5d020 0%, #e8c018 100%);
+    border-radius: 55% 45% 45% 55% / 50% 55% 45% 50%;
+    opacity: 0.75;
+    transform: rotate(8deg);
+}
+
+@media (max-width: 1024px) {
+    .valle__blob-solid { display: none; }
+}
+
 .valle__container {
     position: relative;
     z-index: 3;
@@ -4537,23 +4558,24 @@ body.banner-hidden .header { top: 0; }
     text-align: center;
 }
 
-/* Eyebrow con icono palmera */
+/* Eyebrow con icono palmera ENCIMA (mockup Valle) */
 .valle__eyebrow {
     display: inline-flex;
+    flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 4px;
     font-size: 0.9rem;
     font-weight: 700;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.22em;
     color: #1a3a66;
     text-transform: uppercase;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
 .valle__eyebrow-icon {
     display: inline-flex;
-    width: 28px;
-    height: 28px;
+    width: 34px;
+    height: 34px;
 }
 
 .valle__eyebrow-icon svg {
@@ -4675,18 +4697,30 @@ body.banner-hidden .header { top: 0; }
 }
 
 .valle__category-icon {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #fff6d4 0%, #fef3c7 100%);
+    width: 56px;
+    height: 56px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 14px;
-    box-shadow: 0 4px 14px rgba(200, 155, 29, 0.2);
 }
 
 .valle__category-icon svg {
+    width: 48px;
+    height: 48px;
+}
+
+/* Los iconos de categorías en Gallery sí mantienen círculo blanco */
+.gallery__categories .valle__category-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(200, 155, 29, 0.15);
+}
+
+.gallery__categories .valle__category-icon svg {
     width: 42px;
     height: 42px;
 }
@@ -5032,6 +5066,14 @@ body.banner-hidden .header { top: 0; }
     transform: rotate(-10deg);
 }
 
+.gallery__palm--top-right {
+    top: 6%;
+    right: -60px;
+    width: 200px;
+    height: 260px;
+    transform: rotate(18deg);
+}
+
 /* Gallery intro centrado */
 .gallery__intro {
     max-width: 720px;
@@ -5055,18 +5097,20 @@ body.banner-hidden .header { top: 0; }
 
 .gallery__cta-icon {
     flex-shrink: 0;
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.35);
+    background: #5aa03d;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 2px 6px rgba(45, 94, 26, 0.3);
 }
 
 .gallery__cta-icon svg {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
+    stroke: #ffffff !important;
 }
 
 /* Info pill 'Sorteos...' */
@@ -5177,19 +5221,25 @@ body.banner-hidden .header { top: 0; }
     }
 }
 
+.gallery__pill-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+}
+
 .gallery__pill {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: #e8f3d8;
-    border: 1px solid #c7deb0;
+    background: #fff6d4;
+    border: 1px solid #e8d778;
     color: #2d5e1a;
     font-size: 0.78rem;
     font-weight: 700;
-    letter-spacing: 0.2em;
-    padding: 8px 20px;
+    letter-spacing: 0.18em;
+    padding: 8px 22px;
     border-radius: 999px;
-    margin-bottom: 22px;
     box-shadow: 0 2px 8px rgba(45, 94, 26, 0.1);
 }
 
@@ -5199,10 +5249,11 @@ body.banner-hidden .header { top: 0; }
     height: 22px;
 }
 
-.gallery__pill > svg {
-    width: 18px;
-    height: 10px;
-    opacity: 0.6;
+.gallery__pill-wavy {
+    width: 60px;
+    height: 12px;
+    opacity: 0.65;
+    flex-shrink: 0;
 }
 
 .gallery__title {
@@ -5266,11 +5317,23 @@ body.banner-hidden .header { top: 0; }
     line-height: 0.85;
     letter-spacing: -0.005em;
     margin-top: 2px;
-    text-decoration: underline;
-    text-decoration-color: #f5d020;
-    text-decoration-thickness: 5px;
-    text-underline-offset: -0.08em;
     position: relative;
+    padding-bottom: 12px;
+}
+
+/* Subrayado tipo pincel amarillo bajo 'Expovacaciones' */
+.gallery__title-script::after {
+    content: '';
+    position: absolute;
+    left: 2%;
+    right: 2%;
+    bottom: 4px;
+    height: 12px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'><path d='M0 6 Q 30 1 60 6 T 120 6 T 180 6 T 200 6' stroke='%23f5d020' stroke-width='5' fill='none' stroke-linecap='round'/></svg>");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    opacity: 0.9;
+    pointer-events: none;
 }
 
 .gallery__desc {
