@@ -2203,27 +2203,27 @@ body.banner-hidden .header { top: 0; }
 .hero__palms {
     position: absolute;
     inset: 0;
-    z-index: 4;
+    z-index: 6;
     pointer-events: none;
 }
 
 .hero__palm {
     position: absolute;
-    width: 260px;
-    height: 260px;
-    filter: drop-shadow(0 6px 18px rgba(0,0,0,0.25));
+    width: 240px;
+    height: 240px;
+    filter: drop-shadow(0 6px 18px rgba(0,0,0,0.3));
     animation: palmSway 7s ease-in-out infinite;
 }
 
 .hero__palm--tl {
-    top: -90px;
-    left: -70px;
+    top: 70px;
+    left: -40px;
     transform-origin: bottom right;
 }
 
 .hero__palm--tr {
-    top: -80px;
-    right: -70px;
+    top: 80px;
+    right: -40px;
     transform-origin: bottom left;
     animation-delay: 2s;
     animation-direction: reverse;
@@ -2271,8 +2271,9 @@ body.banner-hidden .header { top: 0; }
 .hero__content--centered {
     text-align: left;
     align-items: flex-start;
-    max-width: 960px;
+    max-width: min(960px, 100%);
     margin: 0;
+    width: 100%;
 }
 
 .hero__kicker {
@@ -2289,16 +2290,23 @@ body.banner-hidden .header { top: 0; }
     margin-bottom: 18px;
     line-height: 0.98;
     text-align: left;
+    hyphens: none;
+    word-break: normal;
+    overflow-wrap: normal;
 }
 
 .hero__title--mockup .hero__title-line {
-    font-size: clamp(2.4rem, 5.8vw, 4.8rem);
+    font-size: clamp(2rem, 5vw, 4.4rem);
     font-weight: 800;
     letter-spacing: -0.025em;
-    line-height: 1.02;
+    line-height: 1.05;
     color: #ffffff;
     text-shadow: 0 3px 28px rgba(0,0,0,0.5);
     font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    hyphens: none;
+    word-break: keep-all;
+    overflow-wrap: normal;
+    white-space: normal;
 }
 
 .hero__title-script--big {
@@ -2306,7 +2314,7 @@ body.banner-hidden .header { top: 0; }
     font-family: 'Caveat', cursive;
     font-style: normal;
     font-weight: 700;
-    font-size: clamp(3.4rem, 9.5vw, 7.2rem);
+    font-size: clamp(2.8rem, 7.5vw, 6rem);
     color: #e8d500;
     line-height: 0.88;
     letter-spacing: -0.005em;
@@ -2315,6 +2323,7 @@ body.banner-hidden .header { top: 0; }
     transform: rotate(-2deg);
     transform-origin: left center;
     position: relative;
+    white-space: nowrap;
 }
 
 /* Subrayado ondulado amarillo bajo 'para tus vacaciones' */
@@ -2723,6 +2732,18 @@ body.banner-hidden .header { top: 0; }
 }
 
 /* ======= Hero responsive overrides ======= */
+@media (max-width: 1280px) {
+    .hero__content--centered {
+        max-width: min(780px, 65%);
+    }
+    .hero__title--mockup .hero__title-line {
+        font-size: clamp(1.9rem, 4.6vw, 3.8rem);
+    }
+    .hero__title-script--big {
+        font-size: clamp(2.6rem, 6.5vw, 5rem);
+    }
+}
+
 @media (max-width: 1024px) {
     .hero__cta-grid {
         grid-template-columns: 1fr 1fr;
@@ -2734,32 +2755,29 @@ body.banner-hidden .header { top: 0; }
         grid-template-columns: repeat(2, 1fr);
     }
     .hero__content--centered {
-        max-width: 680px;
-    }
-}
-
-@media (max-width: 900px) {
-    .hero__content--centered {
         max-width: 100%;
-    }
-    .hero__title--mockup .hero__title-line {
-        font-size: clamp(2.2rem, 6.5vw, 3.4rem);
-    }
-    .hero__title-script--big {
-        font-size: clamp(3rem, 9vw, 4.6rem);
     }
     .hero__info {
         gap: 32px;
     }
+}
+
+@media (max-width: 900px) {
+    .hero__title--mockup .hero__title-line {
+        font-size: clamp(1.7rem, 5.5vw, 2.8rem);
+    }
+    .hero__title-script--big {
+        font-size: clamp(2.4rem, 8vw, 4rem);
+    }
     .hero__countdown--pill {
-        padding: 20px 32px;
-        gap: 24px;
+        padding: 20px 28px;
+        gap: 20px;
     }
     .hero__countdown--pill .countdown__number {
-        font-size: 2.4rem;
+        font-size: 2.2rem;
     }
     .hero__countdown--pill .countdown__item {
-        min-width: 62px;
+        min-width: 58px;
     }
 }
 
