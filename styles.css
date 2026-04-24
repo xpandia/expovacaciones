@@ -5820,10 +5820,11 @@ body.banner-hidden .header { top: 0; }
 
 .conscious-hero__title-line {
     display: block;
+    font-family: 'Poppins', -apple-system, sans-serif;
     font-size: clamp(2.4rem, 4.8vw, 3.8rem);
     font-weight: 800;
-    color: #1a3a22;
-    letter-spacing: -0.02em;
+    color: #0d2a4a;
+    letter-spacing: -0.025em;
     line-height: 1.05;
 }
 
@@ -5876,6 +5877,10 @@ body.banner-hidden .header { top: 0; }
 .conscious-hero__text strong {
     color: #3d7d2d;
     font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: #5aa03d;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
 }
 
 .conscious-hero__pill {
@@ -8701,6 +8706,86 @@ body.banner-hidden .header { top: 0; }
     /* Gallery */
     .gallery__grid {
         grid-auto-rows: 220px;
+    }
+}
+
+/* ===== Laptop (1440px) — breakpoint faltante ===== */
+@media (max-width: 1440px) {
+    .conscious-hero {
+        gap: 40px;
+    }
+    .conscious-hero__visual {
+        max-width: 440px;
+    }
+    .gallery__grid {
+        grid-auto-rows: 280px;
+    }
+    .exhibitors-showcase__grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 16px;
+    }
+    .exhibitors__renders-grid {
+        gap: 16px;
+    }
+    .evento__cta-grid {
+        gap: 12px;
+    }
+}
+
+/* ===== Hide decorative blobs/leaves in 900px tablet ===== */
+@media (max-width: 900px) {
+    .conscious-travel__leaf--tl,
+    .conscious-travel__leaf--bl {
+        display: none;
+    }
+    .valle__blob-solid {
+        display: none;
+    }
+    .hero__palms {
+        opacity: 0.4;
+    }
+    .gallery__stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+        border-radius: 24px;
+    }
+    .hero__countdown--pill {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .evento__razones-grid {
+        grid-template-columns: 1fr !important;
+    }
+    .exhibitors__layout {
+        grid-template-columns: 1fr !important;
+        gap: 36px !important;
+    }
+}
+
+/* ===== Sparkles safe-position en mobile ===== */
+@media (max-width: 640px) {
+    .valle__title-sparkle--l { left: 0; top: 0; }
+    .valle__title-sparkle--r { right: 0; top: 0; }
+    .valle__title-sparkle--br { display: none; }
+    .gallery__title-sparkle--tl,
+    .gallery__title-sparkle--tr {
+        display: none;
+    }
+    .gallery__title-sparkle--bl,
+    .gallery__title-sparkle--br {
+        width: 14px;
+        height: 14px;
+    }
+    .hero__countdown--pill {
+        gap: 8px;
+    }
+    .hero__countdown--pill .countdown__item {
+        min-width: 42px;
+    }
+    .exhibitors-showcase__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .reel {
+        width: 260px !important;
     }
 }
 
