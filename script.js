@@ -179,24 +179,24 @@ document.addEventListener('DOMContentLoaded', () => {
         cookieReject?.addEventListener('click', () => applyConsent('essential'));
     }
 
-    // --- COUNTDOWN BANNER (top) ---
-    const countdownBanner = document.getElementById('countdownBanner');
-    const bannerDays = document.getElementById('bannerDays');
-    const bannerClose = document.getElementById('bannerClose');
+    // --- ANNOUNCEMENT BAR (top) ---
+    const announcementBar = document.getElementById('announcementBar');
+    const announcementDays = document.getElementById('announcementDays');
+    const announcementClose = document.getElementById('announcementClose');
 
     // Restore hidden state from localStorage
     if (localStorage.getItem('expovac_banner_hidden') === '1') {
         document.body.classList.add('banner-hidden');
     }
 
-    bannerClose?.addEventListener('click', () => {
+    announcementClose?.addEventListener('click', () => {
         document.body.classList.add('banner-hidden');
         localStorage.setItem('expovac_banner_hidden', '1');
-        track('banner_close', { banner: 'countdown' });
+        track('banner_close', { banner: 'announcement' });
     });
 
-    countdownBanner?.querySelector('.countdown-banner__cta')?.addEventListener('click', () => {
-        track('cta_click', { cta_label: 'Reservar mi lugar', cta_location: 'countdown_banner' });
+    announcementBar?.querySelector('.announcement-bar__cta')?.addEventListener('click', () => {
+        track('cta_click', { cta_label: 'Quiero ir', cta_location: 'announcement_bar' });
     });
 
     // --- COUNTDOWN ---
@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setWithFlip(minutesEl, String(minutes).padStart(2, '0'));
         setWithFlip(secondsEl, String(seconds).padStart(2, '0'));
 
-        if (bannerDays) bannerDays.textContent = String(days);
+        if (announcementDays) announcementDays.textContent = String(days);
     }
 
     updateCountdown();
