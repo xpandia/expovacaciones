@@ -1366,4 +1366,159 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // ========================================
+    // WHATSAPP CONTEXTUAL — mensaje según sección visible
+    // ========================================
+    const WA_PHONE = '573147908555';
+    const WA_BASE = `https://wa.me/${WA_PHONE}?text=`;
+
+    const sectionMessages = {
+        'inicio': 'Hola, vi Expovacaciones Cali 2026 y me interesa asistir. ¿Me das más información?',
+        'sobre': 'Hola, quiero información sobre el evento Expovacaciones del 22-24 de Mayo en Chipichape.',
+        'destinos': 'Hola, vi los destinos de Expovacaciones y me interesan los paquetes turísticos. ¿Pueden asesorarme?',
+        'reels': 'Hola, vi los videos de Expovacaciones y me gustaría más información sobre los destinos.',
+        'valle': 'Hola, me interesa conocer más sobre los destinos del Valle del Cauca en Expovacaciones.',
+        'galeria': 'Hola, después de ver la galería de Expovacaciones quiero asistir. ¿Cómo me registro?',
+        'expositores': 'Hola, quiero ver el listado de expositores de Expovacaciones 2026.',
+        'ser-expositor': 'Hola, me interesa participar como expositor en Expovacaciones Cali 2026. ¿Tienen información?',
+        'como-llegar': 'Hola, ¿cómo llego a Chipichape para Expovacaciones 2026?',
+        'faq': 'Hola, tengo dudas sobre Expovacaciones Cali 2026. ¿Pueden ayudarme?',
+        'contacto': 'Hola, quiero recibir información de Expovacaciones Cali 2026.'
+    };
+
+    let currentSection = 'inicio';
+
+    function getCurrentSectionMessage() {
+        return sectionMessages[currentSection] || sectionMessages['inicio'];
+    }
+
+    function buildWaUrl() {
+        return WA_BASE + encodeURIComponent(getCurrentSectionMessage());
+    }
+
+    function updateWaLinks() {
+        const url = buildWaUrl();
+        document.querySelectorAll('a[href*="wa.me/"]').forEach(a => {
+            a.href = url;
+        });
+    }
+
+    // Detectar sección visible con IntersectionObserver
+    const trackedSections = ['inicio', 'sobre', 'destinos', 'reels', 'valle', 'galeria',
+                              'expositores', 'ser-expositor', 'como-llegar', 'faq', 'contacto'];
+    const sectionEls = trackedSections
+        .map(id => document.getElementById(id))
+        .filter(Boolean);
+
+    if (sectionEls.length && 'IntersectionObserver' in window) {
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
+                    currentSection = entry.target.id;
+                    updateWaLinks();
+                }
+            });
+        }, { threshold: [0.3, 0.5] });
+
+        sectionEls.forEach(el => sectionObserver.observe(el));
+    }
+
+    // Inicializar links con mensaje default
+    updateWaLinks();
+
+    // ========================================
+    // STICKY CTA INTELIGENTE — texto cambia según sección
+    // ========================================
+    const stickyCtaBtn = document.querySelector('.sticky-cta__primary span');
+    if (stickyCtaBtn) {
+        const stickyTexts = {
+            'inicio': 'Quiero ir',
+            'sobre': 'Quiero ir',
+            'destinos': 'Ver destinos',
+            'reels': 'Quiero ir',
+            'valle': 'Explorar Valle',
+            'galeria': 'Quiero ir',
+            'expositores': 'Ver expositores',
+            'ser-expositor': 'Ser expositor',
+            'como-llegar': 'Cómo llegar',
+            'faq': 'Quiero ir',
+            'contacto': 'Quiero ir'
+        };
+
+        const updateStickyText = () => {
+            const newText = stickyTexts[currentSection] || 'Quiero ir';
+            if (stickyCtaBtn.textContent !== newText) {
+                stickyCtaBtn.textContent = newText;
+            }
+        };
+
+        // Re-update on section change
+        if (sectionEls.length && 'IntersectionObserver' in window) {
+            const stickyObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
+                        updateStickyText();
+                    }
+                });
+            }, { threshold: [0.3] });
+            sectionEls.forEach(el => stickyObserver.observe(el));
+        }
+    }
+
+    // ========================================
+    // EXIT-INTENT MODAL
+    // ========================================
+    const exitModal = document.getElementById('exitIntentModal');
+    if (exitModal && !sessionStorage.getItem('exitIntentShown')) {
+        const exitModalClose = document.getElementById('exitIntentClose');
+        const exitModalCta = exitModal.querySelector('.exit-modal__cta');
+        let exitTriggered = false;
+
+        const showExitModal = () => {
+            if (exitTriggered) return;
+            exitTriggered = true;
+            sessionStorage.setItem('exitIntentShown', '1');
+            exitModal.classList.add('is-open');
+            exitModal.setAttribute('aria-hidden', 'false');
+            track('exit_intent_shown', {});
+        };
+
+        const closeExitModal = () => {
+            exitModal.classList.remove('is-open');
+            exitModal.setAttribute('aria-hidden', 'true');
+        };
+
+        // Trigger on mouseleave hacia top (desktop)
+        document.addEventListener('mouseleave', (e) => {
+            if (e.clientY <= 0 && window.scrollY > 300) {
+                showExitModal();
+            }
+        });
+
+        // Trigger on mobile: scroll up rápido después de scroll down
+        let lastScroll = window.scrollY;
+        let scrollUpCount = 0;
+        window.addEventListener('scroll', () => {
+            const cur = window.scrollY;
+            if (cur < lastScroll - 50 && cur > 800) {
+                scrollUpCount++;
+                if (scrollUpCount >= 2) showExitModal();
+            }
+            lastScroll = cur;
+        }, { passive: true });
+
+        exitModalClose?.addEventListener('click', closeExitModal);
+        exitModal.querySelector('.exit-modal__backdrop')?.addEventListener('click', closeExitModal);
+        exitModalCta?.addEventListener('click', () => {
+            track('exit_intent_cta_click', {});
+            closeExitModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && exitModal.classList.contains('is-open')) {
+                closeExitModal();
+            }
+        });
+    }
 });

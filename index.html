@@ -166,7 +166,62 @@
         "publisher": {
             "@type": "Organization",
             "name": "ANATO Suroccidente"
+        },
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://expovacaciones.co/?s={search_term_string}",
+            "query-input": "required name=search_term_string"
         }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://expovacaciones.co/#inicio"},
+            {"@type": "ListItem", "position": 2, "name": "El Evento", "item": "https://expovacaciones.co/#sobre"},
+            {"@type": "ListItem", "position": 3, "name": "Destinos", "item": "https://expovacaciones.co/#destinos"},
+            {"@type": "ListItem", "position": 4, "name": "Valle del Cauca", "item": "https://expovacaciones.co/#valle"},
+            {"@type": "ListItem", "position": 5, "name": "Expositores", "item": "https://expovacaciones.co/#expositores"},
+            {"@type": "ListItem", "position": 6, "name": "Cómo Llegar", "item": "https://expovacaciones.co/#como-llegar"},
+            {"@type": "ListItem", "position": 7, "name": "FAQ", "item": "https://expovacaciones.co/#faq"}
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TouristAttraction",
+        "name": "Expovacaciones Cali 2026",
+        "description": "Feria de turismo del Valle del Cauca con +80 expositores nacionales e internacionales, ofertas exclusivas en paquetes de viaje, hoteles y destinos.",
+        "image": "https://expovacaciones.co/assets/photos/hero-beach-1.webp",
+        "url": "https://expovacaciones.co",
+        "isAccessibleForFree": true,
+        "publicAccess": true,
+        "touristType": ["Familias", "Parejas", "Viajeros independientes", "Profesionales del turismo"],
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Calle 38 Norte #6N-35",
+            "addressLocality": "Cali",
+            "addressRegion": "Valle del Cauca",
+            "postalCode": "760046",
+            "addressCountry": "CO"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ImageGallery",
+        "name": "Galería Expovacaciones — Edición Anterior",
+        "description": "Momentos memorables de ediciones pasadas de Expovacaciones Cali",
+        "url": "https://expovacaciones.co/#galeria",
+        "associatedMedia": [
+            {"@type": "ImageObject", "contentUrl": "https://expovacaciones.co/assets/photos/show-tropicana.webp", "name": "Show Tropicana en vivo"},
+            {"@type": "ImageObject", "contentUrl": "https://expovacaciones.co/assets/photos/escultura-cultural.webp", "name": "Escultura afrocolombiana"},
+            {"@type": "ImageObject", "contentUrl": "https://expovacaciones.co/assets/photos/mascotas-inflables.webp", "name": "Mascotas inflables del evento"}
+        ]
     }
     </script>
     <!-- Google tag (gtag.js) with Consent Mode v2 -->
@@ -217,6 +272,29 @@
     </div>
 
     <!-- STICKY MOBILE CTA BAR -->
+    <!-- EXIT INTENT MODAL -->
+    <div class="exit-modal" id="exitIntentModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="exitModalTitle">
+        <button type="button" class="exit-modal__backdrop" aria-label="Cerrar"></button>
+        <div class="exit-modal__dialog">
+            <button type="button" class="exit-modal__x" id="exitIntentClose" aria-label="Cerrar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+            </button>
+            <div class="exit-modal__icon" aria-hidden="true">
+                <svg viewBox="0 0 64 64" fill="none">
+                    <path d="M32 56 L32 32 M32 32 Q 12 28 6 12 Q 22 16 32 30 M32 32 Q 52 28 58 12 Q 42 16 32 30 M32 32 Q 12 36 8 56 Q 26 50 32 34 M32 32 Q 52 36 56 56 Q 38 50 32 34" stroke="#3d7d2d" stroke-width="2.5" stroke-linecap="round" fill="#5aa03d" opacity="0.9"/>
+                </svg>
+            </div>
+            <p class="exit-modal__eyebrow">¡ESPERA!</p>
+            <h3 id="exitModalTitle" class="exit-modal__title">¿Te <em class="script-accent">vas tan pronto</em>?</h3>
+            <p class="exit-modal__desc">No te pierdas las <strong>ofertas exclusivas</strong> de Expovacaciones 2026. Recibe descuentos antes que nadie y la <strong>guía oficial</strong> con +80 destinos.</p>
+            <a href="#contacto" class="exit-modal__cta">
+                <span>Quiero la guía gratis</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+            </a>
+            <p class="exit-modal__small">22, 23 y 24 de Mayo · Centro Comercial Chipichape · Cali</p>
+        </div>
+    </div>
+
     <!-- VIDEO MODAL POP-UP -->
     <div class="video-modal" id="videoModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
         <button type="button" class="video-modal__backdrop" id="videoModalClose" aria-label="Cerrar video"></button>
@@ -1746,31 +1824,31 @@
                 <p class="section-header__subtitle">Marcas líderes, destinos y operadores que se suman a la experiencia</p>
             </div>
             <div class="exhibitors-showcase__grid scroll-stagger">
-                <div class="exhibitors-showcase__item"><img src="assets/logos/aviatur.png" alt="Aviatur" loading="lazy"></div>
-                <div class="exhibitors-showcase__item"><img src="assets/logos/decameron.png" alt="Decameron All Inclusive Hotels & Resorts" loading="lazy"></div>
-                <div class="exhibitors-showcase__item"><img src="assets/logos/despegar.png" alt="Despegar" loading="lazy"></div>
-                <div class="exhibitors-showcase__item exhibitors-showcase__item--tall"><img src="assets/logos/on-vacation.png" alt="On Vacation" loading="lazy"></div>
-                <div class="exhibitors-showcase__item"><img src="assets/logos/pricetravel.png" alt="PriceTravel Holding" loading="lazy"></div>
-                <div class="exhibitors-showcase__item"><img src="assets/logos/viajes-falabella.png" alt="Viajes Falabella" loading="lazy"></div>
-                <div class="exhibitors-showcase__item"><img src="assets/logos/hoturis.png" alt="Hoturis Agencia de Viajes" loading="lazy"></div>
-                <div class="exhibitors-showcase__item"><img src="assets/logos/jetours.png" alt="Je Tours" loading="lazy"></div>
-                <div class="exhibitors-showcase__item"><img src="assets/logos/clic.png" alt="Clic" loading="lazy"></div>
-                <div class="exhibitors-showcase__item exhibitors-showcase__item--tall"><img src="assets/logos/viajes-lym.png" alt="Viajes LYM" loading="lazy"></div>
-                <div class="exhibitors-showcase__item"><img src="assets/logos/vertice-travel.png" alt="Vértice Travel" loading="lazy"></div>
-                <div class="exhibitors-showcase__item"><img src="assets/logos/turistica-de-viajes.png" alt="Turística de Viajes" loading="lazy"></div>
-                <div class="exhibitors-showcase__item exhibitors-showcase__item--tall"><img src="assets/logos/amak.png" alt="Amak Colombia Travel and Living" loading="lazy"></div>
-                <div class="exhibitors-showcase__item"><img src="assets/logos/promotora-belisario-marin.jpg" alt="Promotora Belisario Marín" loading="lazy"></div>
-                <div class="exhibitors-showcase__item"><img src="assets/logos/vistamar.png" alt="Vista Mar - Un Paraíso en el Caribe" loading="lazy"></div>
-                <div class="exhibitors-showcase__item"><img src="assets/logos/koray-isla-bonita.png" alt="Hotel Koray & Hotel Isla Bonita - San Andrés Islas" loading="lazy"></div>
-                <div class="exhibitors-showcase__item exhibitors-showcase__item--tall"><img src="assets/logos/hotel-casablanca.png" alt="Hotel Casablanca - San Andrés Islas" loading="lazy"></div>
-                <div class="exhibitors-showcase__item exhibitors-showcase__item--tall"><img src="assets/logos/parques-nacionales.png" alt="Parques Nacionales Naturales de Colombia" loading="lazy"></div>
-                <div class="exhibitors-showcase__item"><img src="assets/logos/gobernacion-bolivar.png" alt="Bolívar Destino Divino - Gobernación" loading="lazy"></div>
-                <div class="exhibitors-showcase__item"><img src="assets/logos/alcaldia-palmira.png" alt="Alcaldía de Palmira" loading="lazy"></div>
-                <div class="exhibitors-showcase__item"><img src="assets/logos/alcaldia-buga.jpeg" alt="Alcaldía de Guadalajara de Buga" loading="lazy"></div>
-                <div class="exhibitors-showcase__item"><img src="assets/logos/alcaldia-yumbo.png" alt="Alcaldía de Yumbo" loading="lazy"></div>
-                <div class="exhibitors-showcase__item"><img src="assets/logos/municipio-bolivar-valle.png" alt="Municipio de Bolívar - Valle del Cauca" loading="lazy"></div>
-                <div class="exhibitors-showcase__item"><img src="assets/logos/camara-comercio-buga.jpeg" alt="Cámara de Comercio de Buga" loading="lazy"></div>
-                <div class="exhibitors-showcase__item exhibitors-showcase__item--tall"><img src="assets/logos/camara-comercio-tulua.png" alt="Cámara de Comercio de Tuluá" loading="lazy"></div>
+                <div class="exhibitors-showcase__item"><picture><source srcset="assets/logos/aviatur.webp" type="image/webp"><img src="assets/logos/aviatur.png" alt="Aviatur" loading="lazy"></picture></div>
+                <div class="exhibitors-showcase__item"><picture><source srcset="assets/logos/decameron.webp" type="image/webp"><img src="assets/logos/decameron.png" alt="Decameron All Inclusive Hotels & Resorts" loading="lazy"></picture></div>
+                <div class="exhibitors-showcase__item"><picture><source srcset="assets/logos/despegar.webp" type="image/webp"><img src="assets/logos/despegar.png" alt="Despegar" loading="lazy"></picture></div>
+                <div class="exhibitors-showcase__item exhibitors-showcase__item--tall"><picture><source srcset="assets/logos/on-vacation.webp" type="image/webp"><img src="assets/logos/on-vacation.png" alt="On Vacation" loading="lazy"></picture></div>
+                <div class="exhibitors-showcase__item"><picture><source srcset="assets/logos/pricetravel.webp" type="image/webp"><img src="assets/logos/pricetravel.png" alt="PriceTravel Holding" loading="lazy"></picture></div>
+                <div class="exhibitors-showcase__item"><picture><source srcset="assets/logos/viajes-falabella.webp" type="image/webp"><img src="assets/logos/viajes-falabella.png" alt="Viajes Falabella" loading="lazy"></picture></div>
+                <div class="exhibitors-showcase__item"><picture><source srcset="assets/logos/hoturis.webp" type="image/webp"><img src="assets/logos/hoturis.png" alt="Hoturis Agencia de Viajes" loading="lazy"></picture></div>
+                <div class="exhibitors-showcase__item"><picture><source srcset="assets/logos/jetours.webp" type="image/webp"><img src="assets/logos/jetours.png" alt="Je Tours" loading="lazy"></picture></div>
+                <div class="exhibitors-showcase__item"><picture><source srcset="assets/logos/clic.webp" type="image/webp"><img src="assets/logos/clic.png" alt="Clic" loading="lazy"></picture></div>
+                <div class="exhibitors-showcase__item exhibitors-showcase__item--tall"><picture><source srcset="assets/logos/viajes-lym.webp" type="image/webp"><img src="assets/logos/viajes-lym.png" alt="Viajes LYM" loading="lazy"></picture></div>
+                <div class="exhibitors-showcase__item"><picture><source srcset="assets/logos/vertice-travel.webp" type="image/webp"><img src="assets/logos/vertice-travel.png" alt="Vértice Travel" loading="lazy"></picture></div>
+                <div class="exhibitors-showcase__item"><picture><source srcset="assets/logos/turistica-de-viajes.webp" type="image/webp"><img src="assets/logos/turistica-de-viajes.png" alt="Turística de Viajes" loading="lazy"></picture></div>
+                <div class="exhibitors-showcase__item exhibitors-showcase__item--tall"><picture><source srcset="assets/logos/amak.webp" type="image/webp"><img src="assets/logos/amak.png" alt="Amak Colombia Travel and Living" loading="lazy"></picture></div>
+                <div class="exhibitors-showcase__item"><picture><source srcset="assets/logos/promotora-belisario-marin.webp" type="image/webp"><img src="assets/logos/promotora-belisario-marin.jpg" alt="Promotora Belisario Marín" loading="lazy"></picture></div>
+                <div class="exhibitors-showcase__item"><picture><source srcset="assets/logos/vistamar.webp" type="image/webp"><img src="assets/logos/vistamar.png" alt="Vista Mar - Un Paraíso en el Caribe" loading="lazy"></picture></div>
+                <div class="exhibitors-showcase__item"><picture><source srcset="assets/logos/koray-isla-bonita.webp" type="image/webp"><img src="assets/logos/koray-isla-bonita.png" alt="Hotel Koray & Hotel Isla Bonita - San Andrés Islas" loading="lazy"></picture></div>
+                <div class="exhibitors-showcase__item exhibitors-showcase__item--tall"><picture><source srcset="assets/logos/hotel-casablanca.webp" type="image/webp"><img src="assets/logos/hotel-casablanca.png" alt="Hotel Casablanca - San Andrés Islas" loading="lazy"></picture></div>
+                <div class="exhibitors-showcase__item exhibitors-showcase__item--tall"><picture><source srcset="assets/logos/parques-nacionales.webp" type="image/webp"><img src="assets/logos/parques-nacionales.png" alt="Parques Nacionales Naturales de Colombia" loading="lazy"></picture></div>
+                <div class="exhibitors-showcase__item"><picture><source srcset="assets/logos/gobernacion-bolivar.webp" type="image/webp"><img src="assets/logos/gobernacion-bolivar.png" alt="Bolívar Destino Divino - Gobernación" loading="lazy"></picture></div>
+                <div class="exhibitors-showcase__item"><picture><source srcset="assets/logos/alcaldia-palmira.webp" type="image/webp"><img src="assets/logos/alcaldia-palmira.png" alt="Alcaldía de Palmira" loading="lazy"></picture></div>
+                <div class="exhibitors-showcase__item"><picture><source srcset="assets/logos/alcaldia-buga.webp" type="image/webp"><img src="assets/logos/alcaldia-buga.jpeg" alt="Alcaldía de Guadalajara de Buga" loading="lazy"></picture></div>
+                <div class="exhibitors-showcase__item"><picture><source srcset="assets/logos/alcaldia-yumbo.webp" type="image/webp"><img src="assets/logos/alcaldia-yumbo.png" alt="Alcaldía de Yumbo" loading="lazy"></picture></div>
+                <div class="exhibitors-showcase__item"><picture><source srcset="assets/logos/municipio-bolivar-valle.webp" type="image/webp"><img src="assets/logos/municipio-bolivar-valle.png" alt="Municipio de Bolívar - Valle del Cauca" loading="lazy"></picture></div>
+                <div class="exhibitors-showcase__item"><picture><source srcset="assets/logos/camara-comercio-buga.webp" type="image/webp"><img src="assets/logos/camara-comercio-buga.jpeg" alt="Cámara de Comercio de Buga" loading="lazy"></picture></div>
+                <div class="exhibitors-showcase__item exhibitors-showcase__item--tall"><picture><source srcset="assets/logos/camara-comercio-tulua.webp" type="image/webp"><img src="assets/logos/camara-comercio-tulua.png" alt="Cámara de Comercio de Tuluá" loading="lazy"></picture></div>
             </div>
             <p class="exhibitors-showcase__note">Y muchos más. <strong>+80 expositores</strong> confirmados con ofertas exclusivas solo durante el evento.</p>
         </div>
