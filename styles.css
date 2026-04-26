@@ -7186,20 +7186,20 @@ body.banner-hidden .header { top: 0; }
 
 .contact__detail svg {
     flex-shrink: 0;
-    color: var(--verde-light);
+    color: #3d7d2d;
     margin-top: 4px;
 }
 
 .contact__detail strong {
     display: block;
-    color: var(--blanco);
+    color: #0d2a4a;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 2px;
 }
 
 .contact__detail p {
-    color: rgba(255,255,255,0.6);
+    color: #4a5068;
     font-size: 1rem;
 }
 
@@ -9083,6 +9083,49 @@ body.banner-hidden .header { top: 0; }
         padding: 5px 12px;
         font-size: 0.7rem;
     }
+}
+
+/* ============================================
+   CONTACT SECTION — fix legibilidad sobre fondo crema
+   ============================================ */
+.contact .form-group label {
+    color: #0d2a4a;
+    font-weight: 700;
+}
+
+.contact .form-group input,
+.contact .form-group select,
+.contact .form-group textarea {
+    background: #ffffff;
+    color: #0d2a4a;
+    border-color: rgba(13, 42, 74, 0.2);
+}
+
+.contact .form-group input::placeholder,
+.contact .form-group textarea::placeholder {
+    color: rgba(13, 42, 74, 0.4);
+}
+
+.contact .form-group input:focus,
+.contact .form-group select:focus,
+.contact .form-group textarea:focus {
+    border-color: #5aa03d;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(168, 196, 53, 0.18);
+}
+
+.contact .form-checkbox label {
+    color: #4a5068;
+    font-weight: 500;
+}
+
+.contact .form-checkbox label a {
+    color: #3d7d2d;
+    font-weight: 600;
+}
+
+.contact .form-checkbox label a:hover {
+    color: #5aa03d;
 }
 
 /* ============================================
