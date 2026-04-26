@@ -1467,6 +1467,57 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========================================
+    // ANIMATED COUNTERS — números stats al entrar viewport
+    // ========================================
+    const animatedNumbers = document.querySelectorAll('.gallery__stat-number, .event-stats-bar__number');
+    const animateCounter = (el) => {
+        const text = el.textContent.trim();
+        const match = text.match(/^(\d+)(\+?)$/);
+        if (!match) return; // Skip non-numeric like "Miles"
+        const target = parseInt(match[1], 10);
+        const suffix = match[2];
+        const duration = 1500;
+        const start = performance.now();
+        const tick = (now) => {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = Math.floor(target * eased);
+            el.textContent = current + suffix;
+            if (progress < 1) requestAnimationFrame(tick);
+            else el.textContent = target + suffix;
+        };
+        requestAnimationFrame(tick);
+    };
+
+    if ('IntersectionObserver' in window && animatedNumbers.length) {
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.dataset.animated) {
+                    entry.target.dataset.animated = '1';
+                    animateCounter(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        animatedNumbers.forEach(el => counterObserver.observe(el));
+    }
+
+    // ========================================
+    // CONFETTI on QUIERO IR click
+    // ========================================
+    const heroQuieroBtn = document.querySelector('.btn-hero-main');
+    if (heroQuieroBtn && typeof confetti === 'function') {
+        heroQuieroBtn.addEventListener('click', () => {
+            confetti({
+                particleCount: 80,
+                spread: 70,
+                origin: { y: 0.7 },
+                colors: ['#a8c435', '#f5d020', '#5aa03d', '#e8a317', '#ffffff']
+            });
+        });
+    }
+
+    // ========================================
     // EXIT-INTENT MODAL
     // ========================================
     const exitModal = document.getElementById('exitIntentModal');
