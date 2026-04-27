@@ -2623,12 +2623,16 @@ body.banner-hidden .header { top: 0; }
     line-height: 0.88;
     letter-spacing: -0.005em;
     text-shadow:
-        -2px -2px 0 rgba(13, 42, 74, 0.85),
-        2px -2px 0 rgba(13, 42, 74, 0.85),
-        -2px 2px 0 rgba(13, 42, 74, 0.85),
-        2px 2px 0 rgba(13, 42, 74, 0.85),
-        0 4px 16px rgba(0, 0, 0, 0.6);
-    -webkit-text-stroke: 1px rgba(13, 42, 74, 0.9);
+        -3px -3px 0 #0d2a4a,
+        3px -3px 0 #0d2a4a,
+        -3px 3px 0 #0d2a4a,
+        3px 3px 0 #0d2a4a,
+        -3px 0 0 #0d2a4a,
+        3px 0 0 #0d2a4a,
+        0 -3px 0 #0d2a4a,
+        0 3px 0 #0d2a4a,
+        0 6px 20px rgba(0, 0, 0, 0.7);
+    -webkit-text-stroke: 2.5px #0d2a4a;
     margin: -6px 0 -8px;
     transform: rotate(-2deg);
     transform-origin: left center;
@@ -2636,6 +2640,7 @@ body.banner-hidden .header { top: 0; }
     white-space: nowrap;
     -webkit-font-smoothing: antialiased;
     paint-order: stroke fill;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
 }
 
 /* Subrayado eliminado — interfería con la legibilidad del script.
