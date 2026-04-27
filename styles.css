@@ -5114,17 +5114,36 @@ body.banner-hidden .header { top: 0; }
 }
 
 .valle__category-icon {
-    width: 56px;
-    height: 56px;
+    width: 64px;
+    height: 64px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 14px;
+    color: var(--leaf-deep);
 }
 
 .valle__category-icon svg {
     width: 48px;
     height: 48px;
+}
+
+.valle__category-icon .ed-icon {
+    width: 100%;
+    height: 100%;
+}
+
+.valle__category:hover .valle__category-icon {
+    color: var(--highlight-deep);
+}
+
+/* Pin de ubicación en sección Cómo llegar */
+.location__venue-pin {
+    width: 2.4em;
+    height: 2.4em;
+    color: var(--coral-warm);
+    margin-bottom: var(--space-2);
+    display: block;
 }
 
 /* Los iconos de categorías en Gallery sí mantienen círculo blanco */
