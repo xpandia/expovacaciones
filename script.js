@@ -33,6 +33,34 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- REDUCED MOTION CHECK ---
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    // --- EDITORIAL REVEAL ON SCROLL (IntersectionObserver con stagger) ---
+    if ('IntersectionObserver' in window && !prefersReducedMotion) {
+        // Stagger automático: dentro de .ed-reveal-group, asigna orden a hijos
+        document.querySelectorAll('.ed-reveal-group').forEach((group) => {
+            const items = group.querySelectorAll('.ed-reveal');
+            items.forEach((el, i) => {
+                if (!el.dataset.revealOrder) el.dataset.revealOrder = String(i);
+            });
+        });
+
+        const revealEls = document.querySelectorAll('.ed-reveal');
+        if (revealEls.length) {
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const idx = Number(entry.target.dataset.revealOrder || 0);
+                        entry.target.style.transitionDelay = `${Math.min(idx, 8) * 80}ms`;
+                        entry.target.classList.add('is-visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+            revealEls.forEach((el) => revealObserver.observe(el));
+        }
+    } else if (prefersReducedMotion) {
+        document.querySelectorAll('.ed-reveal').forEach((el) => el.classList.add('is-visible'));
+    }
+
     // --- LENIS SMOOTH SCROLL ---
     if (typeof Lenis !== 'undefined' && !prefersReducedMotion) {
         const lenis = new Lenis({
