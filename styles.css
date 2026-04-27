@@ -583,10 +583,6 @@ html {
     line-height: 0.9;
     display: inline-block;
     transform: translateY(0.06em) rotate(-2deg);
-    text-decoration: underline;
-    text-decoration-color: #f5d020;
-    text-decoration-thickness: 4px;
-    text-underline-offset: -0.06em;
 }
 
 .stories__grid {
@@ -2622,9 +2618,8 @@ body.banner-hidden .header { top: 0; }
     color: #f5d020;
     line-height: 0.88;
     letter-spacing: -0.005em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     margin: -6px 0 -8px;
-    transform: rotate(-2deg);
-    transform-origin: left center;
     position: relative;
     white-space: nowrap;
 }
@@ -4772,10 +4767,6 @@ body.banner-hidden .header { top: 0; }
     letter-spacing: -0.005em;
     margin-top: 4px;
     position: relative;
-    text-decoration: underline;
-    text-decoration-color: #f5d020;
-    text-decoration-thickness: 4px;
-    text-underline-offset: -0.08em;
 }
 
 .valle__title-sparkle {
@@ -4820,10 +4811,6 @@ body.banner-hidden .header { top: 0; }
     font-weight: 700;
     font-size: 1.8rem;
     color: #c89b1d;
-    text-decoration: underline;
-    text-decoration-color: #f5d020;
-    text-decoration-thickness: 3px;
-    text-underline-offset: -0.05em;
     display: inline-block;
     line-height: 1;
     vertical-align: baseline;
@@ -6004,10 +5991,6 @@ body.banner-hidden .header { top: 0; }
     line-height: 0.9;
     display: inline-block;
     position: relative;
-    text-decoration: underline;
-    text-decoration-color: #f5d020;
-    text-decoration-thickness: 3px;
-    text-underline-offset: -0.12em;
 }
 
 .conscious-hero__sparkle {
@@ -6535,10 +6518,6 @@ body.banner-hidden .header { top: 0; }
     letter-spacing: 0.005em;
     display: inline-block;
     transform: translateY(0.06em) rotate(-2deg);
-    text-decoration: underline;
-    text-decoration-color: #f5d020;
-    text-decoration-thickness: 4px;
-    text-underline-offset: -0.06em;
 }
 
 .script-accent--light {
