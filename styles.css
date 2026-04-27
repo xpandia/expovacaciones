@@ -4558,70 +4558,6 @@ body.banner-hidden .header { top: 0; }
     transform: rotate(18deg);
 }
 
-/* Blobs decorativos (imágenes en formas orgánicas) */
-.valle__blobs {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.valle__blob {
-    position: absolute;
-    overflow: hidden;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-}
-
-.valle__blob img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.valle__blob--left {
-    top: 12%;
-    left: 2%;
-    width: 280px;
-    height: 340px;
-    border-radius: 60% 40% 50% 50% / 55% 45% 55% 45%;
-    transform: rotate(-4deg);
-}
-
-.valle__blob--top-right {
-    top: 8%;
-    right: 3%;
-    width: 260px;
-    height: 320px;
-    border-radius: 55% 45% 45% 55% / 50% 55% 45% 50%;
-    transform: rotate(6deg);
-}
-
-.valle__blob--bottom-right {
-    bottom: 10%;
-    right: 4%;
-    width: 240px;
-    height: 280px;
-    border-radius: 50% 50% 55% 45% / 45% 55% 45% 55%;
-    transform: rotate(-5deg);
-}
-
-/* Blob decorativo amarillo/lima grande bottom-right (mockup Valle) */
-.valle__blob-solid {
-    position: absolute;
-    bottom: -60px;
-    right: -80px;
-    width: 280px;
-    height: 300px;
-    background: linear-gradient(135deg, #f5d020 0%, #e8c018 100%);
-    border-radius: 55% 45% 45% 55% / 50% 55% 45% 50%;
-    opacity: 0.75;
-    transform: rotate(8deg);
-}
-
-@media (max-width: 1024px) {
-    .valle__blob-solid { display: none; }
-}
-
 .valle__container {
     position: relative;
     z-index: 3;
@@ -4875,14 +4811,8 @@ body.banner-hidden .header { top: 0; }
     letter-spacing: -0.01em;
 }
 
-@media (max-width: 1280px) {
-    .valle__blob--left { width: 220px; height: 280px; left: -40px; }
-    .valle__blob--top-right { width: 210px; height: 260px; right: -30px; }
-    .valle__blob--bottom-right { width: 200px; height: 240px; right: -30px; }
-}
-
 @media (max-width: 1024px) {
-    .valle__blobs, .valle__palms { display: none; }
+    .valle__palms { display: none; }
     .valle__title-sparkle { display: none; }
 }
 
@@ -8787,9 +8717,6 @@ body.banner-hidden .header { top: 0; }
     .conscious-travel__leaf--bl {
         display: none;
     }
-    .valle__blob-solid {
-        display: none;
-    }
     .hero__palms {
         opacity: 0.4;
     }
@@ -10491,18 +10418,6 @@ body.splash-active {
 /* ============================================
    MICRO-ANIMATIONS & HOVER STATES (final polish)
    ============================================ */
-
-/* Blobs decorativos: zoom suave al hover de la sección */
-@media (hover: hover) {
-    .valle:hover .valle__blob {
-        transform: scale(1.02);
-    }
-}
-
-.valle__blob {
-    transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
-                box-shadow 0.6s ease;
-}
 
 /* Categorías: bounce icon al hover */
 .valle__category {
