@@ -9206,6 +9206,7 @@ body.banner-hidden .header { top: 0; }
     transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
                 box-shadow 0.4s ease;
     position: relative;
+    overflow: visible !important;
 }
 
 .gallery__item--polaroid:nth-child(2n) {
@@ -9272,6 +9273,13 @@ body.banner-hidden .header { top: 0; }
     pointer-events: none;
     user-select: none;
     line-height: 1;
+}
+
+/* Asegurar que padres de stickers permitan overflow visible */
+.testimonial--featured,
+.hero__countdown--pill,
+.evento__exp-card {
+    overflow: visible !important;
 }
 
 .sticker--new {
@@ -9362,6 +9370,54 @@ body.banner-hidden .header { top: 0; }
     .sticker--recomendado {
         font-size: 0.85rem;
         padding: 5px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sticker--new {
+        width: 56px;
+        height: 56px;
+        font-size: 0.95rem;
+        top: -8px;
+        right: -8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18), 0 0 0 2px #ffffff;
+    }
+    .sticker--top {
+        width: 46px;
+        height: 46px;
+        font-size: 0.82rem;
+        top: -8px;
+        right: -8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18), 0 0 0 2px #ffffff;
+    }
+    .sticker--gratis {
+        width: 60px;
+        height: 60px;
+        font-size: 0.74rem;
+        top: -8px;
+        left: -6px;
+        padding: 6px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18), 0 0 0 2px #ffffff;
+    }
+    .sticker--recomendado {
+        font-size: 0.78rem;
+        padding: 4px 9px;
+    }
+}
+
+@media (max-width: 375px) {
+    .sticker--gratis {
+        width: 52px;
+        height: 52px;
+        font-size: 0.66rem;
+        top: -6px;
+        left: -4px;
+    }
+    .sticker--new,
+    .sticker--top {
+        width: 42px;
+        height: 42px;
+        font-size: 0.76rem;
     }
 }
 
@@ -9904,6 +9960,39 @@ body.splash-active {
     }
     .social-proof__text {
         font-size: 0.82rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .social-proof {
+        bottom: 72px;
+        left: 8px;
+        right: 8px;
+    }
+    .social-proof__card {
+        padding: 10px 12px 10px 10px;
+        gap: 10px;
+        border-radius: 14px;
+    }
+    .social-proof__avatar {
+        width: 34px;
+        height: 34px;
+        font-size: 0.76rem;
+    }
+    .social-proof__text {
+        font-size: 0.78rem;
+    }
+    .social-proof__meta {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .social-proof__card {
+        padding-right: 22px;
+    }
+    .social-proof__close {
+        right: 4px;
     }
 }
 
