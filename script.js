@@ -1609,9 +1609,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ========================================
     // SOCIAL PROOF NOTIFICATIONS (FOMO)
+    // DESACTIVADO: nombres ficticios pendientes de validación con cliente.
+    // Para reactivar: cambiar `false` por `true` cuando se tengan datos reales.
     // ========================================
     const socialProofEl = document.getElementById('socialProof');
-    if (socialProofEl) {
+    const SOCIAL_PROOF_ENABLED = false;
+    if (socialProofEl && SOCIAL_PROOF_ENABLED) {
         const proofs = [
             { name: 'Camila', initials: 'CM', color: '#a8c435', action: 'reservó su lugar', time: 'hace 5 min', city: 'Cali' },
             { name: 'Andrés', initials: 'AR', color: '#5aa03d', action: 'pidió info de San Andrés', time: 'hace 8 min', city: 'Palmira' },
@@ -1807,13 +1810,7 @@ document.addEventListener('DOMContentLoaded', () => {
         exitModalClose?.addEventListener('click', closeExitModal);
         exitModal.querySelector('.exit-modal__backdrop')?.addEventListener('click', closeExitModal);
         exitModalCta?.addEventListener('click', () => {
-            // Guardar código descuento en localStorage para autollenar el form
-            const discountCode = document.getElementById('exitDiscountCode')?.textContent?.trim() || 'EXPO10';
-            localStorage.setItem('expovac_discount_code', discountCode);
-            // Inyectar al form si existe
-            const fld = document.getElementById('discountCodeField');
-            if (fld) fld.value = discountCode;
-            track('exit_intent_cta_click', { discount_code: discountCode });
+            track('exit_intent_cta_click', {});
             closeExitModal();
         });
 
