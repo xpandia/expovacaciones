@@ -575,10 +575,18 @@ html {
 }
 
 .stories__header .section-header__title em {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
+    font-family: 'Caveat', cursive;
+    font-style: normal;
     font-weight: 700;
-    color: var(--brand-verde);
+    color: #c89b1d;
+    font-size: 1.5em;
+    line-height: 0.9;
+    display: inline-block;
+    transform: translateY(0.06em) rotate(-2deg);
+    text-decoration: underline;
+    text-decoration-color: #f5d020;
+    text-decoration-thickness: 4px;
+    text-underline-offset: -0.06em;
 }
 
 .stories__grid {
@@ -5921,7 +5929,7 @@ body.banner-hidden .header { top: 0; }
    ============================================ */
 .conscious-travel {
     padding: 100px 0 120px;
-    background: linear-gradient(180deg, #fefbf0 0%, #fff9e6 50%, #fefbf0 100%);
+    background: linear-gradient(180deg, #fefbf0 0%, #fff7d9 50%, #fefbf0 100%);
     position: relative;
     overflow: hidden;
 }
@@ -6001,7 +6009,7 @@ body.banner-hidden .header { top: 0; }
     font-style: normal;
     font-weight: 700;
     font-size: clamp(3.2rem, 7vw, 5.5rem);
-    color: #e8a317;
+    color: #c89b1d;
     line-height: 0.9;
     display: inline-block;
     position: relative;
@@ -6296,7 +6304,7 @@ body.banner-hidden .header { top: 0; }
     font-family: 'Caveat', cursive;
     font-style: normal;
     font-weight: 700;
-    color: #e8a317;
+    color: #c89b1d;
     font-size: 2rem;
     line-height: 0.9;
 }
@@ -6555,7 +6563,7 @@ body.banner-hidden .header { top: 0; }
    ============================================ */
 .exhibitors-showcase {
     padding: 120px 0;
-    background: linear-gradient(180deg, #ffffff 0%, #fdfbf4 100%);
+    background: linear-gradient(180deg, #fefbf0 0%, #fff7d9 50%, #fefbf0 100%);
     position: relative;
     overflow: hidden;
 }
@@ -8473,7 +8481,7 @@ body.banner-hidden .header { top: 0; }
     }
 
     .countdown__label {
-        font-size: 0.58rem;
+        font-size: 0.68rem;
         letter-spacing: 0.8px;
     }
 
@@ -10950,14 +10958,24 @@ body.splash-active {
         align-items: center;
     }
     .faq__tab {
-        min-height: 40px;
+        min-height: 44px;
     }
     .announcement-bar__close,
     .video-modal__x,
     .exit-modal__x,
     .social-proof__close {
-        min-width: 32px;
-        min-height: 32px;
+        min-width: 44px;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .announcement-bar__cta {
+        min-height: 36px;
+    }
+    .form-checkbox input[type="checkbox"] {
+        min-width: 22px;
+        min-height: 22px;
     }
 }
 
@@ -10990,5 +11008,62 @@ body.splash-active {
     }
     .splash-loader__bar {
         width: 160px;
+    }
+}
+
+/* ============================================
+   COBERTURA 320px (iPhone SE 1st gen, mini Android)
+   ============================================ */
+@media (max-width: 320px) {
+    .container {
+        padding: 0 14px;
+    }
+    .hero__content {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+    .hero__title--mockup .hero__title-line {
+        font-size: 1.4rem;
+    }
+    .hero__title-script--big {
+        font-size: 1.9rem;
+    }
+    .hero__slogan {
+        font-size: 0.92rem;
+    }
+    .hero__info {
+        gap: 8px;
+    }
+    .hero__info-item {
+        font-size: 0.74rem;
+    }
+    .hero__countdown--pill {
+        padding: 10px 12px;
+        gap: 4px;
+    }
+    .hero__countdown--pill .countdown__item {
+        min-width: 30px;
+    }
+    .hero__countdown--pill .countdown__number {
+        font-size: 1.2rem;
+    }
+    .hero__countdown--pill .countdown__label {
+        font-size: 0.5rem;
+        letter-spacing: 0.06em;
+    }
+    .btn-hero-main {
+        font-size: 0.85rem;
+        padding: 12px 16px 12px 22px;
+    }
+    .announcement-bar__text {
+        font-size: 0.66rem;
+    }
+    .announcement-bar__cta {
+        padding: 4px 10px;
+        font-size: 0.62rem;
+    }
+    .nav-link {
+        font-size: 0.85rem;
+        padding: 6px 12px;
     }
 }
