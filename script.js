@@ -1467,6 +1467,104 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========================================
+    // FAQ TABS — filtrar por categoría
+    // ========================================
+    const faqTabs = document.querySelectorAll('.faq__tab');
+    const faqItems = document.querySelectorAll('.faq__item');
+    if (faqTabs.length && faqItems.length) {
+        faqTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const cat = tab.dataset.faqCat;
+                faqTabs.forEach(t => {
+                    t.classList.remove('is-active');
+                    t.setAttribute('aria-selected', 'false');
+                });
+                tab.classList.add('is-active');
+                tab.setAttribute('aria-selected', 'true');
+
+                faqItems.forEach(item => {
+                    if (cat === 'all' || item.dataset.faqCat === cat) {
+                        item.classList.remove('is-hidden');
+                    } else {
+                        item.classList.add('is-hidden');
+                    }
+                });
+                track('faq_filter', { category: cat });
+            });
+        });
+    }
+
+    // ========================================
+    // SPLASH LOADER — oculta cuando la página carga
+    // ========================================
+    const splashLoader = document.getElementById('splashLoader');
+    if (splashLoader) {
+        document.body.classList.add('splash-active');
+        const hideLoader = () => {
+            splashLoader.classList.add('is-hidden');
+            document.body.classList.remove('splash-active');
+            setTimeout(() => splashLoader.remove(), 700);
+        };
+        // Min 1.2s para que se vea, max 3s
+        if (document.readyState === 'complete') {
+            setTimeout(hideLoader, 1200);
+        } else {
+            window.addEventListener('load', () => setTimeout(hideLoader, 800));
+            setTimeout(hideLoader, 3000); // Fallback
+        }
+    }
+
+    // ========================================
+    // ACTIVE NAV INDICATOR — resalta sección visible
+    // ========================================
+    const navLinks = document.querySelectorAll('.header__nav .nav-link[href^="#"]');
+    if (navLinks.length && 'IntersectionObserver' in window) {
+        const sectionMap = new Map();
+        navLinks.forEach(link => {
+            const targetId = link.getAttribute('href').replace('#', '');
+            const target = document.getElementById(targetId);
+            if (target) sectionMap.set(target, link);
+        });
+
+        const navObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const link = sectionMap.get(entry.target);
+                if (!link) return;
+                if (entry.isIntersecting && entry.intersectionRatio >= 0.4) {
+                    navLinks.forEach(l => l.classList.remove('is-active'));
+                    link.classList.add('is-active');
+                }
+            });
+        }, { threshold: [0.4] });
+
+        sectionMap.forEach((_, target) => navObserver.observe(target));
+    }
+
+    // ========================================
+    // PROGRESS SCROLL BAR LATERAL
+    // ========================================
+    const progressBar = document.createElement('div');
+    progressBar.className = 'scroll-progress-vertical';
+    progressBar.innerHTML = '<div class="scroll-progress-vertical__fill"></div>';
+    document.body.appendChild(progressBar);
+    const progressFill = progressBar.querySelector('.scroll-progress-vertical__fill');
+
+    let progressTicking = false;
+    const updateProgress = () => {
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = window.scrollY;
+        const pct = scrollHeight > 0 ? (scrolled / scrollHeight) * 100 : 0;
+        progressFill.style.height = `${pct}%`;
+        progressTicking = false;
+    };
+    window.addEventListener('scroll', () => {
+        if (!progressTicking) {
+            requestAnimationFrame(updateProgress);
+            progressTicking = true;
+        }
+    }, { passive: true });
+
+    // ========================================
     // SOCIAL PROOF NOTIFICATIONS (FOMO)
     // ========================================
     const socialProofEl = document.getElementById('socialProof');

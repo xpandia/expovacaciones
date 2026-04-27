@@ -325,6 +325,28 @@
         </a>
     </div>
 
+    <!-- LOADER SPLASH -->
+    <div class="splash-loader" id="splashLoader" aria-hidden="true">
+        <div class="splash-loader__inner">
+            <svg class="splash-loader__palm" viewBox="0 0 200 240" fill="none" aria-hidden="true">
+                <path d="M100 230 Q 95 160 85 60" stroke="#2d5e1a" stroke-width="5" stroke-linecap="round" fill="none"/>
+                <path d="M88 70 Q 40 55 5 20 Q 30 75 82 82 Z" fill="#3d7d2d"/>
+                <path d="M85 62 Q 55 12 15 4 Q 45 55 82 68 Z" fill="#4a8f35"/>
+                <path d="M88 58 Q 130 10 185 12 Q 135 55 90 66 Z" fill="#3d7d2d"/>
+                <path d="M90 72 Q 155 35 195 58 Q 145 78 92 76 Z" fill="#4a8f35"/>
+                <path d="M95 75 Q 80 20 65 0 Q 82 38 92 75 Z" fill="#5aa03d"/>
+            </svg>
+            <picture class="splash-loader__logo">
+                <source srcset="assets/expovacaciones-logo.webp" type="image/webp">
+                <img src="assets/expovacaciones-logo.png" alt="Expovacaciones Cali 2026">
+            </picture>
+            <div class="splash-loader__bar">
+                <div class="splash-loader__bar-fill"></div>
+            </div>
+            <p class="splash-loader__text">Preparando tu próxima aventura<span class="splash-loader__dots"><span>.</span><span>.</span><span>.</span></span></p>
+        </div>
+    </div>
+
     <!-- ANNOUNCEMENT BAR -->
     <div class="announcement-bar" id="announcementBar">
         <div class="announcement-bar__inner">
@@ -513,6 +535,48 @@
     </section>
 
     <!-- DESTINATION TICKER -->
+    <!-- TRUST SIGNALS RIBBON -->
+    <section class="trust-ribbon" aria-label="Confianza y respaldo">
+        <div class="container trust-ribbon__container">
+            <div class="trust-ribbon__row">
+                <div class="trust-ribbon__seal">
+                    <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                        <circle cx="24" cy="24" r="22" stroke="#5aa03d" stroke-width="2.5" fill="#fff6d4"/>
+                        <path d="M14 24 L21 31 L34 17" stroke="#3d7d2d" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    </svg>
+                    <div>
+                        <p class="trust-ribbon__seal-title">Certificado</p>
+                        <p class="trust-ribbon__seal-sub">por ANATO</p>
+                    </div>
+                </div>
+                <div class="trust-ribbon__divider" aria-hidden="true"></div>
+                <div class="trust-ribbon__counter">
+                    <span class="trust-ribbon__counter-num">+20.000</span>
+                    <span class="trust-ribbon__counter-label">asistentes en ediciones anteriores</span>
+                </div>
+                <div class="trust-ribbon__divider" aria-hidden="true"></div>
+                <div class="trust-ribbon__badges">
+                    <div class="trust-ribbon__badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#3d7d2d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L4 7v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V7l-8-5z"/><path d="M9 12l2 2 4-4"/></svg>
+                        <span>Mejor precio garantizado</span>
+                    </div>
+                    <div class="trust-ribbon__badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#c89b1d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                        <span>Entrada 100% gratuita</span>
+                    </div>
+                    <div class="trust-ribbon__badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#5aa03d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                        <span>Asesoría personalizada</span>
+                    </div>
+                </div>
+            </div>
+            <p class="trust-ribbon__media">
+                <span>Como nos has visto en</span>
+                <span class="trust-ribbon__media-logos">El Tiempo · Caracol Radio · Semana · RCN · El País Cali</span>
+            </p>
+        </div>
+    </section>
+
     <div class="destination-ticker" role="marquee" aria-label="Destinos destacados">
         <div class="destination-ticker__track">
             <span>San Andrés</span><span>·</span>
@@ -1983,8 +2047,14 @@
                     </span>
                 </h2>
             </div>
+            <div class="faq__tabs" role="tablist">
+                <button type="button" class="faq__tab is-active" data-faq-cat="all" role="tab" aria-selected="true">Todas</button>
+                <button type="button" class="faq__tab" data-faq-cat="asistentes" role="tab" aria-selected="false">Asistentes</button>
+                <button type="button" class="faq__tab" data-faq-cat="expositores" role="tab" aria-selected="false">Expositores</button>
+                <button type="button" class="faq__tab" data-faq-cat="logistica" role="tab" aria-selected="false">Logística</button>
+            </div>
             <div class="faq__list scroll-stagger">
-                <div class="faq__item">
+                <div class="faq__item" data-faq-cat="asistentes">
                     <button class="faq__question" aria-expanded="false" aria-controls="faq-1">
                         <span>¿Qué es Expovacaciones Cali?</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
@@ -1993,7 +2063,7 @@
                         <p>Es una feria especializada en turismo que reúne a empresas del sector para ofrecer información, promociones y alternativas de viaje. Una marca de ANATO Suroccidente.</p>
                     </div>
                 </div>
-                <div class="faq__item">
+                <div class="faq__item" data-faq-cat="logistica">
                     <button class="faq__question" aria-expanded="false" aria-controls="faq-2">
                         <span>¿Cuándo y dónde se realiza?</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
@@ -2002,7 +2072,7 @@
                         <p>Del 22 al 24 de mayo de 2026 en el Centro Comercial Chipichape, Plazoleta Central, Cali. Horario de 10:00 AM a 7:00 PM los tres días.</p>
                     </div>
                 </div>
-                <div class="faq__item">
+                <div class="faq__item" data-faq-cat="asistentes">
                     <button class="faq__question" aria-expanded="false" aria-controls="faq-3">
                         <span>¿La entrada tiene algún costo?</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
@@ -2011,7 +2081,7 @@
                         <p>No. El ingreso es totalmente gratuito para todo el público.</p>
                     </div>
                 </div>
-                <div class="faq__item">
+                <div class="faq__item" data-faq-cat="asistentes">
                     <button class="faq__question" aria-expanded="false" aria-controls="faq-4">
                         <span>¿Quiénes pueden asistir?</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
@@ -2020,7 +2090,7 @@
                         <p>Público en general, familias, viajeros frecuentes y profesionales del sector turístico.</p>
                     </div>
                 </div>
-                <div class="faq__item">
+                <div class="faq__item" data-faq-cat="expositores">
                     <button class="faq__question" aria-expanded="false" aria-controls="faq-5">
                         <span>¿Cómo puedo participar como expositor?</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
@@ -2029,13 +2099,40 @@
                         <p>Llena el formulario de contacto o comunícate al 314 790 8555 o 310 324 6116.</p>
                     </div>
                 </div>
-                <div class="faq__item">
+                <div class="faq__item" data-faq-cat="logistica">
                     <button class="faq__question" aria-expanded="false" aria-controls="faq-6">
                         <span>¿Cómo llego al Centro Comercial Chipichape?</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                     </button>
                     <div class="faq__answer" id="faq-6" role="region">
                         <p>En vehículo particular, transporte público MIO, taxi o apps de transporte con acceso directo por las entradas del centro comercial.</p>
+                    </div>
+                </div>
+                <div class="faq__item" data-faq-cat="expositores">
+                    <button class="faq__question" aria-expanded="false" aria-controls="faq-7">
+                        <span>¿Cuál es el costo del stand?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq__answer" id="faq-7" role="region">
+                        <p>El costo del stand depende del tamaño y ubicación. Solicita el brief comercial completo en el formulario de contacto y recibirás una cotización personalizada en menos de 24 horas.</p>
+                    </div>
+                </div>
+                <div class="faq__item" data-faq-cat="asistentes">
+                    <button class="faq__question" aria-expanded="false" aria-controls="faq-8">
+                        <span>¿Puedo llevar a mi mascota?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq__answer" id="faq-8" role="region">
+                        <p>¡Claro que sí! Expovacaciones es <strong>pet friendly</strong>. Contamos con espacios pet amigables, zonas de descanso, puntos de hidratación y stands específicos para viajes con mascotas.</p>
+                    </div>
+                </div>
+                <div class="faq__item" data-faq-cat="logistica">
+                    <button class="faq__question" aria-expanded="false" aria-controls="faq-9">
+                        <span>¿Hay parqueadero disponible?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq__answer" id="faq-9" role="region">
+                        <p>Sí. El Centro Comercial Chipichape cuenta con amplias zonas de parqueadero (cubierto y descubierto). Tarifas según las del centro comercial.</p>
                     </div>
                 </div>
             </div>
