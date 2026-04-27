@@ -2610,21 +2610,25 @@ body.banner-hidden .header { top: 0; }
 }
 
 .hero__title-script--big {
-    display: inline-block;
+    display: block;
     font-family: 'Caveat', cursive;
     font-style: normal;
     font-weight: 700;
-    font-size: clamp(2.6rem, 7vw, 5.6rem);
+    font-size: clamp(2.8rem, 7.5vw, 6rem);
     color: #f5d020;
-    line-height: 1;
+    line-height: 0.95;
     letter-spacing: -0.005em;
-    background: rgba(13, 42, 74, 0.55);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    padding: 4px 22px 8px;
-    border-radius: 14px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-    margin: 8px 0 6px;
+    text-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.7),
+        0 4px 18px rgba(0, 0, 0, 0.5),
+        0 0 2px rgba(13, 42, 74, 0.9);
+    margin: 4px 0 6px;
+    padding: 0;
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-radius: 0;
+    box-shadow: none;
     position: relative;
 }
 
