@@ -346,6 +346,27 @@
             <p class="splash-loader__text">Preparando tu próxima aventura<span class="splash-loader__dots"><span>.</span><span>.</span><span>.</span></span></p>
         </div>
     </div>
+    <script>
+    (function() {
+        document.body.classList.add('splash-active');
+        var splash = document.getElementById('splashLoader');
+        if (!splash) return;
+        var hidden = false;
+        var hide = function() {
+            if (hidden) return;
+            hidden = true;
+            splash.classList.add('is-hidden');
+            document.body.classList.remove('splash-active');
+            setTimeout(function() { if (splash.parentNode) splash.remove(); }, 700);
+        };
+        if (document.readyState === 'complete') {
+            setTimeout(hide, 800);
+        } else {
+            window.addEventListener('load', function() { setTimeout(hide, 600); });
+        }
+        setTimeout(hide, 2500);
+    })();
+    </script>
 
     <!-- ANNOUNCEMENT BAR -->
     <div class="announcement-bar" id="announcementBar">

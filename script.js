@@ -1470,8 +1470,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // FAQ TABS — filtrar por categoría
     // ========================================
     const faqTabs = document.querySelectorAll('.faq__tab');
-    const faqItems = document.querySelectorAll('.faq__item');
-    if (faqTabs.length && faqItems.length) {
+    const faqTabItems = document.querySelectorAll('.faq__item');
+    if (faqTabs.length && faqTabItems.length) {
         faqTabs.forEach(tab => {
             tab.addEventListener('click', () => {
                 const cat = tab.dataset.faqCat;
@@ -1482,7 +1482,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 tab.classList.add('is-active');
                 tab.setAttribute('aria-selected', 'true');
 
-                faqItems.forEach(item => {
+                faqTabItems.forEach(item => {
                     if (cat === 'all' || item.dataset.faqCat === cat) {
                         item.classList.remove('is-hidden');
                     } else {
@@ -1494,33 +1494,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ========================================
-    // SPLASH LOADER — oculta cuando la página carga
-    // ========================================
-    const splashLoader = document.getElementById('splashLoader');
-    if (splashLoader) {
-        document.body.classList.add('splash-active');
-        const hideLoader = () => {
-            splashLoader.classList.add('is-hidden');
-            document.body.classList.remove('splash-active');
-            setTimeout(() => splashLoader.remove(), 700);
-        };
-        // Min 1.2s para que se vea, max 3s
-        if (document.readyState === 'complete') {
-            setTimeout(hideLoader, 1200);
-        } else {
-            window.addEventListener('load', () => setTimeout(hideLoader, 800));
-            setTimeout(hideLoader, 3000); // Fallback
-        }
-    }
+    // SPLASH LOADER — manejado por script inline en index.html
+    // (ver bloque <script> después de #splashLoader)
 
     // ========================================
     // ACTIVE NAV INDICATOR — resalta sección visible
     // ========================================
-    const navLinks = document.querySelectorAll('.header__nav .nav-link[href^="#"]');
-    if (navLinks.length && 'IntersectionObserver' in window) {
+    const headerNavLinks = document.querySelectorAll('.header__nav .nav-link[href^="#"]');
+    if (headerNavLinks.length && 'IntersectionObserver' in window) {
         const sectionMap = new Map();
-        navLinks.forEach(link => {
+        headerNavLinks.forEach(link => {
             const targetId = link.getAttribute('href').replace('#', '');
             const target = document.getElementById(targetId);
             if (target) sectionMap.set(target, link);
@@ -1531,7 +1514,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const link = sectionMap.get(entry.target);
                 if (!link) return;
                 if (entry.isIntersecting && entry.intersectionRatio >= 0.4) {
-                    navLinks.forEach(l => l.classList.remove('is-active'));
+                    headerNavLinks.forEach(l => l.classList.remove('is-active'));
                     link.classList.add('is-active');
                 }
             });
@@ -1543,24 +1526,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========================================
     // PROGRESS SCROLL BAR LATERAL
     // ========================================
-    const progressBar = document.createElement('div');
-    progressBar.className = 'scroll-progress-vertical';
-    progressBar.innerHTML = '<div class="scroll-progress-vertical__fill"></div>';
-    document.body.appendChild(progressBar);
-    const progressFill = progressBar.querySelector('.scroll-progress-vertical__fill');
+    const verticalProgressBar = document.createElement('div');
+    verticalProgressBar.className = 'scroll-progress-vertical';
+    verticalProgressBar.innerHTML = '<div class="scroll-progress-vertical__fill"></div>';
+    document.body.appendChild(verticalProgressBar);
+    const verticalProgressFill = verticalProgressBar.querySelector('.scroll-progress-vertical__fill');
 
-    let progressTicking = false;
-    const updateProgress = () => {
+    let vProgressTicking = false;
+    const updateVerticalProgress = () => {
         const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
         const scrolled = window.scrollY;
         const pct = scrollHeight > 0 ? (scrolled / scrollHeight) * 100 : 0;
-        progressFill.style.height = `${pct}%`;
-        progressTicking = false;
+        verticalProgressFill.style.height = `${pct}%`;
+        vProgressTicking = false;
     };
     window.addEventListener('scroll', () => {
-        if (!progressTicking) {
-            requestAnimationFrame(updateProgress);
-            progressTicking = true;
+        if (!vProgressTicking) {
+            requestAnimationFrame(updateVerticalProgress);
+            vProgressTicking = true;
         }
     }, { passive: true });
 
