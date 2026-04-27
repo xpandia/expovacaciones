@@ -1208,6 +1208,43 @@ img[loading="lazy"] {
     transition: opacity 0.4s ease;
 }
 
+/* ===== Accesibilidad: foco visible para navegación por teclado ===== */
+:focus { outline: none; }
+:focus-visible {
+    outline: 3px solid #f5d020;
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+    outline: 3px solid #f5d020;
+    outline-offset: 3px;
+    box-shadow: 0 0 0 6px rgba(13, 42, 74, 0.25);
+}
+
+/* Skip link visible solo al recibir foco */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 12px;
+    z-index: 10005;
+    padding: 12px 22px;
+    background: #0d2a4a;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: top 0.2s ease;
+}
+.skip-link:focus {
+    top: 12px;
+    outline: 3px solid #f5d020;
+}
+
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 
@@ -5835,9 +5872,9 @@ body.banner-hidden .header { top: 0; }
     padding: 5px 10px;
     background: rgba(255, 22, 22, 0.9);
     color: #fff;
-    font-size: 0.62rem;
+    font-size: 0.72rem;
     font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     border-radius: 100px;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);

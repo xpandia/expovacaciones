@@ -12,6 +12,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // --- SAFE STORAGE WRAPPERS (modo privado/incógnito tolerante) ---
+    const safeStorage = {
+        get(key) {
+            try { return localStorage.getItem(key); } catch (_) { return null; }
+        },
+        set(key, value) {
+            try { localStorage.setItem(key, value); } catch (_) {}
+        },
+        remove(key) {
+            try { localStorage.removeItem(key); } catch (_) {}
+        }
+    };
+
+    // --- LOGOS CON FALLBACK (reemplaza onerror inline) ---
+    document.querySelectorAll('img[data-fallback-hide]').forEach(img => {
+        img.addEventListener('error', () => { img.style.display = 'none'; }, { once: true });
+    });
+
     // --- REDUCED MOTION CHECK ---
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -156,13 +174,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const CONSENT_KEY = 'expovac_cookie_consent';
 
     if (cookieBanner) {
-        const prevConsent = localStorage.getItem(CONSENT_KEY);
+        const prevConsent = safeStorage.get(CONSENT_KEY);
         if (!prevConsent) {
             setTimeout(() => cookieBanner.classList.add('visible'), 1500);
         }
 
         const applyConsent = (status) => {
-            localStorage.setItem(CONSENT_KEY, status);
+            safeStorage.set(CONSENT_KEY, status);
             cookieBanner.classList.remove('visible');
             if (typeof gtag === 'function') {
                 gtag('consent', 'update', {
@@ -185,13 +203,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const announcementClose = document.getElementById('announcementClose');
 
     // Restore hidden state from localStorage
-    if (localStorage.getItem('expovac_banner_hidden') === '1') {
+    if (safeStorage.get('expovac_banner_hidden') === '1') {
         document.body.classList.add('banner-hidden');
     }
 
     announcementClose?.addEventListener('click', () => {
         document.body.classList.add('banner-hidden');
-        localStorage.setItem('expovac_banner_hidden', '1');
+        safeStorage.set('expovac_banner_hidden', '1');
         track('banner_close', { banner: 'announcement' });
     });
 
@@ -1494,7 +1512,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (contactForm) {
         // Inyectar discount code si existe en localStorage (de exit-intent)
-        const savedDiscount = localStorage.getItem('expovac_discount_code');
+        const savedDiscount = safeStorage.get('expovac_discount_code');
         if (savedDiscount && discountField) {
             discountField.value = savedDiscount;
         }
