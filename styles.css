@@ -11347,3 +11347,117 @@ body.splash-active {
 }
 
 .contact__success-download svg { width: 20px; height: 20px; }
+
+/* ============================================
+   RESPONSIVE FIX: componentes nuevos (commit cf548cb)
+   ============================================ */
+
+/* Contact success state — ajustes mobile */
+@media (max-width: 640px) {
+    .contact__success {
+        padding: 36px 22px;
+        border-radius: 20px;
+    }
+    .contact__success-icon {
+        width: 60px;
+        height: 60px;
+    }
+    .contact__success-download {
+        font-size: 0.92rem;
+        padding: 12px 22px;
+        gap: 10px;
+        width: 100%;
+        max-width: 320px;
+        justify-content: center;
+        margin: 16px auto 12px;
+    }
+    .contact__success-download svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 375px) {
+    .contact__success {
+        padding: 28px 18px;
+    }
+    .contact__success h3 {
+        font-size: 1.2rem;
+    }
+    .contact__success p {
+        font-size: 0.9rem;
+    }
+    .contact__success-download {
+        font-size: 0.82rem;
+        padding: 11px 18px;
+        letter-spacing: 0.02em;
+    }
+}
+
+/* Exit modal sticker — coberturas 375 y 320 */
+@media (max-width: 375px) {
+    .exit-modal__sticker {
+        font-size: 0.82rem;
+        padding: 5px 12px;
+        top: -8px;
+        right: 14px;
+    }
+    .exit-modal__code {
+        padding: 12px 18px;
+        max-width: 280px;
+    }
+    .exit-modal__code-value {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .exit-modal__sticker {
+        font-size: 0.72rem;
+        padding: 4px 10px;
+        right: 10px;
+    }
+    .exit-modal__code-label {
+        font-size: 0.62rem;
+        letter-spacing: 0.14em;
+    }
+}
+
+/* Form submit loader — prevenir overflow en mobile */
+@media (max-width: 480px) {
+    .form-submit__loader {
+        width: 18px;
+        height: 18px;
+        margin-left: 8px;
+    }
+    .form-submit.is-loading .form-submit__text {
+        font-size: 0.92rem;
+    }
+}
+
+/* Hero video modal — ajuste 320px */
+@media (max-width: 375px) {
+    .hero-video-modal {
+        padding: 8px;
+    }
+    .hero-video-modal__x {
+        top: -42px;
+        width: 36px;
+        height: 36px;
+    }
+    .hero-video-modal__x svg {
+        width: 16px;
+        height: 16px;
+    }
+    .hero-video-modal__frame {
+        border-radius: 10px;
+    }
+}
+
+/* Form group inputs — placeholder no overflow en mobile */
+@media (max-width: 375px) {
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+        font-size: 0.85rem;
+    }
+}
