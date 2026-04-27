@@ -254,6 +254,27 @@
       gtag('config', 'G-FJ3HL3D5LX', { 'anonymize_ip': true });
     </script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FJ3HL3D5LX"></script>
+
+    <!-- LIVE CHAT (Tawk.to) — Reemplazar PROPERTY_ID con el ID real al activar la cuenta -->
+    <!--
+    Para activar:
+    1. Crear cuenta gratis en https://www.tawk.to/
+    2. Reemplazar 'YOUR_PROPERTY_ID' con el Property ID real
+    3. Reemplazar 'YOUR_WIDGET_ID' con el Widget ID real (default: 'default')
+    4. Descomentar el bloque
+
+    <script>
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/YOUR_PROPERTY_ID/YOUR_WIDGET_ID';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    -->
 </head>
 <body>
 
@@ -282,23 +303,31 @@
             <button type="button" class="exit-modal__x" id="exitIntentClose" aria-label="Cerrar">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
             </button>
+            <span class="exit-modal__sticker" aria-hidden="true">¡SOLO HOY!</span>
             <div class="exit-modal__icon" aria-hidden="true">
                 <svg viewBox="0 0 64 64" fill="none">
-                    <path d="M32 56 L32 32 M32 32 Q 12 28 6 12 Q 22 16 32 30 M32 32 Q 52 28 58 12 Q 42 16 32 30 M32 32 Q 12 36 8 56 Q 26 50 32 34 M32 32 Q 52 36 56 56 Q 38 50 32 34" stroke="#3d7d2d" stroke-width="2.5" stroke-linecap="round" fill="#5aa03d" opacity="0.9"/>
+                    <rect x="14" y="20" width="36" height="36" rx="3" fill="#fff6d4" stroke="#3d7d2d" stroke-width="2.5"/>
+                    <path d="M14 28 L50 28" stroke="#3d7d2d" stroke-width="2.5"/>
+                    <path d="M22 14 L22 24 M42 14 L42 24" stroke="#3d7d2d" stroke-width="2.5" stroke-linecap="round"/>
+                    <text x="32" y="48" text-anchor="middle" font-family="Poppins, sans-serif" font-size="14" font-weight="800" fill="#c89b1d">10%</text>
                 </svg>
             </div>
-            <p class="exit-modal__eyebrow">¡ESPERA!</p>
-            <h3 id="exitModalTitle" class="exit-modal__title">¿Te <em class="script-accent">vas tan pronto</em>?</h3>
-            <p class="exit-modal__desc">No te pierdas las <strong>ofertas exclusivas</strong> de Expovacaciones 2026. Recibe descuentos antes que nadie y la <strong>guía oficial</strong> con +80 destinos.</p>
-            <a href="#contacto" class="exit-modal__cta">
-                <span>Quiero la guía gratis</span>
+            <p class="exit-modal__eyebrow">OFERTA EXCLUSIVA</p>
+            <h3 id="exitModalTitle" class="exit-modal__title">Llévate <em class="script-accent">10% OFF</em> en tu próximo viaje</h3>
+            <p class="exit-modal__desc">Regístrate ahora y recibe un <strong>código de descuento del 10%</strong> aplicable con cualquier expositor durante el evento. Además, recibe la <strong>guía oficial</strong> con +80 destinos por email.</p>
+            <div class="exit-modal__code">
+                <span class="exit-modal__code-label">TU CÓDIGO:</span>
+                <span class="exit-modal__code-value" id="exitDiscountCode">EXPO10</span>
+            </div>
+            <a href="#contacto" class="exit-modal__cta" id="exitModalCta">
+                <span>Quiero mi descuento</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
             </a>
-            <p class="exit-modal__small">22, 23 y 24 de Mayo · Centro Comercial Chipichape · Cali</p>
+            <p class="exit-modal__small">Válido solo durante Expovacaciones · 22-24 Mayo · Chipichape</p>
         </div>
     </div>
 
-    <!-- VIDEO MODAL POP-UP -->
+    <!-- VIDEO MODAL POP-UP (vertical reel) -->
     <div class="video-modal" id="videoModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
         <button type="button" class="video-modal__backdrop" id="videoModalClose" aria-label="Cerrar video"></button>
         <div class="video-modal__dialog">
@@ -311,6 +340,27 @@
                     <source src="assets/videos/expo-video-2.mp4" type="video/mp4">
                     Tu navegador no soporta video HTML5.
                 </video>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO VIDEO MODAL (YouTube embed promocional) -->
+    <div class="hero-video-modal" id="heroVideoModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="heroVideoTitle">
+        <button type="button" class="hero-video-modal__backdrop" id="heroVideoClose" aria-label="Cerrar video"></button>
+        <div class="hero-video-modal__dialog">
+            <button type="button" class="hero-video-modal__x" id="heroVideoX" aria-label="Cerrar video">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+            </button>
+            <h3 id="heroVideoTitle" class="sr-only">Video promocional Expovacaciones Cali 2026</h3>
+            <div class="hero-video-modal__frame">
+                <iframe id="heroVideoIframe"
+                    src=""
+                    title="Expovacaciones Cali 2026 - Video promocional"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+                    loading="lazy"></iframe>
             </div>
         </div>
     </div>
@@ -1801,15 +1851,24 @@
                         <span>Una marca de ANATO Suroccidente</span>
                     </div>
                 </div>
-                <form class="contact__form" id="contactForm">
+                <form class="contact__form" id="contactForm" action="https://formsubmit.co/direccionsuroccidente@anato.org" method="POST">
+                    <!-- FormSubmit config -->
+                    <input type="hidden" name="_subject" value="Nuevo lead Expovacaciones 2026">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://expovacaciones.co/?form=success">
+                    <input type="hidden" name="_autoresponse" value="¡Gracias por tu interés en Expovacaciones Cali 2026! Recibimos tu información y pronto te contactaremos con todos los detalles del evento. ¡Nos vemos del 22-24 de Mayo en Chipichape!">
+                    <input type="hidden" name="origen" value="form_contact_web">
+                    <input type="hidden" name="discount_code" id="discountCodeField" value="">
+
                     <div class="form-row">
                         <div class="form-group">
                             <label for="nombre">Nombre *</label>
-                            <input type="text" id="nombre" name="nombre" required>
+                            <input type="text" id="nombre" name="nombre" required minlength="2" maxlength="50">
                         </div>
                         <div class="form-group">
                             <label for="apellido">Apellido *</label>
-                            <input type="text" id="apellido" name="apellido" required>
+                            <input type="text" id="apellido" name="apellido" required minlength="2" maxlength="50">
                         </div>
                     </div>
                     <div class="form-row">
@@ -1819,7 +1878,7 @@
                         </div>
                         <div class="form-group">
                             <label for="telefono">Teléfono *</label>
-                            <input type="tel" id="telefono" name="telefono" required>
+                            <input type="tel" id="telefono" name="telefono" required pattern="[0-9 +()-]{7,15}" placeholder="3147908555">
                         </div>
                     </div>
                     <div class="form-group">
@@ -1841,14 +1900,34 @@
                     </div>
                     <div class="form-checkbox">
                         <input type="checkbox" id="politicas" name="politicas" required>
-                        <label for="politicas">Acepto la <a href="#" target="_blank">política de tratamiento de datos personales</a> de ANATO Suroccidente. *</label>
+                        <label for="politicas">Acepto la <a href="privacidad.html" target="_blank">política de tratamiento de datos personales</a> de ANATO Suroccidente. *</label>
                     </div>
                     <div class="form-checkbox">
-                        <input type="checkbox" id="promociones" name="promociones" checked>
+                        <input type="checkbox" id="promociones" name="promociones" value="si" checked>
                         <label for="promociones">Deseo recibir promociones, boletines y novedades de Expovacaciones.</label>
                     </div>
-                    <button type="submit" class="btn btn--primary btn--large btn--full">Quiero recibir información</button>
+                    <button type="submit" class="btn btn--primary btn--large btn--full form-submit">
+                        <span class="form-submit__text">Quiero recibir información</span>
+                        <span class="form-submit__loader" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="9" stroke-opacity="0.25"/><path d="M12 3 a 9 9 0 0 1 9 9"/></svg>
+                        </span>
+                    </button>
                 </form>
+                <div class="contact__success" id="contactSuccess" hidden>
+                    <div class="contact__success-icon">
+                        <svg viewBox="0 0 64 64" fill="none">
+                            <circle cx="32" cy="32" r="30" fill="#fff6d4" stroke="#5aa03d" stroke-width="2.5"/>
+                            <path d="M18 32 L28 42 L46 22" stroke="#3d7d2d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3>¡Información enviada!</h3>
+                    <p>Pronto te contactaremos con todos los detalles. Revisa tu correo (incluyendo spam).</p>
+                    <a href="assets/guia-expovacaciones-2026.pdf" download class="contact__success-download" id="downloadGuiaBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        <span>Descarga la Guía Oficial PDF</span>
+                    </a>
+                    <p class="contact__success-cta">¿Preguntas urgentes? <a href="https://wa.me/573147908555">Escríbenos por WhatsApp</a>.</p>
+                </div>
             </div>
         </div>
     </section>

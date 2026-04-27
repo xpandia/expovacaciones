@@ -199,24 +199,13 @@ document.addEventListener('DOMContentLoaded', () => {
         track('cta_click', { cta_label: 'Quiero ir', cta_location: 'announcement_bar' });
     });
 
-    // --- VIDEO MODAL POP-UP ---
+    // --- VIDEO MODAL POP-UP (reel vertical) ---
     const videoModal = document.getElementById('videoModal');
-    const openVideoBtn = document.getElementById('openVideoModal');
     const videoModalClose = document.getElementById('videoModalClose');
     const videoModalX = document.getElementById('videoModalX');
     const videoModalVideo = document.getElementById('videoModalVideo');
 
-    const openModal = () => {
-        if (!videoModal || !videoModalVideo) return;
-        videoModal.classList.add('is-open');
-        videoModal.setAttribute('aria-hidden', 'false');
-        document.body.classList.add('video-modal-open');
-        videoModalVideo.currentTime = 0;
-        videoModalVideo.play().catch(() => {});
-        track('video_modal_open', { location: 'hero_ver_video' });
-    };
-
-    const closeModal = () => {
+    const closeReelModal = () => {
         if (!videoModal || !videoModalVideo) return;
         videoModal.classList.remove('is-open');
         videoModal.setAttribute('aria-hidden', 'true');
@@ -224,16 +213,46 @@ document.addEventListener('DOMContentLoaded', () => {
         videoModalVideo.pause();
     };
 
-    openVideoBtn?.addEventListener('click', (e) => {
+    videoModalClose?.addEventListener('click', closeReelModal);
+    videoModalX?.addEventListener('click', closeReelModal);
+
+    // --- HERO VIDEO MODAL (YouTube embed promocional) ---
+    // TODO: Reemplazar este YouTube ID con el video oficial del evento
+    const HERO_YOUTUBE_ID = 'OkjQyPgD-aA'; // Placeholder: Cali Colombia video procolombia
+    const heroVideoModal = document.getElementById('heroVideoModal');
+    const heroVideoIframe = document.getElementById('heroVideoIframe');
+    const heroVideoClose = document.getElementById('heroVideoClose');
+    const heroVideoX = document.getElementById('heroVideoX');
+    const openHeroVideoBtn = document.getElementById('openVideoModal');
+
+    const openHeroVideo = () => {
+        if (!heroVideoModal || !heroVideoIframe) return;
+        heroVideoIframe.src = `https://www.youtube.com/embed/${HERO_YOUTUBE_ID}?autoplay=1&rel=0&modestbranding=1`;
+        heroVideoModal.classList.add('is-open');
+        heroVideoModal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('video-modal-open');
+        track('hero_video_open', { youtube_id: HERO_YOUTUBE_ID });
+    };
+
+    const closeHeroVideo = () => {
+        if (!heroVideoModal || !heroVideoIframe) return;
+        heroVideoIframe.src = ''; // Stop video
+        heroVideoModal.classList.remove('is-open');
+        heroVideoModal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('video-modal-open');
+    };
+
+    openHeroVideoBtn?.addEventListener('click', (e) => {
         e.preventDefault();
-        openModal();
+        openHeroVideo();
     });
-    videoModalClose?.addEventListener('click', closeModal);
-    videoModalX?.addEventListener('click', closeModal);
+    heroVideoClose?.addEventListener('click', closeHeroVideo);
+    heroVideoX?.addEventListener('click', closeHeroVideo);
 
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && videoModal?.classList.contains('is-open')) {
-            closeModal();
+        if (e.key === 'Escape') {
+            if (videoModal?.classList.contains('is-open')) closeReelModal();
+            if (heroVideoModal?.classList.contains('is-open')) closeHeroVideo();
         }
     });
 
@@ -1467,6 +1486,47 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========================================
+    // CONTACT FORM — submit con FormSubmit + UX
+    // ========================================
+    const contactForm = document.getElementById('contactForm');
+    const contactSuccess = document.getElementById('contactSuccess');
+    const discountField = document.getElementById('discountCodeField');
+
+    if (contactForm) {
+        // Inyectar discount code si existe en localStorage (de exit-intent)
+        const savedDiscount = localStorage.getItem('expovac_discount_code');
+        if (savedDiscount && discountField) {
+            discountField.value = savedDiscount;
+        }
+
+        contactForm.addEventListener('submit', (e) => {
+            const submitBtn = contactForm.querySelector('.form-submit');
+            if (submitBtn) {
+                submitBtn.classList.add('is-loading');
+                submitBtn.disabled = true;
+            }
+            // Tracking GA4
+            track('form_submit', {
+                form: 'contact',
+                interes: contactForm.querySelector('#interes')?.value || 'no_specified',
+                ciudad: contactForm.querySelector('#ciudad')?.value || 'no_specified',
+                with_discount: !!savedDiscount
+            });
+        });
+    }
+
+    // Mostrar success state si el query string indica form=success
+    if (window.location.search.includes('form=success')) {
+        if (contactForm) contactForm.style.display = 'none';
+        if (contactSuccess) {
+            contactSuccess.hidden = false;
+            contactSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        // Limpiar URL sin recargar
+        history.replaceState(null, '', window.location.pathname + '#contacto');
+    }
+
+    // ========================================
     // FAQ TABS — filtrar por categoría
     // ========================================
     const faqTabs = document.querySelectorAll('.faq__tab');
@@ -1747,7 +1807,13 @@ document.addEventListener('DOMContentLoaded', () => {
         exitModalClose?.addEventListener('click', closeExitModal);
         exitModal.querySelector('.exit-modal__backdrop')?.addEventListener('click', closeExitModal);
         exitModalCta?.addEventListener('click', () => {
-            track('exit_intent_cta_click', {});
+            // Guardar código descuento en localStorage para autollenar el form
+            const discountCode = document.getElementById('exitDiscountCode')?.textContent?.trim() || 'EXPO10';
+            localStorage.setItem('expovac_discount_code', discountCode);
+            // Inyectar al form si existe
+            const fld = document.getElementById('discountCodeField');
+            if (fld) fld.value = discountCode;
+            track('exit_intent_cta_click', { discount_code: discountCode });
             closeExitModal();
         });
 
