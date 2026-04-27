@@ -2609,17 +2609,18 @@ body.banner-hidden .header { top: 0; }
     display: inline-block;
     font-family: 'Caveat', cursive;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 800;
     font-size: clamp(2.8rem, 7.5vw, 6rem);
-    color: #e8d500;
+    color: #f5d020;
     line-height: 0.88;
     letter-spacing: -0.005em;
-    text-shadow: 0 3px 32px rgba(0,0,0,0.45), 0 0 2px rgba(0,0,0,0.25);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     margin: -6px 0 -8px;
     transform: rotate(-2deg);
     transform-origin: left center;
     position: relative;
     white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* Subrayado ondulado amarillo bajo 'para tus vacaciones' */
@@ -2628,12 +2629,12 @@ body.banner-hidden .header { top: 0; }
     position: absolute;
     left: 4%;
     right: 4%;
-    bottom: 12%;
-    height: 8px;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 8' preserveAspectRatio='none'><path d='M0,4 Q15,0 30,4 T60,4 T90,4 T120,4' stroke='%23e8d500' stroke-width='3' fill='none' stroke-linecap='round'/></svg>");
+    bottom: -8%;
+    height: 6px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 8' preserveAspectRatio='none'><path d='M0,4 Q15,0 30,4 T60,4 T90,4 T120,4' stroke='%23f5d020' stroke-width='3' fill='none' stroke-linecap='round'/></svg>");
     background-repeat: repeat-x;
-    background-size: 100px 8px;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
+    background-size: 100px 6px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.35));
     pointer-events: none;
 }
 
@@ -9309,19 +9310,19 @@ body.banner-hidden .header { top: 0; }
 }
 
 .sticker--gratis {
-    top: -18px;
-    left: -16px;
-    width: 90px;
-    height: 90px;
+    top: -22px;
+    left: -28px;
+    width: 70px;
+    height: 70px;
     background: linear-gradient(135deg, #a8c435 0%, #5aa03d 100%);
     color: #ffffff;
-    font-size: 1rem;
+    font-size: 0.78rem;
     font-weight: 800;
     transform: rotate(-15deg);
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.04em;
     line-height: 1.05;
-    padding: 8px;
+    padding: 6px;
     box-sizing: border-box;
 }
 
