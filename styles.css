@@ -68,6 +68,63 @@
     --glass-dark: rgba(30, 30, 30, 0.72);
     --glow-magenta: 0 0 20px rgba(249, 22, 126, 0.3);
     --glow-teal: 0 0 20px rgba(48, 213, 200, 0.3);
+
+    /* ============================================
+       SISTEMA DE DISEÑO UNIFICADO 2026
+       Editorial Tropical + Hand-drawn
+       ============================================ */
+    /* Tipografías */
+    --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+    --font-script: 'Caveat', 'Brush Script MT', cursive, sans-serif;
+
+    /* Paleta editorial unificada */
+    --ink: #0d2a4a;            /* navy texto principal */
+    --ink-soft: rgba(13, 42, 74, 0.78);
+    --ink-muted: rgba(13, 42, 74, 0.55);
+    --paper: #fefbf0;          /* cream base */
+    --paper-warm: #fff7d9;     /* cream cálido */
+    --highlight: #f5d020;      /* amarillo destacado */
+    --highlight-deep: #c89b1d; /* gold acentos */
+    --leaf: #a8c435;           /* lima */
+    --leaf-deep: #1a8a4a;      /* verde profundo */
+    --coral-warm: #f5844a;     /* coral cálido */
+    --rose: #ed4a7d;           /* rosa magenta */
+
+    /* Jerarquía tipográfica fluida */
+    --fs-kicker: clamp(0.78rem, 0.9vw, 0.92rem);
+    --fs-dek: clamp(1.05rem, 1.3vw, 1.25rem);
+    --fs-h2: clamp(2rem, 4.5vw, 3.4rem);
+    --fs-h1: clamp(2.6rem, 6vw, 4.8rem);
+    --fs-script-accent: clamp(2.2rem, 4.5vw, 4rem);
+
+    /* Espaciado rítmico (escala 4) */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
+    --space-7: 48px;
+    --space-8: 64px;
+    --space-9: 96px;
+    --space-10: 128px;
+
+    /* Border radius rítmico */
+    --r-sm: 8px;
+    --r-md: 16px;
+    --r-lg: 24px;
+    --r-xl: 32px;
+    --r-pill: 999px;
+
+    /* Sombras editorial */
+    --shadow-soft: 0 4px 16px rgba(13, 42, 74, 0.08);
+    --shadow-card: 0 12px 32px rgba(13, 42, 74, 0.12);
+    --shadow-deep: 0 24px 60px rgba(13, 42, 74, 0.18);
+
+    /* Easings */
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* RESET */
@@ -1206,6 +1263,172 @@ img { max-width: 100%; display: block; }
 
 img[loading="lazy"] {
     transition: opacity 0.4s ease;
+}
+
+/* ============================================
+   SISTEMA EDITORIAL — TIPOGRAFÍA GLOBAL
+   Aplicado vía clase .ed-title o secciones que opten in.
+   No forzamos h1/h2 globalmente para no romper hero/headers.
+   ============================================ */
+
+/* ============================================
+   COMPONENTES EDITORIALES REUTILIZABLES
+   ============================================ */
+
+/* Kicker (overline pequeño antes del título) */
+.ed-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-body);
+    font-size: var(--fs-kicker);
+    font-weight: 600;
+    color: var(--leaf-deep);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-bottom: var(--space-3);
+}
+.ed-kicker::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+}
+
+/* Título de sección con Playfair */
+.ed-title {
+    font-family: var(--font-display);
+    font-size: var(--fs-h2);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.08;
+    letter-spacing: -0.018em;
+    margin: 0 0 var(--space-4);
+}
+
+/* Acento manuscrito Caveat dentro de títulos */
+.ed-script {
+    font-family: var(--font-script);
+    font-style: normal;
+    font-weight: 700;
+    color: var(--highlight-deep);
+    font-size: 1.18em;
+    line-height: 0.9;
+    letter-spacing: -0.005em;
+    display: inline-block;
+}
+
+/* Dek/subhead descriptivo bajo el título */
+.ed-dek {
+    font-family: var(--font-body);
+    font-size: var(--fs-dek);
+    font-weight: 400;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    max-width: 64ch;
+    margin: 0 0 var(--space-6);
+}
+
+/* Number badge (01, 02, 03 estilo capítulo) */
+.ed-number {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(2rem, 3.2vw, 2.8rem);
+    color: var(--highlight);
+    line-height: 1;
+    display: inline-block;
+    margin-bottom: var(--space-2);
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 8px rgba(13, 42, 74, 0.08);
+}
+
+.ed-number--small {
+    font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+}
+
+/* Pull quote estilo magazine */
+.ed-pullquote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.4rem, 2.4vw, 2rem);
+    line-height: 1.4;
+    color: var(--ink);
+    border-left: 3px solid var(--highlight);
+    padding: var(--space-4) var(--space-5);
+    margin: var(--space-6) 0;
+    max-width: 56ch;
+    position: relative;
+}
+.ed-pullquote::before {
+    content: '\201C';
+    position: absolute;
+    top: -8px;
+    left: 12px;
+    font-size: 3rem;
+    color: var(--highlight);
+    line-height: 1;
+    font-family: var(--font-display);
+}
+
+/* Subrayado hand-drawn animado (SVG inline) */
+.ed-underline {
+    position: relative;
+    display: inline-block;
+}
+.ed-underline::after {
+    content: '';
+    position: absolute;
+    left: -2%;
+    right: -2%;
+    bottom: -0.18em;
+    height: 0.32em;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'%3E%3Cpath d='M2 8 Q 50 2 100 6 T 198 4' stroke='%23f5d020' stroke-width='4' stroke-linecap='round' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    z-index: -1;
+    opacity: 0.85;
+    pointer-events: none;
+}
+
+/* Header editorial de sección (kicker + título + dek juntos) */
+.ed-section-head {
+    margin-bottom: var(--space-7);
+    max-width: 760px;
+}
+.ed-section-head--center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.ed-section-head--center .ed-kicker {
+    justify-content: center;
+}
+.ed-section-head--center .ed-dek {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Reveal on-scroll (Fase 4 lo activará con JS) */
+.ed-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.ed-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ed-reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
 }
 
 /* ===== Accesibilidad: foco visible para navegación por teclado ===== */
