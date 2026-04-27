@@ -452,8 +452,8 @@ html {
     .lightbox__close {
         top: 16px;
         right: 16px;
-        width: 42px;
-        height: 42px;
+        width: 44px;
+        height: 44px;
     }
     .lightbox__nav {
         width: 44px;
@@ -2611,7 +2611,7 @@ body.banner-hidden .header { top: 0; }
 
 .hero__title-script--big {
     display: block;
-    font-family: 'Caveat', cursive;
+    font-family: 'Caveat', 'Brush Script MT', cursive, sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: clamp(2.8rem, 7.5vw, 6rem);
@@ -3129,8 +3129,8 @@ body.banner-hidden .header { top: 0; }
         min-width: 52px;
     }
     .hero__countdown--pill .countdown__label {
-        font-size: 0.6rem;
-        letter-spacing: 0.12em;
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
     }
     .btn-hero-main {
         font-size: 1rem;
@@ -7116,7 +7116,7 @@ body.banner-hidden .header { top: 0; }
 .faq__answer p {
     padding: 0 24px 20px;
     font-size: 0.95rem;
-    color: var(--gris);
+    color: rgba(13, 42, 74, 0.78);
     line-height: 1.7;
 }
 
