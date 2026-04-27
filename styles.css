@@ -2713,7 +2713,15 @@ body.banner-hidden .header { top: 0; }
 
 .btn-hero-secondary__icon svg { width: 14px; height: 14px; margin-left: 2px; }
 
-/* Brand pill "Una marca de ANATO" — centrado debajo como el mockup */
+/* Bloque CTA + brand pill: centra el badge bajo los CTAs */
+.hero__cta-block {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: flex-start;
+}
+
+/* Brand pill "Una marca de ANATO" — centrado debajo de los CTAs */
 .hero__brand-pill {
     display: inline-flex;
     align-items: center;
@@ -2725,7 +2733,6 @@ body.banner-hidden .header { top: 0; }
     font-size: 0.9rem;
     font-weight: 500;
     box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-    align-self: center;
     margin-top: 16px;
 }
 
