@@ -1467,6 +1467,110 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========================================
+    // SOCIAL PROOF NOTIFICATIONS (FOMO)
+    // ========================================
+    const socialProofEl = document.getElementById('socialProof');
+    if (socialProofEl) {
+        const proofs = [
+            { name: 'Camila', initials: 'CM', color: '#a8c435', action: 'reservó su lugar', time: 'hace 5 min', city: 'Cali' },
+            { name: 'Andrés', initials: 'AR', color: '#5aa03d', action: 'pidió info de San Andrés', time: 'hace 8 min', city: 'Palmira' },
+            { name: 'Valentina', initials: 'VL', color: '#f5d020', action: 'agendó cita con asesor', time: 'hace 12 min', city: 'Cali' },
+            { name: 'Juan David', initials: 'JD', color: '#e8a317', action: 'cotizó paquete a Cancún', time: 'hace 15 min', city: 'Tuluá' },
+            { name: 'María', initials: 'MA', color: '#a8c435', action: 'apartó su entrada', time: 'hace 18 min', city: 'Cali' },
+            { name: 'Sofía', initials: 'SF', color: '#5aa03d', action: 'reservó plan familiar', time: 'hace 22 min', city: 'Buga' },
+            { name: 'Carlos', initials: 'CR', color: '#c89b1d', action: 'reservó tour al Valle', time: 'hace 25 min', city: 'Yumbo' },
+            { name: 'Daniela', initials: 'DA', color: '#a8c435', action: 'recibió descuento exclusivo', time: 'hace 28 min', city: 'Cali' },
+            { name: 'Felipe', initials: 'FE', color: '#5aa03d', action: 'agendó visita al evento', time: 'hace 32 min', city: 'Palmira' },
+            { name: 'Laura', initials: 'LR', color: '#f5d020', action: 'cotizó luna de miel', time: 'hace 35 min', city: 'Cali' },
+        ];
+
+        let idx = 0;
+        let proofTimer = null;
+
+        const renderProof = (p) => {
+            return `
+                <div class="social-proof__card">
+                    <button type="button" class="social-proof__close" aria-label="Cerrar">×</button>
+                    <div class="social-proof__avatar" style="background: linear-gradient(135deg, ${p.color}, #c89b1d);">${p.initials}</div>
+                    <div class="social-proof__body">
+                        <p class="social-proof__text"><strong>${p.name}</strong> ${p.action}</p>
+                        <p class="social-proof__meta">${p.city} · ${p.time}</p>
+                    </div>
+                </div>
+            `;
+        };
+
+        const showProof = () => {
+            const p = proofs[idx % proofs.length];
+            idx++;
+            socialProofEl.innerHTML = renderProof(p);
+            const card = socialProofEl.querySelector('.social-proof__card');
+            requestAnimationFrame(() => card?.classList.add('is-visible'));
+            const close = socialProofEl.querySelector('.social-proof__close');
+            close?.addEventListener('click', () => {
+                card?.classList.remove('is-visible');
+                clearTimeout(proofTimer);
+                socialProofEl.innerHTML = '';
+            });
+            // Auto-hide después de 6s
+            setTimeout(() => {
+                card?.classList.remove('is-visible');
+                setTimeout(() => { socialProofEl.innerHTML = ''; }, 400);
+            }, 6000);
+        };
+
+        // Empezar después de 8s (que el user explore primero)
+        setTimeout(() => {
+            showProof();
+            proofTimer = setInterval(showProof, 18000);
+        }, 8000);
+    }
+
+    // ========================================
+    // MAGNETIC BUTTONS — el botón sigue al cursor
+    // ========================================
+    if (!prefersReducedMotion && window.matchMedia('(hover: hover)').matches) {
+        const magneticEls = document.querySelectorAll('.btn-hero-main, .valle__cta, .gallery__cta, .form-submit, .nav-link--cta, .announcement-bar__cta');
+        magneticEls.forEach(el => {
+            const strength = 0.25;
+            el.addEventListener('mousemove', (e) => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                el.style.transform = `translate(${x * strength}px, ${y * strength}px)`;
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = '';
+            });
+        });
+    }
+
+    // ========================================
+    // SPLIT TEXT REVEAL — letras hero aparecen con stagger
+    // ========================================
+    if (!prefersReducedMotion) {
+        const heroTitleLines = document.querySelectorAll('.hero__title--mockup .hero__title-line, .hero__title--mockup .hero__title-script--big');
+        let totalDelay = 0;
+        heroTitleLines.forEach(line => {
+            const text = line.textContent;
+            const wrapper = document.createElement('span');
+            wrapper.className = 'split-text';
+            wrapper.setAttribute('aria-label', text);
+            line.textContent = '';
+            text.split('').forEach((ch) => {
+                const span = document.createElement('span');
+                span.className = 'split-char';
+                span.style.animationDelay = `${totalDelay}s`;
+                span.textContent = ch === ' ' ? '\u00A0' : ch;
+                span.setAttribute('aria-hidden', 'true');
+                wrapper.appendChild(span);
+                totalDelay += 0.025;
+            });
+            line.appendChild(wrapper);
+        });
+    }
+
+    // ========================================
     // ANIMATED COUNTERS — números stats al entrar viewport
     // ========================================
     const animatedNumbers = document.querySelectorAll('.gallery__stat-number, .event-stats-bar__number');
