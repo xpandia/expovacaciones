@@ -1318,6 +1318,8 @@ img[loading="lazy"] {
     line-height: 0.9;
     letter-spacing: -0.005em;
     display: inline-block;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 /* Dek/subhead descriptivo bajo el título */
@@ -1564,6 +1566,70 @@ img[loading="lazy"] {
         opacity: 1;
         transform: none;
         transition: none;
+    }
+}
+
+/* ============================================
+   AJUSTES RESPONSIVE PARA SISTEMA EDITORIAL
+   ============================================ */
+
+/* Mobile <480px: ajustar Caveat script para que no rompa títulos */
+@media (max-width: 480px) {
+    .ed-script {
+        font-size: 1.08em;
+        line-height: 0.95;
+    }
+    .ed-pullquote {
+        padding: var(--space-3) var(--space-4);
+        margin: var(--space-5) 0;
+    }
+    .ed-pullquote::before {
+        font-size: 2.4rem;
+        top: -4px;
+        left: 8px;
+    }
+    .ed-section-head {
+        margin-bottom: var(--space-6);
+    }
+    .footer__tagline,
+    .ed-script,
+    .footer__brand p.footer__tagline {
+        overflow-wrap: break-word;
+        word-break: normal;
+        hyphens: auto;
+    }
+    /* Valle: en mobile pequeño, 1 columna para que iconos respiren */
+    .valle__categories {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+    }
+    .valle__category {
+        padding: 12px 0;
+    }
+}
+
+/* Mobile <375px: micro-ajustes para iPhone SE */
+@media (max-width: 375px) {
+    .ed-kicker {
+        font-size: 0.74rem;
+        letter-spacing: 0.14em;
+    }
+    .ed-kicker::before {
+        width: 22px;
+    }
+    .ed-script {
+        font-size: 1.05em;
+    }
+    .ed-number {
+        font-size: clamp(1.6rem, 6vw, 2.2rem);
+    }
+}
+
+/* Desktop ancho >1600px: limitar tamaño de iconos para no verse gigantes */
+@media (min-width: 1600px) {
+    .ed-icon--xl {
+        max-width: 64px;
+        max-height: 64px;
     }
 }
 
