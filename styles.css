@@ -8934,18 +8934,6 @@ body.banner-hidden .header { top: 0; }
     transform: translateY(0);
 }
 
-/* ---- Content Visibility (skip rendering off-screen sections) ---- */
-.valle,
-.exhibitors,
-.gallery,
-.location,
-.faq,
-.contact,
-.footer {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 600px;
-}
-
 /* ---- Reduced Motion ---- */
 @media (prefers-reduced-motion: reduce) {
     .scroll-progress,
